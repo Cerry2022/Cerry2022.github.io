@@ -6,6 +6,8 @@
     "type": "module"
   },
   "devDependencies": {
+    "vite": "^5.2.7",
+    "vite-plugin-vitepress-auto-nav": "^2.2.2",
     "vitepress": "^1.0.0-rc.10"
   },
   "dependencies": {

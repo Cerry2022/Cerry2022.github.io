@@ -1,201 +1,145 @@
-# VitePress 部署到 Github Pages
+# 使用 VitePress 搭建文档站点
 
-## 下载安装 Node.js
+`VitePress`是`Vue`团队提供的一个基于`Vue 3`与`Vite`的开源框架，通过`MarkDown`文档和简单配置就能快速生成静态文档站点。与基于`WebPack`的`VuePress`相比，`VitePress`拥有更快的启动和打包速度
 
-下载安装 [Node.js](https://nodejs.org/en) 。
+除了支持标准和扩展的`md`语法外，`VitePress`还支持在`md`文档内书写`Vue`语法，非常适合前端组件库文档或普通技术文档的搭建
 
-::: details 个人小插曲：在 Windows 注册表更改 Node.js 的安装路径
-之前我为了扩展 C 盘的空间，需要清空 D 盘。
-![C-D-Merge](https://cdn.tangjiayan.com/notes/vitepress-github-pages/C-D-Merge.jpg)
+::: info
+如果不想了解完整的使用方式，也可以直接克隆本站仓库后修改使用
 
-当时蠢蠢地直接把 Node.js 文件夹剪切到了 E 盘，于是理所当然地运行不了，也卸载不了，提示 `Invalid D: drive`。
-
-参考 [change node.js installation directory - Stack Overflow](https://stackoverflow.com/questions/35451598/change-node-js-installation-directory)，在注册表 `HKEY_LOCAL_MACHINE\SOFTWARE\Node.js` 下将 Node.js 的安装路径从 `D:\Program Files\nodejs` 改为 `E:\Program Files\nodejs`，才卸载重装成功。
-
-Windows 注册表：`Win` + `R` → `regedit` 。
-:::
-
-## 安装 VitePress，配置 .gitignore 文件
-
-在本地新建一个文件夹，用来存放 VitePress 文件，在这个文件夹内运行 [CMD](https://en.wikipedia.org/wiki/Cmd.exe)，执行以下命令：
-
-::: details TIP：CMD 打开指定路径的方法
-方法1：点击文件浏览器的地址栏，在当前文件目录地址前加个 `cmd`，回车即可
-
-方法2：`Win` + `R` → 输入 `cmd`，回车 → 输入 `cd /d 目录地址` 执行
-:::
-
-::: details TIP：我建了两个 VitePress 站点
-我建了两个 VitePress 站点文件夹，一个是正式的 <font color="red">笔记站</font>；另一个是笔记 <font color="red">草稿站</font>，用来预览和测试用。
-
-我的文件夹结构：
-
-```
-vitepress
-├─ vitepress-jan-draft
-└─ vitepress-jan-note
+```shell
+git clone https://github.com/Cerry2022/Cerry2022.github.io.git
 ```
 
 :::
 
-```sh
-npm add -D vitepress
-```
+## 一、创建项目
 
-```sh
-npx vitepress init
-```
-
-将 `.vitepress/config.js` 扩展名更改为 `.mjs`
-
-```sh
-npm run docs:dev
-```
-
-然后按照 [官方手册](https://vitepress.dev/reference/default-theme-config) 配置 `config.mts` 文件、写 markdown 文件就行了，推荐用 [VS Code](https://code.visualstudio.com/) 写。
-
-到这一步，在 VitePress 站点文件夹内应该是有 4 个项目的：
-
-- `node_modules`
-- `自己起的站点文件夹名称`（按照 [官方步骤](https://vitepress.dev/guide/getting-started#installation) 来，会是 `docs`）
-- `package.json`
-- `package-lock.json`
-
-其中的 `node_modules` 在部署 GitHub Pages 时不需要 push 到 GitHub 仓库，所以要配置一下 `.gitignore` 文件。
-
-参考：[git忽略某个目录或文件不上传_git忽略指定文件_sxjlinux的博客-CSDN博客](https://blog.csdn.net/sunxiaoju/article/details/86495234)
-
-在站点文件夹下创建名为 `.gitignore` 的文件，用编辑器打开（notepad、notepad++、VS Code 都可以），里面写上 `node_modules` 。
-
-## 创建 `deploy.yml` GitHub 工作流文件
-
-::: tip 最新文件内容请参阅官方手册
-
-VitePress 的 GitHub 工作流文件内容会随时间更新，这里写的不一定是最新的。
-
-最新的文件内容请参阅 [VitePress 官方手册](https://vitepress.dev/guide/deploy#github-pages) 。
-
+::: tip 环境要求
+要求设备已安装 [Node 18+](https://nodejs.org/zh-cn/) 、[Git](https://git-scm.com/) 环境，推荐使用 [NVM](https://github.com/coreybutler/nvm-windows) 、 [Volta](https://docs.volta.sh/guide/) 或 [FVM](https://fvm.app/docs/getting_started/overview)更方便的管理 Node 版本
 :::
 
-在本地的 VitePress 站点文件夹 `.github/workflows` 下建立 名为 `deploy.yml` 的文件，内容如下：
+在终端目标路径下运行：
 
-::: details `deploy.yml` 文件的内容
+```shell
+mkdir projectName
+
+cd projectName
+
+pnpm init
+
+pnpm i -D vitepress
+```
+
+::: tip 提示
+相比于 npm 或 yarn，更推荐使用 pnpm，如果没有需要自行安装
+
+因为 vitepress 仅支持 ESM 模块化，所以还需要在 package.json 中添加 type 属性，如果项目中有用到 CommonJS 模块化的脚本，则需要显示指定文件扩展名为 `.cjs`
+
+如果使用 pnpm 报`missing peer`的错误，则还需要添加 pnpm 属性
+
+```json
+// package.json
+// ...
+"type": "module",
+"pnpm": {
+  "peerDependencyRules": {
+    "ignoreMissing": [
+      "@algolia/client-search",
+      "search-insights"
+    ]
+  }
+}
+```
+
+如果需要用到 Vue 相关功能，还需要显示的安装 Vue：`pnpm i vue`
+:::
+
+## 二、创建文档
+
+vitepress 提供了 init 命令来运行安装向导，在终端中运行`npx vitepress init`并按向导执行后可以得到一个基础模板
+
+向导会生成一个 .vitepress 文件夹，三个示例 md 文件， .gitignore 文件以及在 package.json 中添加了三个 scripts 命令
+
+VitePress 使用文件路径作为路由地址，如果路径是`/a/b.md`，访问路径就是`http://localhost:5173/a/b.html`
+
+根目录下的 index.md 会作为文档首页，同理如果子目录下的文件名是 index.md ，也可以省略访问路径最后的`/index.html`，例如路径是`/a/index.md`，可以通过`http://localhost:5173/a`访问
+
+生成的`docs:dev`、`docs:build`、`docs:preview`命令分别对应本地运行，打包和预览打包文件（会启动一个本地服务）。vitepress 默认将根目录作为工作目录，如果想修改工作目录例如将 docs 作为工作目录，可以修改 scripts 命令为`vitepress dev docs`（build、preview 也需要修改）
+
+## 三、部署 GitHub Pages
+
+`GitHub Pages`是`GitHub`提供的一个静态站点服务，可以方便的将我们的文档部署到`GitHub`服务器上，并提供外网访问地址
+
+1. 首先需要在 Github 中创建项目仓库，并上传代码
+
+2. 在项目根目录下创建 `.github/workflows/deploy.yml` 文件（yml 文件名可以任意取，所有 workflow 下的 yml 文件均会自动执行），内容为：
 
 ```yml
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
-#
-name: Deploy VitePress site to Pages
+# name名称可以任意取
+name: 部署到GithubPages
 
 on:
-  # Runs on pushes targeting the `main` branch. Change this to `master` if you're
-  # using the `master` branch as the default branch.
+  # 执行 'push' 到 'master' 时触发，根据自己仓库的分支名修改
   push:
-    branches: [main]
+    branches: [master]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # 允许从“操作”选项卡手动运行此工作流
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 设置GITHUB_TOKEN的权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# 设置属于'pages'组下的工作流并发，设置后只运行首个和最新的工作流，中间等待状态的工作流将被取消
 concurrency:
   group: pages
-  cancel-in-progress: false
+  # 取消首个工作流的运行，这样在并发时就只会运行最新的
+  cancel-in-progress: true
 
 jobs:
-  # Build job
+  # 打包流程
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: 检出代码到打包环境中
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v2 # Uncomment this if you're using pnpm
-      # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
-      - name: Setup Node
-        uses: actions/setup-node@v4
+          # 获取全部提交记录，如果未启用lastUpdated，则不需要
+          fetch-depth: 0
+      - name: 安装PNPM
+        uses: pnpm/action-setup@v2
+      - name: 安装Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-          cache: npm # or pnpm / yarn
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci # or pnpm install / yarn install / bun install
-      - name: Build with VitePress
-        run: |
-          npm run docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
-          touch docs/.vitepress/dist/.nojekyll
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          node-version: 18
+          cache: pnpm
+      - name: 启用Github Pages并读取文档元数据
+        uses: actions/configure-pages@v3
+      - name: 安装依赖
+        run: pnpm install
+      - name: 打包
+        run: pnpm build
+      - name: 上传项目
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: docs/.vitepress/dist
+          path: .vitepress/dist
 
-  # Deployment job
+  # 部署流程
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 部署到 GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
 ```
 
-:::
+3. 在项目仓库中修改 `Settings -> Pages -> Source` 为 GitHub Actions
 
-以下我是以 `tangjan.github.io/` 根路径作为站点部署地址的，所以不需要修改 VitePress 的 `base`。
-
-若需修改部署地址，参考 [Deploy Your VitePress Site | VitePress](https://vitepress.dev/guide/deploy#setting-a-public-base-path) 。
-
-## 上传到 GitHub 仓库
-
-在 GitHub 创建一个名为 `<username>.github.io` 的仓库，然后在本地的 VitePress 站点文件夹下：
-
-```sh
-git init
-```
-
->关于 git 的初始化请另找教程，本文对此略过
-<br>如：[关于Git这一篇就够了_17岁boy想当攻城狮的博客-CSDN博客](https://blog.csdn.net/bjbz_cxy/article/details/116703787)
-
-```sh
-git remote add origin git@github.com:<username>/<username>.github.io.git
-# <username> 改为自己的 GitHub 用户名
-```
-
-```sh
-git add .
-```
-
-```sh
-git commit -m "initial commit" .
-```
-
-> 双引号内的内容是 [提交信息](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--mltmsggt)，可任意
-
-```sh
-git push origin main
-```
-
-## 部署 GitHub Pages，设定用户域名
-
-VitePress 站点相关文件上传到 GitHub 仓库后，就会自动执行 `Deploy VitePress site to Pages` 的 [Github Action](https://docs.github.com/en/actions/learn-github-actions)。过一会就会自动部署完成，访问 `<username>.github.io` 就能看见 VitePress 站点了。
-
-在 `<username>.github.io` 仓库的 `Settings` → `Pages` → `Custom domain` 可以设定自定义域名。
-
-在域名购买的服务商处添加一条 `CNAME` 类型的记录，指向 `<username.github.io>` 即可。
-
-## 参考
-
-- [VitePress Guide](https://vitepress.dev/guide/what-is-vitepress)
-- [git忽略某个目录或文件不上传_git忽略指定文件_sxjlinux的博客-CSDN博客](https://blog.csdn.net/sunxiaoju/article/details/86495234)
-- [Learn GitHub Actions - GitHub Docs](https://docs.github.com/en/actions/learn-github-actions)
+4. 完成上诉操作后每次提交到主分支便会触发工作流，将最新代码部署到 Github Pages 中
