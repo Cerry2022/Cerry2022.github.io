@@ -120,7 +120,7 @@ export default defineConfig({
     // ],
 
     editLink: {
-        pattern: "https://github.com/Cerry2022/Cerry2022.github.io/blob/master/docs/:path",
+        pattern: "https://github.com/Cerry2022/Cerry2022.github.io/blob/master/docs/src/:path",
         text: "在 GitHub 上编辑此页面",
 
     },
@@ -150,6 +150,23 @@ export default defineConfig({
         text: '更新日志',
         link: '/update-log'
       },
+	  {
+        text: '惠普计算器',
+        collapsed: false,
+        items: [
+          {
+            text: '栏目总说明',
+			link: '/hp-calc/hp_calc_info'
+          },
+		  {
+            text: 'hp39gs',
+            collapsed: true,
+            items:[
+              { text: '关于我和Hp39gs', link: '/hp-calc/hp39gs/001'},
+            ],
+          },
+        ]
+      },
       {
         text: '建站',
         // collapsed: true,
@@ -165,10 +182,10 @@ export default defineConfig({
       },
       {
         text: '寂静的笔记',
-        // collapsed: true,
+        collapsed: true,
         items: [
           {
-            text: 'VitePress',
+            text: 'CPU大杂烩',
 			link: '/jijingdebiji/CPU_da_zha_hui'
           },
         ]
