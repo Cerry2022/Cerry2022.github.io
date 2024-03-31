@@ -163,7 +163,16 @@ export default defineConfig({
           },
         ]
       },
-
+      {
+        text: '寂静的笔记',
+        // collapsed: true,
+        items: [
+          {
+            text: 'VitePress',
+			link: '/jijingdebiji/CPU_da_zha_hui'
+          },
+        ]
+      },
       {
         text: `www.tangjiayan.cn`, link: 'https://www.tangjiayan.cn',
       },
