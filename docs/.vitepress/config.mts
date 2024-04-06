@@ -214,6 +214,9 @@ export default defineConfig({
         text: `计算机经典电子书与学习资源`, link: 'https://github.com/GrindGold/pdf',
       },
       {
+        text: `华北电力大学计算机系课程攻略`, link: 'https://github.com/IammyselfYBX/NCEPU_CS_course',
+      },
+      {
         text: `www.tangjiayan.cn`, link: 'https://www.tangjiayan.cn',
       },
       {
