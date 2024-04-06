@@ -181,11 +181,11 @@ export default defineConfig({
         ]
       },
       {
-        text: 'git',
+        text: 'MAC',
         // collapsed: true,
         items: [
           {
-            text: 'MAC',
+            text: '配置',
             collapsed: true,
             items:[
               { text: 'Mac下ssh方式配置git', link: 'mac/git.md'},

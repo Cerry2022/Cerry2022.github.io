@@ -22,7 +22,19 @@ fatal: invalid refspec 'master?'
 ./vitepress-starter/deploy.sh: line 10: npm: command not found
 
 ```
+### 报错原因分析
+git 有`https`和`ssh(git)`方式
 
+:::tip
+```shell
+git push -f git@github.com:Cerry2022/Cerry2022.github.io.git master:gh-pages
+git push -f https://github.com/Cerry2022/Cerry2022.github.io.git master:gh-pages
+```
+:::
+其中https方式早在2021年已经弃用
+
+可能是WIN环境下的git版本较老，`htttps`方式仍可以使用。
+MAC下则需要配置SSH。
 
 ## 一、配置ssh
 ```shell
@@ -105,3 +117,7 @@ Error: Cannot find module @rollup/rollup-darwin-x64. npm has a bug related to op
 ``` shell
 npm i
 ```
+
+
+
+
