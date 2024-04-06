@@ -205,6 +205,12 @@ export default defineConfig({
         ]
       },
       {
+        text: `编程资源网`, link: 'https://www.cxypron.com/home',
+      },
+      {
+        text: `CS自学指南`, link: 'https://csdiy.wiki/',
+      },
+      {
         text: `www.tangjiayan.cn`, link: 'https://www.tangjiayan.cn',
       },
       {
@@ -213,4 +219,3 @@ export default defineConfig({
     ],
   }
 })
-
