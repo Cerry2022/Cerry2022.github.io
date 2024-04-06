@@ -211,6 +211,9 @@ export default defineConfig({
         text: `CS自学指南`, link: 'https://csdiy.wiki/',
       },
       {
+        text: `计算机经典电子书与学习资源`, link: 'https://github.com/GrindGold/pdf',
+      },
+      {
         text: `www.tangjiayan.cn`, link: 'https://www.tangjiayan.cn',
       },
       {
