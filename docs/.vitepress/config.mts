@@ -181,6 +181,20 @@ export default defineConfig({
         ]
       },
       {
+        text: 'git',
+        // collapsed: true,
+        items: [
+          {
+            text: 'MAC',
+            collapsed: true,
+            items:[
+              { text: 'Mac下ssh方式配置git', link: 'mac/git.md'},
+              { text: 'Mac下安装npm', link: 'mac/npm.md'},
+            ],
+          },
+        ]
+      },
+      {
         text: '寂静的笔记',
         collapsed: true,
         items: [

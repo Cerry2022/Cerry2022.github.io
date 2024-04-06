@@ -5,7 +5,7 @@
 在Mac上配置本vitepress项目时，执行以下脚本文件报错，结合报错信息分析，mac环境没有初始化git且以下命令在Mac下不适用，于是开始配置ssh。
 ### update.sh
 ```shell
-git add .
+git add ./
 git commit -m "Update"
 git push origin master
 
@@ -17,7 +17,6 @@ sh ./vitepress-starter/deploy.sh
 fatal: pathspec '.?' did not match any files
 [master 0a96ad0] Update
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 docs/src/git/git_1.md
 fatal: invalid refspec 'master?'
 : command not found
 ./vitepress-starter/deploy.sh: line 10: npm: command not found
@@ -86,4 +85,23 @@ To github.com:Cerry2022/Cerry2022.github.io.git
 8b80818..891f142  master -> master
 branch 'master' set up to track 'origin/master'.
 ➜  Cerry2022.github.io git:(master) ✗ 
+```
+
+## 三、编写Mac环境脚本
+```shell
+git add ./
+git commit -m "Update"
+git remote add origin git@github.com:Cerry2022/Cerry2022.github.io.git
+git push -u origin master
+
+sh ./vitepress-starter/deploy.sh
+```
+
+脚本报错
+```shell
+Error: Cannot find module @rollup/rollup-darwin-x64. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+```
+执行
+``` shell
+npm i
 ```
