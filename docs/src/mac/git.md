@@ -33,7 +33,7 @@ git push -f https://github.com/Cerry2022/Cerry2022.github.io.git master:gh-pages
 :::
 其中https方式早在2021年已经弃用
 
-可能是WIN环境下的git版本较老，`htttps`方式仍可以使用。
+可能是WIN环境下的git版本较老，`https`方式仍可以使用。
 MAC下则需要配置SSH。
 
 ## 一、配置ssh

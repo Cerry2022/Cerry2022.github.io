@@ -158,6 +158,13 @@ export default defineConfig({
             text: '栏目总说明',
 			link: '/hp-calc/hp_calc_info'
           },
+          {
+            text: 'hp39gii',
+            collapsed: true,
+            items:[
+              { text: '2019-2022 HP39Gii程序日志', link: '/hp-calc/hp39gii/note'},
+            ],
+          },
 		  {
             text: 'hp39gs',
             collapsed: true,

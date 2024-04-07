@@ -16,7 +16,13 @@
   - [Mac下ssh方式配置git](mac/git)
   - [Mac下安装npm](mac/npm)
 
+- 4月7日
+  - [2019-2022 HP39Gii程序日志](hp-calc/hp39gii/note)
+
+
 :::
+
+
 ## 时间线
 
 以月为单位记录自己的人生轨迹。
