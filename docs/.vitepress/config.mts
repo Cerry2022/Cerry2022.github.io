@@ -6,7 +6,7 @@ import { getThemeConfig } from '@sugarat/theme/node'
 
 const blogTheme = getThemeConfig({
   comment: {
-    repo:'Cerry2022/Cerry2022.github.io'
+    repo:'Cerry2022/Cerry2022.github.io',
     repoId: 'R_kgDOLnx31Q',
     category: 'Announcements',
     categoryId: 'DIC_kwDOLnx31c4CjO4f',
