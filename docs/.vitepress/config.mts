@@ -6,12 +6,11 @@ import { getThemeConfig } from '@sugarat/theme/node'
 
 const blogTheme = getThemeConfig({
   comment: {
-    type: 'artalk',
-    options: {
-      // 建议通过反向代理处理跨域问题，将路径指向服务地址 例如 http://localhost:23366
-      server: '/artalk',
-      site: 'Default Site'
-    },
+    repo:'Cerry2022/Cerry2022.github.io'
+    repoId: 'R_kgDOLnx31Q',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOLnx31c4CjO4f',
+    inputPosition: 'top',
   }
 })
 
