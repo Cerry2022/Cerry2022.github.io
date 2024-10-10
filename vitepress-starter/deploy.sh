@@ -6,7 +6,7 @@ set -e
 
 
 # 生成静态文件
-npm run docs:build
+pnpm build
 
 # 进入生成的文件夹
 cd docs/.vitepress/dist
@@ -25,6 +25,3 @@ git push -f  git@github.com:Cerry2022/Cerry2022.git master:gh-pages
 cd -
 
 #  使用read命令达到类似bat中的pause命令效果
-echo 按任意键继续
-read -n 1
-echo 继续运行
