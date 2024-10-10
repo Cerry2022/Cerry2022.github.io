@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "1578265e79d5744d",
+    "type": "split",
+    "children": [
+      {
+        "id": "d989e4dc7e30adb3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ae1a07301e6ef152",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/jijingdebiji/Linux下信号量实现.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "21dbc7188cc0926e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b994e55530a5e26c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "449d3145e1295436",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c4df5d05a62c4649",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "cf14c543807c24ca",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "25bc46adfc53af02",
+    "type": "split",
+    "children": [
+      {
+        "id": "d04c4ff8b677553d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f435258fca479d7f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "src/jijingdebiji/Linux下信号量实现.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d15b3ba1b8f76bde",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "src/jijingdebiji/Linux下信号量实现.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ccbd180ea6a830a2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "70f0e7943202de90",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "src/jijingdebiji/Linux下信号量实现.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "ae1a07301e6ef152",
+  "lastOpenFiles": [
+    "src/jijingdebiji/一个linux下使用线程的案例.md",
+    "src/jijingdebiji/Linux下信号量实现.md",
+    "src/jijingdebiji/配置vim下的c_c++开发环境.md",
+    "src/jijingdebiji/记一次win11安装WSL2及Debian的配置.md",
+    "src/jijingdebiji/vim自动补全插件.md",
+    "src/files/Pasted image 20241009114234.png",
+    "src/update-log.md",
+    "src/hp-calc/hp39gii/未命名.md",
+    "src/web-build/vitepress/vitepress-github-pages.md",
+    "src/index.md",
+    "src/jijingdebiji/default.md",
+    "src/programming/c++/containers/array.md",
+    "src/programming/c++/debug/nowcoder-use-stdarray-instead.md",
+    "src/programming/c++/format-specifier.md",
+    "src/programming/c++/input-output/getline.md",
+    "src/programming/c++/input-output/cin-cout.md",
+    "().md",
+    "src/jijingdebiji/记一次win11安装WSL2.md",
+    "src/web-build/B_LCD/0.软件文档.md",
+    "src/web-build/B_LCD",
+    "src/hp-calc/hp39gii/BLib.md",
+    "src/hp-calc/hp_calc_info.md",
+    "src/files/BLib.txt",
+    "src/files",
+    "src/新建文件夹",
+    "BLib.txt",
+    "src/hp-calc/hp39gii/note.md",
+    "src/web-build/Tomcat/Tomcat-1.md"
+  ]
+}
