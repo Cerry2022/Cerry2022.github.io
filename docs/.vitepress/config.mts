@@ -28,7 +28,7 @@ export default defineConfig({
   extends: blogTheme,
   // base,
   lang: 'zh-cn',
-  title: '@sugarat/theme',
+  title: 'Cerry`s blog',
   description: '粥里有勺糖的博客主题，基于 vitepress 实现',
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
@@ -60,13 +60,12 @@ export default defineConfig({
       {
 		text:'折腾记录',
         items:[
-            {text:'VitePress',link:'/jijingdebiji/CPU_da_zha_hui.md'},
-            {text:'VitePress',link:'/jijingdebiji/default.md'},
-            {text:'VitePress',link:'/jijingdebiji/Linux下信号量实现.md'},
-            {text:'VitePress',link:'/jijingdebiji/vim自动补全插件.md'},
-            {text:'VitePress',link:'/jijingdebiji/记一次win11安装WSL2及Debian的配置.md'},
-            {text:'VitePress',link:'/jijingdebiji/配置vim下的c_c++开发环境.md'},
-            {text:'VitePress',link:'/jijingdebiji/一个linux下使用线程的案例.md'},
+            {text:'CPU大杂烩',link:'/jijingdebiji/CPU_da_zha_hui.md'},
+            {text:'Linux下信号量实现',link:'/jijingdebiji/Linux下信号量实现.md'},
+            {text:'vim自动补全插件',link:'/jijingdebiji/vim自动补全插件.md'},
+            {text:'记一次win11安装WSL2及Debian的配置',link:'/jijingdebiji/记一次win11安装WSL2及Debian的配置.md'},
+            {text:'配置vim下的c_c++开发环境',link:'/jijingdebiji/配置vim下的c_c++开发环境.md'},
+            {text:'一个linux下使用线程的案例',link:'/jijingdebiji/一个linux下使用线程的案例.md'},
         ]
         
       },
