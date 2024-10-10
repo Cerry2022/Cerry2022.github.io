@@ -1,4 +1,3 @@
-#!/usr/bin/env sh
 
 # 确保脚本抛出遇到的错误
 set -e
@@ -24,3 +23,8 @@ git commit -m 'deploy'
 git push -f  git@github.com:Cerry2022/Cerry2022.git master:gh-pages 
 
 cd -
+
+#  使用read命令达到类似bat中的pause命令效果
+echo 按任意键继续
+read -n 1
+echo 继续运行
