@@ -57,6 +57,19 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
+      {
+		text:'折腾记录',
+        items:[
+            {text:'VitePress',link:'/jijingdebiji/CPU_da_zha_hui.md'},
+            {text:'VitePress',link:'/jijingdebiji/default.md'},
+            {text:'VitePress',link:'/jijingdebiji/Linux下信号量实现.md'},
+            {text:'VitePress',link:'/jijingdebiji/vim自动补全插件.md'},
+            {text:'VitePress',link:'/jijingdebiji/记一次win11安装WSL2及Debian的配置.md'},
+            {text:'VitePress',link:'/jijingdebiji/配置vim下的c_c++开发环境.md'},
+            {text:'VitePress',link:'/jijingdebiji/一个linux下使用线程的案例.md'},
+        ]
+        
+      },
       { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
     ],
     socialLinks: [
