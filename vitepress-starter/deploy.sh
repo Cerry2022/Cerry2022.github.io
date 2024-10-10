@@ -20,7 +20,7 @@ git commit -m 'deploy'
 #git push -f https://github.com/Cerry2022/Cerry2022.github.io.git master:gh-pages
 
 
-git push -f  git@github.com:Cerry2022/Cerry2022.git master:gh-pages 
+git push master:gh-pages
 
 cd -
 
