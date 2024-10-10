@@ -1,7 +1,19 @@
 import { defineConfig } from 'vitepress'
 
-// 导入主题的配置
-import { blogTheme } from './blog-theme'
+// 导入生成配置工具方法
+import { getThemeConfig } from '@sugarat/theme/node'
+
+
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'artalk',
+    options: {
+      // 建议通过反向代理处理跨域问题，将路径指向服务地址 例如 http://localhost:23366
+      server: '/artalk',
+      site: 'Default Site'
+    },
+  }
+})
 
 // 如果使用 GitHub/Gitee Pages 等公共平台部署
 // 通常需要修改 base 路径，通常为“/仓库名/”
