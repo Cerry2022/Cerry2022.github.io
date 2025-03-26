@@ -19,6 +19,7 @@
     "doc": "docs"
   },
   "devDependencies": {
+    "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
     "pagefind": "^1.1.0",
     "sass": "^1.76.0",
