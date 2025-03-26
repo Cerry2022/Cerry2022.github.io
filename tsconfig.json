@@ -17,12 +17,11 @@
         }
     },
     "include": [
-        "docs/.vitepress/*.ts",
-        "docs/.vitepress/*.d.ts",
-        "docs/.vitepress/*.tsx",
-        "docs/.vitepress/*.vue",
-		"docs/.vitepress/config.ts",
-        "docs/shims-vue.d.ts"
+        ".vitepress/**/*.ts",
+        ".vitepress/**/*.d.ts",
+        ".vitepress/**/*.tsx",
+        ".vitepress/**/*.vue",
+        "shims-vue.d.ts"
     ],
     "exclude": ["dist", "node_modules"]
 }
