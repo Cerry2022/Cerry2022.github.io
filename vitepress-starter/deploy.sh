@@ -9,7 +9,7 @@ set -e
 pnpm build
 
 # 进入生成的文件夹
-cd /.vitepress/dist
+cd .vitepress/dist
 
 git init
 git add -A
