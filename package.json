@@ -1,10 +1,10 @@
 {
-  "name": "ti.bi",
+  "name": "cerry`blog",
   "version": "1.0.0",
   "directories": {
     "doc": "docs"
   },
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "vitepress dev docs --host 0.0.0.0",
     "build": "vitepress build docs",

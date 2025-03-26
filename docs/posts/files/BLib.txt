@@ -1,0 +1,49 @@
+EXPORT BLOAD(G,X,Y,d)
+BEGIN
+LOCAL D,Dl:=dim(d(3)),N,I,Px:=X,Py:=Y,c,ch;
+//2021.12.10 BLOAD(Grob,StartX,StartY,Data)
+//d:={Width,Hight,Data}
+FOR D FROM 1 TO Dl DO
+ TRACE(asc(mid(d(3),D,1)))►ch;
+ IF ch≥1000 THEN
+  ch:=ch-1000;N:=ch MOD 64;c:=(ch-N)*.015625;
+  LINE_P(G,Px,Py,Px+N,Py,c);
+ ELSE
+  ch:=ch-200;
+  IF Px+3≥X+d(1) THEN
+   X+d(1)-Px-1►N;ELSE 3►N;END;
+  FOR I FROM 0 TO N DO
+   ch MOD4►c;.25*(ch-c)►ch;PIXON_P(G,Px+I,Py,c);
+  END;
+ END;
+ Px+N+1►Px;
+ IF Px≥X+d(1) THEN Py+1►Py;X►Px;END;
+END;
+END;
+
+EXPORT BSAVE(G,X,Y,W,H)
+BEGIN
+//2021.12.8
+//LINE 1000Start 64Pix
+//PIX 4Pix 4Color
+LOCAL N,I,Px,Py,c,ch:="";
+FOR Py FROM Y TO Y+H-1 DO
+ X►Px;
+ WHILE Px+1≤X+W DO
+  GETPIX_P(G,Px,Py)►c;
+  FOR N FROM 1 TO 64 DO
+   IF GETPIX_P(G,Px+N,Py)≠c OR Px+N≥X+W OR N=64 THEN
+   IF N≤4 THEN
+    IF Px+N<X+W THEN 4►N;END;
+    FOR I FROM 1 TO N-1 DO
+     c:=c+4^I*GETPIX_P(G,Px+I,Py);END;
+    ch:=ch+char(200+c);
+    ELSE ch:=ch+char(1000+64*c+N-1);END;
+   Px:=Px+N;BREAK;
+   END;//IF
+  END;//N
+ END;//Px
+END;//Py
+RETURN {W,H,ch};
+END;
+//{32,32,"ӇҲϲұҰ϶үүϲƽƻҬҭĘĘЬҭƸćҬńƟҳƉćǇńҸÉćǇńҷÉǄćƧҷÉƸƗƿҷÉƈƗƿҸÍĸƻƧҹÉÈƻħŇҬǅƋÉÈƻçåŅĥƍϯƻçŅƋҬǄϮƻħćÔƸƻËÈƛŇƗҭƈËϭċҭǄүϱËǅćҲϰËƼćұϱËĘǁøҭϱËϬǅãҬϱ×ϬǅþǇƈϭË×ϭŅüÔÔϬËćϮÑƼÌϮ×ǇϯÉŅϭË×ǇϴÝÈËćҬϴÉøƸ×ҭϲÙÔƸćүϰËËҮҰϰËƸҭҲϲұ"}
