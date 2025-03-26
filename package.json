@@ -1,12 +1,15 @@
 {
   "name": "ti.bi",
   "version": "1.0.0",
-  "description": "",
+  "directories": {
+    "doc": "docs"
+  },
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev --host 0.0.0.0",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "dev": "vitepress dev docs --host 0.0.0.0",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "preview": "vitepress preview docs"
   },
   "keywords": [],
   "author": "",
