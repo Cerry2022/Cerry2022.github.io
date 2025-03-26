@@ -21,7 +21,7 @@
         "docs/.vitepress/*.d.ts",
         "docs/.vitepress/*.tsx",
         "docs/.vitepress/*.vue",
-		"docs/.vitepress/config.mts"
+		"docs/.vitepress/config.ts",
         "docs/shims-vue.d.ts"
     ],
     "exclude": ["dist", "node_modules"]
