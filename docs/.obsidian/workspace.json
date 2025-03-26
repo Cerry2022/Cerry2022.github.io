@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "1578265e79d5744d",
+    "type": "split",
+    "children": [
+      {
+        "id": "d989e4dc7e30adb3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ae1a07301e6ef152",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "21dbc7188cc0926e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b994e55530a5e26c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "449d3145e1295436",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "c4df5d05a62c4649",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "cf14c543807c24ca",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "25bc46adfc53af02",
+    "type": "split",
+    "children": [
+      {
+        "id": "d04c4ff8b677553d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f435258fca479d7f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "programming/vscode/vscode-hard-tab.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for vscode-hard-tab"
+            }
+          },
+          {
+            "id": "d15b3ba1b8f76bde",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "programming/vscode/vscode-hard-tab.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from vscode-hard-tab"
+            }
+          },
+          {
+            "id": "ccbd180ea6a830a2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "70f0e7943202de90",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "programming/vscode/vscode-hard-tab.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of vscode-hard-tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "ae1a07301e6ef152",
+  "lastOpenFiles": [
+    "programming/vscode/vscode-hard-tab.md",
+    "jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
+    "programming/vscode/commit-stuck.md",
+    "programming/vscode/vscode-cpp.md",
+    "jijingdebiji/记一次win11安装WSL2及Debian的配置.md",
+    "jijingdebiji/配置vim下的c_c++开发环境.md",
+    "jijingdebiji/default.md",
+    "jijingdebiji/ChatGPT自我描述.md",
+    "src/web-build/vitepress/vitepress-github-pages.md",
+    "web-build/vitepress/vitepress-github-pages.md",
+    "web-build/Tomcat/Tomcat-1.md",
+    "web-build/B_LCD/0.软件文档.md",
+    "web-build/vitepress",
+    "web-build/Tomcat",
+    "web-build/B_LCD",
+    "web-build",
+    "programming/c++/input-output/cin-cout.md",
+    "programming/c++/input-output/getline.md",
+    "programming/c++/debug/nowcoder-use-stdarray-instead.md",
+    "programming/c++/containers/array.md",
+    "programming/c++/input-output",
+    "programming/c++/format-specifier.md",
+    "programming/c++/debug",
+    "programming/c++/containers",
+    "programming/vscode",
+    "programming/c++",
+    "programming",
+    "mac/npm.md",
+    "mac/git.md",
+    "jijingdebiji/Linux下信号量实现.md",
+    "jijingdebiji/vim自动补全插件.md",
+    "jijingdebiji/一个linux下使用线程的案例.md",
+    "jijingdebiji/CPU_da_zha_hui.md",
+    "hp-calc/hp39gii/note.md",
+    "hp-calc/hp39gii/BLib.md",
+    "hp-calc/hp_calc_info.md",
+    "files/Pasted image 20241009114234.png",
+    "src/files/Pasted image 20241009114234.png"
+  ]
+}
