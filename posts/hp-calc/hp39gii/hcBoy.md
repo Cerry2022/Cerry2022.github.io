@@ -11,6 +11,6 @@ hcBoy:火柴人姿势模拟，上一部位姿势的传递和一定范围内的�
 
 源代码：
 
-<a href="/public/code/HCboy.txt" download>HCboy.txt</a>
+<a href="https://github.com/Cerry2022/Cerry2022.github.io/raw/gh-pages/code/HCboy.txt" download>HCboy.txt</a>
 
 [HCBoy](/public/code/HCboy.txt)
