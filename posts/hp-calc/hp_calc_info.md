@@ -1,3 +1,11 @@
+---
+date: 2024-09-19
+title: hp_calc 栏目总说明
+category: 主题
+tags:
+  - "#hpcalc"
+description: 惠普图形计算器专栏
+---
 # 栏目总说明
 
 ## HP-39GS

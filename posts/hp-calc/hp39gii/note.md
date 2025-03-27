@@ -1,3 +1,11 @@
+---
+date: 2024-09-19
+title: 自己写的HP39gii程序清单
+category: 主题
+tags:
+  - "#hp39gii"
+description: 谨以此表纪念高中三年与Hp39gii度过的时光
+---
 ## 2019-2022 HP39Gii程序日志
 ::: info 写在前面
 ###  谨以此表纪念高中三年与Hp39gii度过的时光

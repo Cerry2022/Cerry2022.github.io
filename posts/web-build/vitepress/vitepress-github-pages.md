@@ -1,3 +1,12 @@
+---
+date: 2021-06-30
+title: 一直想找一个系统架构和设计都足够干净的系统
+category: 主题
+tags:
+- vitepress
+- markdown
+description: vitepress的markdown插件支持的语法，一直想找一个干净的系统架构和设计都足够干净都，一直没满意的，不满意就自己设计，一直想找一个干净的系统架构和设计都足够干净都，一直没满意的，不满意就自己设计
+---
 # 使用 VitePress 搭建文档站点
 
 `VitePress`是`Vue`团队提供的一个基于`Vue 3`与`Vite`的开源框架，通过`MarkDown`文档和简单配置就能快速生成静态文档站点。与基于`WebPack`的`VuePress`相比，`VitePress`拥有更快的启动和打包速度

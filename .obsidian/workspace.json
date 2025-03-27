@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
+                "file": "posts/jijingdebiji/配置vim下的c_c++开发环境.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle"
+              "title": "配置vim下的c_c++开发环境"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -60,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -164,42 +165,42 @@
   },
   "active": "ae1a07301e6ef152",
   "lastOpenFiles": [
+    "posts/jijingdebiji/记一次win11安装WSL2及Debian的配置.md",
+    "posts/mac/git.md",
+    "posts/web-build/B_LCD/0.软件文档.md",
+    "posts/files/Pasted image 20241009114234.png",
+    "posts/hp-calc/hp39gii/BLib.md",
+    "posts/hp-calc/hp39gii/note.md",
+    "posts/hp-calc/hp_calc_info.md",
+    "posts/jijingdebiji/配置vim下的c_c++开发环境.md",
+    "posts/jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
+    "posts/jijingdebiji/一个linux下使用线程的案例.md",
+    "posts/jijingdebiji/vim自动补全插件.md",
+    "posts/jijingdebiji/Linux下信号量实现.md",
+    "posts/jijingdebiji/default.md",
+    "posts/jijingdebiji/CPU_da_zha_hui.md",
+    "posts/mac/npm.md",
+    "posts/sop/style.md",
+    "posts/sop/quickStart.md",
+    "posts/sop/more.md",
+    "posts/sop/component.md",
+    "posts/web-build/vitepress/vitepress-github-pages.md",
+    "posts/web-build/Tomcat/Tomcat-1.md",
+    "posts/vitepress-first.md",
     "programming/vscode/vscode-hard-tab.md",
     "jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "programming/vscode/commit-stuck.md",
     "programming/vscode/vscode-cpp.md",
-    "jijingdebiji/记一次win11安装WSL2及Debian的配置.md",
-    "jijingdebiji/配置vim下的c_c++开发环境.md",
-    "jijingdebiji/default.md",
-    "jijingdebiji/ChatGPT自我描述.md",
-    "src/web-build/vitepress/vitepress-github-pages.md",
-    "web-build/vitepress/vitepress-github-pages.md",
-    "web-build/Tomcat/Tomcat-1.md",
-    "web-build/B_LCD/0.软件文档.md",
     "web-build/vitepress",
     "web-build/Tomcat",
     "web-build/B_LCD",
     "web-build",
-    "programming/c++/input-output/cin-cout.md",
-    "programming/c++/input-output/getline.md",
-    "programming/c++/debug/nowcoder-use-stdarray-instead.md",
-    "programming/c++/containers/array.md",
     "programming/c++/input-output",
-    "programming/c++/format-specifier.md",
     "programming/c++/debug",
     "programming/c++/containers",
     "programming/vscode",
     "programming/c++",
     "programming",
-    "mac/npm.md",
-    "mac/git.md",
-    "jijingdebiji/Linux下信号量实现.md",
-    "jijingdebiji/vim自动补全插件.md",
-    "jijingdebiji/一个linux下使用线程的案例.md",
-    "jijingdebiji/CPU_da_zha_hui.md",
-    "hp-calc/hp39gii/note.md",
-    "hp-calc/hp39gii/BLib.md",
-    "hp-calc/hp_calc_info.md",
     "files/Pasted image 20241009114234.png",
     "src/files/Pasted image 20241009114234.png"
   ]

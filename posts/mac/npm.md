@@ -1,3 +1,12 @@
+---
+date: 2024-04-06
+title: Mac环境配置npm
+category: 主题
+tags:
+  - "#npm"
+  - "#mac"
+description: mac环境安装brew并配置npm
+---
 # MAC下配置npm
 1. 打开终端，执行以下命令安装Homebrew
 ```shell

@@ -1,4 +1,12 @@
-
+---
+date: 2024-10-09
+title: Vim自动补全插件
+category: 主题
+tags:
+  - "#vim"
+  - "#linux"
+description: 手动编译一个Vim,开启补全特性
+---
 ## 第一步：在任意文件夹下执行
 
 `git clone https://github.com/vim/vim.git`

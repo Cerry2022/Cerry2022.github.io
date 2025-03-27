@@ -1,3 +1,13 @@
+---
+date: 2024-09-27
+title: 记一次win11安装WSL2及Debian的配置
+category: 主题
+tags:
+  - "#win"
+  - "#debian"
+  - "#wsl"
+description: win11安装WSL2并配置Debian
+---
 - 环境：
 	- 开启Hyper-V 控制面板->程序->添加或关闭功能
 	- 设置wsl版本 `wsl --set-default-version 2`

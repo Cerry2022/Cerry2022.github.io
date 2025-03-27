@@ -1,3 +1,12 @@
+---
+date: 2024-04-07
+title: Mac环境配置git(ssh)
+category: 主题
+tags:
+  - "#git"
+  - "#mac"
+description: ssh方式在mac下配置git
+---
 # 记一次Mac环境配置git
 
 ## 零、起因

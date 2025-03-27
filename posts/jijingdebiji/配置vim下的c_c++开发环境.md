@@ -1,3 +1,12 @@
+---
+date: 2024-10-09
+title: 配置vim下的c/C++开发环境
+category: 主题
+tags:
+  - "#vim"
+  - "#cpp"
+description: vim下配置c/c++开发环境
+---
 ## Vim C/C++开发配置
 
 ### 1.基础准备
