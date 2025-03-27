@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/hp-calc/hp39gii/note.md",
+                "file": "posts/hp-calc/hp39gii/BPoint.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "note"
+              "title": "BPoint"
             }
           }
         ]
@@ -160,14 +160,17 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "terminal:Open terminal": false
     }
   },
   "active": "6cd28ea4b56a05f5",
   "lastOpenFiles": [
     "posts/hp-calc/hp39gii/BPoint.md",
     "posts/hp-calc/hp39gii/BLib.md",
+    "posts/hp-calc/hp39gii/hcBoy.md",
     "posts/hp-calc/hp39gii/note.md",
+    "posts/files/Pasted image 20250327235607.png",
     "page_1.md",
     "posts/hp-calc/hp_calc_info.md",
     "posts/files/Pasted image 20250327231435.png",
@@ -194,7 +197,6 @@
     "posts/RadicalNotes/记一次win11安装WSL2及Debian的配置.md",
     "posts/RadicalNotes/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "posts/RadicalNotes/一个linux下使用线程的案例.md",
-    "posts/RadicalNotes/Linux下信号量实现.md",
     "posts/RadicalNotes",
     "posts/note",
     "posts/files/BLib.txt",
@@ -208,7 +210,6 @@
     "b79cb875876a6d608781a98214e16685.png",
     "posts/files - 副本/Pasted image 20241009114234.png",
     "public/Pasted image 20241009114234.png",
-    "public/test.jpg",
-    "src/files/Pasted image 20241009114234.png"
+    "public/test.jpg"
   ]
 }
