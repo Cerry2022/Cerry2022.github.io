@@ -163,8 +163,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6cd28ea4b56a05f5",
+  "active": "449d3145e1295436",
   "lastOpenFiles": [
+    "page_1.md",
     "posts/hp-calc/hp39gii/BLib.md",
     "posts/hp-calc/hp39gii/BPoint.md",
     "posts/hp-calc/hp39gii/note.md",
@@ -173,7 +174,6 @@
     "posts/files/Pasted image 20250327230649.png",
     "posts/vitepress-first.md",
     "posts/web-build/vitepress/vitepress-github-pages.md",
-    "page_1.md",
     "posts/mac/Mac下配置npm.md",
     "posts/mac/Mac下配置git.md",
     "index.md",
