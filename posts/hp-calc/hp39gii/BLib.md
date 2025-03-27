@@ -3,7 +3,7 @@ date: 2024-09-19
 title: HP39gii的一个带简单压缩算法的图像保存和加载库
 category: 主题
 tags:
-  - "#hp39gii"
+  - hp39gii
 description: 一个带简单压缩算法的图像保存和加载库
 ---
 :::

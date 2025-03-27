@@ -3,7 +3,7 @@ date: 2021-06-30
 title: 使用 VitePress 搭建文档站点
 category: 主题
 tags:
-  - "#vitepress"
+  - "vitepress"
 description: 使用 VitePress 搭建文档站点
 ---
 # 使用 VitePress 搭建文档站点

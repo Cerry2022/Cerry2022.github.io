@@ -3,7 +3,7 @@ date: 2024-03-31
 title: CPU大杂烩
 category: 主题
 tags:
-  - "#cpu"
+  - note
 description: 各种CPU的性能对比
 ---
 

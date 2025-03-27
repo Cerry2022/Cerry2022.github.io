@@ -3,7 +3,7 @@ date: 2024-10-09
 title: Linux下使用线程的案例
 category: 主题
 tags:
-  - "#linux"
+  - Linux
 description: DeepSeek给出的Linux下使用线程的案例
 ---
 请先给出一个linux下使用线程的案例

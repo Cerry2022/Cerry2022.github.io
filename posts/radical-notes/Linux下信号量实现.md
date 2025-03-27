@@ -3,7 +3,7 @@ date: 2024-10-09
 title: Linux下使用信号量的案例
 category: 主题
 tags:
-  - "#Linux"
+  - linux
 description: DeepSeek给出的Linux下使用信号量机制的案例
 ---
 ### 示例代码：使用信号量同步线程
