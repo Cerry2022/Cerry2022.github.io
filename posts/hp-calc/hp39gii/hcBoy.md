@@ -9,4 +9,8 @@ description: 火柴人姿势模拟，上一部位姿势的传递和一定范围�
 hcBoy:火柴人姿势模拟，上一部位姿势的传递和一定范围内的随机。
 ![left|320](/posts/files/Pasted%20image%2020250327235607.png)
 
-![](/posts/hp-calc/hp39gii/code/HCboy.txt)
+源代码：
+
+<a href="/posts/hp-calc/hp39gii/code/HCboy.txt" download>HCboy.txt</a>
+
+[HCboy](/posts/hp-calc/hp39gii/code/HCboy.txt)

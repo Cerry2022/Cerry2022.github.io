@@ -11,10 +11,14 @@
             "id": "b3564cdb7bc5fbd3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "posts/hp-calc/hp39gii/hcBoy.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "hcBoy"
             }
           }
         ]
@@ -162,16 +166,18 @@
   },
   "active": "b3564cdb7bc5fbd3",
   "lastOpenFiles": [
-    "posts/hp-calc/hp39gii/code/BPoint.txt",
-    "posts/hp-calc/hp39gii/BPoint.md",
-    "posts/hp-calc/hp39gii/hcBoy.md",
     "posts/hp-calc/hp39gii/code/HCboy.txt",
-    "posts/hp-calc/hp39gii/code/未命名.md",
+    "posts/hp-calc/hp39gii/hcBoy.md",
     "page_1.md",
-    "posts/hp-calc/hp39gii/BLib.md",
-    "posts/hp-calc/hp39gii/code",
-    "posts/files/BLib.txt",
+    "posts/hp-calc/hp39gii/BPoint.md",
     "posts/hp-calc/hp39gii/note.md",
+    "posts/hp-calc/hp39gii/code/BPoint.txt",
+    "posts/hp-calc/hp39gii/code",
+    "public/BPoint.txt",
+    "posts/hp-calc/hp39gii/BLib.md",
+    "public/HCboy.txt",
+    "posts/hp-calc/hp39gii/code/未命名.md",
+    "posts/files/BLib.txt",
     "posts/files/Pasted image 20250327235607.png",
     "posts/hp-calc/hp_calc_info.md",
     "posts/files/Pasted image 20250327231435.png",
@@ -198,9 +204,7 @@
     "posts/RadicalNotes/记一次win11安装WSL2及Debian的配置.md",
     "posts/RadicalNotes/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "posts/RadicalNotes",
-    "posts/note",
     "posts/files/Pasted image 20241009114234.png",
-    "posts/files",
     "files/Pasted image 20241009114234.png",
     "posts/jijingdebiji/files/Pasted image 20250327171211.png",
     "b79cb875876a6d608781a98214e16685.png",
