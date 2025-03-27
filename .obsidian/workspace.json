@@ -4,79 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "fd14547185fc3c5d",
-        "type": "split",
+        "id": "5e1824557d930e65",
+        "type": "tabs",
         "children": [
           {
-            "id": "0fd80c6da27842d0",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "086061a60384e9c2",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "posts/hp-calc/hp39gii/BPoint.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "BPoint"
-                }
-              }
-            ]
-          },
-          {
-            "id": "ed402eb3db1ffb96",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "46a733f360580afc",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "D:\\_Files\\Project\\Cerry2022.github.io",
-                      "focus": false,
-                      "profile": {
-                        "args": [],
-                        "executable": "C:\\Windows\\System32\\cmd.exe",
-                        "name": "",
-                        "platforms": {
-                          "win32": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": true,
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": {
-                        "columns": 131,
-                        "data": "Microsoft Windows [版本 10.0.19044.5487]\r\n(c) Microsoft Corporation。保留所有权利。\r\n\r\nD:\\_Files\\Project\\Cerry2022.github.io>ls \r\n'ls' 不是内部或外部命令，也不是可运行的程序\r\n或批处理文件。\r\n\r\nD:\\_Files\\Project\\Cerry2022.github.io>dir\r\n\r\n\r\n\r\n D:\\_Files\\Project\\Cerry2022.github.io 的目录\r\n\r\n2025/03/28  00:02    <DIR>          .\r\n2025/03/28  00:02    <DIR>          ..\r\n2025/03/26  20:42    <DIR>          .github\r\n2025/03/27  02:09               182 .gitignore\r\n2025/03/27  16:28    <DIR>          .history\r\n2025/03/24  19:30                53 .npmrc\r\n2025/03/27  23:59    <DIR>          .obsidian\r\n2025/03/28  00:02    <DIR>          .vitepress\r\n2025/03/24  19:30             1,531 changelog.md\r\n2025/03/24  19:30               565 eslint.config.js\r\n2025/03/28  00:02               292 index.md\r\n2025/03/27  02:09    <DIR>          node_modules\r\n2025/03/27  00:22           204,544 package-lock.json\r\n2025/03/27  02:11               866 package.json\r\n2025/03/26  20:38    <DIR>          pages\r\n2025/03/28  00:02               295 page_2.md\r\n2025/03/27  00:53            95,499 pnpm-lock.yaml\r\n2025/03/27  00:53                38 pnpm-workspace.yaml\r\n2025/03/27  17:33    <DIR>          posts\r\n2025/03/27  17:03    <DIR>          public\r\n2025/03/24  19:30               148 shims-vue.d.ts\r\n2025/03/27  02:11               655 tsconfig.json\r\n2024/10/10  17:28               150 update.sh\r\n2024/10/10  17:28               168 update_mac.sh\r\n2025/03/26  20:43    <DIR>          vitepress-starter\r\n              14 个文件        304,986 字节\r\n\r\n\r\n              11 个目录 72,488,075,264 可用字节\r\n\r\nD:\\_Files\\Project\\Cerry2022.github.io>update.sh",
-                        "rows": 20
-                      }
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：C:\\Windows\\System32\\conhost.exe"
-                }
-              }
-            ]
+            "id": "b3564cdb7bc5fbd3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -219,16 +160,17 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "46a733f360580afc",
+  "active": "b3564cdb7bc5fbd3",
   "lastOpenFiles": [
-    "posts/hp-calc/hp39gii/BPoint.md",
-    "posts/hp-calc/hp39gii/BLib.md",
     "posts/hp-calc/hp39gii/code/BPoint.txt",
+    "posts/hp-calc/hp39gii/BPoint.md",
+    "posts/hp-calc/hp39gii/hcBoy.md",
+    "posts/hp-calc/hp39gii/code/HCboy.txt",
     "posts/hp-calc/hp39gii/code/未命名.md",
+    "page_1.md",
+    "posts/hp-calc/hp39gii/BLib.md",
     "posts/hp-calc/hp39gii/code",
     "posts/files/BLib.txt",
-    "page_1.md",
-    "posts/hp-calc/hp39gii/hcBoy.md",
     "posts/hp-calc/hp39gii/note.md",
     "posts/files/Pasted image 20250327235607.png",
     "posts/hp-calc/hp_calc_info.md",
@@ -260,7 +202,6 @@
     "posts/files/Pasted image 20241009114234.png",
     "posts/files",
     "files/Pasted image 20241009114234.png",
-    "files",
     "posts/jijingdebiji/files/Pasted image 20250327171211.png",
     "b79cb875876a6d608781a98214e16685.png",
     "posts/files - 副本/Pasted image 20241009114234.png",

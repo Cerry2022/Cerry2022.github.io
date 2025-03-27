@@ -21,4 +21,5 @@ BPoint：一个简单的绘图程序，调用BLib保存读取图像到L5，可�
 
 
 源文件：
-![](./code/BPoint.txt)
+
+![](/posts/hp-calc/hp39gii/code/BPoint.txt)
