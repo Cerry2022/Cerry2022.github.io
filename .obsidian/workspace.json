@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/jijingdebiji/配置vim下的c_c++开发环境.md",
+                "file": "posts/web-build/vitepress/vitepress-github-pages.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "配置vim下的c_c++开发环境"
+              "title": "vitepress-github-pages"
             }
           }
         ]
@@ -163,10 +163,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "449d3145e1295436",
+  "active": "ae1a07301e6ef152",
   "lastOpenFiles": [
-    "page_2.md",
+    "posts/jijingdebiji/配置vim下的c_c++开发环境.md",
     "page_1.md",
+    "page_2.md",
     "page_3.md",
     "posts/一个linux下使用线程的案例.md",
     "posts/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
@@ -177,7 +178,6 @@
     "posts/hp-calc/hp39gii/BLib.md",
     "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp_calc_info.md",
-    "posts/jijingdebiji/配置vim下的c_c++开发环境.md",
     "posts/jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "posts/jijingdebiji/一个linux下使用线程的案例.md",
     "posts/jijingdebiji/vim自动补全插件.md",

@@ -5,17 +5,17 @@ import { getPosts } from './theme/serverUtils'
 const pageSize = 10
 
 export default defineConfig({
-    title: 'Vitepress blog',
+    title: 'Cerry`blog',
     base: '/',
     cacheDir: './node_modules/vitepress_cache',
     description: 'vitepress,blog,blog-theme',
     ignoreDeadLinks: true,
     themeConfig: {
         posts: await getPosts(pageSize),
-        website: 'https://github.com/airene/vitepress-blog-pure', //copyright link
+        website: 'https://github.com/Cerry2022/Cerry2022.github.io', //copyright link
         // 评论的仓库地址
         comment: {
-            repo: 'airene/vitepress-blog-pure',
+            repo: 'Cerry2022/Cerry2022.github.io',
             themes: 'github-light',
             issueTerm: 'pathname'
         },
@@ -34,7 +34,7 @@ export default defineConfig({
         outline:{
             label:'文章摘要'
         },
-        socialLinks: [{ icon: 'github', link: 'https://github.com/airene/vitepress-blog-pure' }]
+        socialLinks: [{ icon: 'github', link: 'https://github.com/Cerry2022/Cerry2022.github.io' }]
     } as any,
     srcExclude: ['README.md'], // exclude the README.md , needn't to compiler
 
