@@ -43,5 +43,4 @@ description: 手动编译一个Vim,开启补全特性
 ### 第六步：查看特性是否已经开启
 
 `vim --version`
-
 ![[Pasted image 20241009114234.png]]
