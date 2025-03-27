@@ -1,3 +1,5 @@
 {
-  "attachmentFolderPath": "./files"
+  "attachmentFolderPath": "/posts/files",
+  "newLinkFormat": "absolute",
+  "alwaysUpdateLinks": true
 }
