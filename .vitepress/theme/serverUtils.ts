@@ -49,7 +49,7 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
         }
     }
     // rename page_1 to index for homepage
-    //await fs.move(paths + '/page_1.md', paths + '/index.md', { overwrite: true })
+    await fs.move(paths + '/page_1.md', paths + '/index.md', { overwrite: true })
 }
 
 function _convertDate(date = new Date().toString()) {
