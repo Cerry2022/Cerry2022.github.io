@@ -3,5 +3,7 @@
   "newLinkFormat": "absolute",
   "alwaysUpdateLinks": true,
   "useMarkdownLinks": true,
-  "showUnsupportedFiles": false
+  "showUnsupportedFiles": false,
+  "readableLineLength": true,
+  "showLineNumber": false
 }
