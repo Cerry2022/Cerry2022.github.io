@@ -17,10 +17,8 @@ BPoint：一个简单的绘图程序，调用BLib保存读取图像到L5，可�
 
 ![left|320](/posts/files/Pasted%20image%2020250327230649.png)
 
-
-
 ![left|320](/posts/files/Pasted%20image%2020250327231435.png)
 
 
-
-
+源文件：
+![](./code/BPoint.txt)
