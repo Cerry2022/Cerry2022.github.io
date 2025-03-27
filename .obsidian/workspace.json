@@ -165,6 +165,8 @@
   },
   "active": "449d3145e1295436",
   "lastOpenFiles": [
+    "page_3.md",
+    "page_2.md",
     "posts/一个linux下使用线程的案例.md",
     "posts/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "page_1.md",
@@ -190,8 +192,6 @@
     "posts/web-build/vitepress/vitepress-github-pages.md",
     "posts/web-build/Tomcat/Tomcat-1.md",
     "posts/vitepress-first.md",
-    "programming/vscode/vscode-hard-tab.md",
-    "jijingdebiji/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
     "web-build/vitepress",
     "web-build/Tomcat",
     "web-build/B_LCD",
