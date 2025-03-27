@@ -1,6 +1,6 @@
 <template>
     <div class="site-footer">
-        MIT Licensed | Copyright © 2021-2022 <a class="vitepress" :href="website">{{ webTitle }}</a><br />
+        MIT Licensed | Copyright © 2021-{{ new Date().getFullYear() }} <a class="vitepress" :href="website">{{ webTitle }}</a><br />
         Powered by <a class="vitepress" target="_blank" href="//vitepress.vuejs.org/">VitePress - 1.6.3</a>
         Theme by <a class="vitepress" target="_blank" href="//github.com/airene/vitepress-blog-pure">Vitepress-blog</a>
     </div>
