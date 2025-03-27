@@ -44,4 +44,4 @@ description: 手动编译一个Vim,开启补全特性
 
 `vim --version`
 
-![[posts/files/Pasted image 20241009114234.png]]
+![](/posts/files/Pasted%20image%2020241009114234.png)
