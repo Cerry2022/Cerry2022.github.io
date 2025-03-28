@@ -42,6 +42,15 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: 缓存 node_modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('pnpm-lock.yaml') }}
+          
       - name: 启用Github Pages并读取文档元数据
         uses: actions/configure-pages@v4
 
