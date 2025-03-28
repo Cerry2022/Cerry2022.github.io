@@ -1,66 +1,62 @@
-# 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
-#
-name: Deploy VitePress site to Pages
+# name名称可以任意取
+name: 部署到GithubPages
 
 on:
-  # 在针对 `main` 分支的推送上运行。如果你
-  # 使用 `master` 分支作为默认分支，请将其更改为 `master`
+  # 执行 'push' 到 'master' 时触发，根据自己仓库的分支名修改
   push:
     branches: [master]
 
-  # 允许你从 Actions 选项卡手动运行此工作流程
+  # 允许从“操作”选项卡手动运行此工作流
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+# 设置GITHUB_TOKEN的权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
-# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+# 设置属于'pages'组下的工作流并发，设置后只运行首个和最新的工作流，中间等待状态的工作流将被取消
 concurrency:
   group: pages
-  cancel-in-progress: false
+  # 取消首个工作流的运行，这样在并发时就只会运行最新的
+  cancel-in-progress: true
 
 jobs:
-  # 构建工作
+  # 打包流程
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: 检出代码到打包环境中
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      # - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
-      #   with:
-      #     version: 9
-      # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
-      - name: Setup Node
-        uses: actions/setup-node@v4
+          # 获取全部提交记录，如果未启用lastUpdated，则不需要
+          fetch-depth: 0
+      - name: 安装PNPM
+        uses: pnpm/action-setup@v2
+      - name: 安装Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-          cache: npm # 或 pnpm / yarn
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci # 或 pnpm install / yarn install / bun install
-      - name: Build with VitePress
-        run: npm run build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          node-version: 18
+          cache: pnpm
+      - name: 启用Github Pages并读取文档元数据
+        uses: actions/configure-pages@v3
+      - name: 安装依赖
+        run: pnpm install
+      - name: 打包
+        run: pnpm build
+      - name: 上传项目
+        uses: actions/upload-pages-artifact@v2
         with:
           path: .vitepress/dist
 
-  # 部署工作
+  # 部署流程
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 部署到 GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
