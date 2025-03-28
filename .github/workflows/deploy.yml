@@ -16,20 +16,27 @@ jobs:
         with:
           node-version: 18
 
-      - name: Setup pnpm  # 官方推荐的 pnpm 安装方式
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8  # 指定 pnpm 版本（可选）
+          version: 8
+          # 关键修复 1: 明确设置 pnpm 的存储目录到用户有权限的位置
+          dest_dir: /home/runner/.local/share/pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        # 关键修复 2: 修复权限并指定工作目录
+        run: |
+          sudo chown -R $USER:$USER .
+          pnpm install --store-dir=./.pnpm-store
+        working-directory: ./  # 确保在项目根目录运行
 
       - name: Build
         run: pnpm run build
+        working-directory: ./  # 保持一致性
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub Actions 的 token 进行部署
-          publish_dir: ./vitepress/dist  # 发布的目录，默认为 dist 目录
-          keep_files: true  # 保留其他文件，如 .gitignore 等
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./vitepress/dist
+          keep_files: true
