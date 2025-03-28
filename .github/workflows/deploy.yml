@@ -9,12 +9,6 @@ on:
   # 允许从“操作”选项卡手动运行此工作流
   workflow_dispatch:
 
-# 设置GITHUB_TOKEN的权限
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 # 设置属于'pages'组下的工作流并发，设置后只运行首个和最新的工作流，中间等待状态的工作流将被取消
 concurrency:
   group: pages
@@ -35,7 +29,7 @@ jobs:
       - name: 安装pnpm
         uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
         with:
-          version: 9.15.9
+          version: 4
         
       - name: 安装Node
         uses: actions/setup-node@v4
