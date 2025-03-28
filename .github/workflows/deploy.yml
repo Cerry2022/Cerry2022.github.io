@@ -43,7 +43,7 @@ jobs:
           path: |
             .vitepress/cache
             .vitepress/.temp
-          key: vitepress-cache-${{ hashFiles('./**/*.md') }}-${{ hashFiles('/.vitepress/config.ts') }}
+          key: vitepress-cache-${{ hashFiles('./**/*.md') }}-${{ hashFiles('.vitepress/config.ts') }}
           restore-keys: |
             vitepress-cache-
 
