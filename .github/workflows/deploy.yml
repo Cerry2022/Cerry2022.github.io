@@ -53,16 +53,5 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist  # 确保路径与构建输出目录一致
-
-  # 部署到GitHub Pages
-  # 需要将GitHub Pages的源设置为GitHub Actions
-  deploy:
-    needs: build
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: 部署到 GitHub Pages
-        uses: actions/deploy-pages@v2
+      - name: 部署到GithubPages
+        uses: peaceiris/actions-gh-pages@v3
