@@ -45,7 +45,7 @@ jobs:
       - name: 打包
         run: pnpm build
       - name: 上传项目
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
 
