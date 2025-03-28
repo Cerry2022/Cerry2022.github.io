@@ -32,16 +32,17 @@ jobs:
           # 获取全部提交记录，如果未启用lastUpdated，则不需要
           fetch-depth: 0
 
-      - name: 安装pnpm
-        uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
-        with:
-          version: 5
-        
       - name: 安装Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: pnpm
+
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
+        with:
+          version: 5
+
       - name: 启用Github Pages并读取文档元数据
         uses: actions/configure-pages@v3
       - name: 安装依赖
