@@ -65,4 +65,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 部署到 GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
