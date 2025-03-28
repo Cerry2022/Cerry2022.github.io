@@ -15,11 +15,13 @@ BPoint：一个简单的绘图程序，调用BLib保存读取图像到L5，可�
 {32,32,"ӇҲϲұҰ϶үүϲƽƻҬҭĘĘЬҭƸćҬńƟҳƉćǇńҸÉćǇńҷÉǄćƧҷÉƸƗƿҷÉƈƗƿҸÍĸƻƧҹÉÈƻħŇҬǅƋÉÈƻçåŅĥƍϯƻçŅƋҬǄϮƻħćÔƸƻËÈƛŇƗҭƈËϭċҭǄүϱËǅćҲϰËƼćұϱËĘǁøҭϱËϬǅãҬϱ×ϬǅþǇƈϭË×ϭŅüÔÔϬËćϮÑƼÌϮ×ǇϯÉŅϭË×ǇϴÝÈËćҬϴÉøƸ×ҭϲÙÔƸćүϰËËҮҰϰËƸҭҲϲұ"}
 ```
 
-![left|320](/posts/files/Pasted%20image%2020250327230649.png)
+![left|240](/posts/files/Pasted%20image%2020250327230649.png)
 
-![left|320](/posts/files/Pasted%20image%2020250327231435.png)
+![left|240](/posts/files/Pasted%20image%2020250327231435.png)
 
 
 源文件：
+
 <a href="/code/BPoint.txt" download>BPoint.txt</a>
+
 [BPoint](/code/BPoint.txt)
