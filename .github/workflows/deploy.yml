@@ -64,3 +64,5 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
+      - name: 部署到 GitHub Pages
+        uses: actions/deploy-pages@v2
