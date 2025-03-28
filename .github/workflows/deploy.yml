@@ -50,7 +50,7 @@ jobs:
           echo "检查 .vitepress/dist 是否存在："
           ls -la .vitepress/dist
       - name: 上传产物
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist  # 确保路径与构建输出目录一致
 
