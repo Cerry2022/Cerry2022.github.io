@@ -9,28 +9,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # 拉取代码
 
-    - name: Setup Node.js with pnpm
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'pnpm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'  # 关键：指定 pnpm 缓存
 
-    - name: Install pnpm (if needed)
-      run: npm install -g pnpm
+      - name: Install pnpm  # 必须手动安装 pnpm
+        run: npm install -g pnpm@latest  # 安装最新版，或指定版本如 pnpm@8
 
-    - name: Cache pnpm dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.pnpm-store
-          node_modules
-          **/node_modules
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pnpm-store  # pnpm 全局存储路径
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install  # 现在可以正常使用 pnpm
 
-    - name: Build
-      run: pnpm run build
+      - name: Build
+        run: pnpm run build  # 后续步骤
