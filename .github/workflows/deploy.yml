@@ -44,11 +44,15 @@ jobs:
 
       - name: 构建项目
         run: pnpm build
-
+      
+      - name: 调试构建目录
+        run: |
+          echo "检查 .vitepress/dist 是否存在："
+          ls -la .vitepress/dist
       - name: 上传产物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: .vitepress/dist  # 确保路径与构建输出目录一致
 
   # 部署到GitHub Pages
   # 需要将GitHub Pages的源设置为GitHub Actions
