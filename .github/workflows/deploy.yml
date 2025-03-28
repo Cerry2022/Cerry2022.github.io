@@ -26,3 +26,10 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub Actions 的 token 进行部署
+          publish_dir: ./vitepress/dist  # 发布的目录，默认为 dist 目录
+          keep_files: true  # 保留其他文件，如 .gitignore 等
