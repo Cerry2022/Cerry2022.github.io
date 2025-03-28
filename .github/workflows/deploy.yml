@@ -35,7 +35,7 @@ jobs:
       - name: 安装pnpm
         uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
         with:
-          version: 5.15.1
+          version: 5
         
       - name: 安装Node
         uses: actions/setup-node@v4
