@@ -20,19 +20,33 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+          # 强制设置 pnpm 的存储目录到项目内
+          dest_dir: ./pnpm-store
 
-      - name: Install dependencies
+      - name: Restore dependencies cache
+        uses: actions/cache@v3
+        id: pnpm-cache
+        with:
+          path: |
+            ./pnpm-store
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies (skip if cached)
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
         run: |
-          sudo chown -R $USER:$USER .
-          pnpm install --store-dir=./.pnpm-store
+          # 修复权限问题（避免使用 sudo）
+          chmod -R 755 .
+          pnpm install --frozen-lockfile --store-dir=./pnpm-store
+        working-directory: ./
 
       - name: Build
         run: pnpm run build
-        working-directory: ./  # 保持一致性
+        working-directory: ./
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./vitepress/dist
-          keep_files: true
