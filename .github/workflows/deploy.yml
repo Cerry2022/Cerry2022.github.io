@@ -26,12 +26,6 @@ jobs:
           # 获取全部提交记录，如果未启用lastUpdated，则不需要
           fetch-depth: 0
       
-      - name: 调试目录结构
-        run: |
-          echo "当前工作目录："
-          pwd
-          echo "目录结构："
-          ls -la
       - name: 安装pnpm
         uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
         with:
@@ -45,6 +39,12 @@ jobs:
 
       - name: 启用Github Pages并读取文档元数据
         uses: actions/configure-pages@v3
+      - name: 调试目录结构
+        run: |
+          echo "当前工作目录："
+          pwd
+          echo "目录结构："
+          ls -la
       - name: 安装依赖
         run: pnpm install
       - name: 打包
