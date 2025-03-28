@@ -20,15 +20,11 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          # 关键修复 1: 明确设置 pnpm 的存储目录到用户有权限的位置
-          dest_dir: /home/runner/.local/share/pnpm
 
       - name: Install dependencies
-        # 关键修复 2: 修复权限并指定工作目录
         run: |
           sudo chown -R $USER:$USER .
           pnpm install --store-dir=./.pnpm-store
-        working-directory: ./  # 确保在项目根目录运行
 
       - name: Build
         run: pnpm run build
