@@ -84,14 +84,12 @@ VitePress 使用文件路径作为路由地址，如果路径是`/a/b.md`，访�
 2. 在项目根目录下创建 `.github/workflows/deploy.yml` 文件（yml 文件名可以任意取，所有 workflow 下的 yml 文件均会自动执行），内容为：
 
 ```yml
-# name名称可以任意取
 name: 部署到GithubPages
 
 on:
   # 执行 'push' 到 'master' 时触发，根据自己仓库的分支名修改
   push:
     branches: [master]
-
   # 允许从“操作”选项卡手动运行此工作流
   workflow_dispatch:
 
@@ -101,51 +99,55 @@ permissions:
   pages: write
   id-token: write
 
+
 # 设置属于'pages'组下的工作流并发，设置后只运行首个和最新的工作流，中间等待状态的工作流将被取消
 concurrency:
   group: pages
-  # 取消首个工作流的运行，这样在并发时就只会运行最新的
   cancel-in-progress: true
 
 jobs:
-  # 打包流程
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码到打包环境中
-        uses: actions/checkout@v3
+      - name: 检出代码
+        uses: actions/checkout@v4
         with:
-          # 获取全部提交记录，如果未启用lastUpdated，则不需要
           fetch-depth: 0
-      - name: 安装PNPM
-        uses: pnpm/action-setup@v2
-      - name: 安装Node
-        uses: actions/setup-node@v3
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 18
+          version: 8
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
           cache: pnpm
-      - name: 启用Github Pages并读取文档元数据
-        uses: actions/configure-pages@v3
+
       - name: 安装依赖
         run: pnpm install
-      - name: 打包
-        run: pnpm build
-      - name: 上传项目
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: .vitepress/dist
 
-  # 部署流程
+      - name: 构建项目
+        run: pnpm build
+      
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist  # 确保路径与构建输出目录一致
+
+  # 部署到GitHub Pages
+  # 需要将GitHub Pages的源设置为GitHub Actions
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: 部署到 GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 ```
 
 3. 在项目仓库中修改 `Settings -> Pages -> Source` 为 GitHub Actions

@@ -45,10 +45,6 @@ jobs:
       - name: 构建项目
         run: pnpm build
       
-      - name: 调试构建目录
-        run: |
-          echo "检查 .vitepress/dist 是否存在："
-          ls -la .vitepress/dist
       - name: 上传产物
         uses: actions/upload-pages-artifact@v3
         with:
