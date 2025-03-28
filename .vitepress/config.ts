@@ -31,16 +31,21 @@ export default defineConfig({
             provider: 'local',
         },
         //outline:[2,3],
-        outline:{
-            label:'文章摘要'
+        outline: {
+            label: '文章摘要'
         },
         socialLinks: [{ icon: 'github', link: 'https://github.com/Cerry2022/Cerry2022.github.io' }]
     } as any,
-    srcExclude: ['README.md','默认模板.md'], // exclude the README.md , needn't to compiler
+    srcExclude: ['README.md'], // exclude the README.md , needn't to compiler
 
     vite: {
         //build: { minify: false }
-        server: { port: 5000 }
+        server: {
+            port: 5000, fs: {
+                deny: ["README.md", "template/**"],
+            },
+        },
+
     }
     /*
       optimizeDeps: {
