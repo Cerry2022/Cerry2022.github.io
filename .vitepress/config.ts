@@ -36,7 +36,7 @@ export default defineConfig({
         },
         socialLinks: [{ icon: 'github', link: 'https://github.com/Cerry2022/Cerry2022.github.io' }]
     } as any,
-    srcExclude: ['README.md'], // exclude the README.md , needn't to compiler
+    srcExclude: ['README.md','默认模板.md'], // exclude the README.md , needn't to compiler
 
     vite: {
         //build: { minify: false }
