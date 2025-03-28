@@ -50,6 +50,8 @@ jobs:
         with:
           path: .vitepress/dist
 
+  # 部署到GitHub Pages
+  # 需要将GitHub Pages的源设置为GitHub Actions
   deploy:
     needs: build
     permissions:
