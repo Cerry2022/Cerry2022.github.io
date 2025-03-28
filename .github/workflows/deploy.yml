@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: 安装 pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -50,7 +50,7 @@ jobs:
           echo "检查 .vitepress/dist 是否存在："
           ls -la .vitepress/dist
       - name: 上传产物
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .vitepress/dist  # 确保路径与构建输出目录一致
 
@@ -65,4 +65,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 部署到 GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
