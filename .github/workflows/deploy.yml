@@ -27,38 +27,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码到打包环境中
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           # 获取全部提交记录，如果未启用lastUpdated，则不需要
           fetch-depth: 0
-      - name: 安装PNPM
-        uses: pnpm/action-setup@v2
+
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
         with:
-          version: 5
+        version: 5
+        
       - name: 安装Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - name: 启用Github Pages并读取文档元数据
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
+
       - name: 安装依赖
         run: pnpm install
-      - name: 打包
+
+      - name: 打包VitePress项目
         run: pnpm build
+
       - name: 上传项目
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
 
-  # 部署流程
+  # 部署工作
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
-      - name: 部署到 GitHub Pages
+      - name: 部署到Github Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
