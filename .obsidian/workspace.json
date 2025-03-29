@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
+                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量"
+              "title": "C语言内存管理：代码区、静态区、栈区、堆区"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "programming/vscode/vscode-hard-tab.md",
+                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for vscode-hard-tab"
+              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "programming/vscode/vscode-hard-tab.md",
+                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from vscode-hard-tab"
+              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的出链列表"
             }
           },
           {
@@ -128,10 +128,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
-              "title": "Tags"
+              "title": "标签"
             }
           },
           {
@@ -140,144 +142,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "programming/vscode/vscode-hard-tab.md"
+                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of vscode-hard-tab"
-            }
-          },
-          {
-            "id": "ae6d7070a2d48c6c",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "b5f9c700002084c5",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "a774d9be19bf64e3",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "c16741e894a6f40b",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "bc431e2561f00493",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "688c0b934d09033b",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "03db33747e988d3c",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "ad8d9c1785954854",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "0008c822cab0c822",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "ae67b8a8fe497b3b",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "75043bd8a1bbb860",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "c3778ee14cbad154",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
-            }
-          },
-          {
-            "id": "5078d7edfcec60ca",
-            "type": "leaf",
-            "state": {
-              "type": "SC-custom-variables-view",
-              "state": {},
-              "icon": "code-glyph",
-              "title": "Shell commands: Custom variables"
+              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的大纲"
             }
           }
         ],
-        "currentTab": 16
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -292,31 +167,33 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "terminal:Open terminal": false,
-      "obsidian-shellcommands:Shell commands: Custom variables": false
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "vitepress-publisher:start vitepress": false
     }
   },
   "active": "2f551a31d9f3d937",
   "lastOpenFiles": [
-    "posts/learn-c/C语言内存管理.md",
+    "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
+    "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
+    "page_1.md",
+    "node_modules/vitepress_cache/deps/vue.js.map",
+    "node_modules/vitepress_cache/deps/_metadata.json",
+    "node_modules/vitepress_cache/deps/vitepress___minisearch.js.map",
+    "node_modules/vitepress_cache/deps/vue.js",
+    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js",
+    "node_modules/vitepress_cache/deps/vitepress___minisearch.js",
+    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js",
+    "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js.map",
     "page_2.md",
-    "_tmp_908_77bf1b90e245a6a11f66da244b7b7678",
-    "package-lock.json",
-    "package copy.json",
-    "_tmp_25228_339ed4cd94fa6edc05f68d748958e42f",
     "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp_calc_info.md",
     "posts/web-build/vitepress/vitepress-github-pages.md",
     "posts/vitepress-first.md",
     "posts/hp-calc/hp39gii/FIRE2.md",
-    "posts/learn-c",
-    "page_1.md",
-    "pnpm-lock.yaml",
-    "pnpm-lock.yaml.1519092277",
-    "_tmp_4512_f338ce5305955254982c0b8d8f07c387",
-    "README",
     "template/默认模板.md",
-    "template/默认模板.md.1",
     "posts/hp-calc/hp39gii/MyW.md",
     "posts/hp-calc/hp39gii/HCBoy.md",
     "posts/files/Pasted image 20250328170501.png",
@@ -338,7 +215,6 @@
     "changelog.md",
     "posts/radical-notes/vim自动补全插件.md",
     "posts/radical-notes/Linux下信号量实现.md",
-    "posts/radical-notes/CPU大杂烩.md",
     "posts/files/Pasted image 20241009114234.png",
     "files/Pasted image 20241009114234.png",
     "posts/jijingdebiji/files/Pasted image 20250327171211.png",
