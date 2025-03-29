@@ -35,8 +35,7 @@
               "title": "note"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -157,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "posts/hp-calc/hp39gii/note.md",
+                "file": "posts/hp-calc/hp39gii/TheFIre.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "note 的大纲"
+              "title": "TheFIre 的大纲"
             }
           },
           {
@@ -199,13 +198,13 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "c7b77790aa6e2b19",
+  "active": "8919b2bc29a18f26",
   "lastOpenFiles": [
+    "posts/hp-calc/hp39gii/note.md",
     "posts/files/Pasted image 20250329204026.png",
     "posts/files/Pasted image 20250329203622.png",
     "posts/hp-calc/hp39gii/TheFIre.md",
     "posts/hp-calc/hp39gii/PPT.md",
-    "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp39gii/消消洛.md",
     "posts/hp-calc/hp39gii/BLib.md",
     "posts/hp-calc/hp39gii/BPoint.md",
@@ -231,7 +230,6 @@
     "public/code/未命名 1.md",
     "public/code/PPT_EDIT.txt",
     "posts/files/Pasted image 20250329170318.png",
-    "posts/files/Pasted image 20250329170147.png",
     "public/code/消消洛.txt",
     "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
     "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",

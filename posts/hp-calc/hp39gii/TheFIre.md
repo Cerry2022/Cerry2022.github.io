@@ -18,4 +18,4 @@ TheFire:基于经典牛顿力学的质点运动模拟,自带多个模式。
 ![left|240](/posts/files/Pasted%20image%2020250329202936.png)
 
 模式4：
-![left|240](posts/files/Pasted%20image%2020250329203055.png)
+![left|240](/posts/files/Pasted%20image%2020250329203055.png)
