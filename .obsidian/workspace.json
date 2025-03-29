@@ -295,15 +295,16 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "5078d7edfcec60ca",
+  "active": "2f551a31d9f3d937",
   "lastOpenFiles": [
+    "page_2.md",
+    "posts/learn-c/C语言内存管理.md",
     "_tmp_908_77bf1b90e245a6a11f66da244b7b7678",
     "package-lock.json",
     "package copy.json",
     "_tmp_25228_339ed4cd94fa6edc05f68d748958e42f",
     "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp_calc_info.md",
-    "posts/learn-c/C语言内存管理.md",
     "posts/web-build/vitepress/vitepress-github-pages.md",
     "posts/vitepress-first.md",
     "posts/hp-calc/hp39gii/FIRE2.md",
@@ -315,7 +316,6 @@
     "README",
     "template/默认模板.md",
     "template/默认模板.md.1",
-    "pnpm-lock.yaml.3634907752",
     "posts/hp-calc/hp39gii/MyW.md",
     "posts/hp-calc/hp39gii/HCBoy.md",
     "posts/files/Pasted image 20250328170501.png",
