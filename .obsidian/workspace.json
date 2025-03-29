@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "file": "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C语言内存管理：代码区、静态区、栈区、堆区"
+              "title": "C语言一些重要的概念：变量、变量名、地址、指针"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "file": "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的反向链接列表"
+              "title": "C语言一些重要的概念：变量、变量名、地址、指针 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "file": "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的出链列表"
+              "title": "C语言一些重要的概念：变量、变量名、地址、指针 的出链列表"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "file": "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "C语言内存管理：代码区、静态区、栈区、堆区 的大纲"
+              "title": "C语言一些重要的概念：变量、变量名、地址、指针 的大纲"
             }
           }
         ],
@@ -166,16 +166,15 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "terminal:Open terminal": false,
-      "obsidian-shellcommands:Shell commands: Custom variables": false,
-      "vitepress-publisher:start vitepress": false
+      "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
   "active": "2f551a31d9f3d937",
   "lastOpenFiles": [
-    "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
     "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
+    "posts/learn-c/C专家编程 (Perter Van Der Linden) (Z-Library).epub",
+    "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
     "page_1.md",
     "node_modules/vitepress_cache/deps/vue.js.map",
     "node_modules/vitepress_cache/deps/_metadata.json",
@@ -186,7 +185,6 @@
     "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
     "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js.map",
     "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js",
-    "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js.map",
     "page_2.md",
     "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp_calc_info.md",
@@ -214,7 +212,6 @@
     "index.md",
     "changelog.md",
     "posts/radical-notes/vim自动补全插件.md",
-    "posts/radical-notes/Linux下信号量实现.md",
     "posts/files/Pasted image 20241009114234.png",
     "files/Pasted image 20241009114234.png",
     "posts/jijingdebiji/files/Pasted image 20250327171211.png",

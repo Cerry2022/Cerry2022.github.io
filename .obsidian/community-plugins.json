@@ -1,5 +1,7 @@
 [
   "data-files-editor",
   "obsidian-shellcommands",
-  "editing-toolbar"
+  "editing-toolbar",
+  "obsidian-annotator",
+  "obsidian-epub-plugin"
 ]
