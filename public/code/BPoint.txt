@@ -1,3 +1,4 @@
+EXPORT BBMP={32,32,"ӇҲϲұҰ϶үүϲƽƻҬҭĘĘЬҭƸćҬńƟҳƉćǇńҸÉćǇńҷÉǄćƧҷÉƸƗƿҷÉƈƗƿҸÍĸƻƧҹÉÈƻħŇҬǅƋÉÈƻçåŅĥƍϯƻçŅƋҬǄϮƻħćÔƸƻËÈƛŇƗҭƈËϭċҭǄүϱËǅćҲϰËƼćұϱËĘǁøҭϱËϬǅãҬϱ×ϬǅþǇƈϭË×ϭŅüÔÔϬËćϮÑƼÌϮ×ǇϯÉŅϭË×ǇϴÝÈËćҬϴÉøƸ×ҭϲÙÔƸćүϰËËҮҰϰËƸҭҲϲұ"};
 PMode,Mw:=64,Mh:=64,X1,Y1,X2,Y2;
 Ml0:={"   P0","   P3","   P1","   P2","  Tool.","   File."};
 Ml1:={"  Line","  Rect","  Arc","","  Tool.",""};
@@ -36,9 +37,7 @@ IF X1==.1 OR Y1==.1 THEN
 X1:=X;Y1:=Y;
 ELSE
 ARC_P(X1,Y1,√((X-X1)²+(Y-Y1)²));
-.1►X1;.1►Y1;END;
-
-END;
+.1►X1;.1►Y1;END;END;
 
 
 IF K==4 THEN
@@ -47,10 +46,10 @@ END;
 ELSE
 IF PMode==2 THEN
 IF K==0 THEN
-BLOAD(G0,0,0,L5);
+BLOAD(G0,0,0,BBMP);
 PMode:=0;END;
 IF K==1 THEN
-BSAVE(G0,0,0,Mw,Mh)►L5;
+BSAVE(G0,0,0,Mw,Mh)►BBMP;
 PMode:=0;END;
 IF K≠−1 THEN
 PMode:=0;

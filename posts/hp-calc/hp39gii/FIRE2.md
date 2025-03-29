@@ -10,3 +10,9 @@ FIRE2:[The Fire] 的升级版。基于经典牛顿力学和动量守恒的质点
 
 
 ![left|240](/posts/files/Pasted%20image%2020250328170501.png)
+
+源代码：
+
+<a href="/code/FIRE2.txt" download>FIRE2.txt</a>
+
+[FIRE2](public/code/FIRE2.txt)

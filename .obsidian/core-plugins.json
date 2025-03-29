@@ -7,12 +7,12 @@
   "canvas": true,
   "outgoing-link": true,
   "tag-pane": true,
-  "properties": false,
+  "properties": true,
   "page-preview": true,
-  "daily-notes": true,
+  "daily-notes": false,
   "templates": true,
   "note-composer": true,
-  "command-palette": true,
+  "command-palette": false,
   "slash-command": false,
   "editor-status": true,
   "bookmarks": true,
@@ -27,5 +27,5 @@
   "file-recovery": true,
   "publish": false,
   "sync": false,
-  "webviewer": false
+  "webviewer": true
 }

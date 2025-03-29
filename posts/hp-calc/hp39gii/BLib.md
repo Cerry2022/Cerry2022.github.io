@@ -19,7 +19,7 @@ Blib：一个带简单压缩算法的图像保存和加载库，可以将2bit色
 :::
 
 
-```bash
+```vb
 EXPORT BLOAD(G,X,Y,d)
 BEGIN
 LOCAL D,Dl:=dim(d(3)),N,I,Px:=X,Py:=Y,c,ch;
