@@ -14,7 +14,7 @@ description: codewars-e1 刷题打怪 简单记录一下
 
 测试代码中一般会给出测试用例以及对应的答案，偶尔也会有错误案例要求异常处理。
 
-![](posts/files/Pasted%20image%2020250331192213.png)
+![](/posts/files/Pasted%20image%2020250331192213.png)
 
 
 ## 题目1
