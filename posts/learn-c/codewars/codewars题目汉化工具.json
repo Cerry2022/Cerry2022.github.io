@@ -1,0 +1,265 @@
+// ==UserScript==
+// @name         Codewars题目汉化工具（Vue路由优化版）
+// @namespace    http://tampermonkey.net/
+// @version      1.3.2
+// @description  专为Vue路由优化的Codewars题目汉化工具，支持中英对照和智能路由监听
+// @author       Cerry2025
+// @match        https://*.codewars.com/kata/*
+// @grant        GM_xmlhttpRequest
+// @connect      open.bigmodel.cn
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // 配置参数
+    const CONFIG = {
+        API_KEY: '5d904aeb4a4543958d7c2f070dbceecf.oMtcrI0vvUc5L0PE',
+        TARGET_SELECTOR: '#description',
+        LOADING_TEXT: 'Loading description...',
+        TRANSLATE_DELAY: 150,
+        STORAGE_KEY: 'codewars_translate_mode',
+        MAX_ROUTER_RETRY: 50,
+        ROUTER_CHECK_INTERVAL: 100
+    };
+
+    // 样式注入
+    const addStyles = () => {
+        const style = document.createElement('style');
+        style.textContent = `
+            .bilingual-container > .original-text {
+                padding-bottom: 10px;
+                border-bottom: 1px dashed #ddd;
+            }
+            .bilingual-container > .translated-text {
+                padding-top: 10px;
+            }
+            .bilingual-container pre code {
+                white-space: pre;
+                display: block;
+                overflow-x: auto;
+            }
+            .header-toggle {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .translation-tip {
+                color: #666;
+                font-style: italic;
+                margin-bottom: 8px;
+            }
+            .translation-error {
+                color: #f44336 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    };
+
+    // 控制面板开关
+    const addHeaderSwitch = () => {
+        const headerContainer = document.querySelector('.mb-2.border-0.overflow-hidden.flex.items-center.justify-start');
+        if (!headerContainer || headerContainer.querySelector('.header-toggle')) return;
+
+        const toggleHTML = `
+            <div class="header-toggle">
+                <input type="checkbox" id="bilingualToggleHeader">
+                <label for="bilingualToggleHeader">中英对照模式</label>
+            </div>
+        `;
+        headerContainer.insertAdjacentHTML('beforeend', toggleHTML);
+
+        const toggle = headerContainer.querySelector('#bilingualToggleHeader');
+        toggle.checked = localStorage.getItem(CONFIG.STORAGE_KEY) === 'bilingual';
+        toggle.addEventListener('change', () => {
+            localStorage.setItem(CONFIG.STORAGE_KEY, toggle.checked ? 'bilingual' : 'replace');
+            location.reload();
+        });
+    };
+
+    // Vue路由监听核心
+    const setupRouterListener = () => {
+        let lastPath = location.pathname;
+        let routerCheckAttempts = 0;
+
+        const findVueRouter = () => {
+            const appElement = document.querySelector('#app');
+            if (appElement?._vue__?.$router) return appElement._vue__.$router;
+            if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__?.Vue?.apps?.[0]?.$router) {
+                return window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue.apps[0].$router;
+            }
+            return null;
+        };
+
+        const handleRouteChange = () => {
+            if (location.pathname === lastPath) return;
+            lastPath = location.pathname;
+            resetTranslationState();
+            initTranslationObserver();
+        };
+
+        const routerCheckInterval = setInterval(() => {
+            if (routerCheckAttempts++ > CONFIG.MAX_ROUTER_RETRY) {
+                clearInterval(routerCheckInterval);
+                setupHistoryFallback();
+                return;
+            }
+
+            const router = findVueRouter();
+            if (router) {
+                clearInterval(routerCheckInterval);
+                router.afterEach(handleRouteChange);
+            }
+        }, CONFIG.ROUTER_CHECK_INTERVAL);
+
+        // History API降级方案
+        const setupHistoryFallback = () => {
+            ['pushState', 'replaceState'].forEach(method => {
+                const original = history[method];
+                history[method] = function() {
+                    original.apply(this, arguments);
+                    handleRouteChange();
+                };
+            });
+            window.addEventListener('popstate', handleRouteChange);
+        };
+    };
+
+    // 状态重置
+    const resetTranslationState = () => {
+        document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(el => {
+            el._translation_processed = false;
+            el.removeAttribute('data-translated');
+        });
+    };
+
+    // 内容处理（修复提示残留问题）
+    const processContent = async (element) => {
+        if (element._translation_processed) return;
+
+        const checkLoadingState = () => element.textContent.includes(CONFIG.LOADING_TEXT);
+        if (checkLoadingState()) {
+            const loadingObserver = new MutationObserver((_, obs) => {
+                if (!checkLoadingState()) {
+                    obs.disconnect();
+                    processContent(element);
+                }
+            });
+            loadingObserver.observe(element, { childList: true, subtree: true });
+            return;
+        }
+
+        element._translation_processed = true;
+        const originalHTML = element.innerHTML; // 保存原始HTML
+        const tipElement = createTranslationTip('正在翻译...');
+        element.prepend(tipElement);
+
+        try {
+            const translatedHTML = await translateContent(originalHTML); // 使用原始HTML翻译
+            applyTranslation(element, originalHTML, translatedHTML); // 传入原始内容
+        } catch (error) {
+            tipElement.textContent = '翻译失败，请刷新重试';
+            tipElement.classList.add('translation-error');
+            console.error('翻译错误:', error);
+        }
+    };
+
+    // 应用翻译（使用原始内容生成双语模式）
+    const applyTranslation = (element, originalHTML, translated) => {
+        const isBilingual = localStorage.getItem(CONFIG.STORAGE_KEY) === 'bilingual';
+        const cleanTranslation = translated
+            .replace(/\\"/g, '"')
+            .replace(/^"|"$/g, '')
+            .replace(/\\n/g, '\n');
+
+        const container = document.createElement('div');
+        if (isBilingual) {
+            container.className = 'bilingual-container';
+            container.innerHTML = `
+                <div class="original-text">${originalHTML}</div> <!-- 使用保存的原始内容 -->
+                <div class="translated-text">${cleanTranslation}</div>
+            `;
+        } else {
+            container.innerHTML = cleanTranslation;
+        }
+
+        element.replaceWith(container);
+        container.setAttribute('data-translated', 'true');
+    };
+
+    // 翻译功能（增加响应校验）
+    const translateContent = (html) => {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                method: 'POST',
+                url: 'https://open.bigmodel.cn/api/paas/v3/model-api/chatglm_turbo/invoke',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': CONFIG.API_KEY
+                },
+                data: JSON.stringify({
+                    prompt: [{
+                        role: "user",
+                        content: `专业翻译编程题目，严格保留原始HTML结构和代码格式，不要添加任何Markdown代码块标记。仅翻译文本内容，保持HTML标签不变：\n\n${html}`
+                    }],
+                    temperature: 0.2
+                }),
+                responseType: 'json',
+                onload: (res) => {
+                    if (res.status === 200 && res.response.data?.choices?.[0]?.content) {
+                        resolve(res.response.data.choices[0].content);
+                    } else {
+                        reject(`API错误: ${res.status}`);
+                    }
+                },
+                onerror: reject
+            });
+        });
+    };
+
+    // DOM观察器（优化节点替换逻辑）
+    const initTranslationObserver = () => {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1 && node.matches(CONFIG.TARGET_SELECTOR)) {
+                        processContent(node);
+                    }
+                });
+
+                if (mutation.type === 'characterData' || mutation.type === 'childList') {
+                    document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(el => {
+                        if (!el._translation_processed) processContent(el);
+                    });
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+
+        document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(processContent);
+    };
+
+    // 辅助函数
+    const createTranslationTip = (text) => {
+        const tip = document.createElement('div');
+        tip.className = 'translation-tip';
+        tip.innerHTML = `<span>🔄 ${text}</span>`;
+        return tip;
+    };
+
+    // 初始化
+    const initialize = () => {
+        addStyles();
+        addHeaderSwitch();
+        setupRouterListener();
+        setTimeout(initTranslationObserver, CONFIG.TRANSLATE_DELAY);
+    };
+
+    initialize();
+})();

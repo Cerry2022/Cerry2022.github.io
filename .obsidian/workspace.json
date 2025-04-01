@@ -8,34 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8919b2bc29a18f26",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "posts/hp-calc/hp39gii/note.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "note"
-            }
-          },
-          {
             "id": "c7b77790aa6e2b19",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/hp-calc/hp39gii/note.md",
+                "file": "posts/learn-c/codewars/codewars-e1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "note"
+              "title": "codewars-e1"
+            }
+          },
+          {
+            "id": "f1c930faf66c7adb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "posts/learn-c/codewars/codewars-e1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "codewars-e1"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -156,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "posts/hp-calc/hp39gii/note.md",
+                "file": "posts/learn-c/codewars/codewars-e1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "note 的大纲"
+              "title": "codewars-e1 的大纲"
             }
           },
           {
@@ -191,17 +192,24 @@
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "obsidian-shellcommands:Shell commands: Custom variables": false,
-      "markdown-importer:打开 Markdown 格式转换器": false
+      "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "8919b2bc29a18f26",
+  "active": "f1c930faf66c7adb",
   "lastOpenFiles": [
-    "posts/hp-calc/hp39gii/MyW.md",
+    "posts/learn-c/codewars/codewars-e2.md",
+    "posts/learn-c/codewars/codewars-e1.md",
+    "posts/learn-c/codewars/codewars题目汉化工具.json",
+    "posts/learn-c/codewars/自动翻译脚本.md",
     "posts/hp-calc/hp39gii/note.md",
+    "posts/files/Pasted image 20250331192213.png",
+    "public/code/PLACE0.1.txt",
+    "posts/learn-c/codewars",
+    "public/code/PPTAD.txt",
+    "public/code/PPT_EDIT.txt",
+    "public/code/PPT.txt",
+    "posts/hp-calc/hp39gii/MyW.md",
     "posts/hp-calc/hp39gii/PEACE0.1.md",
     "posts/hp-calc/hp39gii/PPT.md",
     "posts/hp-calc/hp39gii/HCBoy.md",
@@ -216,34 +224,24 @@
     "posts/files/Pasted image 20250329202936.png",
     "posts/files/Pasted image 20250329202841.png",
     "posts/files/Pasted image 20250329202652.png",
-    "public/code/PLACE0.1.txt",
     "public/code/BPoint.txt",
     "posts/files/Pasted image 20250329195336.png",
     "public/code/BLib.txt",
     "posts/files/Pasted image 20250329194119.png",
-    "public/code/PPT.txt",
     "public/code/未命名.md",
-    "public/code/PPTAD.txt",
     "posts/hp-calc/hp_calc_info.md",
     "posts/files/Pasted image 20250329193317.png",
     "2025-03-29.md",
     "public/code/未命名 1.md",
-    "public/code/PPT_EDIT.txt",
-    "posts/files/Pasted image 20250329170318.png",
     "public/code/消消洛.txt",
     "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
     "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
     "posts/learn-c/C专家编程 (Perter Van Der Linden) (Z-Library).epub",
     "page_1.md",
-    "node_modules/vitepress_cache/deps/vue.js.map",
-    "node_modules/vitepress_cache/deps/_metadata.json",
     "page_2.md",
     "posts/web-build/vitepress/vitepress-github-pages.md",
     "posts/vitepress-first.md",
-    "template/默认模板.md",
-    "public/code/FIRE2.md",
-    "code/BLib.txt.md",
-    "code/HCboy.txt.md"
+    "template/默认模板.md"
   ]
 }
