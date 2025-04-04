@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/codewars/codewars-e3.md",
+                "file": "posts/lubancat/记一次给鲁班猫3编译内核.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codewars-e3"
+              "title": "记一次给鲁班猫3编译内核"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "posts/learn-c/codewars/codewars-e3.md",
+                "file": "posts/lubancat/记一次给鲁班猫3编译内核.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "codewars-e3 的大纲"
+              "title": "记一次给鲁班猫3编译内核 的大纲"
             }
           },
           {
@@ -197,10 +197,14 @@
   },
   "active": "c7b77790aa6e2b19",
   "lastOpenFiles": [
+    "posts/lubancat/记一次给鲁班猫3编译内核.md",
+    "posts/files/Pasted image 20250404213832.png",
+    "posts/hp-calc/hp39gii/消消洛.md",
+    "posts/lubancat",
+    "posts/learn-c/codewars/codewars-e3.md",
     "posts/learn-c/codewars/codewars-e1.md",
     "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
     "posts/learn-c/C语言一些重要的概念：变量、变量名、地址、指针.md",
-    "posts/learn-c/codewars/codewars-e3.md",
     "posts/learn-c/codewars/codewars-e2.md",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
     "posts/learn-c/codewars/自动翻译脚本.md",
@@ -218,7 +222,6 @@
     "posts/hp-calc/hp39gii/FIRE2.md",
     "posts/hp-calc/hp39gii/BPoint.md",
     "posts/hp-calc/hp39gii/BLib.md",
-    "posts/hp-calc/hp39gii/消消洛.md",
     "posts/hp-calc/hp39gii/TheFIre.md",
     "posts/files/Pasted image 20250329204026.png",
     "posts/files/Pasted image 20250329203622.png",
@@ -232,16 +235,12 @@
     "posts/files/Pasted image 20250329194119.png",
     "public/code/未命名.md",
     "posts/hp-calc/hp_calc_info.md",
-    "posts/files/Pasted image 20250329193317.png",
     "2025-03-29.md",
     "public/code/未命名 1.md",
     "public/code/消消洛.txt",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
-    "posts/learn-c/C专家编程 (Perter Van Der Linden) (Z-Library).epub",
     "page_1.md",
     "page_2.md",
-    "posts/web-build/vitepress/vitepress-github-pages.md",
-    "posts/vitepress-first.md",
-    "template/默认模板.md"
+    "posts/web-build/vitepress/vitepress-github-pages.md"
   ]
 }
