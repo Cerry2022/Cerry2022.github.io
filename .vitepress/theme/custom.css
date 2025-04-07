@@ -1,3 +1,4 @@
+@import url("https://fontsapi.zeoseven.com/287/main/result.css");
 :root {
 
     --vp-c-brand: #2563eb !important;
@@ -6,19 +7,23 @@
     --vp-c-brand-dark: var(--vp-c-brand);
     --vp-c-brand-darker: var(--vp-c-brand);
 
-    --vp-font-family-base: 'PingFang SC', 'Microsoft Yahei', sans-serif;
-
+    --vp-font-family-base: 'Source Han Serif SC VF','Noto Serif SC', serif;
     /* pure theme color */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
     --date-font-family: Georgia, sans-serif;
     --bt-theme-title: #000;
+    /* code */
+    --vp-code-font-size: 0.675em;
 }
 .dark {
     --vp-c-brand: #3b82f6;
     --bt-theme-title: #fff
 }
 
+body{
+	font-size:18px;
+}
 
 /* theme reset start */
 
@@ -76,6 +81,10 @@ h3 {
 .VPDoc {
     padding-top: 10px !important;
 }
+.VPDoc div[class*='language-']{
+	border-radius: 8px;
+	margin: 16px 0;
+}
 .container {
     max-width: 60rem !important;
 }
@@ -88,7 +97,6 @@ h3 {
 .VPDoc.has-aside .content-container {
     max-width: 60rem !important;
 }
-
 
 @media (min-width: 768px) {
     .VPDoc {
