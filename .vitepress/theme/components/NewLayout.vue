@@ -20,7 +20,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import Copyright from './Copyright.vue'
-import VercelAnalytics from './components/VercelAnalytics.vue' // <-- 1. 导入 Vercel 分析组件
+import VercelAnalytics from './VercelAnalytics.vue' // <-- 1. 导入 Vercel 分析组件
 import { useData, withBase } from "vitepress"; // <-- 2. 推荐使用 useData 获取 frontmatter
 
 const { Layout } = DefaultTheme

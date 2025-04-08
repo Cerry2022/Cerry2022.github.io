@@ -49,7 +49,8 @@
               "title": "C语言内存管理：代码区、静态区、栈区、堆区"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -170,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pages/link.md",
+                "file": "pages/about.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "link 的大纲"
+              "title": "about 的大纲"
             }
           },
           {
@@ -210,14 +211,14 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "c7b77790aa6e2b19",
+  "active": "ebfd55b84d242dc8",
   "lastOpenFiles": [
+    "pages/link.md",
     "_tmp_31792_3fcc5fd15965f12a186b8ccf100cc066",
     "pnpm-lock.yaml.3887046404",
     "node_modules/@vercel",
     "_tmp_604_5bf82a3b681b35bf7d361e90d6e7e2dd",
     "pages/about.md",
-    "pages/link.md",
     "page_1.md",
     "pages/category.md",
     "pages/tags.md",
@@ -235,7 +236,6 @@
     "node_modules/vitepress_cache/deps/vue.js",
     "node_modules/vitepress_cache/deps/vitepress___minisearch.js",
     "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
-    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js",
     "page_3.md",
     "posts/lubancat/未命名.md",
     "posts/files/Pasted image 20250404213832.png",
