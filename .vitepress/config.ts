@@ -5,8 +5,11 @@ import { getPosts } from './theme/serverUtils'
 const pageSize = 10
 
 export default defineConfig({
-    title: 'Cerry`blog',
+    title: 'Cerry\'blog',
     base: '/',
+	sitemap: {
+    hostname: 'https://Cerry2022.github.io'
+	},
     cacheDir: './node_modules/vitepress_cache',
     description: 'vitepress,blog,blog-theme',
     ignoreDeadLinks: true,
@@ -24,7 +27,8 @@ export default defineConfig({
             { text: 'Category', link: '/pages/category' },
             { text: 'Archives', link: '/pages/archives' },
             { text: 'Tags', link: '/pages/tags' },
-            { text: 'About', link: '/pages/about' }
+            { text: 'About', link: '/pages/about' },
+            { text: 'Link', link : '/pages/link' }
             // { text: 'Airene', link: 'http://airene.net' }  -- External link test
         ],
         search: {

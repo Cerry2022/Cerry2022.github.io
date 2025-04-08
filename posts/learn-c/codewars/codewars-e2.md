@@ -6,6 +6,7 @@ tags:
   - c
 description: codewars-e2 刷题记录
 ---
+## codewars-e2
 ## 题目1：数绵羊
 给定一个布尔类型数组，确定其中true的数量。
 

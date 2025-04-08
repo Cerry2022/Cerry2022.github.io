@@ -6,6 +6,7 @@ tags:
   - c
 description: codewars-e3 刷题记录
 ---
+## codewars-e3
 ## 题目1
 > [!note]- 题目
 > 一个孩子在高层建筑的第n层玩球。这一层距离地面的高度，h，是已知的。
@@ -52,7 +53,7 @@ int bouncingBall(double h, double bounce, double window) {
 
 
 
-## 题目2：
+## 题目2
 > [!note] 题目
 > 你将会得到一个整数数组。你的任务是找到索引N，使得N左侧的整数之和等于N右侧的整数之和。
 > 
@@ -121,7 +122,7 @@ int find_even_index(const int *values, int length) {
 
 
 我的解答：
-```
+```c
 char findMissingLetter(char array[], int arrayLength)
 {
   for(int i=0; i<arrayLength; i++){
@@ -133,7 +134,7 @@ char findMissingLetter(char array[], int arrayLength)
 ```
 
 最简解答：
-```
+```c
 char findMissingLetter(char array[], int arrayLength)
 {
     while (++*array == *++array);
