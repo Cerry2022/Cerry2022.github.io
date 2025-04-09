@@ -7,6 +7,7 @@ type Post = {
         description: string
     }
     regularPath: string
+	fileName: string
 }
 
 export function initTags(posts: Post[]): Record<string, Post[]> {

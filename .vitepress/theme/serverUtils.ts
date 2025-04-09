@@ -2,6 +2,7 @@ import { globby } from 'globby'
 import matter from 'gray-matter'
 import fs from 'fs-extra'
 import { resolve } from 'path'
+import path from 'path'; // 导入 path 模块
 
 async function getPosts(pageSize: number) {
     let paths = await globby(['posts/**/**.md'])
@@ -14,9 +15,11 @@ async function getPosts(pageSize: number) {
             const content = await fs.readFile(item, 'utf-8')
             const { data } = matter(content)
             data.date = _convertDate(data.date)
+			const fileName = path.basename(item, '.md'); // 获取文件名（不包含 .md 扩展名）
             return {
                 frontMatter: data,
-                regularPath: `/${item.replace('.md', '.html')}`
+                regularPath: `/${item.replace('.md', '.html')}`,
+                fileName: fileName // 添加 fileName 属性
             }
         })
     )
