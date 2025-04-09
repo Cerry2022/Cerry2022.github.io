@@ -22,31 +22,17 @@
             }
           },
           {
-            "id": "ebfd55b84d242dc8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "pages/about.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "about"
-            }
-          },
-          {
             "id": "f1c930faf66c7adb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+                "file": "posts/embedded/嵌入式学习路线.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C语言内存管理：代码区、静态区、栈区、堆区"
+              "title": "嵌入式学习路线"
             }
           }
         ],
@@ -171,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pages/about.md",
+                "file": "posts/embedded/嵌入式学习路线.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "about 的大纲"
+              "title": "嵌入式学习路线 的大纲"
             }
           },
           {
@@ -193,14 +179,23 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
+          },
+          {
+            "id": "30f8a9a59c4d0874",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,31 +206,36 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "ebfd55b84d242dc8",
+  "active": "449d3145e1295436",
   "lastOpenFiles": [
+    "posts/embedded/Linux 常用命令手册.md",
+    "posts/embedded/嵌入式学习路线.md",
     "pages/link.md",
+    "posts/嵌入式开发/工具链及脚本.docx",
+    "posts/embedded/Linux 常用命令手册.docx",
+    "public/favicon.ico",
+    "public/黑猫_200x200.ico",
+    "public/黑猫.png",
+    "posts/files/Pasted image 20250409121736.png",
+    "posts/files/Pasted image 20250409121716.png",
+    "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
+    "posts/embedded",
+    "pages/about.md",
     "_tmp_31792_3fcc5fd15965f12a186b8ccf100cc066",
     "pnpm-lock.yaml.3887046404",
     "node_modules/@vercel",
     "_tmp_604_5bf82a3b681b35bf7d361e90d6e7e2dd",
-    "pages/about.md",
     "page_1.md",
     "pages/category.md",
     "pages/tags.md",
     "posts/learn-c/codewars/codewars-e3.md",
     "posts/learn-c/codewars/codewars-e2.md",
     "posts/learn-c/codewars/codewars-e1.md",
-    "posts/learn-c/C语言内存管理：代码区、静态区、栈区、堆区.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
     "template/默认模板.md",
     "pages/archives.md",
     "posts/lubancat/记一次给鲁班猫3编译内核.md",
     "node_modules/vitepress_cache/deps/_metadata.json",
-    "node_modules/vitepress_cache/deps/vue.js.map",
-    "node_modules/vitepress_cache/deps/vitepress___minisearch.js.map",
-    "node_modules/vitepress_cache/deps/vue.js",
-    "node_modules/vitepress_cache/deps/vitepress___minisearch.js",
-    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
     "page_3.md",
     "posts/lubancat/未命名.md",
     "posts/files/Pasted image 20250404213832.png",
@@ -248,15 +248,10 @@
     "posts/hp-calc/hp39gii/PEACE0.1.md",
     "posts/hp-calc/hp39gii/PPT.md",
     "posts/hp-calc/hp39gii/HCBoy.md",
-    "posts/hp-calc/hp39gii/FIRE2.md",
-    "posts/hp-calc/hp39gii/BPoint.md",
     "posts/files/Pasted image 20250329204026.png",
     "posts/files/Pasted image 20250329203622.png",
     "posts/files/Pasted image 20250329203055.png",
     "posts/files/Pasted image 20250329202936.png",
-    "posts/files/Pasted image 20250329202841.png",
-    "posts/files/Pasted image 20250329202652.png",
-    "posts/files/Pasted image 20250329195336.png",
-    "posts/files/Pasted image 20250329194119.png"
+    "posts/files/Pasted image 20250329202841.png"
   ]
 }
