@@ -1,7 +1,7 @@
-![](posts/files/Pasted%20image%2020250409200256.png)
-![left|520](posts/files/Pasted%20image%2020250409201301.png)
+![](/posts/files/Pasted%20image%2020250409200256.png)
+![left|520](/posts/files/Pasted%20image%2020250409201301.png)
 
-![](posts/files/Pasted%20image%2020250409201049.png)
+![](/posts/files/Pasted%20image%2020250409201049.png)
 
 ```js
 // ==UserScript==
