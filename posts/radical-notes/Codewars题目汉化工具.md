@@ -1,4 +1,6 @@
 ![](/posts/files/Pasted%20image%2020250409200256.png)
+
+[[posts/learn-c/codewars/codewars-e4|codewars-e4]]
 ![left|520](/posts/files/Pasted%20image%2020250409201301.png)
 
 ![](/posts/files/Pasted%20image%2020250409201049.png)

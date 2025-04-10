@@ -31,6 +31,8 @@
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.5.0"
+    "@gardeners/markdown-it-wikilinks": "^1.5.1",
+    "@vercel/analytics": "^1.5.0",
+    "sanitize-filename": "^1.6.3"
   }
 }

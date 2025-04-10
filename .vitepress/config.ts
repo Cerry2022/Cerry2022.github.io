@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { getPosts } from './theme/serverUtils'
+import wikilinks from '@gardeners/markdown-it-wikilinks' // 导入插件
+import sanitize from 'sanitize-filename'; 
 
 //每页的文章数量
 const pageSize = 10
@@ -50,7 +52,38 @@ export default defineConfig({
             },
         },
 
-    }
+    },
+	markdown: {
+	config: (md) => {
+	md.use(wikilinks({
+	baseURL: '/',          // 链接的基础 URL
+	relativeBaseURL: './', // 相对链接的基础 URL
+	makeAllLinksAbsolute: true,   // 所有链接使用绝对路径
+	uriSuffix: '.html',        // 链接的后缀名
+	htmlAttributes: {},         // 链接的 HTML 属性
+
+	//  处理图片相关的配置：
+	assetPrefix: '/',           // 图片路径前缀 (根据你的图片存放位置修改)
+	imagePattern: /!\[\[([^\]]+?)\]\]/,   // 匹配图片语法的正则表达式
+
+	// 其他配置（根据需要调整）：
+	linkPattern: /\[\[([^|]+?)(\|([\s\S]+?))?\]\]/,   // 原本的链接匹配规则
+	generatePageNameFromLabel: (label) => label,  // 这里不需要转换
+	postProcessPageName: (pageName) => {
+	  pageName = pageName.trim();
+	  pageName = pageName.split('/').map(sanitize).join('/');
+	  pageName = pageName.replace(/\s+/, '_');
+	  return pageName;
+	},
+	postProcessLabel: (label) => {
+	  label = label.trim();
+	  return label;
+	},
+	includeWikilinks: false    // 避免图片也套上 [[...]]，看起来会很奇怪
+	}))
+	}
+	},
+	cleanUrls: true,
     /*
       optimizeDeps: {
           keepNames: true

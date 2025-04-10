@@ -1,8 +1,8 @@
 {
-  "attachmentFolderPath": "posts/files",
+  "attachmentFolderPath": "/posts/files",
   "newLinkFormat": "absolute",
   "alwaysUpdateLinks": true,
-  "useMarkdownLinks": true,
+  "useMarkdownLinks": false,
   "showUnsupportedFiles": false,
   "readableLineLength": false,
   "showLineNumber": false,
