@@ -1,4 +1,4 @@
-![](/posts/files/Pasted%20image%2020250409200256.png)
+ ![[/posts/files/Pasted image 20250409200256.png]]
 
 [[posts/learn-c/codewars/codewars-e4|codewars-e4]]
 ![left|520](/posts/files/Pasted%20image%2020250409201301.png)
@@ -7,453 +7,481 @@
 
 ```js
 // ==UserScript==
-// @name         Codewars题目汉化工具（Vue路由优化版）
+// @name         Codewars 题目汉化工具（Reload on Route Change）
 // @namespace    http://tampermonkey.net/
-// @version      1.3.2
-// @description  专为Vue路由优化的Codewars题目汉化工具，支持中英对照和智能路由监听
-// @author       Cerry2025
-// @match        https://*.codewars.com/kata/*
+// @version      1.5.0_reload
+// @description  Codewars 题目汉化工具，支持中英对照、用户 API Key，并在 Kata 切换时自动刷新页面。
+// @author       Cerry2025 & AI Assistant & User Request
+// @match        https://*.codewars.com/*
 // @grant        GM_xmlhttpRequest
-// @connect      open.bigmodel.cn
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_registerMenuCommand
 // @connect      generativelanguage.googleapis.com
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // 配置参数
+    // 配置
     const CONFIG = {
-        API_KEY: 'AIzaSyCgaqTsQ1pwyHyztdVEOm8rUH8ZHWWmO8Q',
-        TARGET_SELECTOR: '#description',
-        LOADING_TEXT: 'Loading description...',
-        TRANSLATE_DELAY: 0,
-        STORAGE_KEY: 'codewars_translate_mode',
-        MAX_ROUTER_RETRY: 50,
-        ROUTER_CHECK_INTERVAL: 100
+        TARGET_SELECTOR: '#description',             // 题目描述选择器
+        LOADING_TEXT: 'Loading description...',      // 加载中文本
+        TRANSLATE_DELAY: 350,                        // 翻译延迟（毫秒）
+        STORAGE_KEY_MODE: 'codewars_translate_mode', // 翻译模式存储键
+        STORAGE_KEY_APIKEY: 'codewars_gemini_apikey',// API Key 存储键
+        ROUTE_CHECK_INTERVAL: 500,                   // 路由检查间隔（毫秒）
+        API_ENDPOINT: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', // Gemini API 端点
+        TRANSLATION_STATE_ATTR: 'data-translation-state' // 翻译状态属性
     };
 
-    // 样式注入
-    const addStyles = () => {
-        const startTime = performance.now();
+    // API Key 管理
+
+    /**
+     * 获取 API Key。
+     * 如果未设置，则提示用户输入并存储。
+     * @returns {string|null} API Key 或 null（如果未设置）
+     */
+    function getApiKey() {
+        let apiKey = GM_getValue(CONFIG.STORAGE_KEY_APIKEY, null);
+        if (!apiKey || apiKey.trim() === '') {
+            apiKey = prompt('请输入您的 Google AI Gemini API 密钥以启用翻译功能。\n（您可以在 Google AI Studio 免费获取）');
+            if (apiKey && apiKey.trim() !== '') {
+                apiKey = apiKey.trim();
+                GM_setValue(CONFIG.STORAGE_KEY_APIKEY, apiKey);
+                alert('API 密钥已保存。');
+                return apiKey;
+            } else {
+                alert('未提供有效的 API 密钥。翻译功能将无法使用。\n您可以通过油猴菜单 "设置/更新 API 密钥" 来设置。');
+                return null;
+            }
+        }
+        return apiKey;
+    }
+
+    // 注册油猴菜单命令，用于设置或更新 API Key
+    GM_registerMenuCommand('设置/更新 API 密钥', () => {
+        const currentKey = GM_getValue(CONFIG.STORAGE_KEY_APIKEY, '');
+        const newKey = prompt('请输入或更新您的 Google AI Gemini API 密钥:', currentKey);
+        if (newKey !== null) {
+            const trimmedKey = newKey.trim();
+            GM_setValue(CONFIG.STORAGE_KEY_APIKEY, trimmedKey);
+            alert(trimmedKey ? 'API 密钥已更新！请刷新页面或导航到新题目以生效。' : 'API 密钥已清除。');
+        } else {
+            alert('操作已取消。');
+        }
+    });
+
+    // 样式与 UI
+
+    /**
+     * 注入 CSS 样式。
+     */
+    function addStyles() {
         const style = document.createElement('style');
+        style.id = 'codewars-translator-styles';
         style.textContent = `
-            /* --- 双语容器样式 --- */
-
-            /* 双语模式下容器本身的样式 (可选) */
-            .bilingual-container {
-                /* 可以添加边框或背景来视觉上分组 */
-                /* border: 1px solid #e0e0e0; */
-                /* background-color: #f9f9f9; */
-                /* 如果希望在内层 div 周围有空间，可以添加 padding */
-                /* padding: 10px; */
-            }
-
-            /* 原始文本块样式 */
-            .bilingual-container > .original-text {
-                opacity: 0.75; /* 使原始文本稍微不那么突出 */
-                font-size: 0.95em; /* 字体稍小 */
-                line-height: 1.5; /* 保证良好的可读性 */
-                margin-bottom: 0; /* 重置 margin，依赖 hr 分隔 */
-                /* 注意：这里没有边框 */
-            }
-
-            /* 脚本添加的分隔线样式 */
-            .bilingual-container > hr.translation-separator {
-                margin: 15px 0; /* 分隔线上下的垂直间距 */
-                border: none; /* 移除默认边框 */
-                border-top: 1px solid #eee; /* 使用虚线作为顶部边框 */
-                height: 0;
-            }
-
-            /* 翻译后文本块样式 */
-            .bilingual-container > .translated-text {
-                border: 1px dashed #ccc; /* 为翻译后的文本块添加外虚线框 */
-                padding: 5px; /* 在虚线框内部添加内边距，防止文字紧贴边框 */
-                line-height: 1.6; /* 行高可以适当调整 */
-                margin-top: 0; /* 重置 margin，依赖 hr 分隔 */
-            }
-
-            /* "Original:" 和 "Translated:" 标签样式 */
-            .bilingual-container > .original-text > strong,
-            .bilingual-container > .translated-text > strong {
-                display: block; /* 让标签单独占一行 */
-                margin-bottom: 0px; /* 标签下方的间距 */
-                font-size: 0.8em;   /* 标签字体更小 */
-                color: #777;       /* 标签使用灰色 */
-                text-transform: uppercase; /* 标签大写 */
-                font-weight: bold;
-            }
-
-
-            /* --- 双语容器内的代码块样式 --- */
-
-            /* 针对 <pre> 标签本身设置背景、边框和间距 */
-            .bilingual-container pre {
-                background-color: #f0f0f0; /* 稍暗的背景以示区分 */
-                border: 1px solid #e0e0e0; /* 细边框 */
-                border-radius: 4px; /* 圆角 */
-                padding: 0; /* 重置内边距，在 code 标签上应用 */
-                margin-top: 1em; /* 上边距 */
-                margin-bottom: 1em; /* 下边距 */
-                overflow: hidden; /* 在 code 滚动前隐藏溢出 */
-            }
-
-            /* 针对 <pre> 内部的 <code> 标签设置代码样式 */
-            .bilingual-container pre code {
-                display: block;       /* 确保是块级元素 */
-                white-space: pre;     /* 保留空白符和换行 */
-                overflow-x: auto;   /* 需要时添加水平滚动条 */
-                padding: 10px 12px;   /* 代码块内部的填充 */
-                font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /* 标准等宽字体 */
-                font-size: 0.9em;     /* 代码字体稍小 */
-                color: #333;          /* 代码深色文字 */
-                background: none;     /* 继承 pre 的背景或透明 */
-                border: none;         /* code 标签本身无边框 */
-                border-radius: 0;     /* code 标签本身无圆角 */
-            }
-
-
-            /* --- 其他工具样式 (保持不变) --- */
-
-            /* 头部切换按钮的样式 */
-            .header-toggle {
-                margin-left: auto;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-
-            /* 翻译错误信息的样式 */
-            .translation-error {
-                color: #f44336 !important; /* 错误使用红色 */
-                font-weight: bold;
-                border: 1px solid #f44336; /* 红色边框 */
-                padding: 8px 10px; /* 内边距 */
-                margin: 10px 0;    /* 外边距 */
-                border-radius: 4px; /* 圆角 */
-                background-color: #ffebee; /* 淡红色背景 */
-                display: block; /* 确保占用空间 */
-            }
+            .bilingual-container .original-text { opacity: 0.75; font-size: 0.95em; line-height: 1.3; margin-bottom: 0; }
+            .bilingual-container hr.translation-separator { margin: 15px 0; border: none; border-top: 1px solid #eee; }
+            .bilingual-container .translated-text { border: 1px dashed #ccc; padding: 5px; line-height: 1.3; margin-top: 0; }
+            .bilingual-container .original-text strong,
+            .bilingual-container .translated-text strong { display: block; margin-bottom: 0px; font-size: 0.8em; color: #777; text-transform: uppercase; font-weight: bold; }
+            .header-toggle { margin-left: auto; display: flex; align-items: center; gap: 6px; cursor: pointer; padding-right: 10px; }
+            .translation-status-tip { padding: 5px 0; margin-bottom: 10px; display: block; font-size: 0.9em; }
+            .translation-status-tip.tip { color: #666; font-style: italic; border-bottom: 1px dashed #eee; }
+            .translation-status-tip.error { color: #f44336; font-weight: bold; border: 1px solid #f44336; padding: 8px 10px; background-color: #ffebee; border-radius: 4px; margin: 10px 0; }
         `;
-        document.head.appendChild(style);
-        const endTime = performance.now();
-        console.log(`addStyles 执行时间: ${endTime - startTime} ms`);
-    };
+        if (!document.getElementById(style.id)) {
+            document.head.appendChild(style);
+        }
+    }
 
-    // 控制面板开关
-    const addHeaderSwitch = () => {
-        const startTime = performance.now();
-        const headerContainer = document.querySelector('.mb-2.border-0.overflow-hidden.flex.items-center.justify-start');
-        if (!headerContainer || headerContainer.querySelector('.header-toggle')) return;
+    /**
+     * 添加中英对照切换开关到页面头部。
+     */
+    function addHeaderSwitch() {
+        const checkHeaderInterval = setInterval(() => {
+            const headerContainer = document.querySelector('.flex.items-center.justify-start .bg-ui-section');
+            const targetArea = headerContainer?.closest('.px-4.md\\:px-6');
 
-        const toggleHTML = `
-            <div class="header-toggle">
-                <input type="checkbox" id="bilingualToggleHeader">
-                <label for="bilingualToggleHeader">中英对照模式</label>
-            </div>
-        `;
-        headerContainer.insertAdjacentHTML('beforeend', toggleHTML);
+            if (targetArea && !targetArea.querySelector('.header-toggle')) {
+                clearInterval(checkHeaderInterval);
 
-        const toggle = headerContainer.querySelector('#bilingualToggleHeader');
-        toggle.checked = localStorage.getItem(CONFIG.STORAGE_KEY) === 'bilingual';
-        toggle.addEventListener('change', () => {
-            localStorage.setItem(CONFIG.STORAGE_KEY, toggle.checked ? 'bilingual' : 'replace');
+                const isBilingual = localStorage.getItem(CONFIG.STORAGE_KEY_MODE) === 'bilingual';
+                const toggleDiv = document.createElement('div');
+                toggleDiv.className = 'header-toggle';
+                toggleDiv.innerHTML = `
+                    <input type="checkbox" id="bilingualToggleHeader" style="cursor: pointer; margin-left: 10px;" ${isBilingual ? 'checked' : ''}>
+                    <label for="bilingualToggleHeader" style="cursor: pointer; user-select: none;">中英对照</label>
+                `;
+
+                const referenceNode = targetArea.querySelector('button, a');
+                if(referenceNode){
+                    targetArea.insertBefore(toggleDiv, referenceNode);
+                } else {
+                     targetArea.appendChild(toggleDiv);
+                }
+
+                const toggle = toggleDiv.querySelector('#bilingualToggleHeader');
+                toggle.addEventListener('change', () => {
+                    localStorage.setItem(CONFIG.STORAGE_KEY_MODE, toggle.checked ? 'bilingual' : 'replace');
+                    alert('模式已切换。刷新页面或导航到新题目以查看效果。');
+                     location.reload();
+                });
+            }
+        }, 300);
+
+        setTimeout(() => clearInterval(checkHeaderInterval), 10000);
+    }
+
+    /**
+     * 设置状态提示。
+     * @param {HTMLElement} element 目标元素
+     * @param {string} text 提示文本
+     * @param {boolean} isError 是否为错误提示
+     */
+    function setStatusTip(element, text, isError = false) {
+        removeStatusTip(element);
+        const tipElement = document.createElement('div');
+        tipElement.className = `translation-status-tip ${isError ? 'error' : 'tip'}`;
+        tipElement.textContent = text;
+        element.insertBefore(tipElement, element.firstChild);
+    }
+
+    /**
+     * 移除状态提示。
+     * @param {HTMLElement} element
+     */
+    function removeStatusTip(element) {
+        const tipElement = element.querySelector(':scope > .translation-status-tip');
+        if (tipElement) {
+            tipElement.remove();
+        }
+    }
+
+    // 路由变化检测（简化：页面刷新）
+    const initialPath = location.pathname;
+
+    function checkForRouteChange() {
+        if (location.pathname !== initialPath && location.pathname.includes('/kata/')) {
+            console.log(`Codewars Translator: Kata 切换，从 ${initialPath} 到 ${location.pathname}。 刷新页面。`);
+            clearInterval(routeCheckInterval);
             location.reload();
-        });
-        const endTime = performance.now();
-        console.log(`addHeaderSwitch 执行时间: ${endTime - startTime} ms`);
-    };
+        }
+    }
 
-    // Vue路由监听核心
-    const setupRouterListener = () => {
-        const startTime = performance.now();
-        let lastPath = location.pathname;
-        let routerCheckAttempts = 0;
-        let routerFound = false; // 添加一个标志，表示是否找到router
+    const routeCheckInterval = setInterval(checkForRouteChange, CONFIG.ROUTE_CHECK_INTERVAL);
 
-        const findVueRouter = () => {
-            const appElement = document.querySelector('#app');
-            if (appElement?._vue__?.$router) return appElement._vue__.$router;
-            if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__?.Vue?.apps?.[0]?.$router) {
-                return window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue.apps[0].$router;
-            }
-            return null;
-        };
+    // 翻译核心逻辑
 
-        const handleRouteChange = () => {
-            const handleRouteChangeStartTime = performance.now();
-            if (location.pathname === lastPath) return;
-            lastPath = location.pathname;
-            resetTranslationState();
-            initTranslationObserver();
-            const handleRouteChangeEndTime = performance.now();
-            console.log(`handleRouteChange 执行时间: ${handleRouteChangeEndTime - handleRouteChangeStartTime} ms`);
-        };
+    /**
+     * 检查元素是否包含加载文本。
+     * @param {HTMLElement} element
+     * @returns {boolean}
+     */
+    const isLoading = (element) => element.textContent.includes(CONFIG.LOADING_TEXT);
 
-        const routerCheckInterval = setInterval(() => {
-            if (routerFound) { // 如果已经找到router，则停止interval
-                clearInterval(routerCheckInterval);
-                return;
-            }
+    /**
+     * 等待内容加载完成。
+     * @param {HTMLElement} element
+     * @returns {Promise<void>}
+     */
+    function waitForContentReady(element) {
+        return new Promise((resolve, reject) => {
+            if (!isLoading(element)) return resolve();
 
-            if (routerCheckAttempts++ > CONFIG.MAX_ROUTER_RETRY) {
-                clearInterval(routerCheckInterval);
-                return;
-            }
-
-            const router = findVueRouter();
-            if (router) {
-                routerFound = true; // 设置标志
-                clearInterval(routerCheckInterval);
-                router.afterEach(handleRouteChange);
-            }
-
-        }, CONFIG.ROUTER_CHECK_INTERVAL);
-
-        const endTime = performance.now();
-        console.log(`setupRouterListener 执行时间: ${endTime - startTime} ms`);
-    };
-
-    // 状态重置
-    const resetTranslationState = () => {
-        const startTime = performance.now();
-        document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(el => {
-            el._translation_processed = false;
-            el.removeAttribute('data-translated');
-        });
-        const endTime = performance.now();
-        console.log(`resetTranslationState 执行时间: ${endTime - startTime} ms`);
-    };
-
-    // 在processContent函数中处理图片占位符
-    const processContent = async (element) => {
-        const startTime = performance.now();
-        if (element._translation_processed) return;
-
-        const checkLoadingState = () => element.textContent.includes(CONFIG.LOADING_TEXT);
-        if (checkLoadingState()) {
-            const loadingObserver = new MutationObserver((_, obs) => {
-                if (!checkLoadingState()) {
-                    obs.disconnect();
-                    processContent(element);
+            let resolved = false;
+            const observer = new MutationObserver(() => {
+                if (!isLoading(element)) {
+                    if(resolved) return;
+                    resolved = true;
+                    observer.disconnect();
+                    resolve();
                 }
             });
-            loadingObserver.observe(element, { childList: true, subtree: true });
+            observer.observe(element, { childList: true, subtree: true, characterData: true });
+
+             const timeoutId = setTimeout(() => {
+                if (resolved) return;
+                observer.disconnect();
+                console.warn("waitForContentReady 超时。");
+                resolve();
+            }, 10000);
+
+             const originalResolve = resolve;
+             resolve = () => {
+                 clearTimeout(timeoutId);
+                 originalResolve();
+             }
+        });
+    }
+
+
+    /**
+     * 处理单个元素：检查状态、加载、API Key，然后翻译。
+     * @param {HTMLElement} element
+     */
+    async function processElement(element) {
+        const currentState = element.getAttribute(CONFIG.TRANSLATION_STATE_ATTR);
+
+        if (['processing', 'translated', 'error'].includes(currentState)) {
             return;
         }
 
-        element._translation_processed = true;
-        let originalHTML = element.innerHTML;
+        if (!element.textContent || element.textContent.trim() === '') {
+             setTimeout(() => {
+                if (!element.textContent || element.textContent.trim() === '') {
+                    element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'empty');
+                } else {
+                     processElement(element);
+                }
+             }, 300);
+            return;
+        }
 
-        // 新增：提取图片并创建占位符
-        const { cleanedHTML, imgPlaceholders } = extractImages(originalHTML);
-        const tipElement = createTranslationTip('正在翻译...');
-        element.prepend(tipElement);
+        if (isLoading(element)) {
+            element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'loading');
+            setStatusTip(element, '等待题目内容加载...');
+            await waitForContentReady(element);
+            removeStatusTip(element);
+            if (!element.textContent || element.textContent.trim() === '') {
+                element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'empty');
+                return;
+            }
+            element.removeAttribute(CONFIG.TRANSLATION_STATE_ATTR);
+        }
+
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            setStatusTip(element, '错误：未设置 API 密钥。请通过脚本菜单设置。', true);
+            element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'error');
+            return;
+        }
+
+        element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'processing');
+        setStatusTip(element, '正在翻译 (使用 Gemini)...');
+
+        if (!element.dataset.originalHtml) {
+             element.dataset.originalHtml = element.innerHTML;
+        }
+        const originalHTML = element.dataset.originalHtml;
 
         try {
-            const translatedHTML = await translateContent(cleanedHTML);  // 使用清理过的HTML翻译
-            applyTranslation(element, originalHTML, restoreImages(translatedHTML, imgPlaceholders), imgPlaceholders);
+            const { cleanedHTML, placeholders } = extractPlaceholders(originalHTML);
+
+            if (cleanedHTML.replace(/<!-- PLACEHOLDER_\d+ -->/g, '').trim() === '') {
+                 removeStatusTip(element);
+                 element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'translated');
+                 element.innerHTML = originalHTML;
+                 return;
+            }
+
+            const translatedHTMLRaw = await callTranslationAPI(cleanedHTML, apiKey);
+            applyTranslation(element, originalHTML, translatedHTMLRaw, placeholders);
+
+            removeStatusTip(element);
+            element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'translated');
+
         } catch (error) {
-            tipElement.textContent = '翻译失败，请刷新重试';
-            tipElement.classList.add('translation-error');
             console.error('翻译错误:', error);
+            setStatusTip(element, `翻译失败：${error.message || error}`, true);
+            element.setAttribute(CONFIG.TRANSLATION_STATE_ATTR, 'error');
         }
-        const endTime = performance.now();
-        console.log(`processContent 执行时间: ${endTime - startTime} ms`);
-    };
+    }
 
-    // 新增：图片处理工具函数
-    const extractImages = (html) => {
-        const startTime = performance.now();
-        const imgRegex = /<img\b[^>]*>/g;
-        const imgPlaceholders = [];
+    /**
+     * 提取 HTML 中的 img 和 pre/code 标签，替换为占位符。
+     * @param {string} html
+     * @returns {{cleanedHTML: string, placeholders: Array<string>}}
+     */
+    function extractPlaceholders(html) {
+        const placeholders = [];
         let index = 0;
-
-        const cleanedHTML = html.replace(imgRegex, (match) => {
-            imgPlaceholders.push(match);
-            return `<!-- IMG_PLACEHOLDER_${index++} -->`;
+        const cleanedHTML = html.replace(/<(img|pre|code)\b[^>]*>.*?<\/\1>|<(img)\b[^>]*?\/?>(?!\s*<\/(img)>)/gis, (match) => {
+            placeholders.push(match);
+            return `<!-- PLACEHOLDER_${index++} -->`;
         });
+        return { cleanedHTML, placeholders };
+    }
 
-        const endTime = performance.now();
-        console.log(`extractImages 执行时间: ${endTime - startTime} ms`);
-        return { cleanedHTML, imgPlaceholders };
-    };
-
-    const restoreImages = (translatedHTML, imgPlaceholders) => {
-        const startTime = performance.now();
-        const restoredHTML = translatedHTML.replace(/<!-- IMG_PLACEHOLDER_(\d+) -->/g, (_, index) => {
-            return imgPlaceholders[parseInt(index)] || '';
+    /**
+     * 恢复占位符。
+     * @param {string} translatedHTML
+     * @param {Array<string>} placeholders
+     * @returns {string}
+     */
+    function restorePlaceholders(translatedHTML, placeholders) {
+        return translatedHTML.replace(/<!-- PLACEHOLDER_(\d+) -->/g, (_, indexStr) => {
+            const index = parseInt(indexStr, 10);
+            return placeholders[index] !== undefined ? placeholders[index] : `<!-- MISSING_PLACEHOLDER_${index} -->`;
         });
-        const endTime = performance.now();
-        console.log(`restoreImages 执行时间: ${endTime - startTime} ms`);
-        return restoredHTML;
-    };
+    }
 
-// 修改后的 applyTranslation 函数 (方法1 - 更新 innerHTML)
-    const applyTranslation = (element, originalHTML, translated, imgPlaceholders) => {
-        const startTime = performance.now();
-        const isBilingual = localStorage.getItem(CONFIG.STORAGE_KEY) === 'bilingual'; // 检查双语模式
+    /**
+     * 调用 Gemini API 翻译。
+     * @param {string} htmlToTranslate - 清理后的 HTML
+     * @param {string} apiKey
+     * @returns {Promise<string>} 翻译后的 HTML
+     */
+    function callTranslationAPI(htmlToTranslate, apiKey) {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                method: 'POST',
+                url: `${CONFIG.API_ENDPOINT}?key=${apiKey}`,
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: `将以下 HTML 片段中的可读文本内容翻译成 **简体中文**。
+请严格保留所有原始 HTML 标签（例如 <img>、<pre>、<code>、<a>、<strong>、<em> 等），其属性、结构以及任何占位符（例如 <!-- PLACEHOLDER_0 -->）。
+**不要翻译** <pre>...</pre> 或 <code>...</code> 标签内的内容。
+仅翻译这些受保护元素之外的用户可见文本。确保输出是有效的 HTML。
 
-        // 1. 清理从 API 返回的原始翻译文本
-        const cleanTranslation = translated
-            .replace(/\\"/g, '"')      // 处理转义引号
-            .replace(/^"|"$/g, '')    // 移除首尾可能存在的引号
-            .replace(/\\n/g, '\n')    // 处理转义换行符
-            .replace(/^```html|```$/g, ''); // 移除可能的Markdown代码块标记
+输入 HTML:
+\`\`\`html
+${htmlToTranslate}
+\`\`\`
 
-        // --- 开始修改 ---
+翻译后的 HTML (简体中文):`
+                        }]
+                    }],
+                     generationConfig: {
+                    }
+                }),
+                responseType: 'json',
+                timeout: 45000,
+                onload: (res) => {
+                    if (res.status === 200 && res.response) {
+                        const candidate = res.response.candidates?.[0];
+                        let text = candidate?.content?.parts?.[0]?.text;
+                        const finishReason = candidate?.finishReason;
+                        const blockReason = res.response.promptFeedback?.blockReason;
 
-        // 移除之前可能添加的双语样式类，以防模式切换
+                        if (blockReason) {
+                            return reject(new Error(`API 请求被阻止: ${blockReason}。检查内容安全设置或提示。`));
+                        }
+                        if (finishReason && finishReason !== "STOP" && finishReason !== "MAX_TOKENS") {
+                             if(finishReason === "MAX_TOKENS"){
+                                console.warn("翻译可能由于 MAX_TOKENS 限制而不完整。");
+                             } else {
+                                return reject(new Error(`API 完成原因问题: ${finishReason}。内容可能不安全或发生错误。`));
+                             }
+                        }
+                        if (text) {
+                            text = text.replace(/^```(?:html)?\s*|```$/gi, '').trim();
+                            resolve(text);
+                        } else if (finishReason === "STOP" && !text) {
+                            console.warn("API 返回 STOP 但没有文本。假设没有可翻译内容。");
+                            resolve("");
+                        }
+                        else {
+                            console.error("API 响应详情:", JSON.stringify(res.response, null, 2));
+                            reject(new Error('API 响应格式错误：在 candidate 部分中未找到有效的文本。'));
+                        }
+                    } else {
+                        let errorMsg = `API 请求失败，状态码 ${res.status}`;
+                        let errorDetails = '(无更多详细信息)';
+                         try {
+                             if (res.response && res.response.error) {
+                                 errorDetails = res.response.error.message || JSON.stringify(res.response.error);
+                             } else if (res.responseText) {
+                                 try {
+                                    const errJson = JSON.parse(res.responseText);
+                                    errorDetails = errJson.error?.message || res.responseText;
+                                 } catch(e) { errorDetails = res.responseText; }
+                             }
+                             if (errorDetails) errorMsg += `: ${errorDetails}`;
+                             if (res.status === 400) errorMsg += " (Bad request - 检查 API key/请求格式)";
+                             if (res.status === 403) errorMsg += " (Forbidden - 检查 API key 权限)";
+                             if (res.status === 429) errorMsg += " (Rate limit exceeded)";
+                             if (res.status >= 500) errorMsg += " (服务器端 API 错误)";
+                         } catch (e) {
+                             console.error("错误解析错误响应:", e);
+                         }
+                         reject(new Error(errorMsg));
+                    }
+                },
+                onerror: (err) => reject(new Error(`翻译期间的网络错误: ${err.error || '未知网络问题'}`)),
+                ontimeout: () => reject(new Error('翻译请求超时'))
+            });
+        });
+    }
+
+    /**
+     * 应用翻译结果。
+     * @param {HTMLElement} element 目标元素
+     * @param {string} originalHTML 原始 HTML
+     * @param {string} translatedRaw 翻译后的原始文本
+     * @param {Array<string>} placeholders 占位符
+     */
+    function applyTranslation(element, originalHTML, translatedRaw, placeholders) {
+        const isBilingual = localStorage.getItem(CONFIG.STORAGE_KEY_MODE) === 'bilingual';
+        const cleanTranslation = translatedRaw
+            .replace(/^```(?:html)?\s*|```$/gi, '')
+            .trim();
+
+        const translatedWithContent = restorePlaceholders(cleanTranslation, placeholders);
+
+        element.innerHTML = '';
         element.classList.remove('bilingual-container');
-        // 尝试移除之前双语模式下添加的内部 div，避免重复添加
-        const oldOriginal = element.querySelector('.original-text');
-        const oldTranslated = element.querySelector('.translated-text');
-        const oldSeparator = element.querySelector('hr.translation-separator'); // 假设分隔符有特定类
-        if (oldOriginal) oldOriginal.remove();
-        if (oldTranslated) oldTranslated.remove();
-        if (oldSeparator) oldSeparator.remove();
 
-
-        // 2. 根据是否为双语模式，更新元素的 innerHTML
         if (isBilingual) {
             element.classList.add('bilingual-container');
             element.innerHTML = `
                 <div class="original-text">
-                  <strong>Original:</strong><br>
-                  ${originalHTML}
+                  <strong>原文:</strong>
+                  <div>${originalHTML}</div>
                 </div>
-                <hr class="translation-separator" >
+                <hr class="translation-separator">
                 <div class="translated-text">
-                   <strong>Translated:</strong><br>
-                   ${cleanTranslation}
+                   <strong>翻译:</strong>
+                   <div>${translatedWithContent || '(翻译为空)'}</div>
                 </div>
             `;
         } else {
-            // 非双语模式:
-            // 直接用清理后的翻译内容替换元素的 innerHTML
-            element.innerHTML = cleanTranslation;
+            element.innerHTML = translatedWithContent || originalHTML;
         }
-        // 3. 在原始元素上标记为已翻译 (这步很重要，确保不会重复翻译)
-        element.setAttribute('data-translated', 'true');
-        const endTime = performance.now();
-        console.log(`applyTranslation 执行时间: ${endTime - startTime} ms for element:`, element.id || element.tagName + '.' + element.className.split(' ')[0]);
-    };
-
-
-    // 翻译功能（增加响应校验）
-    const translateContent = (html) => {
-        return new Promise((resolve, reject) => {
-            const requestStartTime = new Date();
-            console.log(`[${requestStartTime.toISOString()}] 开始翻译请求`);
-            console.log(`[${requestStartTime.toISOString()}] 发送的请求内容:`, {
-                prompt: [{
-                    role: "user",
-                    content: `专业翻译编程题目...` // 简略显示，避免日志过长
-                }],
-                temperature: 0.2
-            });
-            console.log(`[${requestStartTime.toISOString()}] 原始HTML内容长度:`, html.length);
-
-            GM_xmlhttpRequest({
-                method: 'POST',
-                url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + CONFIG.API_KEY,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                data: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `仅翻译标签内的文本内容，保留富文本格式，严格保留原始HTML结构和注释标记。遇到注释请原样保留，不要修改或翻译：\n\n${html}`
-                        }]
-                    }]
-                }),
-                responseType: 'json',
-                onload: (res) => {
-                    const responseTime = new Date();
-                    const duration = responseTime - requestStartTime;
-                    console.log(`[${responseTime.toISOString()}] 收到响应 (耗时: ${duration}ms)`);
-                    console.log(`[${responseTime.toISOString()}] 响应状态码:`, res.status);
-
-                    if (res.status === 200) {
-                        console.log(`[${responseTime.toISOString()}] 完整响应内容:`, res.response);
-
-                        if (res.response.candidates?.[0]?.content?.parts?.[0]?.text) {
-                            console.log(`[${responseTime.toISOString()}] 翻译成功，返回翻译后内容`);
-                            console.log(`[${responseTime.toISOString()}] 翻译后内容长度:`, res.response.candidates[0].content.parts[0].text.length);
-                            resolve(res.response.candidates[0].content.parts[0].text);
-                        } else {
-                            const errorMsg = `API返回数据格式错误，缺少有效内容`;
-                            console.error(`[${responseTime.toISOString()}] ${errorMsg}`, res.response);
-                            reject(errorMsg);
-                        }
-                    } else {
-                        const errorMsg = `API错误: ${res.status}`;
-                        console.error(`[${responseTime.toISOString()}] ${errorMsg}`, res);
-                        reject(errorMsg);
-                    }
-                },
-                onerror: (err) => {
-                    const errorTime = new Date();
-                    const duration = errorTime - requestStartTime;
-                    console.error(`[${errorTime.toISOString()}] 请求失败 (耗时: ${duration}ms)`, err);
-                    reject(err);
-                },
-                ontimeout: () => {
-                    const errorTime = new Date();
-                    const duration = errorTime - requestStartTime;
-                    console.error(`[${errorTime.toISOString()}] 请求超时 (耗时: ${duration}ms)`);
-                    reject('Request timeout');
-                }
-            });
-        });
-    };
-
-    // DOM观察器（优化节点替换逻辑）
-    const initTranslationObserver = () => {
-        const startTime = performance.now();
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === 1 && node.matches(CONFIG.TARGET_SELECTOR)) {
-                        processContent(node);
-                    }
-                });
-
-                if (mutation.type === 'characterData' || mutation.type === 'childList') {
-                    document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(el => {
-                        if (!el._translation_processed) processContent(el);
-                    });
-                }
-            });
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            characterData: true
-        });
-
-        document.querySelectorAll(CONFIG.TARGET_SELECTOR).forEach(processContent);
-         const endTime = performance.now();
-        console.log(`initTranslationObserver 执行时间: ${endTime - startTime} ms`);
-    };
-
-    // 辅助函数
-    const createTranslationTip = (text) => {
-        const tip = document.createElement('div');
-        tip.className = 'translation-tip';
-        tip.innerHTML = `<span>🔄 ${text}</span>`;
-        return tip;
-    };
+    }
 
     // 初始化
-    const initialize = () => {
+
+    /**
+     * 脚本初始化。
+     */
+    function initialize() {
+        console.log("Codewars Translator (Reload Version) 初始化...");
         addStyles();
         addHeaderSwitch();
-        setupRouterListener();
-        setTimeout(initTranslationObserver, CONFIG.TRANSLATE_DELAY);
-    };
 
-    initialize();
+        setTimeout(() => {
+            const targetElement = document.querySelector(CONFIG.TARGET_SELECTOR);
+
+            if (targetElement) {
+                processElement(targetElement);
+            } else {
+                console.warn(`在延迟后未找到目标元素 "${CONFIG.TARGET_SELECTOR}"。`);
+                 const fallbackObserver = new MutationObserver((mutations, obs) => {
+                    const element = document.querySelector(CONFIG.TARGET_SELECTOR);
+                     if (element) {
+                        console.log("通过回退 MutationObserver 找到目标元素。");
+                        processElement(element);
+                        obs.disconnect();
+                     }
+                 });
+                 fallbackObserver.observe(document.body, { childList: true, subtree: true });
+                 setTimeout(() => fallbackObserver.disconnect(), 8000);
+            }
+        }, CONFIG.TRANSLATE_DELAY);
+
+        console.log("Codewars Translator 初始化完成。 监控路由变化以进行页面刷新。");
+    }
+
+    // 启动脚本
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
+
 })();
 ```
