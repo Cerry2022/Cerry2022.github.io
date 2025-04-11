@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/codewars/codewars-e5.md",
+                "file": "posts/hp-calc/hp39gii/ELS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codewars-e5"
+              "title": "ELS"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "posts/learn-c/codewars/codewars-e5.md",
+                "file": "posts/hp-calc/hp39gii/ELS.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "codewars-e5 的大纲"
+              "title": "ELS 的大纲"
             }
           },
           {
@@ -213,8 +213,17 @@
   },
   "active": "ac97940ddd1025e0",
   "lastOpenFiles": [
-    "posts/learn-c/codewars/codewars-e4.md",
+    "posts/hp-calc/hp39gii/FIRE2.md",
+    "posts/hp-calc/hp39gii/ELS.md",
+    "public/code/未命名.md",
+    "posts/hp-calc/hp39gii/note.md",
+    "public/code/ELS.txt",
+    "public/code/ELS.txt.md",
+    "posts/files/Pasted image 20250411214356.png",
+    "posts/hp-calc/hp_calc_info.md",
+    "posts/files/Pasted image 20250411214159.png",
     "posts/learn-c/codewars/codewars-e5.md",
+    "posts/learn-c/codewars/codewars-e4.md",
     "posts/radical-notes/Codewars题目汉化工具.md",
     "node_modules/@algolia/client-abtesting/package.json",
     "node_modules/@algolia/client-abtesting/LICENSE",
@@ -227,7 +236,6 @@
     "node_modules/@algolia/client-query-suggestions/index.d.ts",
     "node_modules/@algolia/client-search/README.md",
     "node_modules/@algolia/client-search/package.json",
-    "node_modules/@algolia/client-search/LICENSE",
     "node_modules/@algolia/monitoring/README.md",
     "node_modules/@algolia/recommend/README.md",
     "node_modules/@docsearch/css/README.md",
@@ -243,12 +251,6 @@
     "node_modules/@eslint/eslintrc/README.md",
     "node_modules/@eslint/plugin-kit/node_modules/@eslint/core/README.md",
     "node_modules/@eslint/plugin-kit/README.md",
-    "node_modules/@humanfs/node/README.md",
-    "node_modules/@parcel/watcher/README.md",
-    "node_modules/@parcel/watcher-win32-x64/README.md",
-    "node_modules/@shikijs/vscode-textmate/README.md",
-    "node_modules/@shikijs/vscode-textmate/LICENSE.md",
-    "node_modules/@typescript-eslint/visitor-keys/node_modules/eslint-visitor-keys/README.md",
     "posts/files/Pasted image 20250410165122.png",
     "posts/files/Pasted image 20250410165138.png",
     "public/QQ20250410-170237.png",
@@ -256,8 +258,6 @@
     "posts/files/Pasted image 20250409201301.png",
     "posts/files/Pasted image 20250409201049.png",
     "posts/files/Pasted image 20250409201021.png",
-    "posts/files/Pasted image 20250409200256.png",
-    "public/黑猫.png",
-    "posts/files/Pasted image 20250409121736.png"
+    "posts/files/Pasted image 20250409200256.png"
   ]
 }
