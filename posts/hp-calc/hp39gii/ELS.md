@@ -9,8 +9,8 @@ ELS:俄罗斯方块，添加炸弹。
 
 <a href="/code/ELS.txt" download>ELS.txt</a>
 
-[ELS](public/code/ELS.txt)
+[ELS](/code/ELS.txt)
 
 <a href="/code/ELS.txt" download>ELS_Addons.txt</a>
 
-[ELS_Addons](public/code/ELS_Addons.txt)
+[ELS_Addons](/code/ELS_Addons.txt)

@@ -15,4 +15,4 @@ FIRE2:[The Fire] 的升级版。基于经典牛顿力学和动量守恒的质点
 
 <a href="/code/FIRE2.txt" download>FIRE2.txt</a>
 
-[FIRE2](public/code/FIRE2.txt)
+[FIRE2](/code/FIRE2.txt)
