@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/hp-calc/hp39gii/PEACE0.1.md",
+                "file": "posts/git/仓库更新与合并.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "PEACE0.1"
+              "title": "仓库更新与合并"
             }
           }
         ]
@@ -200,7 +200,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -213,15 +214,37 @@
   },
   "active": "ac97940ddd1025e0",
   "lastOpenFiles": [
+    "node_modules/vitepress_cache/deps_temp_140a3625/package.json",
+    "node_modules/vitepress_cache/deps_temp_140a3625",
+    "node_modules/vitepress_cache/deps_temp_8fe2cc60/vitepress___@vueuse_integrations_useFocusTrap.js",
+    "node_modules/vitepress_cache/deps_temp_8fe2cc60/vue.js.map",
+    "node_modules/vitepress_cache/deps_temp_8fe2cc60/vitepress___minisearch.js",
+    "node_modules/vitepress_cache/deps_temp_8fe2cc60/package.json",
+    "node_modules/vitepress_cache/deps_temp_8fe2cc60",
+    "pnpm-lock.yaml.3910284287",
+    "node_modules/@vercel",
+    "node_modules/@giscus",
+    "node_modules/@modelcontextprotocol",
+    "page_5.md",
+    "page_1.md",
+    "public/test.jpg",
+    "posts/trash/deleted-sample.md",
+    "posts/private-notes/private-sample.md",
+    "posts/draft/draft-sample.md",
+    "posts/2025/vitepress-second.md",
+    "README.md",
+    "posts/lubancat/记一次给鲁班猫3编译内核.md",
+    "posts/git/仓库更新与合并.md",
+    "posts/learn-c/算法详解系列/卷1-算法基础.md",
+    "template/默认模板.md",
+    "posts/hp-calc/hp39gii/PEACE0.1.md",
     "posts/hp-calc/hp39gii/note.md",
     "posts/hp-calc/hp39gii/MyW.md",
     "posts/hp-calc/hp39gii/HCBoy.md",
     "posts/hp-calc/hp39gii/FIRE2.md",
     "posts/hp-calc/hp39gii/ELS.md",
     "posts/hp-calc/hp39gii/PPT.md",
-    "public/code/ELS_Addons.txt",
     "public/code/未命名.md",
-    "public/code/ELS.txt",
     "public/code/ELS.txt.md",
     "posts/files/Pasted image 20250411214356.png",
     "posts/hp-calc/hp_calc_info.md",
@@ -229,35 +252,13 @@
     "posts/learn-c/codewars/codewars-e5.md",
     "posts/learn-c/codewars/codewars-e4.md",
     "posts/radical-notes/Codewars题目汉化工具.md",
-    "node_modules/@algolia/client-abtesting/package.json",
-    "node_modules/@algolia/client-abtesting/LICENSE",
-    "node_modules/@algolia/client-abtesting/index.js",
-    "node_modules/@algolia/client-personalization/package.json",
     "node_modules/@algolia/client-query-suggestions/README.md",
-    "node_modules/@algolia/client-query-suggestions/package.json",
-    "node_modules/@algolia/client-query-suggestions/LICENSE",
-    "node_modules/@algolia/client-query-suggestions/index.js",
-    "node_modules/@algolia/client-query-suggestions/index.d.ts",
-    "node_modules/@algolia/client-search/README.md",
-    "node_modules/@algolia/monitoring/README.md",
-    "node_modules/@algolia/recommend/README.md",
-    "node_modules/@docsearch/css/README.md",
-    "node_modules/@docsearch/js/README.md",
-    "node_modules/@docsearch/react/README.md",
-    "node_modules/@eslint/config-array/node_modules/brace-expansion/README.md",
-    "node_modules/@eslint/config-array/node_modules/minimatch/README.md",
-    "node_modules/@eslint/config-array/README.md",
-    "node_modules/@eslint/eslintrc/node_modules/argparse/README.md",
-    "node_modules/@eslint/eslintrc/node_modules/brace-expansion/README.md",
-    "node_modules/@eslint/eslintrc/node_modules/js-yaml/README.md",
-    "node_modules/@eslint/eslintrc/node_modules/minimatch/README.md",
     "posts/files/Pasted image 20250410165122.png",
     "posts/files/Pasted image 20250410165138.png",
     "public/QQ20250410-170237.png",
     "posts/files/Pasted image 20250410155639.png",
     "posts/files/Pasted image 20250409201301.png",
     "posts/files/Pasted image 20250409201049.png",
-    "posts/files/Pasted image 20250409201021.png",
-    "posts/files/Pasted image 20250409200256.png"
+    "posts/files/Pasted image 20250409201021.png"
   ]
 }

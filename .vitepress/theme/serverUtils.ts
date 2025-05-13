@@ -68,7 +68,7 @@ async function generatePaginationPages(total: number, pageSize: number) {
 page: true
 title: ${i === 1 ? 'home' : 'page_' + i}
 aside: false
-comment: false // 新增 comment: false (来自 upstream/main)
+comment: false
 ---
 <script setup>
 import Page from "./.vitepress/theme/components/Page.vue";
