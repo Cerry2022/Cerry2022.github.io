@@ -1,7 +1,8 @@
 import { defineConfig } from 'vitepress'
 import { getPosts } from './theme/serverUtils'
 import wikilinks from '@gardeners/markdown-it-wikilinks' // 导入插件
-import sanitize from 'sanitize-filename'; 
+import sanitize from 'sanitize-filename';
+
 
 //每页的文章数量
 const pageSize = 10
@@ -35,6 +36,7 @@ export default defineConfig({
         ],
         search: {
             provider: 'local',
+
         },
         //outline:[2,3],
         outline: {
@@ -84,9 +86,4 @@ export default defineConfig({
 	}
 	},
 	cleanUrls: true,
-    /*
-      optimizeDeps: {
-          keepNames: true
-      }
-      */
 })

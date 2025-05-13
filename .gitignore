@@ -5,11 +5,12 @@ dist-ssr
 *.local
 .idea
 pnpm-lock.yaml
+upstream/main
 smartmontools.md
 zsh_history.md
 /*.md
 !/changelog.md
-package-lock.json
+.history
+/package-lock.json
 origin_theme.css
 .vitepress/cache
-.history
