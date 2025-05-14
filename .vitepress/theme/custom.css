@@ -1,17 +1,14 @@
 /* 定义 Source Han Serif SC VF (思源宋体 可变字体) */
 @font-face {
   font-family: 'Source Han Serif SC VF'; /* 你希望在 CSS 中使用的字体名称 */
-  src: url('/fonts/SourceHanSerifSC-VF.ttf') format('woff2'); /* 指向 public 目录下的字体文件路径 */
-  font-weight: 100 900; /* 可变字体通常定义一个权重范围 */
+  src: url('/fonts/SourceHanSerifCN-VF.ttf'); /* 指向 public 目录下的字体文件路径 */
+  font-weight: 550 900; /* 可变字体通常定义一个权重范围 */
   font-display: swap; /* 推荐使用 swap，在字体加载前先显示 fallback 字体 */
-  /* 如果有其他格式，也可以在这里添加 src 列表 */
-  /* src: url('/fonts/SourceHanSerifSC-VF.woff2') format('woff2'),
-       url('/fonts/SourceHanSerifSC-VF.woff') format('woff'); */
 }
 
 
 :root {
-
+    --vp-c-text-0:#000000;
     --vp-c-brand: #2563eb !important;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
@@ -48,8 +45,15 @@ body{
     text-decoration: none;
 }
 .vp-doc p {
+    color: var(--vp-c-text-0);
     font-size: 0.9375rem;
 }
+
+.vp-doc li {
+    color: var(--vp-c-text-1);
+    font-size: 0.9375rem;
+}
+
 .title {
     font-size: 1.5rem !important;
     letter-spacing: 1px;
