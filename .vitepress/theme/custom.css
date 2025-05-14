@@ -8,7 +8,6 @@
 
 
 :root {
-    --vp-c-text-0:#000000;
     --vp-c-brand: #2563eb !important;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
@@ -45,7 +44,6 @@ body{
     text-decoration: none;
 }
 .vp-doc p {
-    color: var(--vp-c-text-0);
     font-size: 0.9375rem;
 }
 
