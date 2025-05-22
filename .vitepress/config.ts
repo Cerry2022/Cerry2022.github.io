@@ -22,7 +22,7 @@ export default defineConfig({
         // 评论的仓库地址
         comment: {
             repo: 'Cerry2022/Cerry2022.github.io',
-            epoid: 'R_kgDOLnx31Q',
+            repoId: 'R_kgDOLnx31Q',
             categoryId: 'DIC_kwDOLnx31c4CjO4g',
         },
         nav: [
