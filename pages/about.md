@@ -4,7 +4,7 @@ title: About
 description: About me
 aside: false
 date: 2025-05-13 10:37
-modifyDate: 2025-05-22 11:55
+modifyDate: 2025-05-22 12:26
 ---
 ## About me
 
@@ -86,4 +86,15 @@ modifyDate: 2025-05-22 11:55
 
  ---
 ### 支持我！请扫描下方二维码
-<div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;"> <div style="text-align: center;"> <img src="/image/wx.png" alt="微信支付二维码" width="200" title="微信支付"> <p>微信支付</p> </div> <div style="text-align: center;"> <img src="/image/zfb.png" alt="支付宝支付二维码" width="200" title="支付宝支付"> <p>支付宝支付</p> </div> </div> 
+<div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+	<div style="text-align: center;">
+		<img src="/image/wx.png" alt="微信支付二维码" width="200" title="微信支付">
+		<p>微信支付</p>
+	</div>
+	<div style="text-align: center;">
+		<img src="/image/zfb.png" alt="支付宝支付二维码" width="200" title="支付宝支付">
+		<p>支付宝支付</p>
+	</div>
+</div> 
+
+<center>感谢您的支持！您的捐助是对我最大的鼓励。</center>

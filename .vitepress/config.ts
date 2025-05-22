@@ -22,7 +22,9 @@ export default defineConfig({
         // 评论的仓库地址
         comment: {
             repo: 'Cerry2022/Cerry2022.github.io',
-            themes: 'github-light',
+            epoid: 'R_kgDOLnx31Q',
+            categoryId: '',
+            themes: 'preferred_color_scheme',
             issueTerm: 'pathname'
         },
         nav: [
