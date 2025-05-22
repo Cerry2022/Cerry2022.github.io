@@ -17,7 +17,11 @@ giscusTalk(
         categoryId: categoryId,
         mapping: 'pathname',
         inputPosition: 'top',
-        lang: 'en',
+        lang: 'zh-CN',
+        locales: {
+                'zh-Hans': 'zh-CN',
+                'en-US': 'en'
+        },
         lightTheme: 'light',
         darkTheme: 'transparent_dark'
     },

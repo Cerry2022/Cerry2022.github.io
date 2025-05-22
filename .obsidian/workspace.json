@@ -318,6 +318,7 @@
   },
   "active": "1d7d5763639f25ee",
   "lastOpenFiles": [
+    "page_1.md",
     "pages/about.md",
     "node_modules/vitepress_cache/deps/vitepress___minisearch.js.map",
     "node_modules/vitepress_cache/deps/vue.js.map",
@@ -329,7 +330,6 @@
     "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js",
     "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js.map",
     "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js",
-    "page_1.md",
     "posts/learn-c/codewars/codewars-e1.md",
     "public/image/wx.png",
     "public/image/zfb.png",

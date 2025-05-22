@@ -23,9 +23,7 @@ export default defineConfig({
         comment: {
             repo: 'Cerry2022/Cerry2022.github.io',
             epoid: 'R_kgDOLnx31Q',
-            categoryId: '',
-            themes: 'preferred_color_scheme',
-            issueTerm: 'pathname'
+            categoryId: 'DIC_kwDOLnx31c4CjO4g',
         },
         nav: [
             { text: 'Home', link: '/' },
