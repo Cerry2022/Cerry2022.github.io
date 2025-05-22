@@ -1,9 +1,10 @@
 ---
 date: 2025-05-14 20:34
-modifyDate: 2025-05-14 21:51
+modifyDate: 2025-05-15 20:03
 title: sizeof的区别：数组vs指针
-category: 
-tags: 
+category: c语言
+tags:
+  - c
 description:
 ---
 ### C 语言 sizeof 的区别：数组 vs 指针
