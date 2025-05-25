@@ -62,8 +62,19 @@
               "icon": "lucide-file",
               "title": "codewars-e1"
             }
+          },
+          {
+            "id": "3648611b98f2d53f",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -344,8 +355,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1d7d5763639f25ee",
+  "active": "3648611b98f2d53f",
   "lastOpenFiles": [
+    "posts/learn-c/leetcode/leetcode-e4.md",
     "posts/learn-c/leetcode/leetcode-e3.md",
     "posts/learn-c/leetcode/leetcode-e1.md",
     "posts/learn-c/leetcode/leetcode-e2.md",
@@ -354,7 +366,6 @@
     "posts/learn-c/codewars/codewars-e3.md",
     "posts/learn-c/codewars/codewars-e4.md",
     "posts/learn-c/codewars/codewars-e5.md",
-    "posts/learn-c/leetcode/leetcode-e4.md",
     "posts/learn-c/c语言小杂碎/asciil.md",
     "posts/learn-c/cpp知识点/cpp-note1.1-std-vector-基础与遍历.md",
     "posts/learn-c/c语言小杂碎/c-cpp-基本数据类型概览.md",
