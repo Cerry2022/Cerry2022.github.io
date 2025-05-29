@@ -1,3 +1,12 @@
+---
+date: 2025-05-25 00:57
+modifyDate: 2025-05-25 00:55
+title: cpp-note1.2-std-string-基础
+category: CPP
+tags:
+  - cpp
+description:
+---
 **`std::string` 进阶与细节**
 
 1.  **本质：**
