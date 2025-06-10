@@ -11,14 +11,10 @@
             "id": "1d7d5763639f25ee",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "posts/learn-c/leetcode/leetcode-e4.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "leetcode-e4"
+              "title": "新标签页"
             }
           },
           {
@@ -36,35 +32,21 @@
             }
           },
           {
-            "id": "c218dc475bb8d8a6",
+            "id": "ca9e17dd3c42c94b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/cpp知识点/cpp-note1.1-std-vector-基础与遍历.md",
+                "file": "posts/learn-c/leetcode/leetcode-刷题整理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cpp-note1.1-std-vector-基础与遍历"
-            }
-          },
-          {
-            "id": "e1374f9897721411",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "posts/learn-c/leetcode/leetcode-e2.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "leetcode-e2"
+              "title": "leetcode-刷题整理"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -345,20 +327,23 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "e1374f9897721411",
+  "active": "ca9e17dd3c42c94b",
   "lastOpenFiles": [
-    "posts/learn-c/leetcode/leetcode-e1.md",
-    "posts/learn-c/leetcode/leetcode-e5.md",
-    "posts/learn-c/leetcode/leetcode-e4.md",
-    "posts/learn-c/leetcode/leetcode-e3.md",
-    "posts/learn-c/leetcode/leetcode-e2.md",
+    "posts/learn-c/leetcode/leetcode-刷题整理.md",
+    "posts/learn-c/c语言小杂碎/c-cpp-基本数据类型概览.md",
+    "posts/learn-c/cpp知识点/cpp-note1.1-std-vector-基础与遍历.md",
+    "posts/private-notes/leetcode/leetcode-e1.md",
+    "posts/private-notes/leetcode/leetcode-e2.md",
+    "posts/private-notes/leetcode",
+    "posts/private-notes/leetcode/leetcode-e5.md",
+    "posts/private-notes/leetcode/leetcode-e4.md",
+    "posts/private-notes/leetcode/leetcode-e3.md",
     "pages/category.md",
     "pages/link.md",
     "pages/about.md",
     "pages/archives.md",
     "pages/tags.md",
     "posts/learn-c/codewars/codewars-e1.md",
-    "posts/learn-c/leetcode/leetcode-刷题整理.md",
     "learn-c/C 语言的秘密武器：那些你必须知道的标准库函数 (1) (附示例).md",
     "learn-c/C.md",
     "posts/learn-c/c语言小杂碎/复制一个数组.md",
@@ -372,8 +357,6 @@
     "posts/learn-c/codewars/codewars-e5.md",
     "posts/learn-c/codewars/codewars-e4.md",
     "posts/learn-c/codewars/codewars-e3.md",
-    "posts/learn-c/codewars/codewars-e2.md",
-    "posts/learn-c/cpp知识点/cpp-note1.1-std-vector-基础与遍历.md",
     "posts/files/Pasted image 20250604142456.png",
     "posts/files/Pasted image 20250604142311.png",
     "posts/files/Pasted image 20250604142301.png",
@@ -387,7 +370,6 @@
     "node_modules/vitepress_cache/deps/vitepress___minisearch.js",
     "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
     "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js.map",
-    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js",
     "public/image/wx.png",
     "public/image/zfb.png",
     "public/test.jpg",

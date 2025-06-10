@@ -1,0 +1,9 @@
+{
+  "blue-topaz-theme@@color-scheme-options": "color-scheme-options-monochrome-topaz",
+  "blue-topaz-theme@@background-image-settings-switch": false,
+  "blue-topaz-theme@@background-notebook-liked-switch": false,
+  "blue-topaz-theme@@background-image-settings-command-palette-switch": false,
+  "blue-topaz-theme@@toggle-bg-panel-page": true,
+  "blue-topaz-theme@@bg-panel-page-option-dark": "panel-page-bg-theme-dark-plant",
+  "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-sublime"
+}

@@ -1,8 +1,7 @@
 ---
-page: true
 date: 2025-05-14 21:55
 modifyDate: 2025-06-10 11:07
-title: 
+title: leetcode-e1
 category: leetcode
 tags:
   - c
