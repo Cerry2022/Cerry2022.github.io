@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/learn-c/leetcode/leetcode-刷题整理.md",
+                "file": "posts/learn-c/leetcode/leetcode-e2.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "leetcode-刷题整理"
+              "title": "leetcode-e2"
             }
           }
         ],
@@ -348,32 +348,32 @@
   "active": "e1374f9897721411",
   "lastOpenFiles": [
     "posts/learn-c/leetcode/leetcode-e1.md",
-    "posts/learn-c/leetcode/leetcode-e2.md",
-    "posts/learn-c/leetcode/leetcode-e3.md",
-    "posts/learn-c/leetcode/leetcode-e4.md",
     "posts/learn-c/leetcode/leetcode-e5.md",
-    "learn-c/C 语言的秘密武器：那些你必须知道的标准库函数 (1) (附示例).md",
-    "learn-c/C.md",
+    "posts/learn-c/leetcode/leetcode-e4.md",
+    "posts/learn-c/leetcode/leetcode-e3.md",
+    "posts/learn-c/leetcode/leetcode-e2.md",
     "pages/category.md",
     "pages/link.md",
+    "pages/about.md",
+    "pages/archives.md",
     "pages/tags.md",
+    "posts/learn-c/codewars/codewars-e1.md",
+    "posts/learn-c/leetcode/leetcode-刷题整理.md",
+    "learn-c/C 语言的秘密武器：那些你必须知道的标准库函数 (1) (附示例).md",
+    "learn-c/C.md",
     "posts/learn-c/c语言小杂碎/复制一个数组.md",
     "changelog.md",
     "template/vitepress模板.md",
     "posts/vitepress-first.md",
     "posts/private-notes/private-sample.md",
-    "pages/about.md",
     "posts/draft/draft-sample.md",
-    "posts/learn-c/leetcode/leetcode-刷题整理.md",
     "posts/learn-c/cpp知识点/cpp-node1.5-std-三种set基础.md",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
     "posts/learn-c/codewars/codewars-e5.md",
     "posts/learn-c/codewars/codewars-e4.md",
     "posts/learn-c/codewars/codewars-e3.md",
     "posts/learn-c/codewars/codewars-e2.md",
-    "posts/learn-c/codewars/codewars-e1.md",
     "posts/learn-c/cpp知识点/cpp-note1.1-std-vector-基础与遍历.md",
-    "posts/radical-notes/配置pico-sdk开发环境-WSL+VScode.md",
     "posts/files/Pasted image 20250604142456.png",
     "posts/files/Pasted image 20250604142311.png",
     "posts/files/Pasted image 20250604142301.png",
