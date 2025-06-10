@@ -1,7 +1,7 @@
 ---
 date: 2024-10-09
 title: Linux下使用线程的案例
-category: 主题
+category: 
 tags:
   - Linux
 description: DeepSeek给出的Linux下使用线程的案例

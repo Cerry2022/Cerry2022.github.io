@@ -1,7 +1,7 @@
 ---
 date: 2024-10-09
 title: Vim自动补全插件
-category: 主题
+category: 
 tags:
   - vim
   - linux

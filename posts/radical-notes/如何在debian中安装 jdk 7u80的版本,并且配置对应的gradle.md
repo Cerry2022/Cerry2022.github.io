@@ -1,7 +1,7 @@
 ---
 date: 2024-12-22
 title: debian配置jdk 7u80
-category: 主题
+category: 
 tags:
   - debian
 description: DeepSeek给出的方案，在Debian中配置jdk 7u80

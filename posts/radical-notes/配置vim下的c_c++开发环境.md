@@ -1,7 +1,7 @@
 ---
 date: 2024-10-09
 title: 配置vim下的c/C++开发环境
-category: 主题
+category: 
 tags:
   - vim
   - cpp
