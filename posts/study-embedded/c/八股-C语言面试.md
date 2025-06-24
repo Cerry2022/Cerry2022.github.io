@@ -1,8 +1,8 @@
 ---
 date: 2025-06-11 10:40
-modifyDate: 2025-06-11 10:41
+modifyDate: 2025-06-24 11:10
 title: 八股-C语言面试
-category: c语言
+category: 八股
 tags:
   - c
   - 嵌入式

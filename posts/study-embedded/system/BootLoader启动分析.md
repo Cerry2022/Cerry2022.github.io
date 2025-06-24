@@ -1,3 +1,12 @@
+---
+date: 2025-06-17 11:10
+modifyDate: 2025-06-24 11:10
+title: BootLoader启动分析
+category: 八股
+tags: 
+description:
+---
+
 ## BootLoader的启动分析
 
 >  **Bootloader是在操作系统运行之前执行的一段小程序。通过这段小程序，我们可以初始化硬件设备、建立内存空间的映射表，从而建立适当的系统软硬件环境，为最终调用操作系统内核做好准备。**

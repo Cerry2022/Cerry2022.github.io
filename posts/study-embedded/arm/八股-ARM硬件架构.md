@@ -1,8 +1,8 @@
 ---
 date: 2025-06-11 10:44
-modifyDate: 2025-06-11 10:44
+modifyDate: 2025-06-24 11:10
 title: 八股-ARM硬件架构
-category: ARM
+category: 八股
 tags: 
 description:
 ---
