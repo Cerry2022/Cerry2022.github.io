@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/git/Git-如何优雅地合并开源项目更新到自己的魔改版本.md",
+                "file": "posts/study-embedded/arm/八股-ARM各类通信协议.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git-如何优雅地合并开源项目更新到自己的魔改版本"
+              "title": "八股-ARM各类通信协议"
             }
           }
         ],
@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 356.5
+    "width": 411.5
   },
   "right": {
     "id": "25bc46adfc53af02",
@@ -319,12 +319,13 @@
   },
   "active": "e3b75b7dce753346",
   "lastOpenFiles": [
-    "posts/git/Git-如何将克隆的开源项目发布到自己的GitHub，并优雅地合并上游更新.md",
-    "posts/git/Git-如何优雅地合并开源项目更新到自己的魔改版本.md",
     "posts/study-embedded/arm/八股-ARM硬件架构.md",
+    "posts/study-embedded/arm/八股-ARM各类通信协议.md",
+    "posts/learn-c/leetcode/leetcode-刷题整理.md",
+    "posts/git/Git-2-如何将克隆的开源项目发布到自己的GitHub，并优雅地合并上游更新.md",
+    "posts/git/Git-1-如何优雅地合并开源项目更新到自己的魔改版本.md",
     "posts/study-embedded/c/八股-C语言面试.md",
     "posts/study-embedded/arm",
-    "posts/learn-c/leetcode/leetcode-刷题整理.md",
     "posts/learn-c/c语言小杂碎/asciil码表.md",
     "posts/learn-c/c语言小杂碎/c-cpp-基本数据类型概览.md",
     "posts/study-embedded/可参考资源.md",
@@ -352,7 +353,6 @@
     "posts/private-notes/leetcode/leetcode-e3.md",
     "pages/category.md",
     "pages/link.md",
-    "pages/about.md",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
     "posts/files/Pasted image 20250604142456.png",
     "posts/files/Pasted image 20250604142311.png",
