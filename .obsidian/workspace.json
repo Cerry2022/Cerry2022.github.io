@@ -39,12 +39,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/about.md",
+                "file": "posts/git/git-3-常用命令.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "about"
+              "title": "git-3-常用命令"
             }
           }
         ],
@@ -358,12 +358,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "400c5bad950fb02c",
+  "active": "89664a9f7bfdbee5",
   "lastOpenFiles": [
+    "page_7.md",
+    "page_6.md",
+    "pages/about.md",
     "public/image/tb.jpg",
     "posts/learn-c/cpp知识点/cpp小问生成器.md",
     "public/image/wx.png",
-    "pages/about.md",
     "posts/files/taobaoquan.jpg",
     "pages/link.md",
     "posts/private-notes/嵌入式linux项目/嵌入式Linux + 摄像头 + NPU + Web后台项目.md",
@@ -393,7 +395,6 @@
     "posts/study-embedded/c/一个程序的加载和运行.md",
     "posts/study-embedded/c/未命名.md",
     "posts/study-embedded/c/八股-c语言面试.md",
-    "posts/study-embedded/c/c语言.md",
     "Clippings",
     "posts/study-embedded/cpp",
     "posts/study-embedded/c",
