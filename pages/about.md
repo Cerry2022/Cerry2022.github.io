@@ -98,3 +98,6 @@ modifyDate: 2025-05-22 12:26
 </div> 
 
 <center>感谢您的支持！您的捐助是对我最大的鼓励。</center>
+
+### 淘宝店铺
+<img src="/image/tb.png" alt="淘宝店铺惊喜码" width="200" title="淘宝店铺">

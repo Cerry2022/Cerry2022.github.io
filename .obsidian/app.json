@@ -6,5 +6,11 @@
   "showUnsupportedFiles": false,
   "readableLineLength": false,
   "showLineNumber": false,
-  "focusNewTab": true
+  "focusNewTab": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
