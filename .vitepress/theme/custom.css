@@ -1,57 +1,183 @@
-/* 定义 Source Han Serif SC VF (思源宋体 可变字体) */
+/* ==========================================================================
+   1. 字体定义与优化
+   ========================================================================== */
+
+/* 
+ * 推荐：在运行字体子集化工具（如 font-spider）后，此文件会被工具自动修改。
+ * 这里的定义是为你提供一个更好的起点。
+ */
 @font-face {
-  font-family: 'Source Han Serif SC VF'; /* 你希望在 CSS 中使用的字体名称 */
-  src: url('/fonts/SourceHanSerifCN-VF.ttf'); /* 指向 public 目录下的字体文件路径 */
-  font-weight: 550 900; /* 可变字体通常定义一个权重范围 */
-  font-display: swap; /* 推荐使用 swap，在字体加载前先显示 fallback 字体 */
+  font-family: 'Source Han Serif SC VF';
+  src: url('/fonts/SourceHanSerifCN-VF.ttf.woff2') format('woff2'), /* 优先使用压缩率更高的 woff2 */
+       url('/fonts/SourceHanSerifCN-VF.ttf') format('truetype');
+  font-weight: 400 900;
+  font-display: swap; /* 关键：在字体加载期间先显示备用字体 */
+  /* unicode-range: U+...;  字体子集化工具会自动添加这个，进一步优化 */
 }
 
+
+/* ==========================================================================
+   2. 全局颜色变量定义 (:root & .dark)
+   ========================================================================== */
 
 :root {
-    --vp-c-brand: #2563eb !important;
-    --vp-c-brand-light: var(--vp-c-brand);
-    --vp-c-brand-lighter: var(--vp-c-brand);
-    --vp-c-brand-dark: var(--vp-c-brand);
-    --vp-c-brand-darker: var(--vp-c-brand);
+    /* ======== 品牌色 - 核心强调色 (鲜亮焦糖色/琥珀色) ======== */
+    --vp-c-brand: #C17A3A;
+    --vp-c-brand-light: #D48F57;
+    --vp-c-brand-lighter: #E6A374;
+    --vp-c-brand-dark: #A9682D;
+    --vp-c-brand-darker: #8E5624;
 
-    --vp-font-family-base: 'Source Han Serif SC VF','Noto Serif SC', serif;
-    /* pure theme color */
+    /* ======== 新增：强调色 (Accent Color - 鼠尾草绿色系) ======== */
+    --vp-c-accent: #7A9B7A;         /* 主强调色：经典的鼠尾草绿 (Sage Green) */
+    --vp-c-accent-light: #93B393;    /* 亮鼠尾草绿 */
+    --vp-c-accent-dark: #638263;      /* 深鼠尾草绿 */
+    --vp-c-accent-darker: #4F6A4F;     /* 更深的橄榄绿 */
+
+    /* ======== 文本色 ======== */
+    --vp-c-text-1: #6B4F3A;
+    --vp-c-text-2: #8E7A6B;
+    --vp-c-text-3: #A6988D;
+    --vp-c-text-code: #855d3c;
+
+    /* ======== 背景色 ======== */
+    --vp-c-bg: #FCFAF7;
+    --vp-c-bg-soft: #F6F2EC;
+    --vp-c-bg-alt: #F9F6F2;
+    --vp-c-bg-mute: var(--vp-c-bg-soft);
+
+    /* ======== 边框与分割线 ======== */
+    --vp-c-divider: #EBE5DD;
+    --vp-c-border: #E0D9CF;
+    
+    /* ======== 自定义变量继承 ======== */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
-    --date-font-family: Georgia, sans-serif;
-    --bt-theme-title: #000;
-    /* code */
-    --vp-code-font-size: 0.675em;
+    --bt-theme-title: var(--vp-c-text-1);
+    
+    /* ======== 标签样式变量 ======== */
+    --tag-bg-color: var(--vp-c-bg);
+    --tag-text-color: var(--vp-c-brand);
+    --tag-border-color: #E0D9CF;
+    --tag-hover-bg-color: var(--vp-c-bg-soft);
+    --tag-hover-text-color: var(--vp-c-brand-dark);
+    --tag-hover-border-color: var(--vp-c-brand);
+
+    /* ======== 置顶文章背景色 ======== */
+    --pinned-post-bg-color: #F6F2EC;
 }
+
 .dark {
-    --vp-c-brand: #3b82f6;
-    --bt-theme-title: #fff
+    /* 品牌色 */
+    --vp-c-brand: #E5B67A;
+    --vp-c-brand-light: #EDC493;
+    --vp-c-brand-lighter: #F4D3AD;
+    --vp-c-brand-dark: #D3A461;
+    --vp-c-brand-darker: #C09248;
+
+    /* 新增：暗模式下的强调色 */
+    --vp-c-accent: #8BA88B;
+    --vp-c-accent-light: #A3C0A4;
+    --vp-c-accent-dark: #739074;
+    --vp-c-accent-darker: #5B785C;
+
+    /* 文本色 */
+    --vp-c-text-1: #E0D8CC;
+    --vp-c-text-2: #C2B8AA;
+    --vp-c-text-3: #A39988;
+    --vp-c-text-code: #d4c5af;
+
+    /* 背景色 */
+    --vp-c-bg: #2F2620;
+    --vp-c-bg-soft: #40362E;
+    --vp-c-bg-alt: #382F28;
+    --vp-c-bg-mute: var(--vp-c-bg-soft);
+
+    /* 边框与分割线 */
+    --vp-c-divider: #4F433A;
+    --vp-c-border: #60544B;
+
+    --bt-theme-title: var(--vp-c-text-1);
+
+    /* 暗模式下的标签和置顶颜色 */
+    --tag-bg-color: var(--vp-c-bg);
+    --tag-text-color: var(--vp-c-brand);
+    --tag-border-color: #60544B;
+    --tag-hover-bg-color: var(--vp-c-bg-soft);
+    --tag-hover-text-color: var(--vp-c-brand-light);
+    --tag-hover-border-color: var(--vp-c-brand);
+    --pinned-post-bg-color: #40362E;
 }
 
-body{
-	font-size:18px;
+
+
+/* ==========================================================================
+   3. 全局样式重置与优化
+   ========================================================================== */
+
+body {
+	font-size: 18px;
+    /* 优化字体备用栈 */
+    font-family: 'Source Han Serif SC VF',
+                 /* 以下是备用字体，按优先级排列 */
+                 "Noto Serif SC", /* 思源宋体的 Google Fonts 版本 */
+                 "Songti SC", /* 苹果系统的华文宋体 */
+                 "STSong", /* 苹果系统的华文宋体 */
+                 "SimSun", /* Windows 系统的中易宋体 */
+                 serif; /* 最后的通用备用 */
 }
 
-/* theme reset start */
-
+/* 移除全局布局的 !important，除非必要 */
 .Layout {
-    min-height: calc(100vh - 78px) !important; /* reduce copyright */
+    min-height: calc(100vh - 78px);
 }
 
+/* 统一链接样式 */
 .vp-doc a {
     color: var(--vp-c-text-1);
     font-weight: 500;
     text-decoration: none;
+    transition: color 0.25s;
 }
-.vp-doc p {
-    font-size: 0.9375rem;
+.vp-doc a:hover {
+    color: var(--vp-c-brand);
 }
 
+.vp-doc p,
 .vp-doc li {
-    color: var(--vp-c-text-1);
     font-size: 0.9375rem;
+    color: var(--vp-c-text-1);
+    line-height: 1.5 !important; /* 增加行高，提升宋体阅读体验 */
 }
 
+.vp-doc .custom-block.tip {
+  background-color: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-accent);
+}
+.vp-doc .custom-block.tip .custom-block-title {
+  color: var(--vp-c-accent-dark);
+}
+
+
+/* 外部链接样式 */
+.vp-doc a[href^="http"] {
+    color: var(--vp-c-accent-light);
+    border-bottom: 1px dotted var(--vp-c-accent-light);
+}
+.vp-doc a[href^="http"]:hover {
+    color: var(--vp-c-accent-darker);
+    border-bottom-color: var(--vp-c-accent-darker);
+}
+
+/* 标题样式优化 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* 为标题设置稍粗的字重 */
+}
+h1 { font-size: 1.5rem !important; padding-top: 14px; }
+h2 { font-size: 1.25rem !important; border-top: none !important; border-bottom: 1px solid var(--vp-c-divider); padding-bottom: 0.5rem; margin-top: -0.5rem !important; margin-bottom: 1rem !important; }
+h3 { font-size: 1.1rem !important; margin-top: 2rem !important; }
+
+/* 你的自定义 .title 类 */
 .title {
     font-size: 1.5rem !important;
     letter-spacing: 1px;
@@ -60,33 +186,8 @@ body{
     font-family: Optima, sans-serif !important;
 }
 .title a {
-    color: var(--bt-theme-title)!important;
+    color: var(--bt-theme-title) !important;
 }
-.content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
-    color: var(--vp-c-brand);
-    font-weight: 500 !important;
-    border-bottom: 1px solid var(--vp-c-brand);
-}
-.content a[rel~='noreferrer']:hover {
-    color: #888;
-}
-h1 {
-    font-size: 1.375rem !important;
-    font-weight: 500 !important;
-    padding-top: 14px;
-}
-h2 {
-    font-size: 1.125rem !important;
-    font-weight: 500 !important;
-    border-bottom: 1px solid var(--vp-c-divider-light);
-    border-top: none !important;
-    margin: inherit !important;
-}
-h3 {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-}
-/* for aside start */
 .aside {
     position: fixed !important;
     right: 24px;
@@ -94,9 +195,13 @@ h3 {
 .VPDoc {
     padding-top: 10px !important;
 }
+/* 代码块样式 */
 .VPDoc div[class*='language-']{
 	border-radius: 8px;
 	margin: 16px 0;
+	font-size : 0.9rem !important;
+	line-height: 0.5 !important;
+    border: 2px solid var(--vp-c-divider);
 }
 .container {
     max-width: 60rem !important;
@@ -110,6 +215,8 @@ h3 {
 .VPDoc.has-aside .content-container {
     max-width: 60rem !important;
 }
+
+
 
 @media (min-width: 768px) {
     .VPDoc {

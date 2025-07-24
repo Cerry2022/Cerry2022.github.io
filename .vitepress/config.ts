@@ -40,7 +40,8 @@ export default defineConfig({
         },
         //outline:[2,3],
         outline: {
-            label: '文章摘要'
+            level: [2, 3, 4],
+            label: '文章摘要',
         },
         socialLinks: [{ icon: 'github', link: 'https://github.com/Cerry2022/Cerry2022.github.io' }]
     } as any,
