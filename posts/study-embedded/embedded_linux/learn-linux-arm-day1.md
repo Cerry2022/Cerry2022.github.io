@@ -1,3 +1,12 @@
+---
+date: 2025-07-17 09:26
+modifyDate: 2025-07-24 19:59
+title: learn-linux-arm-day1
+category: Linux
+tags:
+  - linux
+description:
+---
  
 #### gcc预处理c文件
 
@@ -17,7 +26,7 @@ sudo gcc -S hello_arm.i -o hello_arm.s -v
 ```
 注意：这里是大写S 如果输入小写s就相当于编译了一个可执行文件了
 编译后的汇编文件输出
-![[Pasted image 20250717100125.png]]
+![[posts/files/Pasted image 20250717100125.png]]
 #### gcc编译汇编
 ```shell
 gcc -c hello_arm.s -o hello_arm.o -v 
@@ -45,11 +54,11 @@ gcc hello_arm.o -o hello_arm -v -static
 静态编译与动态编译比较
 
 静态
-![[Pasted image 20250717101331.png]]
-静态
-![[Pasted image 20250717101341.png]]
+![[posts/files/Pasted image 20250717101331.png]]
+静态态
+![[posts/files/Pasted image 20250717101341.png]]
 
-![[Pasted image 20250717101522.png]]
+![[posts/files/Pasted image 20250717101522.png]]
 
 可见 静态编译耗时更久，且生成文件体积更大
 
@@ -139,7 +148,9 @@ endif
 #### 特殊文件系统
 - 进程文件系统:procfs,挂载在/proc,存放进程相关信息,任务管理器
 - 设备文件系统:devfs/,挂载在/dev.存放硬件操作接口
-![[Pasted image 20250717180747.png]]
+
+![[posts/files/Pasted image 20250717180747.png]]
+
 
 ### 文件描述符和打开模式
 #### 系统io编程
@@ -322,7 +333,8 @@ fwrite库函数用于把数据写入到文件流。它的函数原型如下：
 ```c
 #include <stdio.h>
 size_t fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream
-);```
+);
+```
 
 它的操作与fread相反，把ptr数组中的内容写入到stream文件流，写入的项数为nmemb，每项 大小为size，返回值为成功写入的项数（项的单位为size）。
 
@@ -362,4 +374,4 @@ int fseek(FILE *stream, long offset, int whence);
 | r+           | O_RDWR                          |
 | w+           | O_RDWR \| O_CREAT \| O_TRUNC    |
 | a+           | O_RDWR \| O_CREAT \| O_APPEND   |
-		- mode：当open函数的flag值设置为O_CREAT时，必须使用mode参数来设置文件 与用户相关的权限。mode可用的权限如下表所示，表中各个参数可使用“| ”来组 合。
+- mode：当open函数的flag值设置为O_CREAT时，必须使用mode参数来设置文件 与用户相关的权限。mode可用的权限如下表所示，表中各个参数可使用“| ”来组 合。
