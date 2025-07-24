@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/private-notes/private-sample.md",
+                "file": "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "private-sample"
+              "title": "鲁班猫3(rk3576)适配3.5英寸屏幕"
             }
           },
           {
@@ -41,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/lubancat/记一次给鲁班猫3编译内核.md",
+                "file": "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "记一次给鲁班猫3编译内核"
+              "title": "wsl下NAT网络使用默认主机地址无法访问网络修复"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -343,9 +343,29 @@
               "icon": "code-glyph",
               "title": "Shell commands: Custom variables"
             }
+          },
+          {
+            "id": "7dcca7359651b300",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
+          },
+          {
+            "id": "2b9be33a8c41bbb2",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
           }
         ],
-        "currentTab": 19
+        "currentTab": 21
       }
     ],
     "direction": "horizontal",
@@ -361,8 +381,22 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "449d3145e1295436",
+  "active": "790a90073ce2b8a2",
   "lastOpenFiles": [
+    "posts/files/Pasted image 20250724164648.png",
+    "posts/files/Pasted image 20250724164445.png",
+    "posts/files/Pasted image 20250724163800.png",
+    "posts/files/Pasted image 20250724163702.png",
+    "posts/lubancat/记一次给鲁班猫3编译内核.md",
+    "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
+    "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
+    "posts/files/Pasted image 20250721203231.png",
+    "posts/private-notes/private-sample.md",
+    "posts/files/Pasted image 20250721201533.png",
+    "posts/files/Pasted image 20250721201430.png",
+    "posts/files/Pasted image 20250721201153.png",
+    "posts/files/Pasted image 20250721201136.png",
+    "posts/files/Pasted image 20250721201056.png",
     "posts/private-notes/嵌入式linux项目/项目方案三：AI专注力守护与工作流分析仪.md",
     "posts/private-notes/嵌入式linux项目/项目方案二：边缘计算生鲜、药品识别与保质期管理系统.md",
     "posts/private-notes/嵌入式linux项目/嵌入式Linux + 摄像头 + NPU + Web后台项目.md",
@@ -374,28 +408,18 @@
     "posts/study-embedded/可参考资源.md",
     "posts/study-embedded/embedded_linux/learn-linux-arm-day1.md",
     "posts/study-embedded/embedded_linux/learn_linux_arm_day2.md",
-    "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
-    "posts/lubancat/记一次给鲁班猫3编译内核.md",
     "posts/learn-c/cpp知识点/cpp小问生成器.md",
     "posts/files/Pasted image 20250720145601.png",
     "posts/git/git-3-常用命令.md",
-    "public/image/tb.jpg",
     "pages/about.md",
     "posts/git/Git-2-如何将克隆的开源项目发布到自己的GitHub，并优雅地合并上游更新.md",
     "page_7.md",
     "page_6.md",
-    "public/image/wx.png",
-    "posts/files/taobaoquan.jpg",
     "pages/link.md",
     "未命名.canvas",
-    "posts/files/QianJianTec1751712890475 1.svg",
-    "posts/files/QianJianTec1751712890475.svg",
     "posts/learn-c/cpp知识点/cpp小问.md",
     "posts/learn-c/cpp知识点/cpp-node1.5-std-三种set基础.md",
     "posts/learn-c/cpp知识点/cpp-note1.3-std-queue-基础.md",
-    "posts/learn-c/leetcode/leetcode-刷题整理.md",
-    "posts/study-embedded/arm/八股-ARM各类通信协议.md",
-    "posts/study-embedded/arm/八股-ARM硬件架构.md",
     "posts/study-embedded/arm",
     "posts/study-embedded/system",
     "posts/study-embedded/program",
@@ -405,10 +429,6 @@
     "posts/study-embedded",
     "posts/private-notes/leetcode",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
-    "posts/files/Pasted image 20250604142456.png",
-    "posts/files/Pasted image 20250604142311.png",
-    "posts/files/Pasted image 20250604142301.png",
-    "posts/files/Pasted image 20250604141549.png",
     "posts/learn-c/cpp知识点"
   ]
 }
