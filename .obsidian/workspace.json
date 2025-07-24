@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
+                "file": "posts/git/git-3-常用命令.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "wsl下NAT网络使用默认主机地址无法访问网络修复"
+              "title": "git-3-常用命令"
             }
           }
         ],
@@ -383,12 +383,12 @@
   },
   "active": "790a90073ce2b8a2",
   "lastOpenFiles": [
+    "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
     "posts/files/Pasted image 20250724164648.png",
     "posts/files/Pasted image 20250724164445.png",
     "posts/files/Pasted image 20250724163800.png",
     "posts/files/Pasted image 20250724163702.png",
     "posts/lubancat/记一次给鲁班猫3编译内核.md",
-    "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
     "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
     "posts/files/Pasted image 20250721203231.png",
     "posts/private-notes/private-sample.md",
@@ -409,7 +409,6 @@
     "posts/study-embedded/embedded_linux/learn-linux-arm-day1.md",
     "posts/study-embedded/embedded_linux/learn_linux_arm_day2.md",
     "posts/learn-c/cpp知识点/cpp小问生成器.md",
-    "posts/files/Pasted image 20250720145601.png",
     "posts/git/git-3-常用命令.md",
     "pages/about.md",
     "posts/git/Git-2-如何将克隆的开源项目发布到自己的GitHub，并优雅地合并上游更新.md",
