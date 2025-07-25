@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600; /* 为标题设置稍粗的字重 */
 }
 h1 { font-size: 1.5rem !important; padding-top: 14px; }
-h2 { font-size: 1.25rem !important; border-top: none !important; border-bottom: 1px solid var(--vp-c-divider); padding-bottom: 0.5rem; margin-top: -0.5rem !important; margin-bottom: 1rem !important; }
+h2 { font-size: 1.25rem !important; border-top: none !important; border-bottom: none !important; padding-bottom: 0.5rem; margin-top: -0.5rem !important; margin-bottom: 1rem !important; }
 h3 { font-size: 1.1rem !important; margin-top: 2rem !important; }
 
 /* 你的自定义 .title 类 */

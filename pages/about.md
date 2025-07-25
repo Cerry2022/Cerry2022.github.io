@@ -4,7 +4,7 @@ title: About
 description: About me
 aside: false
 date: 2025-05-13 10:37
-modifyDate: 2025-07-25 08:16
+modifyDate: 2025-07-25 08:47
 ---
 ## About me
 
@@ -12,9 +12,9 @@ modifyDate: 2025-07-25 08:16
 
 -   👋 Hi, I'm [ Cerry2025 ]
 -   🚀️ I'm currently working as [ QingDao ]
--   📮️ How to reach me: [cerry2022](https://github.com/cerry2022)
+-   📮️ How to reach me: [Gihub/cerry2022](https://github.com/cerry2022)
 -   📖 My motto: [ Success is small daily steps. ]
--   📝 changelog: \[ [[ changelog2 | <font color="#245bdb"><u>chagelog</u> </font>]] \] 
+-   📝 changelog:[changelog](/changelog.md) [changelog2](/changelog2.md)
 ---
 ### 后端
 

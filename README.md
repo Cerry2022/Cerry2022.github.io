@@ -1,29 +1,15 @@
-# vitepress theme blog pure
+---
+date: 2025-05-13 10:37
+modifyDate: 2025-07-25 08:37
+---
+# Cerry\`blog
+## 介绍
+这是我的个人博客,使用`vitepress-blog-pure`主题
 
-[Live Demo](https://ti.bi)
-
-## 动机
-
-一直想找一个架构足够干净的 ssg 程序，hexo,hugo,vuepress,docsify 等各种网上能找的都试了，总有不满意的地方，包括这些程序的主题也没有直接满意的（编程语言不会，功能太多，生成的 html 的文件还有不少插件的残留等）。
-
-vitepress 足够轻量，系统干净，博客主题这块又是空白，所以做一个自己满意的博客主题吧，诉求就是功能可以少，但要足够的轻量。
-
-认真来说对比博客程序的话，其实当前的功能更像是线上笔记展示。
-
-**计划中的功能**
--   [ ] 等 vitepress 本身稳定了，就做成 npm package 方式的 theme **keep going**
--   [x] 修改原有的评论模块为Giscus，因为原有的有不少问题，新的安装地址：https://giscus.app/ 请按照giscus官网的指导操作更换`.vitepress/theme/components/CommentGiscus.vue`中的信息
--   [x] 发布时排除 `trash` `private-notes` `draft` 这三个目录的md文档
--   [x] 搜索 - vitepress后来的版本天生本地搜索，对普通人来说比algolia好用，很省心
--   [x] ~~留言 基于~~ [utteranc](https://utteranc.es/) ,⚠️2025-04-24 已经换成giscus
--   [x] 分页?!
-
-**不打算维护的功能**
--   广告 - 一般人用不上
--   上一篇｜下一篇 - 博客文章本来没什么关联性，价值不大
+[vitepress-blog-pure主题 项目主页](https://github.com/airene/vitepress-blog-pure)
 ## changelog
-[changelog](./changelog.md)
-
+[changelog](./changelog2.md)
+[changelog2](./changelog2.md)
 ## 使用方法
 
 1.复制以下文件到你的项目根目录
