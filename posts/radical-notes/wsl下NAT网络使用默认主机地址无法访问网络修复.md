@@ -1,6 +1,6 @@
 ---
 date: 2025-07-24 16:49
-modifyDate: 2025-07-24 16:51
+modifyDate: 2025-07-25 08:02
 title: wsl下NAT网络使用默认主机地址无法访问网络修复
 category: 
 tags:
@@ -12,7 +12,7 @@ description:
 一开始是这样的,网卡正常,ip地址也有,dns地址通过宿主机地址获取
 ![[posts/files/Pasted image 20250724163800.png]]
 
-![[/posts/files/Pasted image 20250724163702.png]]
+![[posts/files/Pasted image 20250724163702.png]]
 
 但是ping不上baidu.com,即便是ping 172.26.144.1 也不行
 尝试卸载 虚拟网卡驱动 Hyper-V Virtual Ethernet Adapter 然后再打开 也不行
