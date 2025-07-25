@@ -9,7 +9,6 @@ upstream/main
 smartmontools.md
 zsh_history.md
 /*.md
-!/changelog.md
 .history
 /package-lock.json
 origin_theme.css
