@@ -1,9 +1,10 @@
 ---
 date: 2025-07-18 20:51
-modifyDate: 2025-07-24 20:21
+modifyDate: 2025-07-25 09:29
 title: learn_linux_arm_day2
-category: 
-tags: 
+category: Linux
+tags:
+  - linux
 description:
 ---
 

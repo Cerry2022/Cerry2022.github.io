@@ -102,7 +102,11 @@ modifyDate: 2025-07-25 08:47
 ### 淘宝店铺
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
 	<div style="text-align: center;">
-		<img src="/image/tb.jpg" alt="淘宝店铺惊喜码" width="200" title="淘宝店铺">
+		<img src="/image/taobao.jpg" alt="淘宝店铺" width="200" title="淘宝店铺">
+		<p>淘宝店铺码</p>
+	</div>
+	<div style="text-align: center;">
+		<img src="/image/tbjxm.jpg" alt="淘宝店铺惊喜码" width="200" title="淘宝惊喜码">
 		<p>淘宝惊喜码</p>
 	</div>
 </div>
