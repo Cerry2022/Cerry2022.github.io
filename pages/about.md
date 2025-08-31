@@ -76,12 +76,14 @@ modifyDate: 2025-07-25 08:47
 
 <p>
   <img src="https://img.shields.io/badge/nvovim-blue?logo=vim&logoColor=white " alt="Neovim" style="display: inline-block;" /> 
-  <img src="https://img.shields.io/badge/-VSCode-C0C0C0?logo=Visual-Studio-Code&logoColor=007ACC" alt="VSCode" style="display: inline-block;" /> 
+  <img src="https://img.shields.io/badge/-Emacs-7F5AB6?logo=gnuemacs&logoColor=FFF " alt="Emacs" style="display: inline-block;" />
+  <img src="https://img.shields.io/badge/-VSCode-blue?logo=Visual-Studio-Code&logoColor=007ACC" alt="VSCode" style="display: inline-block;" /> 
    <img src="https://img.shields.io/badge/-Intellij%20IDEA-000?logo=Intellij-IDEA&logoColor=FFF" alt="Intellij IDEA" style="display: inline-block;" /> 
   <img src="https://img.shields.io/badge/-Eclipse-2C2255?logo=Eclipse&logoColor=FFF" alt="Eclipse" style="display: inline-block;" /> 
   <img src="https://img.shields.io/badge/-WebStorm-000?logo=WebStorm&logoColor=FFF" alt="WebStorm" style="display: inline-block;" /> 
   <img src="https://img.shields.io/badge/-PyCharm-C0C0C0?logo=PyCharm&logoColor=000" alt="PyCharm" style="display: inline-block;" /> 
   <img src="https://img.shields.io/badge/-Android%20Studio-C0C0C0?logo=Android-Studio&logoColor=3DDC84" alt="Android Studio" style="display: inline-block;" /> 
+  
 </p>
 
  ---
