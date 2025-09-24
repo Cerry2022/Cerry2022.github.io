@@ -94,7 +94,7 @@ pit_t wait(int *status)
 
 处理子进程退出状态值的宏 WIFEXITED(status)：如果子进程正常退出，则 该宏为真 WEXITSTATUS(status):如果子进程正常退出， 则该宏获取子进程的退出值
 
-![img](Linux_进程/2025-07-19_17-02-30_screenshot.png)
+![img](posts/study-embedded/linux/Linux_进程/2025-07-19_17-02-30_screenshot.png)
 
 -   TASK<sub>RUNNING</sub>:就绪/运行状态
 -   TASK<sub>INTERRUPTIBLE</sub>:可中断睡眠状态

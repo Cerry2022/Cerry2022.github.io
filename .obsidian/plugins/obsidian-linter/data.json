@@ -61,10 +61,10 @@
       "enabled": true,
       "date-created": true,
       "date-created-key": "date",
-      "date-created-source-of-truth": "frontmatter",
+      "date-created-source-of-truth": "file system",
       "date-modified": true,
       "date-modified-key": "modifyDate",
-      "date-modified-source-of-truth": "file system",
+      "date-modified-source-of-truth": "user or Linter edits",
       "format": "YYYY-MM-DD HH:mm",
       "convert-to-utc": false,
       "update-on-file-contents-updated": "never"
