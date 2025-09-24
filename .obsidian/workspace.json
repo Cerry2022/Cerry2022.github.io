@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/study-embedded/linux/NFS 配置记录：为嵌入式开发搭建共享环境.md",
+                "file": "posts/radical-notes/记：WSL下Lubancat的yolov5环境配置.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NFS 配置记录：为嵌入式开发搭建共享环境"
+              "title": "记：WSL下Lubancat的yolov5环境配置"
+            }
+          },
+          {
+            "id": "5531efb68ebc8fe9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "posts/study-embedded/linux/yolov8/a0.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "a0"
             }
           }
         ]
@@ -365,13 +379,17 @@
   },
   "active": "456f20aa8df62b49",
   "lastOpenFiles": [
+    "posts/radical-notes/记：Ubuntu下Lubancat的yolov8环境配置.md",
+    "posts/study-embedded/linux/yolov8/a0.md",
+    "posts/radical-notes/记：WSL下Lubancat的yolov5环境配置.md",
+    "posts/radical-notes/记一次win11安装WSL2及Debian的配置.md",
+    "posts/mac/Mac下配置git.md",
+    "posts/study-embedded/linux/NFS 配置记录：为嵌入式开发搭建共享环境.md",
     "posts/study-embedded/linux/learn-linux-arm-day1.md",
     "posts/study-embedded/linux/learn_linux_arm_day2.md",
-    "posts/study-embedded/linux/NFS 配置记录：为嵌入式开发搭建共享环境.md",
     "posts/hp-calc/hp39gii/My_Linux.md",
     "posts/hp-calc/hp39gii/BtWorld.md",
     "posts/hp-calc/hp39gii/note.md",
-    "posts/study-embedded/linux/yolov8/a0.md",
     "posts/study-embedded/linux/yolov8/a1.md",
     "posts/private-notes/private-sample.md",
     "posts/study-embedded/linux/yolov8",
@@ -401,10 +419,6 @@
     "posts/private-notes/t2.md",
     "posts/private-notes/t3.md",
     "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
-    "posts/lubancat/记一次给鲁班猫3编译内核.md",
-    "README.md",
-    "changelog2.md",
-    "posts/learn-c/leetcode/leetcode-刷题整理.md",
     "scripts/update_mac.sh",
     "scripts/update.sh",
     "scripts",
