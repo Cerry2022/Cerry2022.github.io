@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/study-embedded/linux/yolov8/a1.md",
+                "file": "posts/study-embedded/linux/yolov8/YoloV8(2)：数据集配置及训练.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "a1"
+              "title": "YoloV8(2)：数据集配置及训练"
             }
           }
         ],
@@ -380,11 +380,11 @@
   },
   "active": "5531efb68ebc8fe9",
   "lastOpenFiles": [
+    "posts/study-embedded/linux/yolov8/YoloV8(1)：Ubuntu22.04实体机AMDRocm驱动以及Rocm版torch安装.md",
+    "posts/study-embedded/linux/yolov8/YoloV8(2)：数据集配置及训练.md",
     "posts/files/Pasted image 20250907002219.png",
     "posts/radical-notes/vim自动补全插件.md",
     "posts/files/Pasted image 20250906231057.png",
-    "posts/study-embedded/linux/yolov8/a1.md",
-    "posts/study-embedded/linux/yolov8/a0.md",
     "posts/files/Pasted image 20250907001752.png",
     "posts/study-embedded/linux/learn-linux-arm-day1.md",
     "posts/study-embedded/linux/learn_linux_arm_day2.md",
@@ -416,7 +416,6 @@
     "posts/files/B_Linux_2.png",
     "posts/files/B_Linux.png",
     "page_9.md",
-    "posts/files/ft.gif",
     "posts/hp-calc/hp39gii/FIRE2.md",
     "posts/study-embedded/rots",
     "posts/learn-c/codewars/codewars题目汉化工具.json",

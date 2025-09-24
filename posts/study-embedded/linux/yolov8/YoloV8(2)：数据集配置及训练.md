@@ -1,9 +1,10 @@
 ---
 date: 2025-09-25 00:37
-modifyDate: 1970-01-01 08:00
-title: a1
-category: 
-tags: 
+modifyDate: 2025-09-25 01:16
+title: YoloV8(2)：数据集配置及训练
+category: Linux
+tags:
+  - YoloV8
 description:
 ---
 

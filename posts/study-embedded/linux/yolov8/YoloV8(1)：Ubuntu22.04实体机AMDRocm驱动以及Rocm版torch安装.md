@@ -1,9 +1,10 @@
 ---
 date: 2025-09-08 23:18
-modifyDate:
-title: a0
-category:
+modifyDate: 2025-09-25 01:16
+title: YoloV8(1)：Ubuntu22.04实体机AMDRocm驱动以及Rocm版torch安装
+category: Linux
 tags:
+  - YoloV8
 description:
 ---
 ## 0.安装Ubutu22.04
