@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/radical-notes/记：WSL下Lubancat的yolov5环境配置.md",
+                "file": "posts/study-embedded/linux/learn-linux-arm-day1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "记：WSL下Lubancat的yolov5环境配置"
+              "title": "learn-linux-arm-day1"
             }
           },
           {
@@ -379,14 +379,21 @@
   },
   "active": "456f20aa8df62b49",
   "lastOpenFiles": [
+    "posts/study-embedded/linux/learn_linux_arm_day2.md",
+    "posts/study-embedded/linux/learn-linux-arm-day1.md",
+    "posts/radical-notes/如何在debian中安装 jdk 7u80的版本,并且配置对应的gradle.md",
+    "posts/radical-notes/wsl下NAT网络使用默认主机地址无法访问网络修复.md",
+    "posts/radical-notes/vim自动补全插件.md",
+    "posts/radical-notes/CPU大杂烩.md",
+    "posts/radical-notes/一个linux下使用线程的案例.md",
+    "posts/radical-notes/记一次win11安装WSL2及Debian的配置.md",
+    "posts/radical-notes/记：WSL下Lubancat的yolov5环境配置.md",
+    "posts/study-embedded/linux/Linux 常用命令手册.md",
+    "posts/radical-notes/沉浸式 Codewars 题目汉化工具.md",
     "posts/radical-notes/记：Ubuntu下Lubancat的yolov8环境配置.md",
     "posts/study-embedded/linux/yolov8/a0.md",
-    "posts/radical-notes/记：WSL下Lubancat的yolov5环境配置.md",
-    "posts/radical-notes/记一次win11安装WSL2及Debian的配置.md",
     "posts/mac/Mac下配置git.md",
     "posts/study-embedded/linux/NFS 配置记录：为嵌入式开发搭建共享环境.md",
-    "posts/study-embedded/linux/learn-linux-arm-day1.md",
-    "posts/study-embedded/linux/learn_linux_arm_day2.md",
     "posts/hp-calc/hp39gii/My_Linux.md",
     "posts/hp-calc/hp39gii/BtWorld.md",
     "posts/hp-calc/hp39gii/note.md",
@@ -408,17 +415,10 @@
     "posts/files/ft.gif",
     "posts/hp-calc/hp39gii/FIRE2.md",
     "posts/hp-calc/hp_calc_info.md",
-    "posts/study-embedded/rots/rtos_day1.md",
     "posts/files/Pasted image 20250807210615.png",
     "posts/files/Pasted image 20250807210537.png",
-    "posts/radical-notes/沉浸式 Codewars 题目汉化工具.md",
     "posts/study-embedded/rots",
-    "posts/learn-c/codewars/codewars-e1.md",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
-    "pages/about.md",
-    "posts/private-notes/t2.md",
-    "posts/private-notes/t3.md",
-    "posts/lubancat/鲁班猫3(rk3576)适配3.5英寸屏幕.md",
     "scripts/update_mac.sh",
     "scripts/update.sh",
     "scripts",
