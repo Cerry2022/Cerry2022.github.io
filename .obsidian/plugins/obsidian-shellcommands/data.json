@@ -6,7 +6,8 @@
   "show_autocomplete_menu": true,
   "working_directory": "",
   "default_shells": {
-    "win32": "PowerShell.exe"
+    "win32": "PowerShell.exe",
+    "linux": "/bin/bash"
   },
   "environment_variable_path_augmentations": {},
   "show_installation_warnings": true,

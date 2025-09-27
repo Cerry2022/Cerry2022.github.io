@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/radical-notes/vim自动补全插件.md",
+                "file": "posts/web-build/记：华为云ECS配置和安装宝塔面板.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vim自动补全插件"
-            }
-          },
-          {
-            "id": "5531efb68ebc8fe9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "posts/study-embedded/linux/yolov8/YoloV8(2)：数据集配置及训练.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "YoloV8(2)：数据集配置及训练"
+              "title": "记：华为云ECS配置和安装宝塔面板"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 437.5
+    "width": 228.5
   },
   "right": {
     "id": "25bc46adfc53af02",
@@ -378,12 +363,22 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "5531efb68ebc8fe9",
+  "active": "456f20aa8df62b49",
   "lastOpenFiles": [
-    "posts/study-embedded/linux/yolov8/YoloV8(1)：Ubuntu22.04实体机AMDRocm驱动以及Rocm版torch安装.md",
-    "posts/study-embedded/linux/yolov8/YoloV8(2)：数据集配置及训练.md",
-    "posts/files/Pasted image 20250907002219.png",
+    "posts/files/Pasted image 20250928003542.png",
+    "posts/files/Pasted image 20250928003446.png",
+    "posts/files/Pasted image 20250928003014.png",
+    "posts/files/Pasted image 20250928002755.png",
+    "posts/files/Pasted image 20250928002713.png",
+    "posts/files/Pasted image 20250928002225.png",
     "posts/radical-notes/vim自动补全插件.md",
+    "posts/web-build/记：华为云ECS配置和安装宝塔面板.md",
+    "page_4.md",
+    "page_5.md",
+    "page_6.md",
+    "posts/study-embedded/linux/yolov8/YoloV8(2)：数据集配置及训练.md",
+    "posts/study-embedded/linux/yolov8/YoloV8(1)：Ubuntu22.04实体机AMDRocm驱动以及Rocm版torch安装.md",
+    "posts/files/Pasted image 20250907002219.png",
     "posts/files/Pasted image 20250906231057.png",
     "posts/files/Pasted image 20250907001752.png",
     "posts/study-embedded/linux/learn-linux-arm-day1.md",
@@ -406,17 +401,8 @@
     "posts/study-embedded/linux/yolov8",
     "posts/study-embedded/linux",
     "posts/study-embedded/cpp/CPP_笔记_1-5章.md",
-    "posts/hp-calc/hp39gii/FuckT.md",
-    "posts/hp-calc/hp39gii/BLib.md",
     "posts/files/small3D.png",
     "posts/files/BtWord-3.png",
-    "posts/files/BtWord-2.png",
-    "posts/files/BtWord.png",
-    "posts/files/B_Linux_3.png",
-    "posts/files/B_Linux_2.png",
-    "posts/files/B_Linux.png",
-    "page_9.md",
-    "posts/hp-calc/hp39gii/FIRE2.md",
     "posts/study-embedded/rots",
     "posts/learn-c/codewars/codewars题目汉化工具.json",
     "scripts/update_mac.sh",
