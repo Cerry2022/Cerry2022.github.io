@@ -15,7 +15,7 @@
               "state": {
                 "file": "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
               "title": "成大資工WIKI-FreeRTOS"
@@ -365,8 +365,20 @@
   },
   "active": "456f20aa8df62b49",
   "lastOpenFiles": [
-    "posts/study-embedded/rots/rtos_day1.md",
+    "node_modules/vitepress_cache/deps/vue.js.map",
+    "node_modules/vitepress_cache/deps/vue.js",
+    "node_modules/vitepress_cache/deps/vitepress___minisearch.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___minisearch.js",
+    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___mark__js_src_vanilla__js.js",
+    "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js",
+    "node_modules/vitepress_cache/deps/vitepress___@vueuse_core.js.map",
+    "node_modules/vitepress_cache/deps/vitepress___@vueuse_core.js",
+    "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js.map",
+    "page_1.md",
     "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
+    "posts/study-embedded/rots/rtos_day1.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
     "posts/web-build/记：华为云ECS配置和安装宝塔面板.md",
     "posts/files/Pasted image 20250928003542.png",
@@ -398,19 +410,7 @@
     "posts/mac/Mac下配置git.md",
     "posts/study-embedded/linux/NFS 配置记录：为嵌入式开发搭建共享环境.md",
     "posts/hp-calc/hp39gii/My_Linux.md",
-    "posts/hp-calc/hp39gii/BtWorld.md",
-    "posts/hp-calc/hp39gii/note.md",
-    "posts/study-embedded/linux/yolov8",
-    "posts/study-embedded/linux",
     "posts/files/small3D.png",
-    "posts/study-embedded/rots",
-    "posts/learn-c/codewars/codewars题目汉化工具.json",
-    "scripts/update_mac.sh",
-    "scripts/update.sh",
-    "scripts",
-    "sctues",
-    "新建文件夹",
-    "posts/study-embedded/linux/Linux_进程",
     "未命名.canvas"
   ]
 }

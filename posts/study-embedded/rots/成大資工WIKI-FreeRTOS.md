@@ -5,7 +5,7 @@ category:
 tags:
   - RTOS
 description:
-modifyDate: 2025-12-01 16:09
+modifyDate: 2025-12-01 16:58
 ---
 
 
@@ -1466,7 +1466,6 @@ FreeRTOS提供vTaskSuspend()和vTaskResume()这两个API来提供我们可以让
 资料型态为BaseType_t，宣告在portmacro.h里：
 
 ``` c
-
    typedef long BaseType_t;
 ```
 
@@ -1570,7 +1569,6 @@ ARM 能支援 32-bit 和 16-bit 指令互相切换（THUMB 是 ARM 的 16-bit �
 **Q9：谁把New Task 接到 Ready List**
 
 ``` c
-
     GDB Trace result                                                                                                                                                                           
     
     Breakpoint 1, xTaskGenericCreate (pxTaskCode=0x80003b1 <GameTask>, pcName=0x800ea84 "GameTask", usStackDepth=128, pvParameters=0x0, uxPriority=1, pxCreatedTask=0x0, puxStackBuffer=0x0, 
@@ -1672,12 +1670,12 @@ ARM 能支援 32-bit 和 16-bit 指令互相切换（THUMB 是 ARM 的 16-bit �
             traceMOVED_TASK_TO_READY_STATE( pxTCB ) \
             taskRECORD_READY_PRIORITY( ( pxTCB )->uxPriority ); \
             vListInsertEnd( &( pxReadyTasksLists[ ( pxTCB )->uxPriority ] ), &( ( pxTCB )->xGenericListItem ) )
+
 ```
 
 * traceMOVED_TASK_TO_READY_STATE
 
 ``` c
-
     #ifndef traceMOVED_TASK_TO_READY_STATE
             #define traceMOVED_TASK_TO_READY_STATE( pxTCB )   
     #endif
@@ -1696,6 +1694,7 @@ ARM 能支援 32-bit 和 16-bit 指令互相切换（THUMB 是 ARM 的 16-bit �
         } \
     } /* taskRECORD_READY_PRIORITY */
 ```
+
 
 检查目前task的priority是否高于“当前最高优先权”。如果是，将更新当前最高优先权。
 
@@ -1849,7 +1848,7 @@ value to the ptr {r3-4} and r3 = r3 -4.
 ![](https://wiki.csie.ncku.edu.tw/embedded/stm.png)
 
 
-**Q17:__attribute__(( naked ))  naked是干嘛?**
+**Q17:**attribute**(( naked ))  naked是干嘛?**
 
  function经过compiler compile后都会在function entry和exit加入一些code，如save used registers，add return code.
 
@@ -1916,7 +1915,7 @@ value to the ptr {r3-4} and r3 = r3 -4.
 
 问题是这样的，为了计算 context switch 的时间，我们需要先取的系统的时间(系统启动至今历经的时间)，之前在 Lab40 有使用过 tick count 来取得系统时间，在 visualizer/main.c 中的 get_time() 最后 return 的 `xTaskGetTick() + ( reload - current / reload)` 是目前系统已经执行的 ticks 加上目前系统历经的 count downs 数 ( 1 / x tick，读作『x 分之一 tick』)，这段就是用 tick 来表示目前经历的时间，要把这个 ticks 转成 human readable time，也就是要让 ticks 转换成 second，一个作法就是乘上『单位量级(scale)』，这个 scale 定义在 return 之前，请参考以下片段：
 
-<visualizer/main.c>
+*visualizer/main.c*
 
 ![](https://wiki.csie.ncku.edu.tw/main.png)
 
@@ -1924,7 +1923,7 @@ value to the ptr {r3-4} and r3 = r3 -4.
 
 先往上追 configTICK_RATE_HZ 的定义：
 
-<visualizer/FreeRTOSConfig.h>
+*visualizer/FreeRTOSConfig.h*
 
 ![](https://wiki.csie.ncku.edu.tw/FreeRTOSConfig.png)
 
@@ -1932,14 +1931,14 @@ value to the ptr {r3-4} and r3 = r3 -4.
 但是这样我们还是不知道该给 scale 下什么单位，因为 configTICK_RATE_HZ 只是频率，也就是『每单位时间内有几次tick』，官方并没有定义这个单位时间是什么。
 
 但是我们注意到使用手册中提到，FreeRTOS 在管理 task 的时候，有一个 API – vTaskDelay() 可以用来让 Task 暂停一段时间，使用方法如下：
-<FreeRTOS 官网>
+*FreeRTOS 官网*
 
 ![](https://wiki.csie.ncku.edu.tw/vTaskFunction.png)
 
 这段程式码中使用了 vTaskDelay() 来暂停 task，文件说明这个函数的参数如果是整数常数，单位是 ticks，也就是说传入整数如：vTaskDelay(500)，会暂停 500 ticks，而上述程式码我们传入的参数是 500/portTICK_RATE_MS，注解说这样就可以让 task 暂停 500 ms(10^-3 second)，所以 n / portTICK_RATE_MS 是 ms，然而此时的 n 应该不是 ticks 了(the result of our discussion)
  
 接著我们去追portTICK_RATE_MS 的定义：
-<freertos-basic/freertos/libraries/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h>
+*freertos-basic/freertos/libraries/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h*
 
 ![](https://wiki.csie.ncku.edu.tw/portmacro.png)
 
@@ -2227,7 +2226,7 @@ vTaskList(buf)  将task的所有资讯写进buf内，之后再把buf的内容pri
 
 ![](https://wiki.csie.ncku.edu.tw/end_pxPortStackInitialise.png)
 
-**Q33. 在 FreeRTOS 里面，其 pid 在哪里? 如何知道 task 的 id 资讯? **
+**Q33. 在 FreeRTOS 里面，其 pid 在哪里? 如何知道 task 的 id 资讯?**
 
 FreeRTOS 建立新 task 的方式与 Linux 不同，前者是用 vTaskCreate()，如果有回传，只会回传 pdPass 或 error 来表示 task 建立成功与否，如果要让程式辨识这个 task，在 create 时就要给予 vTaskCreate 一个用来记录该 task TCB 起始位址的 handle 指标，因此 FreeRTOS 没有 PID
 
