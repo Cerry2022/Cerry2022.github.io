@@ -5,5 +5,6 @@
   "blue-topaz-theme@@background-image-settings-command-palette-switch": false,
   "blue-topaz-theme@@toggle-bg-panel-page": true,
   "blue-topaz-theme@@bg-panel-page-option-dark": "panel-page-bg-theme-dark-plant",
-  "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-custom"
+  "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-custom",
+  "primary-theme@@file-line-width": "900px"
 }
