@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
+                "file": "posts/radical-notes/记：Ubuntu24.04下配置esp-idf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "成大資工WIKI-FreeRTOS"
+              "title": "记：Ubuntu24.04下配置esp-idf"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "20250907001752",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -365,6 +365,8 @@
   },
   "active": "456f20aa8df62b49",
   "lastOpenFiles": [
+    "posts/files/Pasted image 20251113002852.png",
+    "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
     "node_modules/vitepress_cache/deps/vue.js.map",
     "node_modules/vitepress_cache/deps/vue.js",
     "node_modules/vitepress_cache/deps/vitepress___minisearch.js.map",
@@ -375,9 +377,7 @@
     "node_modules/vitepress_cache/deps/vitepress___@vueuse_integrations_useFocusTrap.js",
     "node_modules/vitepress_cache/deps/vitepress___@vueuse_core.js.map",
     "node_modules/vitepress_cache/deps/vitepress___@vueuse_core.js",
-    "node_modules/vitepress_cache/deps/vitepress___@vue_devtools-api.js.map",
     "page_1.md",
-    "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
     "posts/study-embedded/rots/rtos_day1.md",
     "posts/learn-c/C语言变量的内存分析：全局变量、静态变量、局部变量与动态变量.md",
     "posts/web-build/记：华为云ECS配置和安装宝塔面板.md",

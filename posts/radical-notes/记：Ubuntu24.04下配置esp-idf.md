@@ -67,7 +67,8 @@ cerry@ROG-Flow-X13 ~/P/e/esp-idf ((v5.4.2))>                                    
 | `idf.toolsPath`     | `/home/cerry/PATH/esp/esp-idf`                       | IDF 源码的根目录 (`IDF_PATH`)。        |
 | `idf.pythonBinPath` | `/home/cerry/miniconda3/envs/esp-idf-env/bin/python` | **Conda 虚拟环境中的 Python 解释器** 路径。 |
 如下：
-![[IMG/Pasted image 20251113002852.png]]
+
+![[posts/files/Pasted image 20251113002852.png]]
 
 > [!note] DF_TOOLS_PATH 和 IDF_PATH
 > - IDF_TOOLS_PATH 是最核心的交叉编译器 比如 xtensa-esp32-elf-gcc ，工具如 esptool.py、ninja、openocd
