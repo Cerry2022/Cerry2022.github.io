@@ -15,7 +15,7 @@
               "state": {
                 "file": "posts/study-embedded/rots/成大資工WIKI-FreeRTOS.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "成大資工WIKI-FreeRTOS"

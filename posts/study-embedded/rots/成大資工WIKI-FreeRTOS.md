@@ -1293,13 +1293,12 @@ Context switch 是指 task A 要交出 CPU 使用权给 task B 时，OS 会将 t
 
 [CORTEX_M4F_STM32_DISCOVERY/main.c](https://github.com/TheKK/myFreeRTOS/blob/exti/CORTEX_M4F_STM32_DISCOVERY/main.c#L106)
 
-
-.. code-block:: c
-
+``` c
     i = 0;
     while( STM_EVAL_PBGetState( BUTTON_USER ) ){
         i++;
     }
+```
 
 
 当 BUTTON_USER 按下后，会先执行 i++ 直到 interruptHandler 处理 interrupt，读 i 值即可得知 interrupt latency，而实作结果发现 i 依旧为 0。
@@ -1484,13 +1483,14 @@ FreeRTOS的task create：
 
 其中Handle存的是新创的TCB这个structure的位址，将来要删除此task的话可以用如下方法：
 
-.. code-block:: c
-
+```c
     /* Use the handle to delete the task. */
     if( xHandle != NULL 
     {
         vTaskDelete( xHandle );
     }
+```
+
 
 而Linux的parent和child为相同的位址空间，若回传为child的位址，将来parent要把child删除时，便也把自己给删除了...所以linux使用的是PID而不是structure的位址。
 
@@ -1688,7 +1688,6 @@ ARM 能支援 32-bit 和 16-bit 指令互相切换（THUMB 是 ARM 的 16-bit �
 * taskRECORD_READY_PRIORITY
 
 ``` c
-
     #define taskRECORD_READY_PRIORITY( uxPriority  ) \
     { \
         if( ( uxPriority ) > uxTopReadyPriority ) \

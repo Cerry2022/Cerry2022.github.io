@@ -5,7 +5,7 @@
   "useMarkdownLinks": false,
   "showUnsupportedFiles": false,
   "readableLineLength": true,
-  "showLineNumber": false,
+  "showLineNumber": true,
   "focusNewTab": true,
   "pdfExportSettings": {
     "pageSize": "Letter",
