@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cerr.top/sitemap.xml
