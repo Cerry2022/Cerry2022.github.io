@@ -1,0 +1,121 @@
+EXPORT MapL:={"Map",0,0,255,126,{"Line",5,15,179,126,0,126,179,126},{"Arc",179,0,255,126,179,63,63,1.5π,0.5π,−1},{"Line",0,0,255,15,255,0,0,0},{"Line",0,0,10,126,0,0,0,126}},Lt;
+
+ItemSearch(Lm,X,Y)
+BEGIN
+LOCAL N,Ln;
+FOR N FROM 6 TO SIZE(Lm) DO
+Ln:=Lm(N);
+IF Ln(2)≤X AND Ln(4)≥X AND Ln(3)≤Y AND Ln(5)≥Y THEN
+IF Ln(1)=="Map" THEN
+ItemSearch(Ln,X,Y);
+IF SIZE(Lt)≠1 THEN BREAK;END;
+ELSE Lt:=Ln;BREAK;END;
+END;
+
+END;
+
+RETURN Lt;
+END;
+
+
+MapDraw(Lm)
+BEGIN
+LOCAL N,Ln;
+FOR N FROM 6 TO SIZE(Lm) DO
+Ln:=Lm(N);
+IF Ln(1)=="Map" THEN
+//RECT_P(Ln(6),Ln(7),Ln(8),Ln(9),2,2);
+MapDraw(Ln);
+ELSE
+IF Ln(1)=="Line" THEN
+LINE_P(Ln(6),Ln(7),Ln(8),Ln(9));END;
+IF Ln(1)=="Arc" THEN
+ARC_P(Ln(6),Ln(7),Ln(8),Ln(9),Ln(10));END;
+
+END;
+
+END;
+END;
+
+EXPORT FIRE2()
+BEGIN
+LOCAL X:=80,Y:=10,Vx,Vy,Fx,Fy;
+LOCAL g:=9.8,Dt:=0.0005,n:=1.6,f:=1;
+LOCAL Nl,Ox,Oy,Nx,Ny,Nf,Nv;
+LOCAL Ln,Pz;
+RECT();
+MapDraw(MapL);
+Ln:=ItemSearch(MapL,X,Y);
+
+IF Ln(1)=="Line" THEN
+//----6---7---8---9
+//----X1--Y1--X2--Y2
+Nl:=√((Ln(8)-Ln(6))²+(Ln(9)-Ln(7))²);
+Nx:=(Ln(9)-Ln(7))/Nl;Ny:=(Ln(6)-Ln(8))/Nl;
+END;
+
+//IF Ln(1)=="Arc" THEN
+//----6--7--8--9--10--11
+//----X--Y--R--S--E---N
+//END;
+
+TEXTOUT_P(Ln(1),220,1,0,0,20,3);
+//TEXTOUT_P(Nx,220,11,0,0,20,3);
+//TEXTOUT_P(Ny,220,21,0,0,20,3);
+
+WHILE 1 DO
+
+//范围判断
+IF Ln(2)≤X AND Ln(4)≥X AND Ln(3)≤Y AND 
+Ln(5)≥Y THEN
+//在范围,碰撞分析
+IF Ln(1)=="Line" THEN
+IF (X-Ln(6))*Nx+(Y-Ln(7))*Ny≤5 THEN Pz:=1;ELSE Pz:=0;END;
+END;
+
+IF Ln(1)=="Arc" THEN
+Nl:=√((X-Ln(6))²+(Y-Ln(7))²);
+Nx:=(Ln(6)-X)/Nl;Ny:=(Ln(7)-Y)/Nl;
+IF Ln(11)*Nl²≤Ln(11)*(Ln(8)+Ln(11)*5)² THEN Pz:=1;ELSE Pz:=0;END;
+END;
+
+IF Ln(1)=="Ba" THEN Pz:=0;END;
+
+ELSE
+//不在范围,获取Ln
+0►Lt;
+Ln:=ItemSearch(MapL,X,Y);
+IF Ln(1)=="Line" THEN
+Nl:=√((Ln(8)-Ln(6))²+(Ln(9)-Ln(7))²);
+Nx:=(Ln(9)-Ln(7))/Nl;Ny:=(Ln(6)-Ln(8))/Nl;
+END;
+
+TEXTOUT_P(Ln(1),220,1,0,0,20,3);
+TEXTOUT_P(Nx,220,11,0,0,20,3);
+TEXTOUT_P(Ny,220,21,0,0,20,3);
+END;//X1Y1X2Y2
+
+//获取力,计算法速度、法力
+Fx:=(ISKEYDOWN(10)-ISKEYDOWN(14))*20;
+Fy:=(ISKEYDOWN(15)-ISKEYDOWN(9))*20+g;
+Nv:=Nx*Vx+Ny*Vy;Nf:=Nx*Fx+Ny*Fy;
+IF Pz=1 AND Nv<0 THEN
+IF Nf<0 THEN
+Vx:=f*Vx-n*Nv*Nx+(Fx-2*Nf*Nx)*Dt;
+Vy:=f*Vy-n*Nv*Ny+(Fy-2*Nf*Ny)*Dt;
+ELSE
+Vx:=f*Vx-n*Nv*Nx+Fx*Dt;
+Vy:=f*Vy-n*Nv*Ny+Fy*Dt;
+END;
+ELSE
+Vx:=Vx+Fx*Dt;Vy:=Vy+Fy*Dt;
+END;
+
+//DRAW(X,Y);
+ARC_P(X,Y,3,3);
+X:=X+Vx*Dt;Y:=Y+Vy*Dt;
+ARC_P(X,Y,3);
+
+END;//WHILE
+
+END;
