@@ -1,0 +1,868 @@
+<!DOCTYPE html><html lang="zh-CN" class="astro-37fxchfa" style="--highlightColor: hsl(var(--primary) / var(--un-text-opacity));"> <head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover" name="viewport"><meta content="IE=edge" http-equiv="X-UA-Compatible"><title>C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例) • cerry2022</title><link rel="icon" type="image/x-icon" href="/favicon/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"><link rel="manifest" href="/favicon/site.webmanifest"><style>@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/b372976faae541b1.woff2") format("woff2");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/20878e2d8370077a.woff2") format("woff2");font-display:swap;font-weight:400;font-style:italic;}@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/8b39278bc39e0777.woff2") format("woff2");font-display:swap;font-weight:500;font-style:normal;}@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/3d991eebd114d582.woff2") format("woff2");font-display:swap;font-weight:500;font-style:italic;}@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/f40548192051856b.woff2") format("woff2");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:Satoshi-f4ae0caae6ef77dc;src:url("/_astro/fonts/0e16b488a08a5186.woff2") format("woff2");font-display:swap;font-weight:700;font-style:italic;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:normal;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:italic;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:500;font-style:normal;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:500;font-style:italic;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:700;font-style:normal;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}@font-face{font-family:"Satoshi-f4ae0caae6ef77dc fallback: Arial";src:local("Arial");font-display:swap;font-weight:700;font-style:italic;size-adjust:98.9231%;ascent-override:102.0995%;descent-override:24.2613%;line-gap-override:10.1089%;}:root{--font-satoshi:Satoshi-f4ae0caae6ef77dc,"Satoshi-f4ae0caae6ef77dc fallback: Arial",sans-serif;}</style><link rel="canonical" href="https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B"><meta content="C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例) • cerry2022" name="title"><meta content="cerry2022的技术博客，分享各种技术干货" name="description"><meta content="cerry2022" name="author"><meta name="color-scheme" content="light dark"><meta content="article" property="og:type"><meta content="C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)" property="og:title"><meta content="cerry2022的技术博客，分享各种技术干货" property="og:description"><meta content="https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B" property="og:url"><meta content="cerry2022" property="og:site_name"><meta content="zh_CN" property="og:locale"><meta content="https://www.cerr.top/images/social-card.png" property="og:image"><meta content="1200" property="og:image:width"><meta content="630" property="og:image:height"><meta content="cerry2022" property="article:author"><meta content="2025-05-13T16:00:00.000Z" property="article:published_time"><meta content="summary_large_image" property="twitter:card"><meta content="https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B" property="twitter:url"><meta content="C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)" property="twitter:title"><meta content="cerry2022的技术博客，分享各种技术干货" property="twitter:description"><meta content="https://www.cerr.top/images/social-card.png" property="twitter:image"><link href="/sitemap-index.xml" rel="sitemap"><link rel="alternate" type="application/rss+xml" title="cerry2022" href="https://www.cerr.top/rss.xml"><meta content="Astro v6.2.1" name="generator"><script type="module">console.log("%c Astro Theme Pure %c https://github.com/cworld1/astro-theme-pure/","color:#fff;background:linear-gradient(90deg,#448bff,#44e9ff);padding:5px 0;","color:#000;background:linear-gradient(90deg,#44e9ff,#ffffff);padding:5px 10px 5px 0px;");</script><script>
+  function simpleSetTheme() {
+    let theme = localStorage.getItem('theme')
+    // If undefined or 'system', get from system
+    if (!theme || theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#0B0B10' : '#FCFCFD')
+  }
+  simpleSetTheme()
+  document.addEventListener('astro:page-load', () => simpleSetTheme())
+</script><script type="module" src="/_astro/ThemeProvider.astro_astro_type_script_index_0_lang.suZL6u-L.js"></script><link rel="stylesheet" href="/_astro/__uno.Bya9c0dP.css">
+<link rel="stylesheet" href="/_astro/_..CWtLY3YU.css">
+<link rel="stylesheet" href="/_astro/PFSearch.B0DyZ1NS.css">
+<link rel="stylesheet" href="/_astro/PageInfo.Cq0RynBx.css">
+<style>@keyframes pulsate{0%{opacity:1}50%{opacity:.4}to{opacity:1}}.loading:where(.astro-x7wpzmhq) .load-block:where(.astro-x7wpzmhq){color:transparent;border-radius:calc(var(--radius) - 3px);background-color:hsl(var(--card) / var(--un-bg-opacity, 1));animation:pulsate 2s infinite linear;user-select:none}.loading:where(.astro-x7wpzmhq) .load-block:where(.astro-x7wpzmhq):nth-child(2){animation-delay:1s}.no-license:where(.astro-x7wpzmhq){opacity:.5}:where(.astro-x7wpzmhq):not(.loading) #gh-avatar:where(.astro-x7wpzmhq){background-color:hsl(var(--card) / var(--un-bg-opacity))}.link-preview:where(.astro-rrnzz3pa) img:where(.astro-rrnzz3pa),.link-preview:where(.astro-rrnzz3pa) video:where(.astro-rrnzz3pa){aspect-ratio:1200 / 630;width:100%;height:auto;object-fit:cover}#qrcode-container:where(.astro-qvc6dekv) canvas{width:100%}.medium-zoom-overlay{position:fixed;inset:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:zoom-out;opacity:1;z-index:999}.medium-zoom-image{cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:zoom-out;will-change:transform;z-index:999}
+:where([data-astro-image]){height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}[data-astro-image-fit=fill]{object-fit:fill}[data-astro-image-fit=contain]{object-fit:contain}[data-astro-image-fit=cover]{object-fit:cover}[data-astro-image-fit=scale-down]{object-fit:scale-down}
+@media(min-width:769px){#sidebar-shade:where(.astro-scuu7fyy){display:none!important}}@media(max-width:769px){aside:where(.astro-scuu7fyy).show{display:block!important;opacity:1}@keyframes fade-in-side{0%{transform:translate(50%);opacity:0}to{transform:translate(0);opacity:1}}@keyframes fade-in{0%{opacity:0}to{opacity:1}}aside:where(.astro-scuu7fyy){animation:.3s fade-in-side!important;animation-fill-mode:forwards;right:0;top:0!important;height:100vh!important;min-width:40vw!important;max-width:75vw!important;border-top-right-radius:0!important;border-bottom-right-radius:0!important;padding-top:1.5rem!important;padding-bottom:1.5rem!important}#sidebar-shade:where(.astro-scuu7fyy){animation:.3s fade-in}}@media(max-width:640px){aside:where(.astro-scuu7fyy){min-width:55vw!important}}
+</style>
+<link rel="stylesheet" href="/_astro/BaseLayout.lA3-KzuQ.css">
+<style>.expand-content:where(.astro-znbwadyx){grid-template-rows:0fr}.expanded:where(.astro-znbwadyx) .expand-content:where(.astro-znbwadyx){grid-template-rows:1fr}svg:where(.astro-udet5etc){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1.5em;height:1.5em}.aside:where(.astro-x75cnk7d)>.aside-container:where(.astro-x75cnk7d){--un-bg-opacity: .07;&.aside-tip{--primary: 234 60% 60%}&.aside-caution{--primary: 41 90% 50%}&.aside-danger{--primary: 339 90% 60%}.aside-content{>:where(.astro-x75cnk7d):first-child{margin-top:0}>:where(.astro-x75cnk7d):last-child{margin-bottom:0}}}starlight-tabs:where(.astro-r4auw323){display:block}.tablist-wrapper:where(.astro-r4auw323){overflow-x:auto}:where(.astro-r4auw323)[role=tablist]{display:flex;list-style:none;border-bottom:2px solid hsl(var(--border) / var(--un-border-opacity, 1));padding:0}.tab:where(.astro-r4auw323){margin-bottom:-2px}.tab:where(.astro-r4auw323)>:where(.astro-r4auw323)[role=tab]{display:flex;align-items:center;gap:.5rem;padding:.2rem 1.25rem;text-decoration:none;border-bottom:2px solid hsl(var(--border) / var(--un-border-opacity, 1));color:hsl(var(--foreground) / var(--un-text-opacity, 1));outline-offset:-.1875rem;overflow-wrap:initial;white-space:nowrap}.tab:where(.astro-r4auw323) :where(.astro-r4auw323)[role=tab][aria-selected=true]{color:hsl(var(--primary) / var(--un-text-opacity, 1));border-color:hsl(var(--primary) / var(--un-text-opacity, 1));font-weight:600}.tablist-wrapper:where(.astro-r4auw323)~[role=tabpanel]{margin-top:1rem}.mdx-repl:where(.astro-npbunwpe){background:linear-gradient(135deg,hsl(var(--primary) / .1),hsl(var(--background) / 1))}.mdx-repl-container:where(.astro-npbunwpe)>*{width:var(--width)}.mdx-repl-container:where(.astro-npbunwpe)>*:first-child{margin-top:0}.mdx-repl-container:where(.astro-npbunwpe)>*:last-child{margin-bottom:0}.mdx-repl:where(.astro-npbunwpe) .astro-code{margin:0;border-radius:0}.mdx-repl:where(.astro-npbunwpe) div[role=tabpanel]{margin-top:0}.sl-steps{--bullet-size: 1.75rem ;--bullet-margin: .375rem;list-style:none!important;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0!important}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:.8125rem;font-weight:600;text-align:center;color:hsl(var(--foreground) / var(--un-text-opacity, 1));background-color:hsl(var(--card) / var(--un-bg-opacity, 1));border-radius:99rem;box-shadow:inset 0 0 0 1px hsl(var(--border) / var(--un-border-opacity, 1))}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:hsl(var(--border) / var(--un-border-opacity, 1))}.sl-steps>li>:first-child{--lh: 1.75em ;--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));margin-top:0;transform:translateY(var(--shift-y));margin-bottom:var(--shift-y);color:hsl(var(--foreground) / var(--un-text-opacity, 1))}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: 1.2em }.spoiler:where(.astro-uaowncbv):not(:hover) *{color:inherit!important;background-color:transparent!important}
+</style><script type="module" src="/_astro/page.CcE5jMMM.js"></script></head> <body class="flex justify-center bg-background text-foreground astro-37fxchfa" class="astro-scuu7fyy" style="--highlightColor: hsl(var(--primary) / var(--un-text-opacity));"> <div id="highlight-gradient" class="pointer-events-none absolute start-0 top-0 z-0 h-screen w-full opacity-25 astro-37fxchfa" style="background-image:linear-gradient(hsl(var(--primary) / var(--un-text-opacity)),transparent); --highlightColor: hsl(var(--primary) / var(--un-text-opacity));"></div> <div id="main-container" class="w-full max-w-[70rem] min-h-[100dvh] flex flex-col justify-between astro-37fxchfa" style="--highlightColor: hsl(var(--primary) / var(--un-text-opacity));"> <header-component class="group sticky top-4 z-50 max-md:z-30 mb-12 flex items-center justify-between rounded-xl border border-transparent max-sm:py-1 sm:rounded-2xl astro-b5wftkml"> <a class="z-30 text-xl font-medium group-[.not-top]:ms-2 sm:group-[.not-top]:ms-3 astro-b5wftkml" style="transition:margin-inline 0.3s" href="/" aria-label="Brand">cerry2022</a> <div class="flex items-center gap-x-2 astro-b5wftkml">  <div id="headerExpandContent" class="end-0 start-0 top-12 grid border border-transparent group-[.not-top]:rounded-xl group-[.expanded]:opacity-100 dark:group-[.expanded.not-top]:bg-muted max-sm:absolute max-sm:opacity-0 max-sm:group-[.not-top]:border-border max-sm:group-[.expanded.not-top]:bg-background max-sm:group-[.not-top]:px-4 max-sm:group-[.not-top]:py-2 sm:grid-rows-1 astro-b5wftkml"> <div class="flex flex-col items-center justify-center overflow-hidden sm:flex-row astro-b5wftkml"> <a href="/blog" class="w-full flex-none grow py-2 text-right font-medium transition-none hover:text-primary sm:w-fit sm:px-3 astro-b5wftkml" aria-label="Nav menu item" data-astro-prefetch> 文章 </a><a href="/archives" class="w-full flex-none grow py-2 text-right font-medium transition-none hover:text-primary sm:w-fit sm:px-3 astro-b5wftkml" aria-label="Nav menu item" data-astro-prefetch> 归档 </a><a href="/tags" class="w-full flex-none grow py-2 text-right font-medium transition-none hover:text-primary sm:w-fit sm:px-3 astro-b5wftkml" aria-label="Nav menu item" data-astro-prefetch> 分类 </a><a href="/blog/about" class="w-full flex-none grow py-2 text-right font-medium transition-none hover:text-primary sm:w-fit sm:px-3 astro-b5wftkml" aria-label="Nav menu item" data-astro-prefetch> 关于我 </a><a href="https://github.com/cerry2022" class="w-full flex-none grow py-2 text-right font-medium transition-none hover:text-primary sm:w-fit sm:px-3 astro-b5wftkml" aria-label="Nav menu item" data-astro-prefetch> GitHub </a> <div class="flex w-full grow flex-row justify-end gap-x-3 sm:w-fit sm:gap-x-5 astro-b5wftkml"> <a class="px-1 py-2 transition-none sm:px-2 astro-b5wftkml" href="/search" title="Search"> <span class="sr-only astro-b5wftkml">Search</span> <svg aria-hidden="true" class="size-5 astro-b5wftkml astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/></g></svg> </a> </div> </div> </div>  <div class="z-30 flex gap-x-4 group-[.not-top]:gap-x-2 astro-b5wftkml" style="transition:gap 0.3s"> <button id="toggleDarkMode" class="group/dark box-content size-5 rounded-md border p-1.5 transition-colors hover:bg-border sm:group-[.not-top]:rounded-xl astro-b5wftkml"> <span class="sr-only astro-b5wftkml">Dark Theme</span> <svg aria-hidden="true" class="system size-5 group-hover/dark:text-primary astro-b5wftkml astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" fill-rule="nonzero" d="M19 3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-4v1h1a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h1v-1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm-6 15h-2v1h2zm6-13H5v11h14z"/></g></svg> <svg aria-hidden="true" class="light hidden size-5 group-hover/dark:text-primary astro-b5wftkml astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12a6 6 0 0 1 0-12m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-8 3a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083l.707.707a1 1 0 0 1-1.32 1.497l-.094-.083l-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1"/></g></svg> <svg aria-hidden="true" class="dark hidden size-5 group-hover/dark:text-primary astro-b5wftkml astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12.477 4.546a1.01 1.01 0 0 1 1.097-1.409A9 9 0 0 1 12 21c-4.434 0-8.118-3.206-8.863-7.426a1.01 1.01 0 0 1 1.409-1.097a6 6 0 0 0 7.931-7.931m2.404 1.072a8 8 0 0 1-9.263 9.263A7.002 7.002 0 0 0 19 12.001a7 7 0 0 0-4.12-6.383ZM5.565 7.716l.064.14a3.26 3.26 0 0 0 1.237 1.363l.1.059a.068.068 0 0 1 0 .118l-.1.058a3.26 3.26 0 0 0-1.237 1.364l-.064.14a.071.071 0 0 1-.13 0l-.064-.14a3.26 3.26 0 0 0-1.237-1.364l-.1-.058a.068.068 0 0 1 0-.118l.1-.059A3.26 3.26 0 0 0 5.37 7.855l.064-.14a.071.071 0 0 1 .13 0Zm2.832-4.859c.04-.09.166-.09.206 0l.102.222a5.2 5.2 0 0 0 1.97 2.172l.157.092a.108.108 0 0 1 0 .189l-.158.092a5.2 5.2 0 0 0-2.07 2.394a.113.113 0 0 1-.207 0l-.102-.222a5.2 5.2 0 0 0-1.97-2.172l-.158-.092a.108.108 0 0 1 0-.189l.158-.092a5.2 5.2 0 0 0 1.97-2.172z"/></g></svg> </button> <button id="toggleMenu" class="rounded-md border p-1.5 transition-colors hover:bg-border sm:hidden sm:group-[.not-top]:rounded-xl astro-b5wftkml"> <span class="sr-only astro-b5wftkml">Menu</span> <svg aria-hidden="true" class="size-5 astro-b5wftkml astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M20 18a1 1 0 0 1 .117 1.993L20 20H4a1 1 0 0 1-.117-1.993L4 18zm0-7a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm0-7a1 1 0 1 1 0 2H4a1 1 0 0 1 0-2z"/></g></svg> </button> </div> </div> </header-component>  <script>
+  const toggleDarkModeElement = document.getElementById('toggleDarkMode')
+  if (toggleDarkModeElement) {
+    toggleDarkModeElement.dataset.theme = localStorage.getItem('theme') || 'system'
+  }
+</script> <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.CwScYy8Q.js"></script> <div class="flex-1 w-full astro-37fxchfa" style="--highlightColor: hsl(var(--primary) / var(--un-text-opacity));">  <a class="group inline-flex items-center gap-x-1 rounded-lg bg-muted border px-2 py-1 text-sm text-muted-foreground transition-all hover:bg-card no-underline astro-scuu7fyy" href="/blog" data-astro-prefetch="true">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-muted-foreground group-hover:stroke-primary"> <line x1="19" y1="12" x2="5" y2="12" class="translate-x-3 scale-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100"></line> <polyline points="12 19 5 12 12 5" class="translate-x-1 transition-all duration-300 ease-in-out group-hover:translate-x-0"></polyline> </svg>   <p class="my-0">Back</p>     </a> <main class="mt-6 items-start gap-x-10 md:flex astro-scuu7fyy">  <aside class="animate top-20 min-w-48 basis-60 overflow-y-scroll max-md:hidden z-40 fixed md:sticky md:order-2 lg:shrink-0 max-md:border max-md:px-4 max-md:py-3 max-md:bg-muted max-md:rounded-xl astro-scuu7fyy" style="height:calc(100vh - 7rem);" id="sidebar"> <toc-heading class=" astro-btewjcb6" slot="sidebar"> <h2 class="font-medium astro-btewjcb6">TABLE OF CONTENTS</h2> <ul class="mt-4 astro-btewjcb6"> <li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: C 语言的秘密武器：那些你必须知道的标准库函数 (2) (附示例)" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted" href="#c-语言的秘密武器那些你必须知道的标准库函数-2-附示例">C 语言的秘密武器：那些你必须知道的标准库函数 (2) (附示例)</a> </div> <ul> <li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: 1. 精准掌控内存：stdlib.h 动态内存管理进阶" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted ps-7" href="#1-精准掌控内存stdlibh-动态内存管理进阶">1. 精准掌控内存：stdlib.h 动态内存管理进阶</a> </div>  </li><li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: 2. 文件 I/O：与磁盘上的文件交互 (stdio.h)" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted ps-7" href="#2-文件-io与磁盘上的文件交互-stdioh">2. 文件 I/O：与磁盘上的文件交互 (stdio.h)</a> </div>  </li><li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: 3. 更强大的字符串与内存操作：string.h &#38; 内存函数" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted ps-7" href="#3-更强大的字符串与内存操作stringh--内存函数">3. 更强大的字符串与内存操作：string.h &amp; 内存函数</a> </div>  </li><li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: 4. 其他实用工具箱成员 (stdlib.h &#38; errno.h)" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted ps-7" href="#4-其他实用工具箱成员-stdlibh--errnoh">4. 其他实用工具箱成员 (stdlib.h &amp; errno.h)</a> </div>  </li><li> <div class="relative"> <span class="absolute top-[5%] w-[2px] rounded transition-colors duration-300 [&.highlight-bg]:bg-primary [&.is-read]:bg-border"></span> <a aria-label="Scroll to section: 结语" class="toc-item line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground [&#38;.highlight]:font-medium [&#38;.highlight]:text-primary [&#38;.highlight-bg-translucent]:bg-muted ps-7" href="#结语">结语</a> </div>  </li> </ul> </li> </ul> </toc-heading> <script type="module">class l extends HTMLElement{headings=[];tocLinks=[];headingProgress={};constructor(){super(),this.headings=Array.from(document.querySelectorAll("article h1, article h2, article h3, article h4, article h5, article h6")),this.tocLinks=Array.from(this.querySelectorAll('a[href^="#"]')).map(e=>({element:e,progressBar:e.previousElementSibling,slug:(e.getAttribute("href")||"").substring(1)}))}updatePositionAndStyle=()=>{const e=window.innerHeight,r=window.scrollY-(document.querySelector("#content")?.offsetTop||0),o=(document.querySelector("#content")?.offsetHeight||0)+127;this.headings.forEach((t,n)=>{const h=this.headings[n+1]?.offsetTop||o,s=[t.offsetTop-r,h-r-t.offsetHeight],i=(e-s[0])/(s[1]-s[0]);this.headingProgress[t.id]={inView:s[0]<e&&s[1]>0,progress:Math.max(0,Math.min(1,i))}}),this.tocLinks.forEach(({element:t,progressBar:n,slug:h},s)=>{const{inView:i,progress:g}=this.headingProgress[h];this.headingProgress[h]&&(t.classList.toggle("highlight",i),t.classList.toggle("highlight-bg-translucent",i),t.classList.toggle("rounded-t-2xl",i&&(s===0||!this.headingProgress[this.tocLinks[s-1]?.slug].inView)),t.classList.toggle("rounded-b-2xl",i&&(s===this.tocLinks.length-1||!this.headingProgress[this.tocLinks[s+1]?.slug].inView)),n.classList.toggle("is-read",!i&&g===1),n.classList.toggle("highlight-bg",i),n.style.setProperty("height",`${g*90}%`))})};connectedCallback(){this.tocLinks.forEach(e=>{e.element.addEventListener("click",r=>{r.preventDefault();const o=this.headings.find(t=>t.id===e.slug);o?(history.pushState(null,o.textContent||"",e.element.getAttribute("href")),o.scrollIntoView({behavior:"smooth"})):console.warn(`No heading found for slug: ${e.slug}`)})}),setInterval(this.updatePositionAndStyle,100),window.addEventListener("scroll",this.updatePositionAndStyle)}}customElements.define("toc-heading",l);</script> </aside> <div id="sidebar-shade" class="fixed top-0 start-0 w-full h-full astro-scuu7fyy" style="display:none;background-color:#00000091;z-index:31"></div> <article class="min-w-0 grow astro-scuu7fyy">  <div id="content-header" class="animate astro-scuu7fyy"> <div class="article-info max-lg:mx-auto astro-pdocvd5v"> <div class="flex flex-wrap gap-x-4 gap-y-2 text-xs leading-6 text-muted-foreground astro-pdocvd5v">  <div class="flex items-center gap-1 astro-pdocvd5v"> <svg aria-hidden="true" class="size-5 astro-pdocvd5v astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M16 3a1 1 0 0 1 1 1v1h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2V4a1 1 0 0 1 2 0v1h6V4a1 1 0 0 1 1-1M8 7H5v2h14V7h-3zm-3 4v8h14v-8zm2 2a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1m1 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2zm3-2a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H12a1 1 0 0 1-1-1m1 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2zm3-2a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H16a1 1 0 0 1-1-1m1 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2z"/></g></svg> <span class="text-muted-foreground font-mono font-sans astro-pdocvd5v"> <time datetime="2025-05-13T16:00:00.000Z"> 2025年5月13日 </time> </span> <div class="flex items-center gap-1 astro-pdocvd5v"> <span class="astro-pdocvd5v"> / </span> <span class="astro-pdocvd5v">
+Update
+<span class="text-muted-foreground font-mono font-sans astro-pdocvd5v"> <time datetime="2025-12-12T07:36:47.000Z"> 2025年12月12日 </time> </span> </span> </div> </div>  <div class="flex items-center gap-1 astro-pdocvd5v"> <svg aria-hidden="true" class="size-5 astro-pdocvd5v astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 .993.883L13 7v4.586l2.707 2.707a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a1 1 0 0 1-.284-.576L11 12V7a1 1 0 0 1 1-1"/></g></svg> 22 min </div>  <span class="flex items-center gap-1 astro-pdocvd5v"> <svg aria-hidden="true" class="size-5 astro-pdocvd5v astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M10.124 3.008a1 1 0 0 1 .868 1.116L10.508 8h3.984l.516-4.124a1 1 0 1 1 1.984.248L16.508 8H20a1 1 0 1 1 0 2h-3.742l-.5 4H19.5a1 1 0 1 1 0 2h-3.992l-.516 4.124a1 1 0 1 1-1.984-.248L13.492 16H9.508l-.516 4.124a1 1 0 1 1-1.984-.248L7.492 16H4.5a1 1 0 1 1 0-2h3.242l.5-4H5a1 1 0 0 1 0-2h3.492l.516-4.124a1 1 0 0 1 1.116-.868M13.742 14l.5-4h-3.984l-.5 4z"/></g></svg> <div class="astro-pdocvd5v"> <a aria-label="View more blogs with the tag c" class="hover:underline hover:underline-offset-4 astro-pdocvd5v" data-pagefind-filter="tag" href="/tags/c"> c </a>  </div> </span> </div> <h1 class="mt-4 text-2xl font-medium sm:mb-2 sm:mt-6 sm:text-3xl astro-pdocvd5v"> C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例) </h1> <div class="mt-3 italic astro-pdocvd5v"> <blockquote class="text-sm text-muted-foreground astro-pdocvd5v"><q class="astro-pdocvd5v"></q></blockquote> <div class="text-base text-sm text-muted-foreground mt-1"> <span class="waline-pageview-count" data-path="/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B/"></span> views
+ | <a href="#waline"> <span class="waline-comment-count" data-path="/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B/"></span> comments
+</a>  </div>  </div> </div>  <div class="mt-4 w-1/2 border-t max-md:mx-auto sm:mt-6 sm:w-1/3 astro-pdocvd5v"></div> <script type="module">const o=window.innerHeight,s=o/9,i=o*2/9,l=o*3/9,e=document.getElementById("blurImage");e&&window.addEventListener("scroll",()=>{const t=window.scrollY;t>=l?e.style.opacity="0.15":t>=i?e.style.opacity="0.3":t>=s&&(e.style.opacity="0.45")});</script> </div>  <div id="content" class="max-w-none animate mt-8 md:min-w-[45ch] overflow-x-hidden prose text-base astro-scuu7fyy">   <h2 id="c-语言的秘密武器那些你必须知道的标准库函数-2-附示例">C 语言的秘密武器：那些你必须知道的标准库函数 (2) (附示例)<a class="anchor" href="#c-语言的秘密武器那些你必须知道的标准库函数-2-附示例">#</a></h2>
+<p>各位C语言的探索者们，欢迎回到我们的标准库函数之旅！ 👋</p>
+<p>在 <a class="internal new" href="/blog/posts/learn-c/c语言的秘密武器：那些你必须知道的标准库函数(1)(附示例)">第一篇</a> 文章中，我们一起了解了 <code>stdio.h</code> (基础输入输出)、<code>string.h</code> (基础字符串处理)、<code>math.h</code> (数学)、<code>stdlib.h</code> (通用工具基础) 和 <code>ctype.h</code> (字符处理) 的一些核心函数。它们构成了C语言编程的基石。</p>
+<p>但是，C语言标准库的强大远不止于此！在实际开发中，我们经常需要处理更复杂的数据结构、与文件交互以及更精细地控制内存。</p>
+<p>今天，我们将深入探讨更多C语言标准库的函数，特别是大家关心的<strong>动态内存管理</strong>以及必不可少的<strong>文件输入输出</strong>。</p>
+<p>老规矩，开始之前，记得在你的C文件顶部包含相应的头文件哦！</p>
+<h3 id="1-精准掌控内存stdlibh-动态内存管理进阶">1. 精准掌控内存：<code>stdlib.h</code> 动态内存管理进阶<a class="anchor" href="#1-精准掌控内存stdlibh-动态内存管理进阶">#</a></h3>
+<p>在第一篇文章中我们提到了 <code>malloc()</code> 和 <code>free()</code> 用于动态分配和释放内存。这里我们详细介绍它们，并加入另外两个同样重要的伙伴：<code>calloc()</code> 和 <code>realloc()</code>。</p>
+<ul>
+<li><strong><code>malloc(size_t size)</code></strong>: 分配 <code>size</code> 字节的内存块。分配的内存内容是<strong>不确定</strong>的（可能是随机值）。成功时返回指向分配内存起始位置的指针，失败时返回 <code>NULL</code>。</li>
+<li><strong><code>free(void *ptr)</code></strong>: 释放之前由 <code>malloc</code>, <code>calloc</code>, <code>realloc</code> 分配的内存。<strong>重要：</strong> 只能释放动态分配的内存，且不要重复释放或释放 <code>NULL</code> 指针（<code>free(NULL)</code> 是安全的）。</li>
+<li><strong><code>calloc(size_t num, size_t size)</code></strong>: 分配一个能容纳 <code>num</code> 个大小为 <code>size</code> 的元素的内存块，并将所有字节初始化为<strong>零</strong>。成功时返回指针，失败时返回 <code>NULL</code>。非常适合为数组分配内存并清零。</li>
+<li><strong><code>realloc(void *ptr, size_t new_size)</code></strong>: 重新调整之前由 <code>malloc</code>, <code>calloc</code>, <code>realloc</code> 分配的内存块的大小为 <code>new_size</code>。
+<ul>
+<li>如果 <code>ptr</code> 是 <code>NULL</code>，则行为类似于 <code>malloc(new_size)</code>。</li>
+<li>如果 <code>new_size</code> 是 0 且 <code>ptr</code> 非 <code>NULL</code>，则行为类似于 <code>free(ptr)</code>。</li>
+<li><code>realloc</code> 可能会在原地扩展内存，也可能分配新的内存块并将旧数据复制过去，然后释放旧块。它返回新块的指针（可能与旧指针相同或不同）。</li>
+<li><strong>重要：</strong> <code>realloc</code> 失败时返回 <code>NULL</code>，<strong>但原始的 <code>ptr</code> 仍然有效</strong>。因此，通常的做法是将 <code>realloc</code> 的结果赋给一个临时指针，检查是否为 <code>NULL</code>，如果不是再更新原始指针。</li>
+</ul>
+</li>
+</ul>
+<p><strong>为什么需要动态内存？</strong></p>
+<p>有时候，你在编写代码时不知道需要多少内存（比如用户输入的数量、从文件读取的数据量）。静态分配（如 <code>int arr[10];</code>）大小是固定的。动态分配让你可以在程序运行时根据需要申请内存，极大地提高了程序的灵活性。</p>
+<p><strong>小示例 (stdlib.h - 内存管理):</strong></p>
+<div class="astro-code astro-code-themes github-light github-dark collapsed" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><pre><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdlib.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 引入通用工具库</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> main</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">arr1 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">arr2 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">arr3 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 3</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> new_size </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 5</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // calloc 示例：分配并清零一个整数数组</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 calloc 分配 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 个整数并清零...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, original_size);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    arr1 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span><span style="color:#6F42C1;--shiki-dark:#B392F0">calloc</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(original_size, </span><span style="color:#D73A49;--shiki-dark:#F97583">sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arr1 </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(stderr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"calloc 分配失败！</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr1 (calloced) 初始值: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">arr1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 应该都是 0</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // malloc 示例：分配一个整数数组（内容不确定）</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 malloc 分配 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 个整数...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, original_size);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    arr2 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span><span style="color:#6F42C1;--shiki-dark:#B392F0">malloc</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(original_size </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#D73A49;--shiki-dark:#F97583"> sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">     if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arr2 </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(stderr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"malloc 分配失败！</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 在这里也应该释放 arr1，虽然本例后面会集中释放</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        free</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(arr1);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr2 (malloced) 初始值 (不确定): "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">     for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 打印 malloc 分配的内存内容，通常是垃圾值</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">arr2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 为了后续 realloc 示例，给 arr2 赋值</span></span>
+<span class="line"><span style="color:#E36209;--shiki-dark:#FFAB70">        arr2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (i </span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 10</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">     }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">     printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">     printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr2 赋值后: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">     for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">arr2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">     }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">     printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // realloc 示例：重新分配 arr2 的大小</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 realloc 将 arr2 大小从 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 调整到 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 个整数...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, original_size, new_size);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // **重要：** 将 realloc 结果赋给临时指针</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">temp_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span><span style="color:#6F42C1;--shiki-dark:#B392F0">realloc</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(arr2, new_size </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#D73A49;--shiki-dark:#F97583"> sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (temp_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(stderr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"realloc 失败！原始 arr2 仍然有效！</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // realloc 失败，arr2 指向的内存块没变，内容也没变</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 你仍然可以使用并最终释放 arr2</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 在这个例子中，为了演示 free，我们直接跳到 free 步骤</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"realloc 成功。新 arr2 的值 (可能包含旧数据): "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">        arr3 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> temp_ptr;</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // realloc 成功，更新原始指针</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 访问新分配的内存</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> new_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">             // 前 original_size 个元素可能保留旧值</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">arr3</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">         // 新增部分未初始化，需要自己赋值或处理</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">         if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (new_size </span><span style="color:#D73A49;--shiki-dark:#F97583">></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">             printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"初始化新增的 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 个元素...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, new_size </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">             for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> original_size; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> new_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E36209;--shiki-dark:#FFAB70">                 arr3</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (i </span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 10</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">             }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">              printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr3 赋值后: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">              for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> new_size; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">                printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">arr3</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">              }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">              printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">         }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 释放所有动态分配的内存</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">释放内存...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    free</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(arr1);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr1 释放成功。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // realloc 成功时，free 原来的 arr2 是不安全的，因为 realloc 可能已经释放了它。</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 如果 realloc 失败，arr2 仍然需要被 free。</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 这里的逻辑依赖 realloc 是否成功。假设 realloc 成功，我们应该 free arr3 (它现在是 arr2 的新地址)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arr3 </span><span style="color:#D73A49;--shiki-dark:#F97583">!=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 只有 realloc 成功时 arr3 才非 NULL</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">       free</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(arr3);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">       printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr3 (原 arr2 的新地址) 释放成功。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#D73A49;--shiki-dark:#F97583"> if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arr2 </span><span style="color:#D73A49;--shiki-dark:#F97583">!=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 如果 realloc 失败，arr3 是 NULL，但 arr2 仍需释放</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">       free</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(arr2);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">       printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arr2 释放成功 (realloc 失败)。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"所有动态内存已释放。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre><span class="language ps-1 pe-3 text-sm bg-muted text-muted-foreground">c</span><button class="copy text-muted-foreground p-1 box-content border rounded-lg bg-card" aria-label="Copy code" data-code="#include <stdio.h>
+#include <stdlib.h> // 引入通用工具库
+
+int main() {
+    int *arr1 = NULL;
+    int *arr2 = NULL;
+    int *arr3 = NULL;
+    int original_size = 3;
+    int new_size = 5;
+
+    // calloc 示例：分配并清零一个整数数组
+    printf(&#x22;使用 calloc 分配 %d 个整数并清零...\n&#x22;, original_size);
+    arr1 = (int*)calloc(original_size, sizeof(int));
+
+    if (arr1 == NULL) {
+        fprintf(stderr, &#x22;calloc 分配失败！\n&#x22;);
+        return 1;
+    }
+
+    printf(&#x22;arr1 (calloced) 初始值: &#x22;);
+    for (int i = 0; i < original_size; i++) {
+        printf(&#x22;%d &#x22;, arr1[i]); // 应该都是 0
+    }
+    printf(&#x22;\n&#x22;);
+
+    // malloc 示例：分配一个整数数组（内容不确定）
+    printf(&#x22;使用 malloc 分配 %d 个整数...\n&#x22;, original_size);
+    arr2 = (int*)malloc(original_size * sizeof(int));
+
+     if (arr2 == NULL) {
+        fprintf(stderr, &#x22;malloc 分配失败！\n&#x22;);
+        // 在这里也应该释放 arr1，虽然本例后面会集中释放
+        free(arr1);
+        return 1;
+    }
+
+    printf(&#x22;arr2 (malloced) 初始值 (不确定): &#x22;);
+     for (int i = 0; i < original_size; i++) {
+        // 打印 malloc 分配的内存内容，通常是垃圾值
+        printf(&#x22;%d &#x22;, arr2[i]);
+        // 为了后续 realloc 示例，给 arr2 赋值
+        arr2[i] = (i + 1) * 10;
+     }
+     printf(&#x22;\n&#x22;);
+     printf(&#x22;arr2 赋值后: &#x22;);
+     for (int i = 0; i < original_size; i++) {
+        printf(&#x22;%d &#x22;, arr2[i]);
+     }
+     printf(&#x22;\n&#x22;);
+
+
+    // realloc 示例：重新分配 arr2 的大小
+    printf(&#x22;使用 realloc 将 arr2 大小从 %d 调整到 %d 个整数...\n&#x22;, original_size, new_size);
+    // **重要：** 将 realloc 结果赋给临时指针
+    int *temp_ptr = (int*)realloc(arr2, new_size * sizeof(int));
+
+    if (temp_ptr == NULL) {
+        fprintf(stderr, &#x22;realloc 失败！原始 arr2 仍然有效！\n&#x22;);
+        // realloc 失败，arr2 指向的内存块没变，内容也没变
+        // 你仍然可以使用并最终释放 arr2
+        // 在这个例子中，为了演示 free，我们直接跳到 free 步骤
+    } else {
+        printf(&#x22;realloc 成功。新 arr2 的值 (可能包含旧数据): &#x22;);
+        arr3 = temp_ptr; // realloc 成功，更新原始指针
+        // 访问新分配的内存
+        for (int i = 0; i < new_size; i++) {
+             // 前 original_size 个元素可能保留旧值
+            printf(&#x22;%d &#x22;, arr3[i]);
+        }
+        printf(&#x22;\n&#x22;);
+
+         // 新增部分未初始化，需要自己赋值或处理
+         if (new_size > original_size) {
+             printf(&#x22;初始化新增的 %d 个元素...\n&#x22;, new_size - original_size);
+             for (int i = original_size; i < new_size; i++) {
+                 arr3[i] = (i + 1) * 10;
+             }
+              printf(&#x22;arr3 赋值后: &#x22;);
+              for (int i = 0; i < new_size; i++) {
+                printf(&#x22;%d &#x22;, arr3[i]);
+              }
+              printf(&#x22;\n&#x22;);
+         }
+    }
+
+
+    // 释放所有动态分配的内存
+    printf(&#x22;\n释放内存...\n&#x22;);
+    free(arr1);
+    printf(&#x22;arr1 释放成功。\n&#x22;);
+
+    // realloc 成功时，free 原来的 arr2 是不安全的，因为 realloc 可能已经释放了它。
+    // 如果 realloc 失败，arr2 仍然需要被 free。
+    // 这里的逻辑依赖 realloc 是否成功。假设 realloc 成功，我们应该 free arr3 (它现在是 arr2 的新地址)
+    if (arr3 != NULL) { // 只有 realloc 成功时 arr3 才非 NULL
+       free(arr3);
+       printf(&#x22;arr3 (原 arr2 的新地址) 释放成功。\n&#x22;);
+    } else if (arr2 != NULL) { // 如果 realloc 失败，arr3 是 NULL，但 arr2 仍需释放
+       free(arr2);
+       printf(&#x22;arr2 释放成功 (realloc 失败)。\n&#x22;);
+    }
+
+
+    printf(&#x22;所有动态内存已释放。\n&#x22;);
+
+    return 0;
+}" onclick="
+          navigator.clipboard.writeText(this.dataset.code);
+          this.classList.add(&#x27;copied&#x27;);
+          setTimeout(() => this.classList.remove(&#x27;copied&#x27;), 2000)
+        "><div class="ready"><svg class="size-5"><use href="/icons/code.svg#mingcute-clipboard-line"></use></svg></div><div class="success hidden"><svg class="size-5"><use href="/icons/code.svg#mingcute-file-check-line"></use></svg></div></button><button class="collapse-toggle bg-card text-muted-foreground rounded-lg m-2" aria-label="Toggle collapse code block" onclick="this.parentElement.classList.toggle(&#x27;collapsed&#x27;)"><svg class="size-5"><use href="/icons/code.svg#mingcute-arrow-down-line"></use></svg><span class="desc"> code</span></button><div class="collapse-fade"></div></div>
+<p><strong>重要提示：</strong> 动态内存管理是C语言的强大之处，也是最容易出错的地方（内存泄漏、野指针、重复释放）。务必小心！</p>
+<h3 id="2-文件-io与磁盘上的文件交互-stdioh">2. 文件 I/O：与磁盘上的文件交互 (<code>stdio.h</code>)<a class="anchor" href="#2-文件-io与磁盘上的文件交互-stdioh">#</a></h3>
+<p>除了标准输入输出，<code>stdio.h</code> 还提供了强大的文件操作功能。这让你能读取、写入、创建文件。</p>
+<ul>
+<li><strong><code>FILE *fopen(const char *filename, const char *mode)</code></strong>: 打开一个文件。
+<ul>
+<li><code>filename</code>: 文件名（包括路径）。</li>
+<li><code>mode</code>: 打开模式字符串，如 <code>"r"</code> (读), <code>"w"</code> (写，覆盖原有内容), <code>"a"</code> (追加), <code>"rb"</code> (读二进制), <code>"wb"</code> (写二进制), <code>"ab"</code> (追加二进制), <code>"r+"</code> (读写), <code>"w+"</code> (读写，覆盖), <code>"a+"</code> (读写，追加)。</li>
+<li>成功时返回一个指向 <code>FILE</code> 结构的指针（文件流），失败时返回 <code>NULL</code>。<strong>务必检查返回值！</strong></li>
+</ul>
+</li>
+<li><strong><code>int fclose(FILE *stream)</code></strong>: 关闭一个文件流。会刷新缓冲区数据到文件并释放相关的系统资源。成功时返回0，失败时返回 <code>EOF</code>。</li>
+<li><strong><code>int fprintf(FILE *stream, const char *format, ...)</code></strong>: 格式化输出到指定的<strong>文件流</strong>，用法类似 <code>printf</code>。</li>
+<li><strong><code>int fscanf(FILE *stream, const char *format, ...)</code></strong>: 从指定的<strong>文件流</strong>中格式化读取，用法类似 <code>scanf</code>。</li>
+<li><strong><code>int fgetc(FILE *stream)</code></strong>: 从文件流中读取一个字符。</li>
+<li><strong><code>int fputc(int character, FILE *stream)</code></strong>: 向文件流中写入一个字符。</li>
+<li><strong><code>char *fgets(char *str, int size, FILE *stream)</code></strong>: 从文件流中读取一行字符串（最多 <code>size-1</code> 个字符），并存储到 <code>str</code> 中。安全函数。</li>
+<li><strong><code>int fputs(const char *str, FILE *stream)</code></strong>: 向文件流中写入一个字符串。</li>
+<li><strong><code>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)</code></strong>: 从文件流中读取 <code>nmemb</code> 个大小为 <code>size</code> 的数据项到 <code>ptr</code> 指向的缓冲区。常用于二进制文件。</li>
+<li><strong><code>size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)</code></strong>: 向文件流中写入 <code>nmemb</code> 个大小为 <code>size</code> 的数据项，数据来源于 <code>ptr</code> 指向的缓冲区。常用于二进制文件。</li>
+<li><strong><code>int fseek(FILE *stream, long offset, int origin)</code></strong>: 移动文件流的读写位置。<code>origin</code> 可以是 <code>SEEK_SET</code> (文件开头), <code>SEEK_CUR</code> (当前位置), <code>SEEK_END</code> (文件末尾)。</li>
+<li><strong><code>long ftell(FILE *stream)</code></strong>: 获取文件流的当前位置。</li>
+</ul>
+<p><strong>小示例 (stdio.h - 文件 I/O):</strong></p>
+<div class="astro-code astro-code-themes github-light github-dark collapsed" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><pre><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdio.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 引入标准输入输出库 (包含文件 I/O)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdlib.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 用于 exit 或返回非零错误码</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> main</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    FILE </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 声明文件指针</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // --- 写入文件示例 ---</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fopen</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"example.txt"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"w"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 以写入模式打开文件，如果文件存在会清空</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"打开 example.txt 用于写入失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 打印错误信息</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 返回错误码</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"Hello from C!</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 写入一行文本</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"This is the second line.</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fputc</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'A'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, file_ptr);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 写入一个字符</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fputc</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, file_ptr);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fputs</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"This is a line using fputs.</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, file_ptr);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 写入一个字符串</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">fclose</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr) </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EOF) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"关闭 example.txt 失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"数据已写入 example.txt</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // --- 读取文件示例 ---</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fopen</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"example.txt"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"r"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 以读取模式打开文件</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"打开 example.txt 用于读取失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">读取 example.txt 的内容：</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#E36209;--shiki-dark:#FFAB70"> buffer</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">100</span><span style="color:#24292E;--shiki-dark:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 使用 fgets 逐行读取</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    while</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">fgets</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(buffer, </span><span style="color:#D73A49;--shiki-dark:#F97583">sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(buffer), file_ptr) </span><span style="color:#D73A49;--shiki-dark:#F97583">!=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%s</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, buffer);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // fgets 读取的字符串包含换行符，所以直接打印</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 检查文件读取是否是因为到达文件末尾 (EOF) 还是发生错误</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">feof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr)) {</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">        // 读取直到文件末尾是正常的</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#D73A49;--shiki-dark:#F97583"> if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">ferror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr)) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"读取 example.txt 发生错误"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        fclose</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 发生错误也要尝试关闭文件</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">fclose</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr) </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EOF) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"关闭 example.txt 失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"文件读取完成。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // --- 追加文件示例 ---</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fopen</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"example.txt"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"a"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 以追加模式打开文件</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (file_ptr </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"打开 example.txt 用于追加失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    fprintf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"--- Appended line at </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%s</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> ---</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">__TIME__</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 追加一行文本，包含当前时间</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">fclose</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file_ptr) </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EOF) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"关闭 example.txt 失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"数据已追加到 example.txt</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 成功退出</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre><span class="language ps-1 pe-3 text-sm bg-muted text-muted-foreground">c</span><button class="copy text-muted-foreground p-1 box-content border rounded-lg bg-card" aria-label="Copy code" data-code="#include <stdio.h> // 引入标准输入输出库 (包含文件 I/O)
+#include <stdlib.h> // 用于 exit 或返回非零错误码
+
+int main() {
+    FILE *file_ptr = NULL; // 声明文件指针
+
+    // --- 写入文件示例 ---
+    file_ptr = fopen(&#x22;example.txt&#x22;, &#x22;w&#x22;); // 以写入模式打开文件，如果文件存在会清空
+
+    if (file_ptr == NULL) {
+        perror(&#x22;打开 example.txt 用于写入失败&#x22;); // 打印错误信息
+        return 1; // 返回错误码
+    }
+
+    fprintf(file_ptr, &#x22;Hello from C!\n&#x22;); // 写入一行文本
+    fprintf(file_ptr, &#x22;This is the second line.\n&#x22;);
+    fputc(&#x27;A&#x27;, file_ptr); // 写入一个字符
+    fputc(&#x27;\n&#x27;, file_ptr);
+
+    fputs(&#x22;This is a line using fputs.\n&#x22;, file_ptr); // 写入一个字符串
+
+    if (fclose(file_ptr) == EOF) {
+        perror(&#x22;关闭 example.txt 失败&#x22;);
+        return 1;
+    }
+    printf(&#x22;数据已写入 example.txt\n&#x22;);
+
+
+    // --- 读取文件示例 ---
+    file_ptr = fopen(&#x22;example.txt&#x22;, &#x22;r&#x22;); // 以读取模式打开文件
+
+    if (file_ptr == NULL) {
+        perror(&#x22;打开 example.txt 用于读取失败&#x22;);
+        return 1;
+    }
+
+    printf(&#x22;\n读取 example.txt 的内容：\n&#x22;);
+    char buffer[100];
+    // 使用 fgets 逐行读取
+    while (fgets(buffer, sizeof(buffer), file_ptr) != NULL) {
+        printf(&#x22;%s&#x22;, buffer); // fgets 读取的字符串包含换行符，所以直接打印
+    }
+
+    // 检查文件读取是否是因为到达文件末尾 (EOF) 还是发生错误
+    if (feof(file_ptr)) {
+        // 读取直到文件末尾是正常的
+    } else if (ferror(file_ptr)) {
+        perror(&#x22;读取 example.txt 发生错误&#x22;);
+        fclose(file_ptr); // 发生错误也要尝试关闭文件
+        return 1;
+    }
+
+
+    if (fclose(file_ptr) == EOF) {
+        perror(&#x22;关闭 example.txt 失败&#x22;);
+        return 1;
+    }
+    printf(&#x22;文件读取完成。\n&#x22;);
+
+
+    // --- 追加文件示例 ---
+    file_ptr = fopen(&#x22;example.txt&#x22;, &#x22;a&#x22;); // 以追加模式打开文件
+
+    if (file_ptr == NULL) {
+        perror(&#x22;打开 example.txt 用于追加失败&#x22;);
+        return 1;
+    }
+
+    fprintf(file_ptr, &#x22;--- Appended line at %s ---\n&#x22;, __TIME__); // 追加一行文本，包含当前时间
+
+    if (fclose(file_ptr) == EOF) {
+        perror(&#x22;关闭 example.txt 失败&#x22;);
+        return 1;
+    }
+    printf(&#x22;数据已追加到 example.txt\n&#x22;);
+
+
+    return 0; // 成功退出
+}" onclick="
+          navigator.clipboard.writeText(this.dataset.code);
+          this.classList.add(&#x27;copied&#x27;);
+          setTimeout(() => this.classList.remove(&#x27;copied&#x27;), 2000)
+        "><div class="ready"><svg class="size-5"><use href="/icons/code.svg#mingcute-clipboard-line"></use></svg></div><div class="success hidden"><svg class="size-5"><use href="/icons/code.svg#mingcute-file-check-line"></use></svg></div></button><button class="collapse-toggle bg-card text-muted-foreground rounded-lg m-2" aria-label="Toggle collapse code block" onclick="this.parentElement.classList.toggle(&#x27;collapsed&#x27;)"><svg class="size-5"><use href="/icons/code.svg#mingcute-arrow-down-line"></use></svg><span class="desc"> code</span></button><div class="collapse-fade"></div></div>
+<h3 id="3-更强大的字符串与内存操作stringh--内存函数">3. 更强大的字符串与内存操作：<code>string.h</code> &#x26; 内存函数<a class="anchor" href="#3-更强大的字符串与内存操作stringh--内存函数">#</a></h3>
+<p>除了第一部分介绍的基础函数，<code>string.h</code> 还提供了一些操作内存块的函数，它们不关心是否是null终止的字符串，而是按字节进行操作。</p>
+<ul>
+<li><strong><code>strncpy(char *dest, const char *src, size_t n)</code></strong>: 复制 <code>src</code> 的前 <code>n</code> 个字符到 <code>dest</code>。<strong>注意：</strong> 如果 <code>src</code> 的长度小于 <code>n</code>，<code>dest</code> 的剩余部分会用零填充；如果 <code>src</code> 的长度大于等于 <code>n</code>，<code>dest</code> <strong>不会</strong>自动以null终止，除非 <code>n</code> 恰好是 <code>src</code> 的长度且包含终止符。</li>
+<li><strong><code>strncat(char *dest, const char *src, size_t n)</code></strong>: 将 <code>src</code> 的前 <code>n</code> 个字符追加到 <code>dest</code> 的末尾，并在结果末尾添加一个null终止符。</li>
+<li><strong><code>strncmp(const char *s1, const char *s2, size_t n)</code></strong>: 比较 <code>s1</code> 和 <code>s2</code> 的前 <code>n</code> 个字符。</li>
+<li><strong><code>strchr(const char *s, int c)</code></strong>: 在字符串 <code>s</code> 中查找字符 <code>c</code> <strong>第一次</strong>出现的位置。返回一个指向该字符的指针，或在未找到时返回 <code>NULL</code>。</li>
+<li><strong><code>strrchr(const char *s, int c)</code></strong>: 在字符串 <code>s</code> 中查找字符 <code>c</code> <strong>最后一次</strong>出现的位置。返回一个指向该字符的指针，或在未找到时返回 <code>NULL</code>。</li>
+<li><strong><code>memset(void *s, int c, size_t n)</code></strong>: 将 <code>s</code> 指向的内存块的前 <code>n</code> 个字节设置为指定的值 <code>c</code> (以 <code>unsigned char</code> 形式)。常用于清零 (<code>memset(buffer, 0, sizeof(buffer));</code>) 或初始化。返回 <code>s</code>。</li>
+<li><strong><code>memcpy(void *dest, const void *src, size_t n)</code></strong>: 从 <code>src</code> 指向的内存区域复制 <code>n</code> 个字节到 <code>dest</code> 指向的内存区域。<strong>注意：</strong> <code>dest</code> 和 <code>src</code> 区域不能重叠。返回 <code>dest</code>。</li>
+<li><strong><code>memmove(void *dest, const void *src, size_t n)</code></strong>: 功能类似 <code>memcpy</code>，但可以正确处理 <code>dest</code> 和 <code>src</code> 区域重叠的情况。返回 <code>dest</code>。</li>
+</ul>
+<p><strong>小示例 (string.h - 扩展):</strong></p>
+<div class="astro-code astro-code-themes github-light github-dark collapsed" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><pre><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;string.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 引入字符串处理库</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> main</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#E36209;--shiki-dark:#FFAB70"> buffer</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">20</span><span style="color:#24292E;--shiki-dark:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> src</span><span style="color:#D73A49;--shiki-dark:#F97583">[]</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "Hello World"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#E36209;--shiki-dark:#FFAB70"> dest</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">20</span><span style="color:#24292E;--shiki-dark:#E1E4E8">] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "Greeting: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // strncpy 示例 (注意潜在的非null终止问题)</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 strncpy 复制前 5 个字符...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    strncpy</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(buffer, src, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">5</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 复制 "Hello"</span></span>
+<span class="line"><span style="color:#E36209;--shiki-dark:#FFAB70">    buffer</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">5</span><span style="color:#24292E;--shiki-dark:#E1E4E8">] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> '</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\0</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 手动添加null终止符，因为 n=5 小于 src 长度</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"strncpy 结果: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">\"%s\"\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, buffer);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 输出 "Hello"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 strncpy 复制前 15 个字符...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // n=15 大于 src 长度，buffer 会被 "Hello World\0" 填充，剩余空间清零</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    strncpy</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(buffer, src, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">15</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"strncpy 结果 (n > strlen): </span><span style="color:#005CC5;--shiki-dark:#79B8FF">\"%s\"\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, buffer);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 输出 "Hello World"</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // strncat 示例</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">使用 strncat 连接前 5 个字符...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 将 src 的前 5 个字符 "Hello" 追加到 dest "Greeting: " 后面</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    strncat</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(dest, src, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">5</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"strncat 结果: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">\"%s\"\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, dest);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 输出 "Greeting: Hello"</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // strchr 和 strrchr 示例</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> path</span><span style="color:#D73A49;--shiki-dark:#F97583">[]</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "/home/user/document/file.txt"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">first_slash </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> strchr</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(path, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">'/'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 查找第一个 '/'</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">last_dot </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> strrchr</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(path, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">'.'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D">   // 查找最后一个 '.'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (first_slash) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">第一个 '/' 的位置: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%ld\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, first_slash </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> path);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (last_dot) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"最后一个 '.' 的位置: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%ld\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, last_dot </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> path);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // memset 和 memcpy 示例</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#E36209;--shiki-dark:#FFAB70"> data</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">10</span><span style="color:#24292E;--shiki-dark:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">初始化内存块为 'X'...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    memset</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(data, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">'X'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#D73A49;--shiki-dark:#F97583">sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(data));</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 将 data 的所有字节设置为 'X'</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"memset 结果: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    for</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#D73A49;--shiki-dark:#F97583"> sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(data); i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#6F42C1;--shiki-dark:#B392F0">printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%c</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">data</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> source_data</span><span style="color:#D73A49;--shiki-dark:#F97583">[]</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "ABCDEF"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#E36209;--shiki-dark:#FFAB70"> destination_data</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">10</span><span style="color:#24292E;--shiki-dark:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"使用 memcpy 复制 </span><span style="color:#005CC5;--shiki-dark:#79B8FF">\"%s\"</span><span style="color:#032F62;--shiki-dark:#9ECBFF">...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, source_data);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 将 source_data 的前 6 个字节复制到 destination_data</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    memcpy</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(destination_data, source_data, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">strlen</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(source_data) </span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // +1 为了复制 null 终止符</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"memcpy 结果: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">\"%s\"\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, destination_data);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre><span class="language ps-1 pe-3 text-sm bg-muted text-muted-foreground">c</span><button class="copy text-muted-foreground p-1 box-content border rounded-lg bg-card" aria-label="Copy code" data-code="#include <stdio.h>
+#include <string.h> // 引入字符串处理库
+
+int main() {
+    char buffer[20];
+    char src[] = &#x22;Hello World&#x22;;
+    char dest[20] = &#x22;Greeting: &#x22;;
+
+    // strncpy 示例 (注意潜在的非null终止问题)
+    printf(&#x22;使用 strncpy 复制前 5 个字符...\n&#x22;);
+    strncpy(buffer, src, 5); // 复制 &#x22;Hello&#x22;
+    buffer[5] = &#x27;\0&#x27;; // 手动添加null终止符，因为 n=5 小于 src 长度
+    printf(&#x22;strncpy 结果: \&#x22;%s\&#x22;\n&#x22;, buffer); // 输出 &#x22;Hello&#x22;
+
+    printf(&#x22;使用 strncpy 复制前 15 个字符...\n&#x22;);
+    // n=15 大于 src 长度，buffer 会被 &#x22;Hello World\0&#x22; 填充，剩余空间清零
+    strncpy(buffer, src, 15);
+    printf(&#x22;strncpy 结果 (n > strlen): \&#x22;%s\&#x22;\n&#x22;, buffer); // 输出 &#x22;Hello World&#x22;
+
+
+    // strncat 示例
+    printf(&#x22;\n使用 strncat 连接前 5 个字符...\n&#x22;);
+    // 将 src 的前 5 个字符 &#x22;Hello&#x22; 追加到 dest &#x22;Greeting: &#x22; 后面
+    strncat(dest, src, 5);
+    printf(&#x22;strncat 结果: \&#x22;%s\&#x22;\n&#x22;, dest); // 输出 &#x22;Greeting: Hello&#x22;
+
+
+    // strchr 和 strrchr 示例
+    char path[] = &#x22;/home/user/document/file.txt&#x22;;
+    char *first_slash = strchr(path, &#x27;/&#x27;); // 查找第一个 &#x27;/&#x27;
+    char *last_dot = strrchr(path, &#x27;.&#x27;);   // 查找最后一个 &#x27;.&#x27;
+
+    if (first_slash) {
+        printf(&#x22;\n第一个 &#x27;/&#x27; 的位置: %ld\n&#x22;, first_slash - path);
+    }
+    if (last_dot) {
+        printf(&#x22;最后一个 &#x27;.&#x27; 的位置: %ld\n&#x22;, last_dot - path);
+    }
+
+
+    // memset 和 memcpy 示例
+    char data[10];
+    printf(&#x22;\n初始化内存块为 &#x27;X&#x27;...\n&#x22;);
+    memset(data, &#x27;X&#x27;, sizeof(data)); // 将 data 的所有字节设置为 &#x27;X&#x27;
+    printf(&#x22;memset 结果: &#x22;);
+    for(int i = 0; i < sizeof(data); i++) printf(&#x22;%c&#x22;, data[i]);
+    printf(&#x22;\n&#x22;);
+
+    char source_data[] = &#x22;ABCDEF&#x22;;
+    char destination_data[10];
+    printf(&#x22;使用 memcpy 复制 \&#x22;%s\&#x22;...\n&#x22;, source_data);
+    // 将 source_data 的前 6 个字节复制到 destination_data
+    memcpy(destination_data, source_data, strlen(source_data) + 1); // +1 为了复制 null 终止符
+    printf(&#x22;memcpy 结果: \&#x22;%s\&#x22;\n&#x22;, destination_data);
+
+    return 0;
+}" onclick="
+          navigator.clipboard.writeText(this.dataset.code);
+          this.classList.add(&#x27;copied&#x27;);
+          setTimeout(() => this.classList.remove(&#x27;copied&#x27;), 2000)
+        "><div class="ready"><svg class="size-5"><use href="/icons/code.svg#mingcute-clipboard-line"></use></svg></div><div class="success hidden"><svg class="size-5"><use href="/icons/code.svg#mingcute-file-check-line"></use></svg></div></button><button class="collapse-toggle bg-card text-muted-foreground rounded-lg m-2" aria-label="Toggle collapse code block" onclick="this.parentElement.classList.toggle(&#x27;collapsed&#x27;)"><svg class="size-5"><use href="/icons/code.svg#mingcute-arrow-down-line"></use></svg><span class="desc"> code</span></button><div class="collapse-fade"></div></div>
+<h3 id="4-其他实用工具箱成员-stdlibh--errnoh">4. 其他实用工具箱成员 (<code>stdlib.h</code> &#x26; <code>errno.h</code>)<a class="anchor" href="#4-其他实用工具箱成员-stdlibh--errnoh">#</a></h3>
+<p><code>stdlib.h</code> 中还有一些其他非常实用的函数。同时，了解如何检查库函数调用是否成功也很重要，这时 <code>errno.h</code> 就派上用场了。</p>
+<ul>
+<li><strong><code>qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *))</code></strong>: 对数组进行快速排序。
+<ul>
+<li><code>base</code>: 指向数组第一个元素的指针。</li>
+<li><code>nmemb</code>: 数组元素的数量。</li>
+<li><code>size</code>: 每个元素的字节大小。</li>
+<li><code>compar</code>: 指向一个比较函数的指针，该函数接受两个指向元素的 <code>const void *</code> 指针，根据第一个元素相对于第二个元素的大小关系返回负数、零或正数。</li>
+</ul>
+</li>
+<li><strong><code>system(const char *command)</code></strong>: 执行操作系统命令。<strong>注意：</strong> 调用外部命令可能存在安全风险，特别是当 <code>command</code> 来源于不受信任的输入时。</li>
+<li><strong><code>getenv(const char *name)</code></strong>: 获取指定名称的环境变量的值。</li>
+<li><strong><code>int errno</code></strong>: 在发生错误时，某些库函数会设置这个全局变量。它的值表示错误类型。需要 <code>#include &#x3C;errno.h></code>。</li>
+<li><strong><code>void perror(const char *s)</code></strong>: 打印一条描述 <code>errno</code> 当前值的错误信息，前面可加上自定义消息 <code>s:</code>。</li>
+<li><strong><code>char *strerror(int errnum)</code></strong>: 返回一个指向错误信息字符串的指针，该字符串描述了错误号 <code>errnum</code> (通常就是 <code>errno</code> 的值)。需要 <code>#include &#x3C;string.h></code> 或 <code>#include &#x3C;errno.h></code> (C99)。</li>
+</ul>
+<p><strong>小示例 (stdlib.h &#x26; errno.h):</strong></p>
+<div class="astro-code astro-code-themes github-light github-dark collapsed" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><pre><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;stdlib.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 引入通用工具库</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;string.h></span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 用于 strerror (C99+ 也可用 errno.h)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">#include</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> &#x3C;errno.h></span><span style="color:#6A737D;--shiki-dark:#6A737D">  // 引入错误码库</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// qsort 需要的比较函数</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> compare_integers</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#D73A49;--shiki-dark:#F97583"> void</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#E36209;--shiki-dark:#FFAB70">a</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#D73A49;--shiki-dark:#F97583"> void</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#E36209;--shiki-dark:#FFAB70">b</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> arg1 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#D73A49;--shiki-dark:#F97583"> int*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)a;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> arg2 </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#D73A49;--shiki-dark:#F97583"> int*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)b;</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 如果 arg1 &#x3C; arg2 返回负数</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 如果 arg1 == arg2 返回 0</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 如果 arg1 > arg2 返回正数</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // (arg1 > arg2) - (arg1 &#x3C; arg2) 是一个简洁的实现</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arg1 </span><span style="color:#D73A49;--shiki-dark:#F97583">></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> arg2) </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (arg1 </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> arg2);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 也可以直接 return arg1 - arg2; 但需要注意整数溢出风险，不过对于一般 int 范围通常没问题</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> main</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // qsort 示例</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> numbers</span><span style="color:#D73A49;--shiki-dark:#F97583">[]</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span><span style="color:#005CC5;--shiki-dark:#79B8FF">5</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">8</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">9</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">4</span><span style="color:#24292E;--shiki-dark:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> count </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#D73A49;--shiki-dark:#F97583"> sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(numbers) </span><span style="color:#D73A49;--shiki-dark:#F97583">/</span><span style="color:#D73A49;--shiki-dark:#F97583"> sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#E36209;--shiki-dark:#FFAB70">numbers</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"排序前: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> count; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">numbers</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // 对整个数组进行排序</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    qsort</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(numbers, count, </span><span style="color:#D73A49;--shiki-dark:#F97583">sizeof</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">), compare_integers);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"排序后: "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">; i </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> count; i</span><span style="color:#D73A49;--shiki-dark:#F97583">++</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">numbers</span><span style="color:#24292E;--shiki-dark:#E1E4E8">[i]);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // system 示例 (取决于操作系统)</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">执行系统命令 'ls' (或 'dir' on Windows)...</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // int status = system("ls");</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // Linux/macOS</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> status </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> system</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"dir"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // Windows</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (status </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#D73A49;--shiki-dark:#F97583"> -</span><span style="color:#005CC5;--shiki-dark:#79B8FF">1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">         perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"执行系统命令失败"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"系统命令执行完毕，返回状态码: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, status);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // getenv 示例 (获取PATH环境变量的值)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    char</span><span style="color:#D73A49;--shiki-dark:#F97583"> *</span><span style="color:#24292E;--shiki-dark:#E1E4E8">path_env </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> getenv</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"PATH"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 或 "Path" on Windows</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (path_env) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">PATH 环境变量的值是:</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n%s\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, path_env);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">未找到 PATH 环境变量。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // errno 和 perror/strerror 示例 (演示文件打开失败)</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    FILE </span><span style="color:#D73A49;--shiki-dark:#F97583">*</span><span style="color:#24292E;--shiki-dark:#E1E4E8">non_existent_file </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fopen</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"non_existent_file.txt"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"r"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (non_existent_file </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> NULL</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">尝试打开不存在的文件失败。</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"errno 的值是: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">%d\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, errno);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 打印错误码</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        perror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"附加信息："</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 打印基于 errno 的系统错误信息，前面加 "附加信息："</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"strerror 描述：</span><span style="color:#005CC5;--shiki-dark:#79B8FF">%s\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">strerror</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(errno));</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // 打印基于 errno 的错误字符串</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    } </span><span style="color:#D73A49;--shiki-dark:#F97583">else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        printf</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"意外：成功打开了 non_existent_file.txt</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\n</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">        fclose</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(non_existent_file);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre><span class="language ps-1 pe-3 text-sm bg-muted text-muted-foreground">c</span><button class="copy text-muted-foreground p-1 box-content border rounded-lg bg-card" aria-label="Copy code" data-code="#include <stdio.h>
+#include <stdlib.h> // 引入通用工具库
+#include <string.h> // 用于 strerror (C99+ 也可用 errno.h)
+#include <errno.h>  // 引入错误码库
+
+// qsort 需要的比较函数
+int compare_integers(const void *a, const void *b) {
+    int arg1 = *(const int*)a;
+    int arg2 = *(const int*)b;
+    // 如果 arg1 < arg2 返回负数
+    // 如果 arg1 == arg2 返回 0
+    // 如果 arg1 > arg2 返回正数
+    // (arg1 > arg2) - (arg1 < arg2) 是一个简洁的实现
+    return (arg1 > arg2) - (arg1 < arg2);
+    // 也可以直接 return arg1 - arg2; 但需要注意整数溢出风险，不过对于一般 int 范围通常没问题
+}
+
+int main() {
+    // qsort 示例
+    int numbers[] = {5, 2, 8, 1, 9, 4};
+    int count = sizeof(numbers) / sizeof(numbers[0]);
+
+    printf(&#x22;排序前: &#x22;);
+    for (int i = 0; i < count; i++) {
+        printf(&#x22;%d &#x22;, numbers[i]);
+    }
+    printf(&#x22;\n&#x22;);
+
+    // 对整个数组进行排序
+    qsort(numbers, count, sizeof(int), compare_integers);
+
+    printf(&#x22;排序后: &#x22;);
+    for (int i = 0; i < count; i++) {
+        printf(&#x22;%d &#x22;, numbers[i]);
+    }
+    printf(&#x22;\n&#x22;);
+
+
+    // system 示例 (取决于操作系统)
+    printf(&#x22;\n执行系统命令 &#x27;ls&#x27; (或 &#x27;dir&#x27; on Windows)...\n&#x22;);
+    // int status = system(&#x22;ls&#x22;); // Linux/macOS
+    int status = system(&#x22;dir&#x22;); // Windows
+    if (status == -1) {
+         perror(&#x22;执行系统命令失败&#x22;);
+    } else {
+        printf(&#x22;系统命令执行完毕，返回状态码: %d\n&#x22;, status);
+    }
+
+
+    // getenv 示例 (获取PATH环境变量的值)
+    char *path_env = getenv(&#x22;PATH&#x22;); // 或 &#x22;Path&#x22; on Windows
+    if (path_env) {
+        printf(&#x22;\nPATH 环境变量的值是:\n%s\n&#x22;, path_env);
+    } else {
+        printf(&#x22;\n未找到 PATH 环境变量。\n&#x22;);
+    }
+
+    // errno 和 perror/strerror 示例 (演示文件打开失败)
+    FILE *non_existent_file = fopen(&#x22;non_existent_file.txt&#x22;, &#x22;r&#x22;);
+    if (non_existent_file == NULL) {
+        printf(&#x22;\n尝试打开不存在的文件失败。\n&#x22;);
+        printf(&#x22;errno 的值是: %d\n&#x22;, errno); // 打印错误码
+        perror(&#x22;附加信息：&#x22;); // 打印基于 errno 的系统错误信息，前面加 &#x22;附加信息：&#x22;
+        printf(&#x22;strerror 描述：%s\n&#x22;, strerror(errno)); // 打印基于 errno 的错误字符串
+    } else {
+        printf(&#x22;意外：成功打开了 non_existent_file.txt\n&#x22;);
+        fclose(non_existent_file);
+    }
+
+
+    return 0;
+}" onclick="
+          navigator.clipboard.writeText(this.dataset.code);
+          this.classList.add(&#x27;copied&#x27;);
+          setTimeout(() => this.classList.remove(&#x27;copied&#x27;), 2000)
+        "><div class="ready"><svg class="size-5"><use href="/icons/code.svg#mingcute-clipboard-line"></use></svg></div><div class="success hidden"><svg class="size-5"><use href="/icons/code.svg#mingcute-file-check-line"></use></svg></div></button><button class="collapse-toggle bg-card text-muted-foreground rounded-lg m-2" aria-label="Toggle collapse code block" onclick="this.parentElement.classList.toggle(&#x27;collapsed&#x27;)"><svg class="size-5"><use href="/icons/code.svg#mingcute-arrow-down-line"></use></svg><span class="desc"> code</span></button><div class="collapse-fade"></div></div>
+<h3 id="结语">结语<a class="anchor" href="#结语">#</a></h3>
+<p>至此，我们已经探索了C语言标准库中大量常用且强大的函数，包括基础I/O、字符串处理、数学计算、动态内存管理、文件操作以及一些通用的实用工具。</p>
+<p>标准库是C程序员的宝库。理解并熟练使用这些函数，将极大地提升你的编程效率和代码质量。请记住，<strong>查阅官方文档</strong>是学习标准库的最佳方式，它可以提供函数最准确、最详细的说明。</p>
+<p>希望这个系列的文章能为你打开C语言标准库的大门，让你更有信心去编写更复杂、更强大的C程序！</p>
+<p>多动手实践，不断尝试，你会在C语言的世界里越走越远！</p>
+<p>下次见！ 👋</p>     </div> </article> </main> <div class="bottom mt-6 items-start gap-x-10 md:flex astro-scuu7fyy">  <div class="flex-1 text-muted-foreground md:min-w-[50ch] astro-scuu7fyy"> <div class="relative flex flex-col gap-y-2 rounded-xl border px-3 sm:px-4 py-2 sm:py-3 astro-q62egrd7"> <svg aria-hidden="true" class="absolute end-4 top-4 size-20 opacity-10 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 3a5 5 0 0 1 3.75 1.692a1 1 0 1 1-1.5 1.324a3 3 0 1 0 0 3.968a1 1 0 1 1 1.5 1.324A5 5 0 1 1 12 7"/></g></svg>  <div class="flex flex-col astro-q62egrd7"> <div class="font-medium text-foreground astro-q62egrd7">C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)</div> <div class="text-sm line-clamp-1 astro-q62egrd7">https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B</div> </div>  <div class="flex flex-row flex-wrap justify-start gap-x-5 gap-y-1 sm:gap-x-8 astro-q62egrd7"> <div class="flex gap-x-2 sm:flex-col astro-q62egrd7"> <span class="astro-q62egrd7">Author</span> <span class="text-sm text-foreground max-sm:place-self-center astro-q62egrd7">cerry2022</span> </div> <div class="flex gap-x-2 sm:min-w-16 sm:flex-col astro-q62egrd7"> <span class="astro-q62egrd7">Published at</span> <span class="text-sm text-foreground max-sm:place-self-center astro-q62egrd7"> 2025年5月13日 </span> </div> <div class="flex gap-x-2 sm:flex-col astro-q62egrd7"> <span class="astro-q62egrd7">Copyright</span> <a class="text-sm text-foreground max-sm:place-self-center astro-q62egrd7" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+CC BY-NC-SA 4.0
+</a> </div> </div>  <div class="relative astro-q62egrd7"> <div class="flex flex-row gap-3 astro-q62egrd7"> <button id="copy-link" aria-label="Copy link" class="group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5 astro-q62egrd7"> <svg aria-hidden="true" class="size-5 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M16.243 9.878a1 1 0 0 1 1.32-.083l.094.083L19.778 12a5.5 5.5 0 0 1-7.596 7.952L12 19.778l-2.121-2.121a1 1 0 0 1 1.32-1.498l.094.083l2.121 2.122a3.5 3.5 0 0 0 5.091-4.8l-.141-.15l-2.121-2.121a1 1 0 0 1 0-1.415M9.17 9.171a1 1 0 0 1 1.32-.083l.095.083l4.242 4.243a1 1 0 0 1-1.32 1.497l-.094-.083l-4.243-4.242a1 1 0 0 1 0-1.415m-4.95-4.95a5.5 5.5 0 0 1 7.597-.173l.182.174l2.121 2.12A1 1 0 0 1 12.8 7.84l-.094-.083l-2.121-2.121a3.5 3.5 0 0 0-5.091 4.8l.141.15l2.121 2.12a1 1 0 0 1-1.32 1.498l-.094-.083L4.222 12a5.5 5.5 0 0 1 0-7.778Z"/></g></svg> </button> <button id="get-qrcode" aria-label="Get QR code" class="group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5 astro-q62egrd7"> <svg aria-hidden="true" class="size-5 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M11 3a2 2 0 0 1 1.995 1.85L13 5v6a2 2 0 0 1-1.85 1.995L11 13H5a2 2 0 0 1-1.995-1.85L3 11V5a2 2 0 0 1 1.85-1.995L5 3zm0 2H5v6h6zM8.5 7a.5.5 0 0 1 .492.41L9 7.5v1a.5.5 0 0 1-.41.492L8.5 9h-1a.5.5 0 0 1-.492-.41L7 8.5v-1a.5.5 0 0 1 .41-.492L7.5 7zM21 5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm-4 0h2v2h-2zM7 15a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2zm0 2H5v2h2zm14 0a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm-4 0h2v2h-2zm-2-5a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1m-2 4a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0z"/></g></svg> </button> <a href="http://service.weibo.com/share/share.php?url=https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B&#38;title=C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)&#38;pic=" target="_blank" id="share-weibo" aria-label="Share to weibo" class="group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5 astro-q62egrd7"> <svg aria-hidden="true" class="size-5 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M13.12 5.815c.55.537.826 1.24.863 1.992c1.675-.502 3.045-.362 3.937.5c.848.82.937 1.967.617 2.964C19.9 11.961 21 13.058 21 14.715c0 1.93-1.256 3.526-2.962 4.586C16.318 20.371 14.004 21 11.5 21s-4.818-.63-6.538-1.699C3.256 18.241 2 16.646 2 14.715c0-1.762.842-3.589 2.05-5.156a14.6 14.6 0 0 1 4.723-3.954c1.635-.847 3.286-.828 4.347.21m-1.399 1.43c-.213-.21-.829-.485-2.028.136a12.6 12.6 0 0 0-4.06 3.4C4.576 12.154 4 13.558 4 14.715c0 .988.647 2.035 2.018 2.888C7.374 18.446 9.309 19 11.5 19c2.19 0 4.127-.554 5.482-1.397c1.371-.853 2.018-1.9 2.018-2.888c0-.711-.56-1.439-2.16-1.991a1 1 0 0 1-.473-1.546c.495-.66.355-1.248.163-1.433l-.048-.04l-.067-.042c-.337-.186-1.274-.368-3.335.661a1 1 0 0 1-1.347-1.33c.444-.92.225-1.517-.012-1.75ZM17 3c1.576 0 3.128.643 4.243 1.757A6.05 6.05 0 0 1 23 9a1 1 0 1 1-2 0c0-1.05-.429-2.086-1.172-2.828A4.04 4.04 0 0 0 17 5a1 1 0 1 1 0-2"/></g></svg> </a><a href="https://x.com/intent/tweet?text='C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)'&#38;url='https://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B'&#38;via='cerry2022'" target="_blank" id="share-x" aria-label="Share to x" class="group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5 astro-q62egrd7"> <svg aria-hidden="true" class="size-5 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M19.753 4.659a1 1 0 0 0-1.506-1.317l-5.11 5.84L8.8 3.4A1 1 0 0 0 8 3H4a1 1 0 0 0-.8 1.6l6.437 8.582l-5.39 6.16a1 1 0 0 0 1.506 1.317l5.11-5.841L15.2 20.6a1 1 0 0 0 .8.4h4a1 1 0 0 0 .8-1.6l-6.437-8.582l5.39-6.16ZM16.5 19L6 5h1.5L18 19z"/></g></svg> </a><a href="https://bsky.app/intent/compose?text=C语言的秘密武器：那些你必须知道的标准库函数(2)(附示例)%0Ahttps://www.cerr.top/blog/learn-c/c%E8%AF%AD%E8%A8%80%E7%9A%84%E7%A7%98%E5%AF%86%E6%AD%A6%E5%99%A8%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B02%E9%99%84%E7%A4%BA%E4%BE%8B" target="_blank" id="share-bluesky" aria-label="Share to bluesky" class="group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5 astro-q62egrd7"> <svg aria-hidden="true" class="size-5 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M4.747 5.105a.94.94 0 0 0-.41.892l.314 3.287A3 3 0 0 0 7.637 12H9a1 1 0 0 1 .371 1.928l-2.34.937c-.885.354-1.122 1.32-.664 1.932c.288.384.576.731.84.996c.233.233.532.485.865.74c.619.475 1.625.214 1.94-.734l1.04-3.115a1 1 0 0 1 1.897 0l1.038 3.115c.316.948 1.322 1.21 1.941.735a9 9 0 0 0 .865-.741c.265-.265.553-.612.84-.996c.458-.612.222-1.578-.664-1.932l-2.34-.937A1 1 0 0 1 15 12h1.363a3 3 0 0 0 2.986-2.716l.314-3.287a.94.94 0 0 0-.41-.892a.75.75 0 0 0-.858-.001c-2.645 1.708-4.05 3.442-5.5 6.343a1 1 0 0 1-1.79 0c-1.45-2.901-2.855-4.635-5.5-6.343a.75.75 0 0 0-.858.001m-2.4 1.082C2.13 3.913 4.567 2.053 6.69 3.424C9.13 5 10.662 6.639 12 8.9c1.338-2.261 2.87-3.9 5.31-5.476c2.123-1.371 4.56.49 4.344 2.763l-.314 3.287a5 5 0 0 1-2.783 4.02c1.329 1.039 1.818 2.978.677 4.502c-.317.423-.669.853-1.027 1.211c-.317.317-.69.628-1.062.914c-1.88 1.441-4.375.35-5.055-1.69l-.09-.269l-.09.27c-.68 2.04-3.175 3.13-5.055 1.689a11 11 0 0 1-1.062-.914a11.5 11.5 0 0 1-1.027-1.211c-1.141-1.524-.651-3.463.678-4.502a5 5 0 0 1-2.784-4.02z"/></g></svg> </a> </div> <div id="qrcode-container" class="absolute z-10 -mt-2 box-content max-h-0 max-w-44 overflow-hidden rounded-xl border bg-muted p-4 opacity-0 transition-all duration-300 ease-in-out astro-q62egrd7 astro-qvc6dekv"></div> <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script> <script>(function(){const content = undefined;
+
+  const renderContent = content ?? window.location.href
+  // Load qrcode
+  function loadQRcode(qrcodeContainer) {
+    if (!qrcodeContainer) throw new Error('qrcode container not found')
+    if (qrcodeContainer.innerHTML !== '') return
+    new QRCode(qrcodeContainer, renderContent)
+  }
+  const qrcodeContainer = document.getElementById('qrcode-container')
+  if (!qrcodeContainer) throw new Error('qrcode container not found')
+  loadQRcode(qrcodeContainer)
+})();</script> </div> </div> <div class="mx-6 rounded-b-xl border border-t-0 px-3 pb-1.5 pt-1 sm:mx-8 sm:px-4 astro-q62egrd7"> <a href="/projects#sponsorship" class="flex items-center justify-between text-muted-foreground no-underline astro-q62egrd7" target="_blank"> <span class="astro-q62egrd7">Buy me a cup of coffee ☕.</span> <svg aria-hidden="true" class="box-content size-5 p-1 astro-q62egrd7 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M17 2a3 3 0 0 1 3 3v12a1 1 0 0 1 .351 1.936l-8 3a1 1 0 0 1-.702 0l-8-3A1 1 0 0 1 4 17V5a3 3 0 0 1 3-3zm0 2H7a1 1 0 0 0-.993.883L6 5v12.682l6 2.25l6-2.25V5a1 1 0 0 0-.883-.993zm-5 1a1 1 0 0 1 .993.883L13 6v1h2a1 1 0 0 1 .117 1.993L15 9h-5a.5.5 0 0 0-.09.992L10 10h4a2.5 2.5 0 0 1 .164 4.995L14 15h-1v1a1 1 0 0 1-1.993.117L11 16v-1H9a1 1 0 0 1-.117-1.993L9 13h5a.5.5 0 0 0 .09-.992L14 12h-4a2.5 2.5 0 0 1-.164-4.995L10 7h1V6a1 1 0 0 1 1-1"/></g></svg> </a> </div>  <script type="module" src="/_astro/Copyright.astro_astro_type_script_index_0_lang.B_VQDGfL.js"></script> <div class="flex max-sm:flex-col sm:justify-between gap-2 mt-3 sm:mt-6"> <span class="min-w-0"> <a href="/blog/learn-c/c语言的秘密武器那些你必须知道的标准库函数1附示例" class="group inline-flex items-center gap-x-2 rounded-xl px-4 py-2 no-underline transition-colors duration-300 hover:bg-muted max-sm:max-w-[80%] sm:flex"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 rotate-180 stroke-muted-foreground transition-colors group-hover:stroke-primary"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-4 scale-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:scale-x-100"></line> <polyline points="12 5 19 12 12 19" class="translate-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1"></polyline> </svg> <p class="truncate font-medium transition-colors">C语言的秘密武器：那些你必须知道的标准库函数(1)(附示例)</p> </a> </span> <span class="min-w-0"> <a href="/blog/els2021" class="group inline-flex items-center gap-x-2 rounded-xl px-4 py-2 text-right no-underline transition-colors duration-300 hover:bg-muted max-sm:float-end max-sm:max-w-[80%] sm:flex"> <p class="truncate font-medium transition-colors">HP39GII游戏-俄罗斯方块 ELS2021</p> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 stroke-muted-foreground transition-colors group-hover:stroke-primary"> <line x1="5" y1="12" x2="19" y2="12" class="translate-x-4 scale-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:scale-x-100"></line> <polyline points="12 5 19 12 12 19" class="translate-x-0 transition-all duration-300 ease-in-out group-hover:translate-x-1"></polyline> </svg> </a> </span> </div> <comment-component class="astro-y3qunytq"><div id="waline" class="not-prose mt-3 sm:mt-6 astro-y3qunytq">
+Comment seems to stuck. Try to refresh?✨
+</div></comment-component><script type="module" src="/_astro/Comment.astro_astro_type_script_index_0_lang.CIMc_49A.js"></script> </div> <div class="min-w-48 basis-60 astro-scuu7fyy">  </div> </div> <div class="z-10 md:z-50 group fixed bottom-8 end-4 transition-all flex flex-col gap-y-4 sm:end-8 astro-7ciavms3" id="action-buttons"> <button aria-label="Toggle sidebar" class="size-10 flex items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground duration-300 hover:border-border/75 md:hidden sm:size-12 astro-scuu7fyy" id="sidebar-btn"> <svg aria-hidden="true" class="astro-scuu7fyy astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M4.5 17.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3M20 18a1 1 0 1 1 0 2H9a1 1 0 1 1 0-2zM4.5 10.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3M20 11a1 1 0 0 1 .117 1.993L20 13H9a1 1 0 0 1-.117-1.993L9 11zM4.5 3.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3M20 4a1 1 0 0 1 .117 1.993L20 6H9a1 1 0 0 1-.117-1.993L9 4z"/></g></svg> </button> <scroll-button class="astro-7ciavms3"> <button aria-label="Back to Top" class="relative size-10 flex items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground duration-300 hover:border-border/75 sm:size-12 opacity-0 astro-7ciavms3" id="to-top-btn"> <div class="top-text absolute bottom-0 end-0 start-0 top-0 flex items-center justify-center group-[.ended]:opacity-0 astro-7ciavms3"> <span class="text astro-7ciavms3">10</span> <span class="text-xs astro-7ciavms3">%</span> </div> <svg aria-hidden="true" class="top-icon group-[.ended]:opacity-100 astro-7ciavms3 astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M11.293 8.293a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414L12 10.414l-4.95 4.95a1 1 0 0 1-1.414-1.414z"/></g></svg> </button> </scroll-button> </div> <script>(function(){const headerName = "content-header";
+const contentName = "content";
+const needPercent = true;
+
+  class ScrollBtn extends HTMLElement {
+    actionBtns
+    scrollBtn
+    scrollPercentEl
+    targetHeader
+    articleEl
+    scrollHeight = 0
+    articleTop = 0
+    clientHeight = 0
+    ticking = false
+    needPercent = true
+
+    calculateScrollPercent() {
+      const scrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop)
+      // Before article
+      if (scrollTop < this.articleTop) return 0
+      const maxScrollable = this.scrollHeight - this.clientHeight
+      // After article
+      if (maxScrollable <= 0) return 100
+      const progress = Math.min(scrollTop - this.articleTop, maxScrollable)
+      return Math.round((progress / maxScrollable) * 100)
+    }
+
+    updateScrollPercent() {
+      const percent = this.calculateScrollPercent()
+      this.scrollPercentEl.textContent = percent.toString()
+      this.actionBtns.classList.toggle('ended', percent >= 100)
+      this.ticking = false
+    }
+
+    connectedCallback() {
+      this.needPercent = needPercent
+      this.actionBtns = document.getElementById('action-buttons')
+      this.scrollBtn = this.querySelector('button#to-top-btn')
+      this.scrollPercentEl = this.scrollBtn.querySelector('.top-text .text')
+      this.targetHeader = document.getElementById(headerName)
+      this.articleEl = document.getElementById(contentName)
+
+      if (!this.articleEl) {
+        console.error(`Element with ID ${contentName} not found.`)
+        needPercent = false
+      }
+      // Scroll to top action
+      this.scrollBtn.addEventListener('click', this)
+      // Observe header visibility
+      if (this.targetHeader) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            this.actionBtns.classList.toggle('show', !entry.isIntersecting)
+          })
+        })
+        observer.observe(this.targetHeader)
+      } else {
+        console.error(`Element with ID ${headerName} not found.`)
+      }
+      // Scroll percent update
+      if (this.needPercent) {
+        this.scrollHeight = this.articleEl.scrollHeight
+        this.articleTop = this.articleEl.offsetTop
+        this.clientHeight = document.documentElement.clientHeight
+
+        document.addEventListener('scroll', () => {
+          if (!this.ticking) {
+            requestAnimationFrame(() => this.updateScrollPercent())
+            this.ticking = true
+          }
+        })
+      } else {
+        this.actionBtns.classList.add('ended')
+      }
+    }
+
+    handleEvent(event) {
+      if (event.type === 'click') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    }
+  }
+  customElements.define('scroll-button', ScrollBtn)
+})();</script>  </div> <footer class="mx-auto mb-5 mt-16 w-full px-4 sm:px-6 astro-sz7xmlte"> <div class="border-t pt-6 astro-sz7xmlte">  <div class="mb-4 text-sm text-muted-foreground astro-sz7xmlte">  <div class="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 text-center astro-sz7xmlte"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=42020002000286" target="_blank" rel="noreferrer" class="inline-flex items-center whitespace-nowrap transition-colors hover:text-primary-600 astro-sz7xmlte"> <img src="/img/beian.png" alt="公网安备图标" class="mr-1 inline-block h-[14px] w-[14px] align-middle astro-sz7xmlte" loading="lazy"> <span class="astro-sz7xmlte">鄂公网安备42020002000286号</span> </a> <span class="mx-1 select-none text-muted-foreground/50 astro-sz7xmlte">|</span> <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer" class="whitespace-nowrap transition-colors hover:text-primary-600 astro-sz7xmlte">
+鄂ICP备2025168007号-1
+</a> </div>  <div class="mt-1 text-center text-xs astro-sz7xmlte"> <span class="astro-sz7xmlte">投诉举报：Cerry2024@foxmail.com</span> </div> </div>  <div class="flex flex-col items-center gap-4 text-sm sm:flex-row sm:justify-between sm:gap-6 astro-sz7xmlte">  <div class="flex flex-col items-center gap-2 text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-2 sm:gap-y-1 astro-sz7xmlte">    <div class="flex flex-wrap items-center justify-center gap-x-2 sm:justify-start astro-sz7xmlte"> <span class="whitespace-nowrap astro-sz7xmlte">© 2024-2026 cerry2022</span>  <span class="hidden select-none text-muted-foreground/40 sm:inline astro-sz7xmlte">|</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="text-sm astro-sz7xmlte"> CC BY-NC-SA 4.0 </a> </div> <span class="whitespace-nowrap text-muted-foreground/80 astro-sz7xmlte">
+Powered by
+<a href="https://github.com/withastro/astro" target="_blank" class="mx-1 hover:text-primary-600 astro-sz7xmlte">Astro</a>&
+<a href="https://github.com/cworld1/astro-theme-pure" target="_blank" class="mx-1 hover:text-primary-600 astro-sz7xmlte">Pure</a> </span> </div>  <div class="flex items-center justify-center gap-x-4 astro-sz7xmlte"> <a href="https://github.com/cerry2022" aria-label="GitHub" class="inline-flex items-center justify-center transition-colors hover:text-primary-600 astro-sz7xmlte"> <svg aria-hidden="true" class="astro-sz7xmlte astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.8 6.8 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.3 9.3 0 0 1 12 5c.961 0 1.874.14 2.703.391c.342.104.709.034.988-.18a6.8 6.8 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033c-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818c-.792.158-1.101 1.155-.495 1.726c.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622c.21-.82.191-1.646.111-2.28c-.071-.568-.17-1.312-.57-1.756c-.595-.659-1.58-.271-2.28-.032a9 9 0 0 0-2.125 1.045A11.4 11.4 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9 9 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031c-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A4 4 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122c-.76-.322-1.152-1.133-1.63-1.753c-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566c.373.448.869.916 1.58 1.218c.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456c.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684c.283-.314.357-.756.207-1.14"/></g></svg> </a><a href="/rss.xml" aria-label="RSS" class="inline-flex items-center justify-center transition-colors hover:text-primary-600 astro-sz7xmlte"> <svg aria-hidden="true" class="astro-sz7xmlte astro-udet5etc" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><g fill="none"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5.5 17a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m0-14C14.06 3 21 9.94 21 18.5q0 .268-.009.534a1 1 0 0 1-1.999-.068Q19 18.734 19 18.5C19 11.044 12.956 5 5.5 5q-.234 0-.466.008a1 1 0 0 1-.068-1.999Q5.231 3 5.5 3m0 7a8.5 8.5 0 0 1 8.482 9.066a1 1 0 0 1-1.996-.132a6.5 6.5 0 0 0-6.92-6.92a1 1 0 1 1-.132-1.995q.28-.02.566-.019"/></g></svg> </a> </div> </div> </div> </footer> </div>  </body> </html> <script type="module">const d=document.getElementById("sidebar-btn"),e=document.getElementById("sidebar"),s=document.getElementById("sidebar-shade");s&&s.addEventListener("click",()=>{t()});function t(){e&&e.classList.contains("show")?(e.classList.remove("show"),s.style.display="none"):e&&(e.classList.add("show"),s.style.display="block")}d?.addEventListener("click",()=>{t()});</script> <script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/pure/medium-zoom.min.umd.js"></script> <script>(function(){const selector = ".prose .zoomable";
+const background = "hsl(var(--background) / 0.8)";
+
+  mediumZoom(selector, { background })
+})();</script> 

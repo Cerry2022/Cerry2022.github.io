@@ -1,0 +1,128 @@
+Lm:={64,32,"ҷеħгħг×ҷǅұƤҬǄćƿҲƤҷĥЯƗǅćҭƤćÈǇƤҷƥħĝƔǅƗǄƗǅŴƒƗҷƥЯƔǅƗǄƗąƇâƗҷƥЯƔǅĻƹƗƕŷĢƔҷĥЯƔǅĻƹƗŕѭƍƤҷĥЯƔǅĤƍƗŕѬÍĻҷĥЯƔǅĤƍƗŕѬÍĻҷĥЯƔąğÝƗĕĲÍƔҷĥЯƔąğÝƗąЬƈĻҷĥЯƔƕЯƔǅÜƈƗҷąϰĻËϯĻǇϬǇƤҷǅұƤҳƤҳƤҸϵ×ϳ×ϳËӧеħгӉǅćҭƤҳǄӅǅćҭƤҳǄӅǅƗǄƗǅϮćӈǅƗǄƗǅćҭǄӅÕƸËƔǅćҭǄӅąҭƹƤćÈǇǄӅǅǄƏƗǅĄƗƗӇǅƻƋƗąććƗӇǅǄƉƗąććƗӇǅäƉƗąććƗӇąƍÌƗǅćҭǄӅÕƸËƔǅćҭǄӅǅұƤҳǄӅËϲ×ϳӈӧ"};
+
+DrawRect(G,X,Y,N)
+BEGIN
+    LOCAL X1:=16*(N MOD 4),Y1:=16*INT(0.25*N);
+    BLIT_P(G,X,Y,G1,X1,Y1,X1+16,Y1+16);
+END;
+
+SearchRect(X,Y,N)
+BEGIN
+    LOCAL I;
+    FOR I FROM −1 TO 1 STEP 2 DO
+        IF M1(Y+2,X+I+2)==N THEN
+            0►M1(Y+2,X+I+2);RECT_P((X+I)*16,Y*16,(X+I)*16+14,Y*16+14);SearchRect(X+I,Y,N);
+        END;
+        IF M1(Y+I+2,X+2)==N THEN
+            0►M1(Y+I+2,X+2);RECT_P(X*16,(Y+I)*16,X*16+14,(Y+I)*16+14);SearchRect(X,Y+I,N);
+        END;
+    END;
+END;
+
+KillRect()
+BEGIN
+    LOCAL X,Y,N,I,eliminated:=0;
+    FOR Y FROM 0 TO 7 DO
+        FOR X FROM 0 TO 11 DO
+            N:=M1(Y+2,X+2);
+            // 检查水平三连
+            IF N≠0 AND M1(Y+2,X+1)=N AND M1(Y+2,X+3)=N THEN
+                FOR I FROM −1 TO 1 DO
+                    IF M1(Y+2,X+I+2)≠0 THEN
+                        eliminated:=eliminated+1;
+                        0►M1(Y+2,X+I+2);
+                        RECT_P((X+I)*16,Y*16,(X+I)*16+14,Y*16+14);
+                        SearchRect(X+I,Y,N);
+                    END;
+                END;
+            END;
+            // 检查垂直三连
+            IF N≠0 AND M1(Y+1,X+2)=N AND M1(Y+3,X+2)=N THEN
+                FOR I FROM −1 TO 1 DO
+                    IF M1(Y+I+2,X+2)≠0 THEN
+                        eliminated:=eliminated+1;
+                        0►M1(Y+I+2,X+2);
+                        RECT_P(X*16,(Y+I)*16,X*16+14,(Y+I)*16+14);
+                        SearchRect(X,Y+I,N);
+                    END;
+                END;
+            END;
+        END;
+    END;
+    RETURN eliminated;
+END;
+
+Gravity()
+BEGIN
+    LOCAL X,Y,Ln,N;
+    FOR X FROM 0 TO 11 DO
+        Ln:={0,0,0,0,0,0,0,0};1►N;
+        FOR Y FROM 0 TO 7  DO
+            IF M1(7-Y+2,X+2)≠0 THEN
+                M1(7-Y+2,X+2)►Ln(N);N:=N+1;
+            END;
+        END;
+        FOR Y FROM 0 TO 7 DO
+            M1(9-Y,X+2):=Ln(Y+1);
+            DrawRect(G0,X*16,(7-Y)*16,Ln(Y+1));
+        END;
+    END;
+END;
+
+EXPORT XXL()
+BEGIN
+    LOCAL X,Y,I,N,on,eliminated;
+    RECT();
+    IF GROBW_P(G1)≠64 THEN
+        DIMGROB(G1,10.4,8.2);BLOAD(G1,0,0,Lm);
+    END;
+    REDIM(M1,{10,14});
+    // 初始化地图
+    FOR Y FROM 0 TO 7 DO
+        FOR X FROM 0 TO 11 DO
+            N:=INT(RANDOM(1,5));
+            M1(Y+2,X+2):=N;
+            DrawRect(G0,X*16,Y*16,N);
+        END;
+    END;
+    0►X;0►Y;0►N;
+    WHILE 1 DO
+        I:=I+1;
+
+        // 处理交换和消除
+        LOCAL dx:=0, dy:=0;
+        IF ISKEYDOWN(14) THEN dx:=-1; I=0; END; // 左
+        IF ISKEYDOWN(10) THEN dx:=1; I=0; END;  // 右
+        IF ISKEYDOWN(9) THEN dy:=-1; I=0; END;  // 上
+        IF ISKEYDOWN(15) THEN dy:=1; I=0; END;  // 下
+
+        IF dx≠0 OR dy≠0 THEN
+            LOCAL newX:=X+dx, newY:=Y+dy;
+            IF newX≥0 AND newX≤11 AND newY≥0 AND newY≤7 THEN
+                // 执行交换
+                LOCAL temp:=M1(Y+2,X+2);
+                M1(Y+2,X+2):=M1(newY+2,newX+2);
+                M1(newY+2,newX+2):=temp;
+                // 更新显示
+                DrawRect(G0,X*16,Y*16,M1(Y+2,X+2));
+                DrawRect(G0,newX*16,newY*16,M1(newY+2,newX+2));
+                X:=newX; Y:=newY;
+                // 消除和重力循环
+                REPEAT
+                    eliminated:=KillRect();
+                    Gravity();
+                    WAIT(0.1);
+                UNTIL eliminated==0;
+                // 防止重复触发
+                WAIT(0.5);
+            END;
+        END;
+
+        // 光标闪烁
+        IF I MOD 48==0 THEN
+            N:=N+1;
+            INVERT_P(X*16,Y*16,X*16+14,Y*16+14);
+        END;
+        WAIT(0.01);
+    END;
+END;

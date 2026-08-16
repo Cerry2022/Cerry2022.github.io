@@ -1,0 +1,35 @@
+HcLine(X,Y,L,d1,d2,d0)
+BEGIN
+LOCAL d:=RANDOM(d1,d2)*π+d0;
+LINE_P(X,Y,X+L*COS(d),Y+L*SIN(d));
+RETURN {X+L*COS(d),Y+L*SIN(d),d};
+END;
+
+EXPORT HcBoy()
+BEGIN
+LOCAL Hcl,Hcl2,K:=1,N;
+WHILE 1 DO
+WAIT(0.1);
+IF ISKEYDOWN(0)==1 THEN
+N:=N+RANDOM;
+RANDSEED(N);
+1►K;
+END;
+IF K==1 THEN
+RECT;
+HcLine(128,64,15,.5,1.5,0)►Hcl;//左手
+HcLine(Hcl(1),Hcl(2),16,−.5,.5,Hcl(3));
+HcLine(128,64,15,−.5,.5,0)►Hcl;//右手
+HcLine(Hcl(1),Hcl(2),16,−.5,.5,Hcl(3));
+HcLine(128,64,21,−0.5,1.5,0)►Hcl;//腰
+HcLine(128,64,10,−.3,0.3,Hcl(3)-π)►Hcl2;//头
+ARC_P(Hcl2(1),Hcl2(2),5);
+
+HcLine(Hcl(1),Hcl(2),25,−.2,.3,Hcl(3))►Hcl2;//左腿1
+HcLine(Hcl2(1),Hcl2(2),27,−.5,.5,Hcl2(3));//左腿2
+HcLine(Hcl(1),Hcl(2),25,−.3,.2,Hcl(3))►Hcl2;//右腿1
+HcLine(Hcl2(1),Hcl2(2),27,−.5,.5,Hcl2(3));//右腿2
+0►K;
+END;
+END;
+END;

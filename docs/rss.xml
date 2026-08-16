@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/scripts/pretty-feed-v3.xsl" type="text/xsl"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:h="http://www.w3.org/TR/html4/"><channel><title>cerry2022</title><description>cerry2022的技术博客，分享各种技术干货</description><link>https://www.cerr.top</link><item><title>About</title><link>https://www.cerr.top/docs/advanced/about</link><guid isPermaLink="true">https://www.cerr.top/docs/advanced/about</guid><description>About the project</description><content:encoded>&lt;p&gt;import { GithubCard } from &apos;astro-pure/advanced&apos;
+import { Button, Aside } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;p&gt;The astro-theme-pure theme is open source under the &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/blob/main/LICENSE&quot;&gt;Apache 2.0&lt;/a&gt; license. Please abide by this license for any further development.&lt;/p&gt;
+&lt;h2&gt;Contribute Code&lt;/h2&gt;
+&lt;p&gt;A big thank you to everyone who has contributed to the &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure&quot;&gt;astro-theme-pure&lt;/a&gt;. The open-source community is amazing because of you.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/graphs/contributors&quot;&gt;&lt;img src=&quot;https://contrib.rocks/image?repo=cworld1/astro-theme-pure&quot; alt=&quot;contributors&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;All changes for &lt;code&gt;astro-pure&lt;/code&gt; package should enable &lt;a href=&quot;/docs/advanced/customize#package-mode&quot;&gt;Customize Theme#Package Mode&lt;/a&gt; first. PR test will also run in that mode. This requests you test your changes locally using &lt;code&gt;bun run yijiansilian&lt;/code&gt; command first.&lt;/p&gt;
+&lt;p&gt;And for contributing docs, you can simply click the &quot;Edit on GitHub&quot; link at the bottom of each doc page to change the docs content.&lt;/p&gt;
+&lt;h2&gt;Sponsorship&lt;/h2&gt;
+&lt;p&gt;We would like to express our gratitude to all the sponsors.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Open Source References&lt;/h2&gt;
+&lt;p&gt;This theme uses/references/derives content from the following projects:&lt;/p&gt;
+&lt;p&gt;Framework:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/withastro/astro&quot;&gt;astro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/unocss/unocss&quot;&gt;unocss&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Content rendering:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mdx-js/mdx/&quot;&gt;mdx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/unocss/unocss/tree/main/packages-presets/preset-typography&quot;&gt;@unocss/preset-typography&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/rehypejs/rehype&quot;&gt;@unifiedjs/rehype&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/remarkjs/remark&quot;&gt;@unifiedjs/remark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Integrations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code block: &lt;a href=&quot;https://github.com/shikijs/shiki&quot;&gt;Shiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Image lightbox: &lt;a href=&quot;https://github.com/francoischalifour/medium-zoom&quot;&gt;Medium Zoom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Comment: &lt;a href=&quot;https://github.com/walinejs/waline&quot;&gt;Waline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Search: &lt;a href=&quot;https://github.com/cloudcannon/pagefind&quot;&gt;Pagefind&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Others:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Compress: &lt;a href=&quot;https://github.com/PlayForm/Compress&quot;&gt;playform/compress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Image compress: &lt;a href=&quot;https://github.com/lovell/sharp&quot;&gt;sharp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title>Customize Theme</title><link>https://www.cerr.top/docs/advanced/customize</link><guid isPermaLink="true">https://www.cerr.top/docs/advanced/customize</guid><description>Custom theme by yourself</description><content:encoded>&lt;p&gt;import { Aside, Spoiler, Steps } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;You Should Know&lt;/h2&gt;
+&lt;p&gt;This theme is designed to &quot;NPM Package&quot; for the following reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The code written in package may be frequently changed. If users change them at will, it will significantly increase the cost of subsequent updates and merging (various conflicts for code)&lt;/li&gt;
+&lt;li&gt;Roll back and switch between different versions easily, to maintain user stability&lt;/li&gt;
+&lt;li&gt;Reduce system coupling &amp;#x26; increase reuse ability&lt;/li&gt;
+&lt;li&gt;The NPM Package mode can be used as a &quot;Astro plugin&quot; to append additional operations that enhance user experience during the build phase&lt;/li&gt;
+&lt;li&gt;Support some built-in commands like new, check, info, etc.&lt;/li&gt;
+&lt;li&gt;Use as component library for other Astro projects (yes, this project can be broken down into the UI component library): &lt;a href=&quot;https://www.npmjs.com/package/astro-pure&quot;&gt;Package details&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before you customize it, you should check &lt;a href=&quot;/docs/setup/configuration#theme-configuration&quot;&gt;&lt;code&gt;site.config.ts&lt;/code&gt;&lt;/a&gt; to make sure there is no option that satisfy your need.&lt;/p&gt;
+&lt;h2&gt;Swizzling&lt;/h2&gt;
+&lt;p&gt;This theme chose an elegant method called &apos;Swizzling&apos;, which is inspired by the design from &lt;a href=&quot;https://docusaurus.io/docs/swizzling&quot;&gt;Docusaurus&lt;/a&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use an IDE to quickly view the source code corresponding to a certain component (In VSCode, it is to click the component with Ctrl).&lt;/li&gt;
+&lt;li&gt;Copy to &lt;code&gt;src/components/&amp;#x3C;your prefer directory&gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;After modification, change the corresponding reference to your own file path.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let&apos;s make an example to customize the &lt;code&gt;Footer&lt;/code&gt; component:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import { Footer, Header, ThemeProvider } from &apos;astro-pure/components/basic&apos;
+import type { SiteMeta } from &apos;astro-pure/types&apos;
+// ...
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Find it in theme source code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export { default as Footer } from &apos;./Footer.astro&apos;
+export { default as Header } from &apos;./Header.astro&apos;
+export { default as ThemeProvider } from &apos;./ThemeProvider.astro&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then you get the &lt;code&gt;Footer&lt;/code&gt; component source code at &lt;code&gt;node_modules/astro-theme-pure/components/basic/Footer.astro&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Copy the &lt;code&gt;Footer.astro&lt;/code&gt; file to your project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cp node_modules/astro-theme-pure/components/basic/Footer.astro src/components/custom/Footer.astro
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solve the sub-dependencies problem:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import config from &apos;virtual:config&apos;
+
+import { Icon } from &apos;../user&apos; // [!code --]
+import { Icon } from &apos;astro-pure/user&apos; // [!code ++]
+// ...
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the reference in &lt;code&gt;BaseLayout.astro&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt; ---
+ import { Footer, Header, ThemeProvider } from &apos;astro-pure/components/basic&apos; // [!code --]
+ import { Header, ThemeProvider } from &apos;astro-pure/components/basic&apos; // [!code ++]
+ import { Footer } from &apos;@/components/custom/Footer.astro&apos; // [!code ++]
+ // ...
+ ---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Then you&apos;ve done a &quot;localization&quot; of the component.&lt;/p&gt;
+&lt;h2&gt;Package Mode&lt;/h2&gt;
+&lt;p&gt;If you want to make some breaking changes or just make a test, this method may follow &quot;what you see is what you get&quot;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Making sure you have the original theme code (&lt;code&gt;./packages/pure&lt;/code&gt;). If yo&apos;ve deleted it, download it from the &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/releases&quot;&gt;Releases&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Link it to your project using your package manager (Example: &lt;a href=&quot;https://bun.com/docs/pm/cli/link&quot;&gt;Bun&lt;/a&gt;, &lt;a href=&quot;https://docs.npmjs.com/cli/v11/commands/npm-link&quot;&gt;NPM&lt;/a&gt;, &lt;a href=&quot;https://pnpm.io/cli/link&quot;&gt;PNPM&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Then change the theme code as it is a part of your code!&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title>FAQs</title><link>https://www.cerr.top/docs/advanced/faq</link><guid isPermaLink="true">https://www.cerr.top/docs/advanced/faq</guid><description>Frequently asked questions</description><content:encoded>&lt;h2&gt;Path&lt;/h2&gt;
+&lt;h3&gt;Blog specific path&lt;/h3&gt;
+&lt;p&gt;Routing blogs format like &lt;code&gt;/blog/:year/:id&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/discussions/37#discussioncomment-11905851&quot;&gt;4.0.2-beta如何使文章链接中包含年份&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Content&lt;/h2&gt;
+&lt;h3&gt;Support web images for &lt;code&gt;heroImage&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;It should be used with &lt;code&gt;inferSize: true&lt;/code&gt; to get the image size. Example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;heroImage:
+  { src: &apos;https://img.tukuppt.com/ad_preview/00/15/09/5e715a320b68e.jpg!/fw/980&apos;, inferSize: true }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Build&lt;/h2&gt;
+&lt;h3&gt;Vite Block Request&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-log&quot;&gt;Blocked request. This host (&quot;xxx&quot;)is not allowed.
+To allow this host, add &quot;xxx&quot; to `preview.allowedHosts` in vite.config.js.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/vitejs/vite/issues/19242&quot;&gt;option server.allowedHosts doesn&apos;t take into account &quot;true&quot;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Problem with &lt;code&gt;BUN_LINK_PKG&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/issues/51&quot;&gt;BUN_LINK_PKG 环境变量无法设置成功&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Build No &quot;Exports&quot; Main Defined&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-log&quot;&gt;07:39:23 [ERROR] [@astrojs/vercel] An unhandled error occurred while running the &quot;astro:build:done&quot; hook
+No &quot;exports&quot; main defined in /vercel/path0/node_modules/estree-walker/package.json
+  Stack trace:
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Try redeploy your project without existing build cache.&lt;/p&gt;
+&lt;p&gt;Detail: &lt;a href=&quot;https://github.com/oven-sh/bun/issues/7241&quot;&gt;oven-sh/bun/issues: error No &quot;exports&quot; main defined in /vercel/path0/node_modules/estree-walker/package.json&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Optimize Your Site</title><link>https://www.cerr.top/docs/advanced/optimize</link><guid isPermaLink="true">https://www.cerr.top/docs/advanced/optimize</guid><description>Improve your site performance and user experience</description><content:encoded>&lt;p&gt;import { Aside } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Integrations&lt;/h2&gt;
+&lt;p&gt;This theme has integrated with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sharp&lt;/code&gt;: image optimization&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/docs/integrations/others#playformcompress&quot;&gt;&lt;code&gt;@playform/compress&lt;/code&gt;&lt;/a&gt;: HTML, CSS, JS, images minify (has problems for a while; see &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/issues/55&quot;&gt;GitHub Issue #55&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;CDN&lt;/h2&gt;
+&lt;p&gt;Some light-weighted libraries are using js static links. You can configure CDN links to improve your site performance.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+  // ...
+  npmCDN: &apos;https://cdn.jsdelivr.net/npm&apos;
+  // Recommend:
+  // - https://cdn.jsdelivr.net/npm
+  // - https://cdn.smartcis.cn/npm
+  // - https://unkpg.com
+  // - https://cdn.cbd.int
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Coding&lt;/h2&gt;
+&lt;p&gt;It is a good way to use &quot;Typescript-like&quot; syntax comment in your &lt;code&gt;.astro&lt;/code&gt; files. It can ensure your comment will not be rendered in the final production HTML file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+// Here is a safe place to put your comment
+import { AstroComponent } from &apos;@/components&apos;
+---
+
+&amp;#x3C;div&gt;
+  &amp;#x3C;!-- This is a bad comment style which will still in the production --&gt;
+  {/* This is a better comment style */}
+  &amp;#x3C;AstroComponent&gt;Hello, Astro!&amp;#x3C;/AstroComponent&gt;
+&amp;#x3C;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Pictures&lt;/h2&gt;
+&lt;h3&gt;Use optimized component&lt;/h3&gt;
+&lt;p&gt;Display optimized images with the &lt;code&gt;&amp;#x3C;Image /&gt;&lt;/code&gt; component: &lt;a href=&quot;https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component&quot;&gt;Use the built-in &lt;code&gt;&amp;#x3C;Image /&gt;&lt;/code&gt; Astro component&lt;/a&gt; to display optimized versions of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;your local images located within the src/ folder&lt;/li&gt;
+&lt;li&gt;configured remote images from authorized sources&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;&amp;#x3C;Image /&gt;&lt;/code&gt; can transform a local or authorized remote image’s dimensions, file type, and quality for control over your displayed image. The resulting &lt;code&gt;&amp;#x3C;img&gt;&lt;/code&gt; tag includes alt, loading, and decoding attributes and infers image dimensions to avoid Cumulative Layout Shift (CLS).&lt;/p&gt;
+&lt;p&gt;You can use &lt;code&gt;loading=&quot;lazy&quot;&lt;/code&gt; to enable lazy loading for images.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+// import the Image component and the image
+import { Image } from &apos;astro:assets&apos;
+
+import myImage from &apos;../assets/my_image.png&apos; // Image is 1600x900
+---
+
+&amp;#x3C;!-- `alt` is mandatory on the Image component --&gt;
+&amp;#x3C;Image src={myImage} alt=&apos;A description of my image.&apos; /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;!-- Output --&gt;
+&amp;#x3C;img
+  src=&quot;/_astro/my_image.hash.webp&quot;
+  width=&quot;1600&quot;
+  height=&quot;900&quot;
+  decoding=&quot;async&quot;
+  loading=&quot;lazy&quot;
+  class=&quot;my-class&quot;
+  alt=&quot;&quot;
+/&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using this, it will transform your images to a WebP format. &lt;code&gt;.md&lt;/code&gt; and &lt;code&gt;.mdx&lt;/code&gt; files are enabled default.&lt;/p&gt;
+&lt;h3&gt;Change Image Size&lt;/h3&gt;
+&lt;p&gt;Although this theme has integrated with some known image optimization plugins, you way still need to optimize your images for some key pages like homepage.&lt;/p&gt;
+&lt;p&gt;A easy way is using online tools like &lt;a href=&quot;https://tinypng.com/&quot;&gt;TinyPNG&lt;/a&gt; to manually compress your images.&lt;/p&gt;
+&lt;h3&gt;Adapt External Images&lt;/h3&gt;
+&lt;p&gt;If you are using external images, excepting the lazy-load tag, you can also add &lt;a href=&quot;https://docs.astro.build/en/guides/images/#authorizing-remote-images&quot;&gt;Astro pre-optimize service&lt;/a&gt; for it. This will change external images to local optimized ones.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;export default defineConfig({
+  // ...
+  image: {
+    // ...
+    domains: [&apos;&amp;#x3C;specific site domain&gt;&apos;] // [!code ++]
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;File Size Analysis&lt;/h2&gt;
+&lt;p&gt;Install npm package &lt;code&gt;rollup-plugin-visualizer&lt;/code&gt;. Then append the following code to your &lt;code&gt;astro.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export default defineConfig({
+  // ...
+  vite: {
+    plugins: [
+      visualizer({
+        emitFile: true,
+        filename: &apos;stats.html&apos;
+      })
+    ]
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Build your project and open the generated &lt;code&gt;stats.html&lt;/code&gt; file to analyze your bundle size. After that finish, you can remove the above code and package to keep your project clean.&lt;/p&gt;</content:encoded></item><item><title>Update Theme</title><link>https://www.cerr.top/docs/advanced/update</link><guid isPermaLink="true">https://www.cerr.top/docs/advanced/update</guid><description>Update astro theme pure to the latest version</description><content:encoded>&lt;p&gt;import { Aside } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Breaking Changes&lt;/h2&gt;
+&lt;h3&gt;v4.1.5&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Change footer social config to an array style. This will give you more flexibility to add more social links or other information:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+  // ...
+  footer: {
+    social: [
+      { icon: &apos;github&apos;, label: &apos;GitHub&apos;, href: &apos;https://github.com/cworld1/astro-theme-pure&apos; }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.1.2&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Move &lt;code&gt;src/pages/terms/list.astro&lt;/code&gt; to &lt;code&gt;src/pages/terms/index.astro&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.1.1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Move shiki custom transformers to &lt;code&gt;src/plugins/shiki-custom-transformers.ts&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Move shiki official transformers to &lt;code&gt;src/plugins/shiki-offical/transformers.ts&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Improve config file with new order and comments. This will affect both &lt;code&gt;src/site.config.ts&lt;/code&gt; and &lt;code&gt;astro.config.ts&lt;/code&gt; (&lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/commit/09dc44d87987f5f777b21ea642ef8cc9db11e592&quot;&gt;09dc44d&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Add collapse code function with default (&lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/commit/7281077b31b7f1bb61bf6eb9a865aae8835cf0e3&quot;&gt;7281077&lt;/a&gt;, &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/commit/22b884789724c1127c7b5a5d1639fd5b0e6a8201&quot;&gt;22b8847&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Refactor palette and border radius styles. If you use color like &lt;code&gt;--primary-foreground&lt;/code&gt;, update it to &lt;code&gt;--card&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.1.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Moved custom css file &lt;code&gt;global.css&lt;/code&gt; to &lt;code&gt;src/assets/styles/global.css&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Changed the font loader to &lt;a href=&quot;https://docs.astro.build/en/reference/experimental-flags/fonts/&quot;&gt;Astro built-in font loader&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.9&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Support caching links avatar (Arthals)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.8&lt;/h3&gt;
+&lt;p&gt;No breaking changes.&lt;/p&gt;
+&lt;h3&gt;v4.0.7&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Changed the &lt;code&gt;Button&lt;/code&gt; component to use &lt;code&gt;variant&lt;/code&gt; prop instead of &lt;code&gt;style&lt;/code&gt; prop. This can help you add custom styles without conflicts. You should change your code like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;&amp;#x3C;Button title=&apos;My Button&apos; style=&apos;primary&apos; /&gt; // [!code --]
+&amp;#x3C;Button title=&apos;My Button&apos; variant=&apos;primary&apos; /&gt; // [!code ++]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed the &lt;code&gt;ExternalLinks&lt;/code&gt; configuration in &lt;code&gt;src/site.config.ts&lt;/code&gt;. You should change your config like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+  content: {
+    externalLinksContent: &apos; ↗&apos;, // [!code --]
+    /** External links configuration */ // [!code ++]
+    externalLinks: { // [!code ++]
+      content: &apos; ↗&apos;, // [!code ++]
+      /** Properties for the external links element */ // [!code ++]
+      properties: { // [!code ++]
+        style: &apos;user-select:none&apos; // [!code ++]
+      } // [!code ++]
+    }, // [!code ++]
+    /** Blog page size for pagination (optional) */
+    blogPageSize: 8,
+    externalLinkArrow: true // show external link arrow // [!code --]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Changed the Waline files out of package! Checkout &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/commit/5119694ab3e32b600887dca30650bcbc63da3f7b&quot;&gt;Commit 5119694&lt;/a&gt; to see how to change your existing pages &amp;#x26; layouts. Don&apos;t forget to copy files at &lt;code&gt;src/components/waline&lt;/code&gt; to your project.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.6&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Changed the project card var name to &lt;code&gt;projects&lt;/code&gt; instead of &lt;code&gt;project&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.5&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Changed the UnoCSS preset from &lt;code&gt;Wind3&lt;/code&gt; to &lt;code&gt;Mini&lt;/code&gt;. Some features are removed, like &lt;code&gt;gradient&lt;/code&gt;, &lt;code&gt;animation&lt;/code&gt;, &lt;code&gt;container&lt;/code&gt;, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.3&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Changed footer registration config to &lt;code&gt;links&lt;/code&gt;. This will give you more flexibility to add more links or other information:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+  footer: {
+    links: [ // [!code highlight:12]
+      {
+        title: &apos;Moe ICP 114514&apos;,
+        link: &apos;https://icp.gov.moe/?keyword=114514&apos;,
+        style: &apos;text-sm&apos; // Uno/TW CSS class
+      },
+      {
+        title: &apos;Site Policy&apos;,
+        link: &apos;/terms/list&apos;,
+        pos: 2 // position set to 2 will be appended to copyright line
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.2-beta&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Consider moving tool icons to a new path such as &lt;code&gt;src/assets/tools/&lt;/code&gt;; this may help users know which ones are relevant to tools.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed links &lt;code&gt;applyTip&lt;/code&gt; to a custom array style:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  links: {
+    applyTip: [
+      { name: &apos;Name&apos;, val: theme.title }, // [!code highlight:4]
+      { name: &apos;Desc&apos;, val: theme.description || &apos;Null&apos; },
+      { name: &apos;Link&apos;, val: &apos;https://astro-pure.js.org/&apos; },
+      { name: &apos;Avatar&apos;, val: &apos;https://astro-pure.js.org/favicon/favicon.ico&apos; }
+      // You can also add more fields
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the env variable &lt;code&gt;BUN_LINK_PKG&lt;/code&gt;. Set this to &lt;code&gt;true&lt;/code&gt; to automatically refer to the package &lt;code&gt;astro-pure&lt;/code&gt; in the path &lt;code&gt;packages/pure&lt;/code&gt; instead of &lt;code&gt;node_modules/astro-pure&lt;/code&gt;. This may help users develop the theme or change code for themselves (not recommended for production).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed the CSS framework to UnoCSS. This will affect &lt;code&gt;unocss.config.ts&lt;/code&gt; and typography class name settings.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.1-beta&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Changed svg deliver import to custom import svg element. This will affect using component for &lt;code&gt;ToolSelection&lt;/code&gt;. You should change:&lt;/p&gt;
+&lt;p&gt;(Optional) Move icons to new path like &lt;code&gt;src/assets/icons/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Then change using code (default at &lt;code&gt;src/pages/about/index.astro&lt;/code&gt;)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;&amp;#x3C;ToolSection
+  tools={[
+    {
+      name: &apos;Arch Linux&apos;,
+      description: &apos;Linux Distribution&apos;,
+      href: &apos;https://archlinux.org/&apos;,
+      iconPath: &apos;archlinux&apos; // [!code --]
+      icon: import(&apos;@/assets/icons/archlinux.svg?raw&apos;) // [!code ++]
+    }
+  ]},
+/&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This changes import a new component &lt;code&gt;Svg&lt;/code&gt;. See &lt;a href=&quot;/docs/integrations/components#svg-loader&quot;&gt;User Components #Svg Loader&lt;/a&gt; for usage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v4.0.0-alpha&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Move all components, types and utils that are reused to new npm packages &lt;code&gt;astro-pure&lt;/code&gt;. Affected components are included in . Import method is also changed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import { Button } from &apos;@/components/user&apos; // [!code --]
+import { Button } from &apos;astro-pure/user&apos; // [!code ++]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New format config file &lt;code&gt;src/site.config.ts&lt;/code&gt;. There will be zod schema to validate the config file, and use of config will be changed to:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import { siteConfig } from &apos;@/site-config&apos; // [!code --]
+import config from &apos;@/site-config&apos; // [!code ++]
+// Or if you want to use the config that is after processed or transformed
+import config from &apos;virtual:config&apos; // [!code ++]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Built-in astro config supported. package &lt;code&gt;astro-pure&lt;/code&gt; will automatically config some integrations like &lt;code&gt;unocss/astro&lt;/code&gt;, &lt;code&gt;@astrojs/mdx&lt;/code&gt;, &lt;code&gt;@astrojs/sitemap&lt;/code&gt;, also with some rehypePlugins and remarkPlugins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed search engine to &lt;a href=&quot;https://pagefind.app/&quot;&gt;pagefind&lt;/a&gt;, mainly because Astro v5 will not allow getting collection data directly from client (that is core working mode of Fuse.js search engine).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed some &lt;code&gt;BaseHead&lt;/code&gt; tags config to &lt;code&gt;src/site.config.ts&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.1.4&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Move config &lt;code&gt;siteConfig.content.typographyProse&lt;/code&gt; to &lt;code&gt;integrationConfig.typography.class&lt;/code&gt; in &lt;code&gt;src/site.config.ts&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move advanced components to &lt;code&gt;src/components/advanced&lt;/code&gt;. Affected components are included in &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt;. Import method is also changed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import LinkPreview from &apos;@/components/LinkPreview.astro&apos; // [!code --]
+import { LinkPreview } from &apos;astro-pure/advanced&apos; // [!code ++]
+
+&amp;#x3C;LinkPreview href=&apos;https://www.cloudflare.com/&apos; /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move &lt;code&gt;Substats&lt;/code&gt; config to related page &lt;code&gt;src/pages/about/index.astro&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed Github Card component to &lt;code&gt;GithubCard&lt;/code&gt; in &lt;code&gt;src/components/advanced&lt;/code&gt;. See &lt;a href=&quot;/docs/integrations/advanced#github-card&quot;&gt;Advanced Components #Github Card&lt;/a&gt; for usage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move Links Logbook to &lt;code&gt;src/site.config.ts&lt;/code&gt;. See &lt;a href=&quot;/docs/integrations/links#basic-configurations&quot;&gt;Friend Links #Basic Configurations&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.1.3&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Move user components to &lt;code&gt;src/components/user&lt;/code&gt;. Affected components are included in &lt;a href=&quot;/docs/integrations/components&quot;&gt;User Components&lt;/a&gt;. Import method is also changed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import Button from &apos;@/components/Button&apos; // [!code --]
+import { Button } from &apos;astro-pure/user&apos; // [!code ++]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Replace &lt;code&gt;remark-github-blockquote-alert&lt;/code&gt; plugin to component &lt;code&gt;Aside&lt;/code&gt;. Check &lt;a href=&quot;/docs/integrations/components#aside&quot;&gt;User Components #Aside&lt;/a&gt; to know how to migrate.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.1.2 (pre-release)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Move some configuration items like &lt;code&gt;telegram&lt;/code&gt;, &lt;code&gt;walineServerURL&lt;/code&gt; to new structure in &lt;code&gt;src/site.config.ts&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.1.1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Move the internal parts in the &lt;code&gt;src/utils&lt;/code&gt; to &lt;code&gt;src/plugins&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Modify the configuration file &lt;code&gt;astro.config.ts&lt;/code&gt; to &lt;code&gt;astro.config.mjs&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Update ESLint to latest version and migrate configuration file &lt;code&gt;.eslintrc.js&lt;/code&gt; to &lt;code&gt;eslint.config.mjs&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Modify the &lt;code&gt;prettier.config.js&lt;/code&gt; to &lt;code&gt;prettier.config.mjs&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.1.0 (pre-release)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Changed common content markdown formatter &lt;code&gt;coverImage&lt;/code&gt; to &lt;code&gt;heroImage&lt;/code&gt;. You need to modify all your markdown files to replace &lt;code&gt;coverImage&lt;/code&gt; with &lt;code&gt;heroImage&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;v3.0.9&lt;/h3&gt;
+&lt;p&gt;A stable version.&lt;/p&gt;
+&lt;p&gt;Pending update...&lt;/p&gt;
+&lt;h2&gt;Update Method&lt;/h2&gt;
+&lt;h3&gt;Rebase&lt;/h3&gt;
+&lt;p&gt;If you create a new project using fork, you can just rebase the theme repository to the latest version.&lt;/p&gt;
+&lt;h3&gt;Merge Manually&lt;/h3&gt;
+&lt;p&gt;As the git histories are not the same, you might need to merge the theme repository into your project manually.&lt;/p&gt;
+&lt;p&gt;A practical way for Windows users is to use the tool &lt;a href=&quot;https://winmerge.org/&quot;&gt;WinMerge&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A filter list may be helpful:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-diff&quot;&gt;## This is a directory/file filter template for WinMerge
+name: Astro Theme Pure
+desc: Diff for Blog v.s. Astro Theme Pure
+
+## Select if filter is inclusive or exclusive
+## Inclusive (loose) filter lets through all items not matching rules
+## Exclusive filter lets through only items that match to rule
+## include or exclude
+def: include
+
+## Filters for filenames begin with f:
+## Filters for directories begin with d:
+## To exclude some of the files that match the f: pattern, specify f!:
+## To exclude some of the folders that match the d: pattern, specify d!:
+## (Inline comments begin with &quot; ##&quot; and extend to the end of the line)
+
+### Front-end files ###
+d: \\\.git$
+d: \\node_modules$
+
+# Astro cache
+d: \\\.vercel
+d: \\\.astro
+
+### Theme dev ###
+d: ^\\packages$
+d: ^\\preset$
+d: ^\\test$
+f: ^LICENSE$
+f: ^README\.md$
+f: ^README-zh-CN\.md$
+f: ^CODE_OF_CONDUCT\.md$
+
+# Project
+f: ^bun\.lockb$
+f: \.code-workspace$
+f: ^ignore\.md$
+
+### Astro theme pure ###
+# Static
+d: ^\\public\\favicon$
+f: ^public\\links\.json$
+f: ^public\\images\\social-card\.png$
+
+# Assets
+f: ^src\\assets\\avatar\.png$
+d: ^\\src\\assets\\projects$
+d: ^\\src\\assets\\tools$
+
+# Content
+d: ^\\src\\content\\blog$
+d: ^\\src\\content\\docs$
+d: ^\\src\\pages\\docs$
+f: ^src\\pages\\terms\\.*\.md$
+
+### Blog ###
+# Your own files
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Advanced Components</title><link>https://www.cerr.top/docs/integrations/advanced</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/advanced</guid><description>Advanced components with advanced docs</description><content:encoded>&lt;p&gt;import { MdxRepl } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Web Content Render&lt;/h2&gt;
+&lt;h3&gt;Quote&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;Quote&lt;/code&gt; component is a simple component that displays a random quote.&lt;/p&gt;
+&lt;p&gt;Config:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // Add a random quote to the footer (default on homepage footer)
+  quote: {
+    // https://github.com/lukePeavey/quotable
+    server: &apos;https://api.quotable.io/quotes/random?maxLength=60&apos;, // [!code highlight:2]
+    target: `(data) =&gt; data[0].content || &apos;Error&apos;`
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lukePeavey/quotable&quot;&gt;Quotable&lt;/a&gt; is a open-source API that provides random English quotes.&lt;/p&gt;
+&lt;p&gt;For Chinese quotes, you can use &lt;a href=&quot;https://developer.hitokoto.cn/sentence/&quot;&gt;Hitokoto&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  quote: {
+    // https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+    server: &apos;https://v1.hitokoto.cn/?c=i&apos;, // [!code highlight:2]
+    target: `(data) =&gt; data.hitokoto || &apos;Error&apos;`
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;GitHub Card&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;GithubCard&lt;/code&gt; component is a simple component that displays a GitHub user card.&lt;/p&gt;
+&lt;h3&gt;Link Preview&lt;/h3&gt;
+&lt;p&gt;Preview any link inserted in the content.&lt;/p&gt;
+&lt;h2&gt;Data Transformer&lt;/h2&gt;
+&lt;h3&gt;QRCode&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;//  // default to render current page link
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/Fragment&gt;
+&amp;#x3C;/MdxRepl&gt;
+
+### Toast
+
+&amp;#x3C;MdxRepl&gt;
+import { Button } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;Button
+  title=&apos;Click Me&apos;
+  onClick={`document.dispatchEvent(
+    new CustomEvent(&apos;toast&apos;, {
+      detail: {
+        message: &apos;Hello from toast!&apos;,
+        time: 5000
+      }
+    })
+  )`} /&gt; 
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+```jsx
+import { Button } from &apos;astro-pure/basic&apos;
+
+&amp;#x3C;Button
+  title=&apos;Click Me&apos;
+  onClick={`document.dispatchEvent(
+    new CustomEvent(&apos;toast&apos;, {
+      detail: {
+        message: &apos;Hello from toast!&apos;,
+        time: 5000
+      }
+    })
+  )`} /&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium Zoom&lt;/h3&gt;
+&lt;p&gt;Try click the following image.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/user-attachments/assets/6c42b061-df7e-4696-a29b-bff07fe17d88&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;/docs/integrations/others#medium-zoom&quot;&gt;Other Integrations#medium-zoom&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title>Comment System</title><link>https://www.cerr.top/docs/integrations/comment</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/comment</guid><description>Comment system for pages at the bottom</description><content:encoded>&lt;p&gt;import { Aside } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Waline Comment System&lt;/h2&gt;
+&lt;p&gt;The theme&apos;s comment, read statistics, likes, and other functionalities are all provided by &lt;a href=&quot;https://waline.js.org/&quot;&gt;Waline&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Remove&lt;/h3&gt;
+&lt;p&gt;If you have some reasons to remove the comment system, or just learn how to change to other comment systems, this section might help you. But if you want to know how to configure it, you can skip this section.&lt;/p&gt;
+&lt;p&gt;Remove it by the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;set &lt;code&gt;enable&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt; in &lt;code&gt;src/site.config.ts&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // ...
+  waline: {
+    enable: false // [!code highlight]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove dependency &lt;code&gt;@waline/client&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;bun remove @waline/client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove folder &lt;code&gt;src/components/waline&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove relative code in these layouts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;src/layouts/CommonPage.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/layouts/BlogPost.astro&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove relative config like &lt;code&gt;comment&lt;/code&gt; or &lt;code&gt;view&lt;/code&gt; configuring for the earlier edited layouts in these files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;src/pages/about/index.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/pages/links/index.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/pages/projects/index.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Other blog post frontmatter config if exists&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Deploy&lt;/h3&gt;
+&lt;p&gt;You can refer to its documentation for configuration, and it is recommended to use the &lt;a href=&quot;https://vercel.com/&quot;&gt;Vercel&lt;/a&gt; + &lt;a href=&quot;https://supabase.com/&quot;&gt;Supabase&lt;/a&gt; combination.&lt;/p&gt;
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;Then you can configure the Waline comment system in the &lt;code&gt;integrationConfig.server&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // ...
+  waline: {
+    enable: true,
+    // Server service link
+    server: &apos;https://astro-theme-pure-waline.arthals.ink/&apos;, // [!code highlight]
+    // Refer https://waline.js.org/en/guide/features/emoji.html
+    emoji: [&apos;bmoji&apos;, &apos;weibo&apos;],
+    // Refer https://waline.js.org/en/reference/client/props.html
+    additionalConfigs: {
+      pageview: true,
+      comment: true
+      // ...
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Usage&lt;/h3&gt;
+&lt;p&gt;You can call it manually in &lt;code&gt;.astro&lt;/code&gt; or &lt;code&gt;.mdx&lt;/code&gt; files.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import { Comment } from &apos;@/components/waline&apos;
+
+// prettier-ignore
+&amp;#x3C;Comment /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Render:&lt;/p&gt;
+&lt;p&gt;import { Comment } from &apos;@/components/waline&apos;&lt;/p&gt;</content:encoded></item><item><title>User Components</title><link>https://www.cerr.top/docs/integrations/components</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/components</guid><description>Easily extend your content page more interactive</description><content:encoded>&lt;p&gt;import { Aside, Tabs, TabItem, MdxRepl } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;p&gt;Components let you easily reuse a piece of UI or styling consistently. You can use them not just in &lt;code&gt;.astro&lt;/code&gt; files, but also in &lt;code&gt;.mdx&lt;/code&gt; files.&lt;/p&gt;
+&lt;p&gt;For &lt;code&gt;.astro&lt;/code&gt;, you can directly import and use components and use. An example will also shown in the first section.&lt;/p&gt;
+&lt;h2&gt;Containers&lt;/h2&gt;
+&lt;h3&gt;Card&lt;/h3&gt;
+&lt;p&gt;&amp;#x3C;Card
+as=&apos;a&apos;
+href=&apos;#card&apos;
+heading=&apos;Lorem ipsum&apos;
+subheading=&apos;Lorem ipsum dolor sit amet, vidit suscipit at mei.&apos;
+date=&apos;August 2021&apos;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can even contain a list here
+&lt;/p&gt;
+&lt;p&gt;&amp;#x3C;Card
+as=&apos;a&apos;
+href=&apos;#card&apos;
+heading=&apos;Lorem ipsum&apos;
+subheading=&apos;Lorem ipsum dolor sit amet, vidit suscipit at mei.&apos;
+date=&apos;August 2021&apos;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can even contain a list here
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/TabItem&gt;
+&amp;#x3C;TabItem label=&apos;Astro&apos;&gt;
+```astro
+---
+import { Card } from &apos;astro-pure/user&apos;
+---
+&amp;#x3C;!-- ... --&gt;
+&amp;#x3C;Card
+  as=&apos;a&apos;
+  href=&apos;#card&apos;
+  heading=&apos;Lorem ipsum&apos;
+  subheading=&apos;Lorem ipsum dolor sit amet, vidit suscipit at mei.&apos;
+  date=&apos;August 2021&apos;
+&gt;
+  You can even contain a list here
+&amp;#x3C;/Card&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Collapse&lt;/h3&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, vidit suscipit at mei.
+&lt;/p&gt;
+&lt;p&gt; Lorem ipsum dolor sit amet, vidit suscipit at mei. 
+&lt;/p&gt;
+&lt;h3&gt;Aside&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;// A code snippet, for example.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;// &lt;code&gt;js   // A code snippet, for example.   // &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This component also has a remark support version (which can directly use in &lt;code&gt;.md&lt;/code&gt;), but not integrated in this theme. You can check &lt;a href=&quot;https://github.com/withastro/starlight/blob/main/packages/starlight/integrations/asides.ts&quot;&gt;packages/starlight/integrations/asides.ts&lt;/a&gt; for reference code.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-md&quot;&gt;:::tip
+This theme author is a good guy.
+:::
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Tabs&lt;/h3&gt;
+&lt;h3&gt;MDX Repl&lt;/h3&gt;
+&lt;p&gt;// Width is optional; using width parameter to set
+// all elements inside the MDX Repl component.
+// (slot desc is not included this parameter)
+&lt;/p&gt;
+&lt;p&gt;You can combine any other components for the sclot &lt;code&gt;desc&lt;/code&gt;. And &lt;code&gt;&amp;#x3C;Fragment&gt;&lt;/code&gt; will not be rendered as a parent html container tag.&lt;/p&gt;
+&lt;h2&gt;List&lt;/h2&gt;
+&lt;h3&gt;CardList&lt;/h3&gt;
+&lt;p&gt;&amp;#x3C;CardList title=&apos;A list&apos; list={
+[{title: &apos;I am hidden!&apos;}]
+} collapse /&gt;
+&amp;#x3C;CardList title=&apos;A list&apos; list={
+[
+{ title: &apos;Lorem ipsum&apos;, link: &apos;#list&apos; },
+{ title: &apos;Dolor sit amet&apos;, children: [{
+title: &apos;Vidit suscipit&apos;, link: &apos;#&apos;
+}] }
+]
+} /&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x3C;CardList title=&apos;A list&apos; list={
+[{title: &apos;I am hidden!&apos;}]
+} collapse /&gt;
+&amp;#x3C;CardList title=&apos;A list&apos; list={
+[
+{ title: &apos;Lorem ipsum&apos;, link: &apos;#list&apos; },
+{ title: &apos;Dolor sit amet&apos;, children: [{
+title: &apos;Vidit suscipit&apos;, link: &apos;#&apos;
+}] }
+]
+} /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/Fragment&gt;
+&amp;#x3C;/MdxRepl&gt;
+
+### Timeline
+
+&amp;#x3C;MdxRepl&gt;
+import { Timeline } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;Timeline events={
+[
+  { date: &apos;August 2021&apos;, content: &apos;Hello&apos; },
+  { date: &apos;August 2022&apos;, content: &apos;&amp;#x3C;i&gt;World!&amp;#x3C;/i&gt;&apos; },
+]
+} /&gt;
+
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+```jsx
+import { Timeline } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;Timeline events={
+  [
+    { date: &apos;August 2021&apos;, content: &apos;Hello&apos; },
+    { date: &apos;August 2022&apos;, content: &apos;&amp;#x3C;i&gt;World!&amp;#x3C;/i&gt;&apos; },
+  ]
+} /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Steps&lt;/h3&gt;
+&lt;p&gt;How to Yi Jian San Lian:&lt;/p&gt;
+&lt;p&gt;Or GuanZhu sometimes.
+&lt;/p&gt;
+&lt;p&gt;How to Yi Jian San Lian:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Or GuanZhu sometimes.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Simple Text Render&lt;/h2&gt;
+&lt;h3&gt;Button&lt;/h3&gt;
+&lt;h3&gt;Spoiler&lt;/h3&gt;
+&lt;p&gt;No one can find me. But I am exposed here.&lt;/p&gt;
+&lt;p&gt;No one can find me. But I am exposed here.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/Fragment&gt;
+&amp;#x3C;/MdxRepl&gt;
+
+### Formatted Date
+
+&amp;#x3C;MdxRepl&gt;
+import { FormattedDate } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;FormattedDate date={new Date(&apos;2077-01-01&apos;)} dateTimeOptions={{ month: &apos;short&apos; }} /&gt;
+
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+```jsx
+import { FormattedDate } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;FormattedDate date={new Date(&apos;2077-01-01&apos;)} dateTimeOptions={{ month: &apos;short&apos; }} /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Label&lt;/h3&gt;
+&lt;h3&gt;SVG Loader&lt;/h3&gt;
+&lt;p&gt;&amp;#x3C;Svg src={import(&apos;@/assets/icons/key.svg?raw&apos;)} /&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x3C;Svg src={import(&apos;@/assets/icons/key.svg?raw&apos;)} /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/Fragment&gt;
+&amp;#x3C;/MdxRepl&gt;
+
+## Resources
+
+### Icon
+
+&amp;#x3C;MdxRepl width=&apos;100%&apos;&gt;
+&amp;#x3C;div&gt;
+import { Icon } from &apos;astro-pure/user&apos;
+
+Single use: &amp;#x3C;Icon name=&apos;rss&apos; class=&apos;inline&apos; /&gt;
+
+Preview all icons available (click button to copy):
+
+import { Icons as allIcons } from &apos;astro-pure/libs&apos;
+
+&amp;#x3C;div class=&apos;flex flex-wrap gap-2&apos;&gt;
+{
+Object.keys(allIcons).map(icon =&gt; {
+  const script = `navigator.clipboard.writeText(&apos;${icon}&apos;);document.dispatchEvent(new CustomEvent(&apos;toast&apos;,{detail:{message:&apos;Copied &quot;${icon}&quot; to clipboard!&apos;}}))`
+  return (
+    &amp;#x3C;Button as=&apos;button&apos; type=&apos;button&apos; class=&apos;cursor-pointer&apos; onClick={script}&gt;
+      &amp;#x3C;Icon slot=&apos;before&apos; name={icon} /&gt;
+      &amp;#x3C;span&gt;{icon}&amp;#x3C;/span&gt;
+    &amp;#x3C;/Button&gt;
+  )
+})
+}
+&amp;#x3C;/div&gt;
+&amp;#x3C;/div&gt;
+
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+```jsx
+import { Icon } from &apos;astro-pure/user&apos;
+
+Single use: &amp;#x3C;Icon name=&apos;rss&apos; class=&apos;inline&apos; /&gt;
+
+Preview all icons available (click button to copy):
+
+import { Icons as allIcons } from &apos;astro-pure/libs&apos;
+import { Button } from &apos;astro-pure/user&apos;
+
+&amp;#x3C;div class=&apos;flex flex-wrap gap-2&apos;&gt;
+{
+  Object.keys(allIcons).map(icon =&gt; {
+    const script = `navigator.clipboard.writeText(&apos;${icon}&apos;);document.dispatchEvent(new CustomEvent(&apos;toast&apos;,{detail:{message:&apos;Copied &quot;${icon}&quot; to clipboard!&apos;}}))`
+    return (
+      &amp;#x3C;Button as=&apos;button&apos; type=&apos;button&apos; class=&apos;cursor-pointer&apos; onclick={script}&gt;
+        &amp;#x3C;Icon slot=&apos;before&apos; name={icon} /&gt;
+        &amp;#x3C;span&gt;{icon}&amp;#x3C;/span&gt;
+      &amp;#x3C;/Button&gt;
+    )
+  })
+}
+&amp;#x3C;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There&apos;s also some &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt;, which may suit for you. Hope you enjoy using these components!&lt;/p&gt;</content:encoded></item><item><title>Content Presentation</title><link>https://www.cerr.top/docs/integrations/content-present</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/content-present</guid><description>About Content Page Rendering</description><content:encoded>&lt;p&gt;import { MdxRepl } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Shiki Code&lt;/h2&gt;
+&lt;p&gt;You can change transformer at &lt;code&gt;defineConfig.markdown.shikiConfig&lt;/code&gt; in config file &lt;code&gt;astro.config.ts&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Basic Usage&lt;/h3&gt;
+&lt;p&gt;For &lt;code&gt;.astro&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import { Code } from &apos;astro:components&apos;
+---
+
+&amp;#x3C;Code lang=&apos;shell&apos; code={`git log --oneline`} /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For &lt;code&gt;.mdx&lt;/code&gt; and &lt;code&gt;.md&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;```shell
+git log --oneline
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Add Title&lt;/h3&gt;
+&lt;p&gt;bun check &amp;#x26;
+bun dev&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+````markdown
+```shell title=&quot;start.sh&quot;
+#!/bin/bash
+
+bun check &amp;#x26;
+bun dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#x3C;/Fragment&gt;
+&amp;#x3C;/MdxRepl&gt;
+
+### Show Diff
+
+Supports add and del lines.
+
+&amp;#x3C;MdxRepl width=&apos;80%&apos;&gt;
+```shell title=&quot;deploy.sh&quot;
+#!/bin/bash
+
+bun check
+bun lint
+bun format # [!code ++]
+# No need for vercel or other ci/cd
+bun run build # [!code --]
+git push
+```
+
+&amp;#x3C;Fragment slot=&apos;desc&apos;&gt;
+````markdown
+```shell title=&quot;deploy.sh&quot;
+#!/bin/bash
+
+bun check
+bun lint
+bun format # [\!code ++]
+# No need for vercel or other ci/cd
+bun run build # [\!code --]
+git push
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Show Highlight&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Content Obsolete Warning&lt;/h2&gt;
+&lt;p&gt;Add a warning message if the article is old enough.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+// ...
+---
+  &amp;#x3C;Hero {data} {remarkPluginFrontmatter} slot=&apos;header&apos;&gt;
+    &amp;#x3C;Fragment slot=&apos;description&apos;&gt;
+      {!isDraft &amp;#x26;&amp;#x26; enableComment &amp;#x26;&amp;#x26; &amp;#x3C;PageInfo comment class=&apos;mt-1&apos; /&gt;}
+      { // [!code ++]
+        Math.floor((Date.now() - new Date(articleDate).getTime()) / 86400000) &gt; 365 &amp;#x26;&amp;#x26; ( // [!code ++]
+          &amp;#x3C;p class=&apos;mt-1 text-sm italic text-primary&apos; style=&apos;--primary:41 90% 50%&apos;&gt; &amp;#x3C;!-- [!code ++] --&gt;
+            This article was last updated over a year ago. Some information may be outdated. &amp;#x3C;!-- [!code ++] --&gt;
+          &amp;#x3C;/p&gt; /* [!code ++] */
+        ) // [!code ++]
+      } &amp;#x3C;!-- [!code ++] --&gt;
+    &amp;#x3C;/Fragment&gt;
+  &amp;#x3C;/Hero&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It will render like this:&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;</content:encoded></item><item><title>Friend Links</title><link>https://www.cerr.top/docs/integrations/links</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/links</guid><description>Configurations for friend links</description><content:encoded>&lt;p&gt;import { Steps } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Remove Links Page&lt;/h2&gt;
+&lt;p&gt;Links page is a page for showing your friend blog links, which is enabled by default.&lt;/p&gt;
+&lt;p&gt;If you want to remove the links page for any reason, follow the steps in this section. Otherwise, you can skip ahead to the next chapter.&lt;/p&gt;
+&lt;p&gt;Set &lt;code&gt;links.enable&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt; in &lt;code&gt;src/site.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // ...
+  links: {
+    enable: false // [!code highlight]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And also, remember to delete the following folders &amp;#x26; files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;src/components/links/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/pages/links/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;public/links.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Basic Configurations&lt;/h2&gt;
+&lt;p&gt;A basic configuration for friend links is in &lt;code&gt;src/site.config.ts&lt;/code&gt;. You can add your friend&apos;s logbook or your own link info.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  links: {
+    // Friend logbook
+    logbook: [
+      { date: &apos;2025-03-16&apos;, content: &apos;Is there a leakage?&apos; },
+      { date: &apos;2025-03-16&apos;, content: &apos;A leakage of what?&apos; },
+      { date: &apos;2025-03-16&apos;, content: &apos;I have a full seat of water, like, full of water!&apos; },
+      { date: &apos;2025-03-16&apos;, content: &apos;Must be the water.&apos; },
+      { date: &apos;2025-03-16&apos;, content: &apos;Let\&apos;s add that to the words of wisdom.&apos; },
+    ],
+    // Yourself link info
+    applyTip: {
+      name: theme.title,
+      desc: theme.description || &apos;Null&apos;,
+      url: &apos;https://astro-pure.js.org/&apos;,
+      avatar: &apos;https://astro-pure.js.org/favicon/favicon.ico&apos;
+    }
+  },
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Friend Links&lt;/h2&gt;
+&lt;p&gt;The friend links configurations are at &lt;code&gt;public/links.json&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;friends&quot;: [
+    {
+      &quot;id_name&quot;: &quot;cf-links&quot;,
+      &quot;desc&quot;: &quot;Common links included in circle friends&quot;,
+      &quot;link_list&quot;: [
+        { // [!code highlight:6]
+          &quot;name&quot;: &quot;Elysia&quot;,
+          &quot;intro&quot;: &quot;Hi, did you miss me? Anywhere and anytime, Elysia will return all your expectations.&quot;,
+          &quot;link&quot;: &quot;https://honkaiimpact3.fandom.com/wiki/Elysia&quot;,
+          &quot;avatar&quot;: &quot;https://0.gravatar.com/avatar/&quot;
+          // Here you can also leave some other fields as notes
+        },
+      ]
+    },
+    {
+      &quot;id_name&quot;: &quot;inactive-links&quot;,
+      &quot;desc&quot;: &quot;Inactive or rule-breaking friends&quot;,
+      &quot;link_list&quot;: [] // you can temporarily leave some bad links here
+    },
+    {
+      &quot;id_name&quot;: &quot;special-links&quot;,
+      &quot;desc&quot;: &quot;Other special links&quot;,
+      &quot;link_list&quot;: [] // special links which are note your friends
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Integrated with &lt;code&gt;Friend-Circle-Lite&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/willow-god/Friend-Circle-Lite&quot;&gt;Friend-Circle-Lite&lt;/a&gt; is a stripped-down friend-link app with no backend and running only using github action.&lt;/p&gt;
+&lt;p&gt;It requires:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A github repository with github actions enabled by cron.&lt;/li&gt;
+&lt;li&gt;A static site server like Vercel, Netlify, GitHub Pages, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This theme has not integrated it and will not provide support for it in the future. But don&apos;t worry, this doc will guide you to integrate it.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Fork the &lt;a href=&quot;https://github.com/cworld1/friend-circle-lite&quot;&gt;Friend-Circle-Lite&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modify the &lt;code&gt;config.yaml&lt;/code&gt; in your forked repository:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;spider_settings:
+   enable: true
+   json_url: &quot;&amp;#x3C;your-site&gt;/links.json&quot; # [!code highlight]
+   article_count: 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go to &quot;Actions&quot; page and run workflow &quot;Friend Circle Lite&quot; manually to check if it works. This will also generate server files in &quot;page&quot; branch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Checkout &lt;a href=&quot;https://github.com/willow-god/Friend-Circle-Lite?tab=readme-ov-file#%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&quot;&gt;docs&lt;/a&gt; to deploy the server files to your static site server.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add &lt;a href=&quot;https://gist.github.com/cworld1/cf0dc6daa89264e6d745d3e68ef8c01c&quot;&gt;fetching script file &lt;code&gt;friendCircle.ts&lt;/code&gt;&lt;/a&gt; to your project at path &lt;code&gt;src/plugins&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add &lt;a href=&quot;https://gist.github.com/cworld1/cf0dc6daa89264e6d745d3e68ef8c01c?permalink_comment_id=5311916#gistcomment-5311916&quot;&gt;style file &lt;code&gt;fc.css&lt;/code&gt;&lt;/a&gt; to your project at path &lt;code&gt;src/assets/styles&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add initialize code in &lt;code&gt;src/components/pages/links/index.astro&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+const headings = [
+   // ...
+   { depth: 2, slug: &apos;small-circle&apos;, text: &apos;Small Circle&apos; }, // [!code highlight]
+]
+---
+
+&amp;#x3C;PageLayout&gt;
+   {/* ... */}
+   &amp;#x3C;!-- [!code highlight:16] --&gt;
+   &amp;#x3C;h2 id=&apos;small-circle&apos;&gt;Small Circle&amp;#x3C;/h2&gt;
+   &amp;#x3C;div id=&apos;friend-circle-lite-root&apos; class=&apos;not-prose&apos;&gt;Loading...&amp;#x3C;/div&gt;
+   &amp;#x3C;script&gt;
+      import &apos;@/assets/styles/fc.css&apos;
+
+      import { FriendCircle } from &apos;@/plugins/friendCircle&apos;
+
+      const fc = new FriendCircle()
+      fc.init({
+         private_api_url: &apos;&amp;#x3C;your-fc-lite-server&gt;&apos;,
+         page_turning_number: 10,
+         error_img: &apos;https://gravatar.loli.net/avatar/57d8260dfb55501c37dde588e7c3852c&apos;
+      })
+      fc.load()
+   &amp;#x3C;/script&gt;
+&amp;#x3C;/PageLayout&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title>Other Integrations</title><link>https://www.cerr.top/docs/integrations/others</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/others</guid><description>Other integrations that help improve your site</description><content:encoded>&lt;p&gt;import { Aside, Tabs, TabItem, Steps } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;medium-zoom&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Checkout &lt;a href=&quot;https://github.com/francoischalifour/medium-zoom&quot;&gt;medium-zoom&lt;/a&gt; for more.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // ...
+  // A lightbox library that can add zoom effect
+  mediumZoom: {
+    enable: true, // disable it will not load the whole library
+    selector: &apos;.prose .zoomable&apos;,
+    options: {
+      className: &apos;zoomable&apos;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This theme has integrated it in &lt;code&gt;BlogPost.astro&lt;/code&gt; by default, which means any content in &lt;code&gt;src/content/blog&lt;/code&gt; doesn&apos;t need to import. If you want to use it in any other layout or page, you can use the following code:&lt;/p&gt;
+&lt;p&gt;// .zoomable class will automatically added using remark plugin
+&lt;img src=&quot;path/to/image.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;@playform/compress&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Checkout &lt;a href=&quot;https://github.com/PlayForm/Compress&quot;&gt;playform/compress&lt;/a&gt; for more.&lt;/p&gt;
+&lt;h2&gt;Friend-Circle-Lite&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&quot;/docs/integrations/links#integrated-with-friend-circle-lite&quot;&gt;Friend Links #Integrated with &lt;code&gt;Friend-Circle-Lite&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;LateX support&lt;/h2&gt;
+&lt;p&gt;In case any time in the future this theme removes default support for LateX, there&apos;s a tutorial to help you add support for it.&lt;/p&gt;
+&lt;p&gt;Rendering LaTeX in Astro.js enriches your markdown files with mathematical expressions, making your content both engaging and informative. The following steps outline the necessary steps to integrate LaTeX into Astro.js and addresses potential pitfalls along with their solutions.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install Necessary Packages&lt;/p&gt;
+&lt;p&gt;Begin by installing &lt;code&gt;remark-math&lt;/code&gt; and &lt;code&gt;rehype-katex&lt;/code&gt;. These packages parse and render LaTeX respectively. Use the install commands:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;bun install remark-math rehype-katex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure Astro&lt;/p&gt;
+&lt;p&gt;Modify your Astro configuration to use these plugins. Add the plugins to the markdown configuration section in your &lt;code&gt;astro.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;import { defineConfig } from &apos;astro/config&apos;;
+import remarkMath from &apos;remark-math&apos;;
+import rehypeKatex from &apos;rehype-katex&apos;;
+
+export default defineConfig({
+   // ...
+   markdown: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+   },
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Include KaTeX CSS&lt;/p&gt;
+&lt;p&gt;To ensure that LaTeX formulas are styled correctly, include the KaTeX CSS in your HTML layout (in this theme it would be in the &lt;code&gt;BlogPost.astro&lt;/code&gt; file). Add the following css resources:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import &apos;katex/dist/katex.min.css&apos;
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or use CDN to fasten speed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import config from &apos;@/site-config&apos;
+---
+&amp;#x3C;link rel=&quot;stylesheet&quot; href={`${config.npmCDN}/katex@0.16.15/dist/katex.min.css`}&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Some CSS code is recommended:&lt;/p&gt;
+&lt;p&gt;To ensure that the LaTeX formulas are displayed better, you may need to add the following code to &lt;code&gt;public/styles/global.css&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;span.katex-display {
+  overflow-y: scroll;
+  padding: 0.5rem;
+}
+.katex-html {
+  overflow: auto hidden;
+  padding: 3px;
+}
+.katex-html .base {
+  margin-block: 0;
+  margin-inline: auto;
+}
+.katex-html .tag {
+  position: relative !important;
+  display: inline-block;
+  padding-inline-start: 0.5rem;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Common Pitfalls and Solutions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CSS Styling Issues&lt;/p&gt;
+&lt;p&gt;Problem: LaTeX formulas might not render with the correct styles if the KaTeX CSS isn’t loaded.&lt;/p&gt;
+&lt;p&gt;Solution: Confirm the KaTeX stylesheet link is correctly placed in the HTML head and is loading without issues. Check for network errors or restrictions that might prevent the CSS from loading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Build Errors&lt;/p&gt;
+&lt;p&gt;Problem: Errors during build time when processing LaTeX syntax.&lt;/p&gt;
+&lt;p&gt;Solution: Ensure that your LaTeX is correctly formatted and that there are no syntax errors in your markdown files. LaTeX syntax errors can break the parser and cause build failures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title>UnoCSS &amp; Styles</title><link>https://www.cerr.top/docs/integrations/unocss</link><guid isPermaLink="true">https://www.cerr.top/docs/integrations/unocss</guid><description>Change the appearance of the site &amp; create custom styles</description><content:encoded>&lt;h2&gt;UnoCSS Change Appearance&lt;/h2&gt;
+&lt;p&gt;You can customize the theme default UnoCSS palette by modifying the CSS file at &lt;code&gt;src/assets/styles/app.css&lt;/code&gt;. For example, if you want to change the default theme color, you can modify the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;:root {
+  /* ... */
+  --primary: 200 29% 45%; /* [!code --] */
+  --primary: &amp;#x3C;Your favorite color using raw hsl&gt;; /* [!code ++] */
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And the same way to change the default font family, you can modify the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;:root {
+  /* ... */
+  font-family: &apos;Satoshi&apos;; /* [!code --] */
+  src: url(&apos;/fonts/Satoshi-Variable.ttf&apos;); /* [!code --] */
+  font-family: &apos;&amp;#x3C;Your favorite font family&gt;&apos;; /* [!code ++] */
+  src: url(&apos;/fonts/&amp;#x3C;Your favorite font&gt;.ttf&apos;); /* [!code ++] */
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Make sure to put your custom font file in the &lt;code&gt;public/fonts&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h2&gt;UnoCSS Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;uno.config.ts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Get to know more:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://unocss.dev/integrations/astro&quot;&gt;UnoCSS: Astro Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://unocss.dev/config&quot;&gt;UnoCSS: Configuring UnoCSS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;code&gt;@unocss/preset-typography&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Typography config can be modified in &lt;code&gt;uno.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const typographyConfig = {
+  // prettier-ignore
+  cssExtend: { // [!code highlight:3]
+    // ...
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But if you want to customize the typography by UnoCSS, or just change the preset typography theme, you can do it in &lt;code&gt;src/site.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const integ: IntegrationUserConfig = {
+  // ...
+  typography: {
+    class: &apos;prose text-base text-muted-foreground&apos; // [!code highlight]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Checkout &lt;a href=&quot;https://unocss.dev/presets/typography&quot;&gt;Typography preset&lt;/a&gt; for more.&lt;/p&gt;</content:encoded></item><item><title>Configuration</title><link>https://www.cerr.top/docs/setup/configuration</link><guid isPermaLink="true">https://www.cerr.top/docs/setup/configuration</guid><description>Configuration files</description><content:encoded>&lt;h2&gt;Theme Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;src/site.config.ts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;pending update...&lt;/p&gt;
+&lt;h2&gt;Astro Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;astro.config.ts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can configure it to change deployment methods, add rehype &amp;#x26; remark plugins, and more.&lt;/p&gt;
+&lt;p&gt;Read more about Astro configuration &lt;a href=&quot;https://docs.astro.build/en/guides/configuring-astro/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;ESLint Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;eslint.config.mjs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can configure ESLint to change rules and security checks.&lt;/p&gt;
+&lt;p&gt;Read more about ESLint configuration &lt;a href=&quot;https://eslint.org/docs/latest/use/configure/configuration-files&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Prettier Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;prettier.config.mjs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can configure Prettier to change code formatting rules, this can change your experience using package command &lt;code&gt;format&lt;/code&gt; and extension support for your favorite IDE.&lt;/p&gt;
+&lt;p&gt;Options are available &lt;a href=&quot;https://prettier.io/docs/en/options&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;UnoCSS Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;uno.config.ts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;It is a utility-first CSS framework building custom designs. Theme also uses its preset &lt;code&gt;typography&lt;/code&gt; to make type settings.&lt;/p&gt;
+&lt;p&gt;Checkout &lt;a href=&quot;/docs/integrations/unocss&quot;&gt;UnoCSS &amp;#x26; Styles &lt;/a&gt; for more info.&lt;/p&gt;
+&lt;h2&gt;Typescript Configuration&lt;/h2&gt;
+&lt;p&gt;File: &lt;code&gt;tsconfig.json&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title>Authoring Content</title><link>https://www.cerr.top/docs/setup/content</link><guid isPermaLink="true">https://www.cerr.top/docs/setup/content</guid><description>Making your own content</description><content:encoded>&lt;p&gt;import { Aside } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;p&gt;Astro helps you &lt;a href=&quot;https://docs.astro.build/en/guides/content/&quot;&gt;author and present your content&lt;/a&gt;. You can write a blog post directly in Astro using Markdown/MDX, or fetch your content from a headless CMS. Astro lets you build a site around your content: you can add a layout to your pages, create an index of posts, and set up an RSS feed to allow readers to subscribe.&lt;/p&gt;
+&lt;h2&gt;Writing Content&lt;/h2&gt;
+&lt;p&gt;In Astro, you can author your content in a variety of ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In Markdown files (&lt;code&gt;.md&lt;/code&gt; or &lt;a href=&quot;https://docs.astro.build/en/guides/markdown-content/&quot;&gt;alternative extensions&lt;/a&gt;), designed to make it easy to write rich text content.&lt;/li&gt;
+&lt;li&gt;In MDX (&lt;code&gt;.mdx&lt;/code&gt;) or Markdoc (&lt;code&gt;.mdoc&lt;/code&gt;) files with &lt;a href=&quot;https://docs.astro.build/en/guides/integrations-guide/&quot;&gt;an official integration&lt;/a&gt;, which can include components and dynamic expressions in your document.&lt;/li&gt;
+&lt;li&gt;Using a &lt;a href=&quot;https://docs.astro.build/en/guides/content/#headless-cms-authoring&quot;&gt;third-party content management system (CMS)&lt;/a&gt;, then pulling that content into a &lt;code&gt;.astro&lt;/code&gt; page.&lt;/li&gt;
+&lt;li&gt;Other options (less commonly used for content-heavy pages) include &lt;a href=&quot;https://docs.astro.build/en/basics/astro-pages/#astro-pages&quot;&gt;&lt;code&gt;.astro&lt;/code&gt; files&lt;/a&gt; and &lt;a href=&quot;https://docs.astro.build/en/basics/astro-pages/#html-pages&quot;&gt;&lt;code&gt;.html&lt;/code&gt; files&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For this theme, &lt;code&gt;.md&lt;/code&gt; and &lt;code&gt;.mdx&lt;/code&gt; is supported by default.&lt;/p&gt;
+&lt;h3&gt;Markdown Authoring&lt;/h3&gt;
+&lt;p&gt;Markdown is a convenient syntax for writing rich text with basic formatting and common elements like headers, lists, and images. Astro has built-in support for Markdown files in your project.&lt;/p&gt;
+&lt;p&gt;Create and write a new &lt;code&gt;.md&lt;/code&gt; file in your code editor or bring in an existing file written in your favorite Markdown editor. Some online Markdown editors like &lt;a href=&quot;https://stackedit.io/&quot;&gt;StackEdit&lt;/a&gt; and &lt;a href=&quot;https://dillinger.io&quot;&gt;Dillinger&lt;/a&gt; will even allow you to edit and sync your work with your Astro repository stored on GitHub.&lt;/p&gt;
+&lt;p&gt;Let&apos;s give you example of &lt;a href=&quot;https://docs.astro.build/en/guides/markdown-content/&quot;&gt;writing Markdown content in Astro&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
+title: &apos;First Article&apos; # (Required, max 60)
+description: &apos;I like writing articles.&apos; # (Required, 10 to 160)
+publishDate: &apos;2024-11-30 00:08:00&apos; # (Required, Date)
+tags:
+  - Markdown # (Also can write format like next line)
+heroImage: { src: &apos;./thumbnail.jpg&apos;, alt: &apos;an image targeting my article&apos;, color: &apos;#B4C6DA&apos; }
+# thumbnail.jpg should be in the same folder as the article
+draft: false # (set true will only show in development)
+language: &apos;English&apos; # (String as you like)
+comment: true # (set false will disable comment, even if you&apos;ve enabled it in site-config)
+---
+
+## This is a title
+
+This is a paragraph.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you have a lot of assets, you can create a folder for title like &lt;code&gt;src/content/blog/first-article/&lt;/code&gt; and put all your assets in there. Of course, your content should be renamed to &lt;code&gt;index.md&lt;/code&gt; or &lt;code&gt;index.mdx&lt;/code&gt; and also be contained in this folder.&lt;/p&gt;
+&lt;p&gt;If you want to use remote image for &lt;code&gt;heroImage&lt;/code&gt;, please add &lt;code&gt;inferSize: true&lt;/code&gt; or specified &lt;code&gt;width&lt;/code&gt; and &lt;code&gt;height&lt;/code&gt; to the object &lt;code&gt;heroImage&lt;/code&gt;. Example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;heroImage:
+  { src: &apos;https://img.tukuppt.com/ad_preview/00/15/09/5e715a320b68e.jpg!/fw/980&apos;, inferSize: true }
+# Or specified width and height
+heroImage:
+  { src: &apos;https://img.tukuppt.com/ad_preview/00/15/09/5e715a320b68e.jpg!/fw/980&apos;, width: 980, height: 551 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Too complex? Simple example just need these:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
+title: Simple Article
+description: Just another simple article.
+publishDate: 2024-07-26
+---
+
+I like writing simple articles.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;MDX Authoring&lt;/h3&gt;
+&lt;p&gt;This allows you to include UI elements such as a banner or an interactive carousel along with your text content.&lt;/p&gt;
+&lt;p&gt;Write and edit &lt;code&gt;.mdx&lt;/code&gt; files directly in your code editor, alongside your project files. MDX files are a &lt;a href=&quot;https://docs.astro.build/en/basics/astro-pages/#supported-page-files&quot;&gt;supported page file type&lt;/a&gt; in Astro, and may also be used as &lt;a href=&quot;https://docs.astro.build/en/guides/content/#content-collections&quot;&gt;content collection entries&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For integrated components, checkout &lt;a href=&quot;/docs/integrations/components&quot;&gt;User Components&lt;/a&gt; and &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Connect a CMS&lt;/h3&gt;
+&lt;p&gt;See &lt;a href=&quot;https://docs.astro.build/en/guides/cms/&quot;&gt;Astro: Use a CMS with Astro&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Pages&lt;/h2&gt;
+&lt;p&gt;Astro uses &lt;strong&gt;file-based routing&lt;/strong&gt; to &lt;a href=&quot;https://docs.astro.build/en/guides/routing/&quot;&gt;generate your build URLs&lt;/a&gt; based on the file layout of your project &lt;code&gt;src/pages/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h3&gt;Routes&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;.astro&lt;/code&gt; &lt;a href=&quot;https://docs.astro.build/en/basics/astro-pages/&quot;&gt;page components&lt;/a&gt; as well as Markdown and MDX Files (&lt;code&gt;.md&lt;/code&gt;, &lt;code&gt;.mdx&lt;/code&gt;) within the &lt;code&gt;src/pages/&lt;/code&gt; directory &lt;strong&gt;automatically become pages on your website&lt;/strong&gt;. Each page’s route corresponds to its path and filename within the &lt;code&gt;src/pages/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-diff&quot;&gt;# Example: Static routes
+src/pages/index.astro        -&gt; mysite.com/
+src/pages/about.astro        -&gt; mysite.com/about
+src/pages/about/index.astro  -&gt; mysite.com/about
+src/pages/about/me.astro     -&gt; mysite.com/about/me
+src/pages/posts/1.md         -&gt; mysite.com/posts/1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is no separate &quot;routing config&quot; to maintain in an Astro project! When you add a file to the &lt;code&gt;src/pages/&lt;/code&gt; directory, a new route is automatically created for you. In static builds, you can customize the file output format using the &lt;a href=&quot;https://docs.astro.build/en/reference/configuration-reference/#buildformat&quot;&gt;&lt;code&gt;build.format&lt;/code&gt;&lt;/a&gt; configuration option.&lt;/p&gt;
+&lt;h3&gt;Astro Pages&lt;/h3&gt;
+&lt;p&gt;Astro pages use the &lt;code&gt;.astro&lt;/code&gt; file extension and support the same features as &lt;a href=&quot;https://docs.astro.build/en/basics/astro-components/&quot;&gt;Astro components&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+
+---
+
+&amp;#x3C;html lang=&apos;en&apos;&gt;
+  &amp;#x3C;head&gt;
+    &amp;#x3C;title&gt;My Homepage&amp;#x3C;/title&gt;
+  &amp;#x3C;/head&gt;
+  &amp;#x3C;body&gt;
+    &amp;#x3C;h1&gt;Welcome to my website!&amp;#x3C;/h1&gt;
+  &amp;#x3C;/body&gt;
+&amp;#x3C;/html&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A page must produce a full HTML document. If not explicitly included, Astro will add the necessary &lt;code&gt;&amp;#x3C;!DOCTYPE html&gt;&lt;/code&gt; declaration and &lt;code&gt;&amp;#x3C;head&gt;&lt;/code&gt; content to any &lt;code&gt;.astro&lt;/code&gt; component located within &lt;code&gt;src/pages/&lt;/code&gt; by default. You can opt-out of this behavior on a per-component basis by marking it as a &lt;a href=&quot;#page-partials&quot;&gt;partial&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;To avoid repeating the same HTML elements on every page, you can move common &lt;code&gt;&amp;#x3C;head&gt;&lt;/code&gt; and &lt;code&gt;&amp;#x3C;body&gt;&lt;/code&gt; elements into your own &lt;a href=&quot;/en/basics/layouts/&quot;&gt;layout components&lt;/a&gt;. You can use as many or as few layout components as you&apos;d like.&lt;/p&gt;
+&lt;p&gt;And in this theme, luckily you can use &lt;code&gt;BaseLayout.astro&lt;/code&gt; as your layout component.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-astro&quot;&gt;---
+import PageLayout from &apos;@/layouts/BaseLayout.astro&apos; // [!code highlight]
+
+const meta = {
+  title: &apos;My Page&apos;,
+  description: &apos;My fav page&apos;
+}
+const highlightColor = &apos;#44AEF6&apos; // Optional
+---
+
+&amp;#x3C;PageLayout {meta} {highlightColor}&gt;
+  &amp;#x3C;!-- [!code highlight] --&gt;
+  &amp;#x3C;p&gt;My page content, wrapped in a layout!&amp;#x3C;/p&gt;
+&amp;#x3C;/PageLayout&gt;
+&amp;#x3C;!-- [!code highlight] --&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Markdown/MDX Pages&lt;/h3&gt;
+&lt;p&gt;While &lt;code&gt;.astro&lt;/code&gt; pages have some flexible features and be friendly to inline / module scripts, &lt;code&gt;.md&lt;/code&gt; and &lt;code&gt;.mdx&lt;/code&gt; pages are more suitable for content-focused pages.&lt;/p&gt;
+&lt;p&gt;Astro also treats any Markdown (&lt;code&gt;.md&lt;/code&gt;) files inside of &lt;code&gt;src/pages/&lt;/code&gt; as pages in your final website. If you have the &lt;a href=&quot;https://docs.astro.build/en/guides/integrations-guide/mdx/#installation&quot;&gt;MDX Integration installed&lt;/a&gt;, it also treats MDX (&lt;code&gt;.mdx&lt;/code&gt;) files the same way.&lt;/p&gt;
+&lt;p&gt;Consider creating &lt;a href=&quot;/en/guides/content-collections/&quot;&gt;content collections&lt;/a&gt; instead of pages for directories of related Markdown files that share a similar structure, such as blog posts or product items.&lt;/p&gt;
+&lt;p&gt;Markdown files can use the special &lt;code&gt;layout&lt;/code&gt; frontmatter property to specify a &lt;a href=&quot;https://docs.astro.build/en/basics/layouts/&quot;&gt;layout component&lt;/a&gt; that will wrap their Markdown content in a full &lt;code&gt;&amp;#x3C;html&gt;...&amp;#x3C;/html&gt;&lt;/code&gt; page document.&lt;/p&gt;
+&lt;p&gt;This theme supports a good layout for &lt;code&gt;.md&lt;/code&gt; and &lt;code&gt;.mdx&lt;/code&gt; files:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
+layout: &apos;@/layouts/IndividualPage.astro&apos;
+
+title: &apos;Privacy Policy&apos;
+description: &apos;Effective date: 2024-11-26&apos;
+language: &apos;En&apos; # optional
+back: &apos;/terms/list&apos; # optional, default to &apos;/&apos;
+heroImage: { src: &apos;./thumbnail.jpg&apos; } # will used to social-image
+---
+
+## Privacy Policy 1
+
+This is the first section of the privacy policy.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;HTML Pages&lt;/h3&gt;
+&lt;p&gt;Files with the &lt;code&gt;.html&lt;/code&gt; file extension can be placed in the &lt;code&gt;src/pages/&lt;/code&gt; directory and used directly as pages on your site. Note that some key Astro features are not supported in &lt;a href=&quot;https://docs.astro.build/en/basics/astro-components/#html-components&quot;&gt;HTML Components&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title>Deployment</title><link>https://www.cerr.top/docs/setup/deployment</link><guid isPermaLink="true">https://www.cerr.top/docs/setup/deployment</guid><description>Deploy your site to various platforms</description><content:encoded>&lt;p&gt;import { Aside, Steps } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Package Mode&lt;/h2&gt;
+&lt;p&gt;This theme which &gt;= v4.0.0 has integrated NPM package mode. Recommended way is remove local package file, and install the theme integration from NPM. If there&apos;s some reason you want to change the package content, you should link local package to your theme template. A &lt;code&gt;bun&lt;/code&gt; method is integrated. You should:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Add environment variable &lt;code&gt;BUN_LINK_PKG=true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;bun pure check&lt;/code&gt; to link the package automatically.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This method can also work on Deployment for other platforms like &apos;Vercel&apos;. All you need is to add the environment variable to build options on your platform control settings. The build command &lt;code&gt;astro-pure check &amp;#x26;&amp;#x26; astro check &amp;#x26;&amp;#x26; astro build&lt;/code&gt; will automatically link the package.&lt;/p&gt;
+&lt;h2&gt;Deployment Mode&lt;/h2&gt;
+&lt;p&gt;Astro had a very fantastic support for deployment. Check &lt;a href=&quot;https://docs.astro.build/en/guides/deploy/&quot;&gt;Deploy your Astro Site&lt;/a&gt; for more.&lt;/p&gt;
+&lt;h3&gt;Vercel&lt;/h3&gt;
+&lt;p&gt;This theme supports Vercel by default:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Push your code to your online Git repository (GitHub, GitLab, BitBucket).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vercel.com/new&quot;&gt;Import your project&lt;/a&gt; into Vercel.&lt;/li&gt;
+&lt;li&gt;Vercel will automatically detect Astro and configure the right settings.&lt;/li&gt;
+&lt;li&gt;Your application is deployed! (e.g. &lt;a href=&quot;https://astro.vercel.app/&quot;&gt;astro.vercel.app&lt;/a&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And vercel also support static method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import vercelServerless from &apos;@astrojs/vercel/serverless&apos; // [!code --]
+import vercelStatic from &apos;@astrojs/vercel/static&apos;; // [!code ++]
+
+export default defineConfig({
+  //   ...
+  adapter: vercelServerless() // [!code --]
+  adapter: vercelStatic(), // [!code ++]
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Node server&lt;/h3&gt;
+&lt;p&gt;If you are deploying with Node.js locally, you need to install &lt;code&gt;@astrojs/node&lt;/code&gt; first:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;bun add &apos;@astrojs/node&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then follow the comments in &lt;code&gt;astro.config.ts&lt;/code&gt; and modify like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import node from &apos;@astrojs/node&apos; // [!code ++]
+import vercelServerless from &apos;@astrojs/vercel/serverless&apos; // [!code --]
+
+export default defineConfig({
+  //   ...
+  adapter: vercelServerless(), // [!code --]
+  adapter: node({ mode: &apos;standalone&apos; }), // [!code ++]
+
+  integrations: [
+    // prettier-ignore
+    outputCopier({ // [!code --]
+      integ: [&apos;sitemap&apos;, &apos;pagefind&apos;] // [!code --]
+    }) // [!code --]
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Bun server&lt;/h3&gt;
+&lt;p&gt;Bun also support static method.&lt;/p&gt;
+&lt;p&gt;Check &lt;a href=&quot;https://www.npmjs.com/package/@nurodev/astro-bun&quot;&gt;@nurodev/astro-bun&lt;/a&gt; for more.&lt;/p&gt;
+&lt;h3&gt;Static&lt;/h3&gt;
+&lt;p&gt;Remove all server adapter configuration in &lt;code&gt;astro.config.ts&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;import vercelServerless from &apos;@astrojs/vercel/serverless&apos; // [!code --]
+
+export default defineConfig({
+  //   ...
+  adapter: vercelServerless(), // [!code --]
+  output: &apos;server&apos; // [!code --]
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;GitHub Pages&lt;/h3&gt;
+&lt;p&gt;See &lt;a href=&quot;https://docs.astro.build/en/guides/deploy/github/&quot;&gt;Astro: Configure Astro for GitHub Pages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For ones deploying on GitHub Pages with a base path, like &lt;code&gt;username.github.io/repo-name&lt;/code&gt;, please read &lt;a href=&quot;/docs/setup/deployment#platform-with-base-path&quot;&gt;Deployment#Platform with Base Path&lt;/a&gt;.
+carefully.&lt;/p&gt;
+&lt;h2&gt;Platform with Base Path&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Astro provides basic support for a base path — see the &quot;base&quot; option in the configuration reference &lt;a href=&quot;https://docs.astro.build/en/reference/configuration-reference/#base&quot;&gt;Astro: base&lt;/a&gt; for more.&lt;/li&gt;
+&lt;li&gt;This theme will not support the base path, as it seriously break down the experience of remote developments. In general, deploying the template with a base path is not recommended because the homepage integrates lists, resume elements, and other features that rely on the template’s source structure.&lt;/li&gt;
+&lt;li&gt;If you follow the guide and modify the code, you can deploy with a base path, but you cannot use the same project copy to deploy both with and without a base path simultaneously. Proceed at your own risk; do not open issues about this unless you plan to contribute improvements to the docs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Set the &lt;code&gt;base&lt;/code&gt; option in &lt;code&gt;astro.config.ts&lt;/code&gt; to your base path, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export default defineConfig({
+  //   ...
+  base: &apos;/repo-name/&apos; // Replace with your repository name
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Update all internal links in Dynamic script files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;src/components/BaseHead.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/pages/docs/DocsContent.astro&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/pages/rss.xml.ts&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;packages/pure/components/pages/PostPreview.astro&lt;/code&gt; (&lt;a href=&quot;/docs/advanced/customize&quot;&gt;Customize Theme&lt;/a&gt; is required to make the change)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Update all static resource paths:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add base paths in &lt;code&gt;src/site.config.ts&lt;/code&gt;. Especially the menu configs.&lt;/li&gt;
+&lt;li&gt;Add base paths in &lt;code&gt;src/plugins/shiki-transformers.ts&lt;/code&gt; for all &lt;code&gt;/icons/code.svg&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Add base paths in &lt;code&gt;src/assets/styles/app.css&lt;/code&gt; for all url in &lt;code&gt;@font-face&lt;/code&gt; property.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title>Getting Started</title><link>https://www.cerr.top/docs/setup/getting-started</link><guid isPermaLink="true">https://www.cerr.top/docs/setup/getting-started</guid><description>Get started with the Astro Theme Pure</description><content:encoded>&lt;p&gt;import { Steps, Aside, Tabs, TabItem } from &apos;astro-pure/user&apos;&lt;/p&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Two way to install. &quot;Template&quot; way is lightweight and simple, but hard to update; while &quot;Fork&quot; way is easy to update but needs some skills for git.&lt;/p&gt;
+&lt;h3&gt;Install Using Template&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install the theme&lt;/p&gt;
+&lt;p&gt;Execute the following command in the your user directory to install the theme:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-toml&quot;&gt;[install]
+registry = &quot;&amp;#x3C;npm mirror site&gt;&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For details about other PM mirror configs, you may need to see their official documents.&lt;/p&gt;
+&lt;p&gt;By default, this command will use the template repository’s main branch. To use a different branch name, pass it as part of the &lt;code&gt;--template&lt;/code&gt; argument: &lt;code&gt;cworld1/astro-theme-pure#&amp;#x3C;branch&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Answer the questions and follow the instructions of the CLI wizard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VOILA!&lt;/p&gt;
+&lt;p&gt;You can now &lt;a href=&quot;https://docs.astro.build/en/install-and-setup/#start-the-astro-dev-server&quot;&gt;start the Astro dev server&lt;/a&gt; and see a live preview of your project while you make it your own!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Install Using Fork&lt;/h3&gt;
+&lt;p&gt;You only need to &lt;a href=&quot;https://github.com/cworld1/astro-theme-pure/fork&quot;&gt;click fork button at theme repository&lt;/a&gt; to create your project; then clone the forked repository to your local machine.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;git clone https://github.com/&amp;#x3C;your-username&gt;/astro-theme-pure.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, you can start the Astro dev server and see a live preview of your project while you make it your own!&lt;/p&gt;
+&lt;h2&gt;Start the Dev Server&lt;/h2&gt;
+&lt;p&gt;Go to your project directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;cd ./&amp;#x3C;your-project&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, please read the configuration notes first and continue configuring the theme.&lt;/p&gt;
+&lt;h2&gt;Migrate to Astro&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&quot;https://docs.astro.build/en/guides/migrate-to-astro/&quot;&gt;Astro: Migrate an existing project to Astro&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Theme File Structure&lt;/h2&gt;
+&lt;p&gt;The theme file structure is as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;public&lt;/code&gt;: Static resources that will be copied to the root directory&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;assets&lt;/code&gt;: Static resources&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;components&lt;/code&gt;: Components used in the theme, also include user-like components, like &lt;code&gt;Card&lt;/code&gt;, &lt;code&gt;Collapse&lt;/code&gt;, &lt;code&gt;Spoiler&lt;/code&gt;, etc.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;layouts&lt;/code&gt;: Basic site layouts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pages&lt;/code&gt;: Pages like &lt;code&gt;404&lt;/code&gt;, &lt;code&gt;about&lt;/code&gt;, &lt;code&gt;blog&lt;/code&gt;, &lt;code&gt;docs&lt;/code&gt;, &lt;code&gt;index&lt;/code&gt;, etc.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;plugins&lt;/code&gt;: Extended plugins used in the theme&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;types&lt;/code&gt;: Typescript type definitions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;utils&lt;/code&gt;: Utilities&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;site.config.ts&lt;/code&gt;: Theme configuration file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;astro.config.ts&lt;/code&gt;: Astro configuration file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eslint.config.mjs&lt;/code&gt;: ESLint configuration file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prettier.config.mjs&lt;/code&gt;: Prettier configuration file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uno.config.ts&lt;/code&gt;: UnoCSS configuration file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tsconfig.json&lt;/code&gt;: Typescript configuration file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;package.json&lt;/code&gt;: Package information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Simple Setup&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Remove docs files&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove the &lt;code&gt;src/pages/docs&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;Remove the menu declaration in &lt;code&gt;src/site.config.ts&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+   // ...
+   /** Configure the header of your site. */
+   header: {
+      menu: [
+         { title: &apos;Blog&apos;, link: &apos;/blog&apos; },
+         { title: &apos;Docs&apos;, link: &apos;/docs&apos; }, // [!code --]
+         // ...
+      ],
+   },
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove the Content Collection for docs in &lt;code&gt;src/content.config.ts&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const docs = defineCollection({ // [!code --]
+loader: glob({ base: &apos;./src/content/docs&apos;, pattern: &apos;**/*.{md,mdx}&apos; }), // [!code --]
+schema: ({ image }) =&gt; // [!code --]
+   z.object({ // [!code --]
+      ... // [!code --]
+   }) // [!code --]
+}) // [!code --]
+export const collections = { blog, docs } // [!code --]
+export const collections = { blog } // [!code ++]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove &lt;code&gt;packages&lt;/code&gt; directory (this will be imported by our NPM package).&lt;/p&gt;
+&lt;p&gt;And remember to change the &lt;code&gt;workspaces&lt;/code&gt; field in &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;name&quot;: &quot;astro-theme-pure&quot;,
+  &quot;workspaces&quot;: [ // [!code --]
+    &quot;packages/*&quot; // [!code --]
+  ], // [!code --]
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the site favicon.&lt;/p&gt;
+&lt;p&gt;Replace the &lt;code&gt;public/favicon/*&lt;/code&gt; files with your own favicon.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Replace your avatar image.&lt;/p&gt;
+&lt;p&gt;Replace the &lt;code&gt;src/assets/avatar.png&lt;/code&gt; file with your own avatar image.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure the site&lt;/p&gt;
+&lt;p&gt;You can configure your project inside the &lt;code&gt;src/site.config.ts&lt;/code&gt; configuration file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;export const theme: ThemeUserConfig = {
+   author: &apos;CWorld&apos;,
+   title: &apos;Astro Theme Pure&apos;,
+   site: &apos;https://astro-pure.js.org&apos;,
+   description: &apos;Stay hungry, stay foolish&apos;,
+   // ...
+}
+
+export const integ: IntegrationUserConfig = { /* ... */ }
+// ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Typescript Syntax&lt;/p&gt;
+&lt;p&gt;The configuration file &lt;code&gt;site.config.ts&lt;/code&gt; uses Typescript syntax. If you are not familiar with TS syntax, please read about it &lt;a href=&quot;https://learnxinyminutes.com/docs/typescript/&quot;&gt;here&lt;/a&gt; first.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item></channel></rss>

@@ -1,0 +1,84 @@
+JT()
+BEGIN
+ARC_P(G0,128,54+K,37);
+LINE_P(128-37,54+K,128-37+3,54+K);
+LINE_P(128+37-3,54+K,128+37,54+K);
+LINE_P(128,54-37+K,128,54-37+3+K);
+LINE_P(128,54+37-3+K,128,54+37+K);
+
+LINE_P(128-4,54+K,128+4,54+K);
+LINE_P(128,54-4+K,128,54+4+K);
+
+BLIT_P(G0,80,102,G1);
+END;
+
+
+EXPORT PEACE()
+BEGIN
+LOCAL X,Y,V,P,KO:=0,QX:=1;
+V:=0.02;P:=25;J:=128;
+X:=RANDOM(55,201);Y:=RANDOM(55,72);
+
+DIMGROB_P(G1,120,25);
+BLOAD(G1,0,0,{120,25,"ӧӟËГҬЕҼǄӓƸǄӑƸҹǄҹƸҰƸҰƸǄҴƈӀƸҹǄҹÔϰƻҰƸÔҴƈҰǄҳƸҹǄҹÔϰƻҰƸÔҴƔҰǄҳƸҹĄǄҵÔϰƻҰƸÔǄËϺҶƸҹĄƸҵƸǄƗƋұƸÔƈǄҹÈұÔһĄƸǇЁүÔƗЄ×ϱƋҺĄƈ×ӀϱƋûƸƻҽϳƋҺĄøƸǇІƋûƸƋƗƗƗƗƗƋҲƸҹĄƸҮĄËϵҲƸÔЄҴƸҹĄƸǇϮƻӀƸÔĄϼ×ҴƸҹĄƸÈǇÈӃƸÔĄǄǇÈƋǇÈҵƸҹĄϬӎƸÔ×үϬƻćƗҴƸҹĄÈӏƸÔƋҮϯҬÈҵƸҹĄƈӏƸÔƸҮÈҰĄҵƸҹǄƸӏƸÔǄҭÈҲƈҴƸҹǄӓƸǄұƈӃƸҹЖƋ×БƋҺËЧЇһǄӧӅǄҹǄӧӅƸҹǄӧӅƸҹӧӟ"});
+DIMGROB_P(G9,10,10);
+BLOAD(G9,1,1,{8,8,"ϯĄĄƔûƔûƔûƔûĄĄϯ"});
+
+RECT;
+JT();
+
+WHILE 1 DO
+WAIT(V);
+//DIMGROB_P(G9,6,10,0);
+
+RECT_P(X-3,Y-5,X+3,Y+5,3,3);
+LINE_P(0,Y,256,Y,3);
+LINE_P(J,64,128,128,3);
+
+
+X:=RANDOM(−1,1)+X;
+Y:=RANDOM(−1,1)+Y;
+BLIT_P(G0,X-4,Y-4,G9);
+
+JT();
+
+
+IF ISKEYDOWN(9) THEN Y:=Y+1;END;
+IF ISKEYDOWN(15) THEN Y:=Y-1;END;
+IF ISKEYDOWN(14) THEN X:=X+1;J:=J+1;END;
+IF ISKEYDOWN(10) THEN X:=X-1;J:=J-1;END;
+//BLIT_P(G0,X-4,Y-4,G9);
+LINE_P(J,64,128,128);
+LINE_P(0,Y,256,Y);
+IF ISKEYDOWN(0) THEN 
+K:=0;
+IF ABS(X-128)≤4 AND ABS(Y-54)≤4 THEN
+IF QX==1 THEN P:=P-10;END;
+IF QX==2 THEN P:=P-1;END;
+
+END;
+
+ELSE
+K:=0;
+END;
+
+IF P≤0 THEN
+KO:=KO+1;
+TEXTOUT_P("洮汰:"+KO,0,0,0,0,60,3);
+RECT_P(X-4,Y-4,X+4,Y+4,3,3);
+LINE_P(0,Y,256,Y,3);
+X:=RANDOM(−32,32)+J;Y:=RANDOM(32,96);
+BLIT_P(G0,X-4,Y-4,G9);
+LINE_P(0,Y,256,Y);
+P:=25;
+END;
+
+IF ISKEYDOWN(2) THEN QX:=1;END;
+IF ISKEYDOWN(3) THEN QX:=2;END;
+IF ISKEYDOWN(4) AND V>0.002 THEN V:=V-0.002;END;
+IF ISKEYDOWN(5) THEN V:=V+0.002;END;
+IF ISKEYDOWN(8) THEN WAIT(0.1);KILL;END;
+
+END;
+
+END;
